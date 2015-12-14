@@ -76,32 +76,34 @@ namespace Database
 
         private static async Task<Geopoint> GetLocation()
         {
-            bool location_settings = utilities.STATS.Values[settings.location] == null || utilities.STATS.Values[settings.location].ToString() == "on" ? true : false;
-            Geopoint point;
+            bool location_settings = utilities.STATS.Values[settings.location] == null || utilities.STATS.Values[settings.location].ToString() == "on" ? true : false;            
             if (location_settings)
             {
-                try {
+                Geopoint point;
+                try
+                {
                     var accessStatus = await Geolocator.RequestAccessAsync();
                     if (accessStatus == GeolocationAccessStatus.Allowed)
                     {
                         Geolocator geolocator = new Geolocator { DesiredAccuracy = PositionAccuracy.High };
                         // Carry out the operation
-                        Geoposition pos = await geolocator.GetGeopositionAsync(new TimeSpan(0, 0, 0, 0, 3000), new TimeSpan(0, 0, 0, 0, 2700));
+                        Geoposition pos = await geolocator.GetGeopositionAsync(new TimeSpan(0, 0, 0, 0, 3000), new TimeSpan(0, 0, 0, 0, 3100));
                         point = pos.Coordinate.Point;
                     }
                     else { point = null; }
                 }
-                catch { point = null; }
+                catch
+                {
+                    return null;
+                }
+                return point;
             }
-            else { point = null; }
-            return point;
+            else { return null; }
         }
 
         public static async Task UpdateTimelineItem(int unlocks, int new_time, DateTime date)
         {
-            //int[] data = new int[3];
             string date_str = utilities.shortdate_form.Format(date);
-            //TODO CARICA UTILIZZO
             var item = await ConnectionDb().Table<Timeline>().Where(x => x.date == date_str && x.unlocks == unlocks).FirstOrDefaultAsync();
             if (item != null)
             {
@@ -119,23 +121,7 @@ namespace Database
             await InitializeDatabase();
             string date_str = utilities.shortdate_form.Format(date);
             List<Timeline> list = await ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).ToListAsync();
-            /*foreach(var item in list)
-            {
-                int[] data = Formatdata(int.Parse(item.usage.ToString()));
-                item.usage_str = String.Format("{0}:{1}:{2}", data[0], data[1], data[2]);
-                item.usage = item.usage / 60;
-                item.battery_str = String.Format("{0}%", item.battery);       
-            }*/
             return list;
-        }
-
-        public static async Task<bool> CheckLocation(int unlocks, DateTime date)
-        {
-            string date_str = utilities.shortdate_form.Format(date);
-            var item = await ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).FirstOrDefaultAsync();
-            var longitude = item.longitude; 
-            var latitude = item.latitude;
-            return longitude != 0 || latitude != 0 ? true : false;
         }
 
         public static async Task<List<Hour>> GetHourList(DateTime date)
