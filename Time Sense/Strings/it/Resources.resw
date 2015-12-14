@@ -301,7 +301,7 @@
     <value>Scrivi tag NFC</value>
   </data>
   <data name="nfc_header_2.Text" xml:space="preserve">
-    <value>Scrivi un tag NFC per controllare i tuoi dati toccandolo</value>
+    <value>Scrivi un tag NFC per controllare i dati toccandolo</value>
   </data>
   <data name="no" xml:space="preserve">
     <value>No</value>
@@ -590,7 +590,7 @@
     <value>Attiva rilevamento posizione</value>
   </data>
   <data name="nfc_timeline.Content" xml:space="preserve">
-    <value>Mostra la timeline degli sblocchi</value>
+    <value>Mostra la lista degli sblocchi</value>
   </data>
   <data name="nfc_usage.Content" xml:space="preserve">
     <value>Mostra l'utilizzo</value>

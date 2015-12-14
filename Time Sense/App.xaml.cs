@@ -48,18 +48,15 @@ namespace Time_Sense
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-            if (e.Arguments != null && e.Arguments != "")
+            RatePopup.LaunchLimit = 7;
+            RatePopup.Title = utilities.loader.GetString("rate_title");
+            RatePopup.Content = utilities.loader.GetString("rate_message");
+            RatePopup.CancelButtonText = utilities.loader.GetString("rate_later");
+            RatePopup.RateButtonText = utilities.loader.GetString("rate_rate");
+            RateReminderResult result = await RatePopup.CheckRateReminderAsync();
+            if (result == RateReminderResult.Dismissed)
             {
-                RatePopup.LaunchLimit = 7;
-                RatePopup.Title = utilities.loader.GetString("rate_title");
-                RatePopup.Content = utilities.loader.GetString("rate_message");
-                RatePopup.CancelButtonText = utilities.loader.GetString("rate_later");
-                RatePopup.RateButtonText = utilities.loader.GetString("rate_rate");
-                RateReminderResult result = await RatePopup.CheckRateReminderAsync();
-                if (result == RateReminderResult.Dismissed)
-                {
-                    RatePopup.ResetLaunchCount();
-                }
+                RatePopup.ResetLaunchCount();
             }
 
             Frame rootFrame = Window.Current.Content as Frame;
