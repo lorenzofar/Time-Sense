@@ -64,7 +64,7 @@ namespace Tasks
 
         private void CheckLimit()
         {
-            int limit = utilities.STATS.Values[settings.limit] == null ? 14400 : int.Parse(utilities.STATS.Values[settings.limit].ToString());
+            int limit = utilities.STATS.Values[settings.limit] == null ? 7200 : int.Parse(utilities.STATS.Values[settings.limit].ToString());
             int span = limit - time;
             if(span >= 0 && DateTime.Now.AddSeconds(span).Date == DateTime.Now.Date)
             {

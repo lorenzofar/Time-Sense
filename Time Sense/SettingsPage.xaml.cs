@@ -49,7 +49,7 @@ namespace Time_Sense
         private void LoadSettings()
         {
             loading = true;
-            int limit = utilities.STATS.Values[settings.limit] == null ? 14400 : int.Parse(utilities.STATS.Values[settings.limit].ToString());
+            int limit = utilities.STATS.Values[settings.limit] == null ? 7200 : int.Parse(utilities.STATS.Values[settings.limit].ToString());
             location_switch.IsOn = utilities.STATS.Values[settings.location] == null ? true : utilities.STATS.Values[settings.location].ToString() == "on" ? true : false;
             string unlocks = utilities.STATS.Values[settings.unlocks] == null ? "badge" : utilities.STATS.Values[settings.unlocks].ToString();
             bool password = utilities.STATS.Values[settings.password] == null ? false : true;

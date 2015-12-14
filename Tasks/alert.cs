@@ -22,7 +22,7 @@ namespace Tasks
             string date_str = utilities.shortdate_form.Format(DateTime.Now);
             var query = await Database.Helper.ConnectionDb().Table<Database.Report>().Where(x => x.date == date_str).FirstAsync();
             int timex = query == null ? 0 : query.usage;
-            int limit = utilities.STATS.Values[settings.limit] == null ? 14400 : int.Parse(utilities.STATS.Values[settings.limit].ToString());
+            int limit = utilities.STATS.Values[settings.limit] == null ? 7200 : int.Parse(utilities.STATS.Values[settings.limit].ToString());
             int span = limit - timex;
             if (span >= 0 && DateTime.Now.AddSeconds(span).Date == DateTime.Now.Date)
             {
