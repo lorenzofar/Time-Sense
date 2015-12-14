@@ -488,6 +488,12 @@ namespace Time_Sense
                 case Windows.System.VirtualKey.Number4:
                     if (control)
                     {
+                        analytics_btn.IsChecked = true;
+                    }
+                    break;
+                case Windows.System.VirtualKey.Number5:
+                    if (control)
+                    {
                         settings_btn.IsChecked = true;
                     }
                     break;
