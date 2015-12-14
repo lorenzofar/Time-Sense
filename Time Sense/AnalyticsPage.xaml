@@ -1,0 +1,543 @@
+﻿<Page
+    x:Class="Time_Sense.AnalyticsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Time_Sense"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:db="using:Database"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <local:TimelineConverter x:Key="IconConverter"/>
+        <local:battery_converter x:Key="BatteryConverter"/>
+        <local:UsageConverter x:Key="TimeConverter"/>
+        <local:LocationConverter x:Key="LocationConverter"/>
+    </Page.Resources>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Name="search_btn" x:Uid="search_btn" Label="Search" Icon="Find" Click="search_btn_Click"/>
+            <AppBarButton x:Name="reset_btn" x:Uid="reset_btn" Label="Reset" Icon="Delete" Click="reset_btn_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+    
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root" SizeChanged="RelativePanel_SizeChanged" VerticalAlignment="Stretch">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup CurrentStateChanged="vs_group_CurrentStateChanged"  x:Name="vs_group">
+                <VisualState x:Name="narrow">
+                    <VisualState.Setters>
+                        <Setter Target="u_battery_item.Margin" Value="0"/>
+                        <Setter Target="u_batstat_item.Margin" Value="0,0,84,0"/>
+                        <Setter Target="u_bluetooth_item.Margin" Value="0"/>
+                        <Setter Target="endPick.Margin" Value="0,6,0,6"/>
+                        <Setter Target="startPick.Margin" Value="0"/>
+                        <Setter Target="u_timemin.Margin" Value="0,6"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="tablet">
+                    <VisualState.Setters>
+                        <Setter Target="u_battery_item.Margin" Value="0"/>
+                        <Setter Target="u_batstat_item.Margin" Value="0,0,48,0"/>
+                        <Setter Target="u_bluetooth_item.Margin" Value="0,0,0,0"/>
+                        <Setter Target="endPick.Margin" Value="0,6,0,6"/>
+                        <Setter Target="startPick.Margin" Value="0"/>
+                        <Setter Target="u_timemin.Margin" Value="0,6"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="wide">
+                    <VisualState.Setters>
+                        <Setter Target="u_battery_item.Margin" Value="0"/>
+                        <Setter Target="u_batstat_item.Margin" Value="0,0,48,0"/>
+                        <Setter Target="u_bluetooth_item.Margin" Value="-48,0,0,0"/>
+                        <Setter Target="endPick.Margin" Value="12,0,0,6"/>
+                        <Setter Target="startPick.Margin" Value="0,0,0,6"/>
+                        <Setter Target="u_timemin.Margin" Value="12,6"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1024"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="laptop">
+                    <VisualState.Setters>
+                        <Setter Target="u_battery_item.Margin" Value="-84,0,0,0"/>
+                        <Setter Target="u_batstat_item.Margin" Value="0,0,48,0"/>
+                        <Setter Target="u_bluetooth_item.Margin" Value="-48,0,0,0"/>
+                        <Setter Target="endPick.Margin" Value="12,0,0,6"/>
+                        <Setter Target="startPick.Margin" Value="0,0,0,6"/>
+                        <Setter Target="u_timemin.Margin" Value="12,6"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1200"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+        <Grid RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="param_r" Height="11*"/>
+                <RowDefinition x:Name="list_r" Height="7*"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Background="{ThemeResource SystemControlBackgroundAccentBrush}" Opacity="0.35"/>
+                <Grid RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" x:Name="range_grid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition x:Name="range_content_column"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.Background>
+                            <SolidColorBrush Color="DarkGray" Opacity="0.25"/>
+                        </Grid.Background>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontSize="{ThemeResource TextStyleLargeFontSize}"  Margin="12" x:Uid="an_range_header_1"/>
+                        <Button Margin="0,0,12,0" VerticalAlignment="Stretch" x:Name="expander_range_btn" Click="expander_range_btn_Click" Grid.Column="1" Background="Transparent">
+                            <Button.Content>
+                                <FontIcon x:Name="expand_range" Glyph="&#xE010;"/>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                    <StackPanel Margin="12,0" Background="Transparent" Grid.Row="1">
+                        <ScrollViewer Margin="0,6" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton x:Uid="range_all_btn" x:Name="range_all" Content="All data" IsChecked="True" Checked="range_all_Checked"/>
+                                <RadioButton x:Uid="range_custom_btn" x:Name="range_custom" Content="Custom range" Checked="range_all_Checked"/>
+                            </StackPanel>
+                        </ScrollViewer>
+                        <RelativePanel Visibility="Collapsed" x:Name="custom_range_panel">
+                            <DatePicker x:Uid="an_start_pick" x:Name="startPick"/>
+                            <DatePicker Margin="0,6" x:Uid="an_end_pick" RelativePanel.RightOf="" RelativePanel.Below="startPick" x:Name="endPick"/>
+                        </RelativePanel>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="1" Background="{ThemeResource SystemControlBackgroundListMediumBrush}" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition x:Name="param_content_column"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.Background>
+                            <SolidColorBrush Color="DarkGray" Opacity="0.25"/>
+                        </Grid.Background>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontSize="{ThemeResource TextStyleLargeFontSize}"  Margin="12" x:Uid="an_param"/>
+                        <Button Margin="0,0,12,0" VerticalAlignment="Stretch" x:Name="expander_param_btn" Click="expander_param_btn_Click" Grid.Column="1" Background="Transparent">
+                            <Button.Content>
+                                <FontIcon x:Name="expand_param" Glyph="&#xE010;"/>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+
+                    <Pivot Grid.Row="1" x:Name="param_pivot" SelectionChanged="param_pivot_SelectionChanged">
+                        <PivotItem x:Uid="an_days_pivot" Header="DAYS">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <GridView SelectionMode="None" x:Name="d_grid">
+                                    <GridViewItem Margin="0,0,24,0">
+                                        <StackPanel>
+                                            <CheckBox x:Name="d_usagemax" Margin="0,6">
+                                                <CheckBox.Content>
+                                                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                        <TextBlock x:Uid="usage_txt" VerticalAlignment="Top" Text="Usage" FontSize="16"/>
+                                                        <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
+                                                        <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="d_usage_max_box"/>
+                                                        <ComboBox Margin="6,0" x:Name="d_usage_max_combo">
+                                                            <ComboBoxItem x:Uid="seconds_combo" Content="Seconds"/>
+                                                            <ComboBoxItem x:Uid="minutes_combo" Content="Minutes" IsSelected="True"/>
+                                                            <ComboBoxItem x:Uid="hours_combo" Content="Hours"/>
+                                                        </ComboBox>
+                                                    </StackPanel>
+                                                </CheckBox.Content>
+                                            </CheckBox>
+                                            <CheckBox x:Name="d_usagemin" Margin="0,6">
+                                                <CheckBox.Content>
+                                                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                        <TextBlock x:Uid="usage_txt" VerticalAlignment="Top" Text="Usage" FontSize="16"/>
+                                                        <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
+                                                        <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="d_usage_min_box"/>
+                                                        <ComboBox Margin="6,0" x:Name="d_usage_min_combo">
+                                                            <ComboBoxItem x:Uid="seconds_combo" Content="Seconds"/>
+                                                            <ComboBoxItem x:Uid="minutes_combo" Content="Minutes" IsSelected="True"/>
+                                                            <ComboBoxItem x:Uid="hours_combo" Content="Hours"/>
+                                                        </ComboBox>
+                                                    </StackPanel>
+                                                </CheckBox.Content>
+                                            </CheckBox>
+                                        </StackPanel>
+                                    </GridViewItem>
+                                    <GridViewItem x:Name="d_umax_item">
+                                        <StackPanel Width="{Binding ActualWidth, ElementName=d_umax_item}" HorizontalAlignment="Left">
+                                            <CheckBox Margin="0,6" x:Name="d_unlocksmax">
+                                                <CheckBox.Content>
+                                                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                        <TextBlock x:Uid="unlocks_txt" VerticalAlignment="Top" Text="Unlocks" FontSize="16"/>
+                                                        <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
+                                                        <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="d_unlocks_max_box"/>
+                                                    </StackPanel>
+                                                </CheckBox.Content>
+                                            </CheckBox>
+                                            <CheckBox Margin="0,6" x:Name="d_unlocksmin">
+                                                <CheckBox.Content>
+                                                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                        <TextBlock x:Uid="unlocks_txt"  VerticalAlignment="Top" Text="Unlocks" FontSize="16"/>
+                                                        <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontFamily="Segoe UI" FontSize="16"/>
+                                                        <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="d_unlocks_min_box"/>
+                                                    </StackPanel>
+                                                </CheckBox.Content>
+                                            </CheckBox>
+                                        </StackPanel>
+                                    </GridViewItem>
+                                </GridView>
+                            </ScrollViewer>
+                        </PivotItem>
+                        <PivotItem x:Uid="an_unlocks_pivot" Header="UNLOCKS">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled">
+                                <StackPanel>
+                                    <GridView SelectionMode="None" x:Name="u_grid">
+                                        <GridViewItem Margin="0,0,48,0" x:Name="u_usage_item">
+                                            <StackPanel Width="{Binding ActualWidth, ElementName=u_usage_item}">
+                                                <CheckBox Margin="0,6" x:Name="u_usagemax">
+                                                    <CheckBox.Content>
+                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                            <TextBlock x:Uid="usage_txt" VerticalAlignment="Top" Text="Usage" FontSize="16"/>
+                                                            <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
+                                                            <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_usage_max_box"/>
+                                                            <ComboBox Margin="6,0" x:Name="u_usage_max_combo">
+                                                                <ComboBoxItem x:Uid="seconds_combo" Content="Seconds"/>
+                                                                <ComboBoxItem x:Uid="minutes_combo" Content="Minutes" IsSelected="True"/>
+                                                                <ComboBoxItem x:Uid="hours_combo" Content="Hours"/>
+                                                            </ComboBox>
+                                                        </StackPanel>
+                                                    </CheckBox.Content>
+                                                </CheckBox>
+                                                <CheckBox Margin="0,6" x:Name="u_usagemin">
+                                                    <CheckBox.Content>
+                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                            <TextBlock x:Uid="usage_txt"  VerticalAlignment="Top" Text="Usage" FontSize="16"/>
+                                                            <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
+                                                            <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_usage_min_box"/>
+                                                            <ComboBox Margin="6,0" x:Name="u_usage_min_combo">
+                                                                <ComboBoxItem x:Uid="seconds_combo" Content="Seconds"/>
+                                                                <ComboBoxItem x:Uid="minutes_combo" Content="Minutes" IsSelected="True"/>
+                                                                <ComboBoxItem x:Uid="hours_combo" Content="Hours"/>
+                                                            </ComboBox>
+                                                        </StackPanel>
+                                                    </CheckBox.Content>
+                                                </CheckBox>
+                                            </StackPanel>
+                                        </GridViewItem>
+                                        <GridViewItem x:Name="u_unlocks_item">
+                                            <StackPanel Width="{Binding ActualWidth, ElementName=u_unlocks_item}">
+                                                <CheckBox Margin="0,6" x:Name="u_unlocksmax">
+                                                    <CheckBox.Content>
+                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                            <TextBlock x:Uid="unlocks_txt" VerticalAlignment="Top" Text="Unlocks" FontSize="16"/>
+                                                            <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
+                                                            <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_unlocks_max_box"/>
+                                                        </StackPanel>
+                                                    </CheckBox.Content>
+                                                </CheckBox>
+                                                <CheckBox Margin="0,6" x:Name="u_unlocksmin">
+                                                    <CheckBox.Content>
+                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                            <TextBlock x:Uid="unlocks_txt" VerticalAlignment="Top" Text="Unlocks" FontSize="16"/>
+                                                            <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
+                                                            <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_unlocks_min_box"/>
+                                                        </StackPanel>
+                                                    </CheckBox.Content>
+                                                </CheckBox>
+                                            </StackPanel>
+                                        </GridViewItem>
+                                        <GridViewItem x:Name="u_battery_item">
+                                            <StackPanel Width="{Binding ActualWidth, ElementName=u_battery_item}">
+                                                <CheckBox Margin="0,6" x:Name="u_batmax">
+                                                    <CheckBox.Content>
+                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                            <TextBlock x:Uid="battery_txt" VerticalAlignment="Top" Text="Battery" FontSize="16"/>
+                                                            <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
+                                                            <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_battery_max_box"/>
+                                                        </StackPanel>
+                                                    </CheckBox.Content>
+                                                </CheckBox>
+                                                <CheckBox Margin="0,6" x:Name="u_batmin">
+                                                    <CheckBox.Content>
+                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                            <TextBlock x:Uid="battery_txt" VerticalAlignment="Top" Text="Battery" FontSize="16"/>
+                                                            <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
+                                                            <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_battery_min_box"/>
+                                                        </StackPanel>
+                                                    </CheckBox.Content>
+                                                </CheckBox>
+                                            </StackPanel>
+                                        </GridViewItem>
+                                    </GridView>
+                                    <Rectangle Fill="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}" Height="2" HorizontalAlignment="Stretch"/>
+                                    <GridView SelectionMode="None" x:Name="states_grid">
+                                        <GridViewItem x:Name="u_batstat_item">
+                                            <StackPanel Width="{Binding ActualWidth, ElementName=u_batstat_item}">
+                                                <CheckBox Margin="0,6" x:Name="u_batstat">
+                                                    <CheckBox.Content>
+                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                            <TextBlock x:Uid="battery_txt" VerticalAlignment="Top" Text="Battery"/>
+                                                            <ComboBox Margin="6,0" x:Name="u_battery_combo">
+                                                                <ComboBoxItem x:Uid="charging_bat_combo" Content="Charging" IsSelected="True"/>
+                                                                <ComboBoxItem x:Uid="idle_bat_combo" Content="Not charging"/>
+                                                            </ComboBox>
+                                                        </StackPanel>
+                                                    </CheckBox.Content>
+                                                </CheckBox>
+                                            </StackPanel>
+                                        </GridViewItem>
+                                        <GridViewItem x:Name="u_wifi_item">
+                                            <StackPanel HorizontalAlignment="Left" Width="{Binding ActualWidth, ElementName=u_wifi_item}">
+                                                <CheckBox Margin="0,6" x:Name="u_wifi">
+                                                    <CheckBox.Content>
+                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                            <TextBlock VerticalAlignment="Top" Text="Wi-Fi"/>
+                                                            <ComboBox Margin="6,0" x:Name="u_wifi_combo">
+                                                                <ComboBoxItem x:Uid="on_combo" Content="Charging" IsSelected="True"/>
+                                                                <ComboBoxItem x:Uid="off_combo" Content="Not charging"/>
+                                                            </ComboBox>
+                                                        </StackPanel>
+                                                    </CheckBox.Content>
+                                                </CheckBox>
+                                            </StackPanel>
+                                        </GridViewItem>
+                                        <GridViewItem x:Name="u_bluetooth_item">
+                                            <StackPanel Width="{Binding ActualWidth, ElementName=u_bluetooth_item}">
+                                                <CheckBox Margin="0,6" x:Name="u_bluetooth">
+                                                    <CheckBox.Content>
+                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                            <TextBlock VerticalAlignment="Top" Text="Bluetooth"/>
+                                                            <ComboBox Margin="6,0" x:Name="u_bluetooth_combo">
+                                                                <ComboBoxItem x:Uid="on_combo" Content="Charging" IsSelected="True"/>
+                                                                <ComboBoxItem x:Uid="off_combo" Content="Not charging"/>
+                                                            </ComboBox>
+                                                        </StackPanel>
+                                                    </CheckBox.Content>
+                                                </CheckBox>
+                                            </StackPanel>
+                                        </GridViewItem>
+                                    </GridView>
+                                    <Rectangle Fill="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}" Height="2" HorizontalAlignment="Stretch"/>
+                                    <RelativePanel x:Name="times_grid">
+                                        <CheckBox Margin="0,6" x:Name="u_timemax">
+                                            <CheckBox.Content>
+                                                <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                    <TextBlock x:Uid="time_txt" VerticalAlignment="Top" Text="Time" FontSize="16"/>
+                                                    <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
+                                                    <TimePicker Margin="6,0" x:Name="u_time_max_box"/>
+                                                </StackPanel>
+                                            </CheckBox.Content>
+                                        </CheckBox>
+                                        <CheckBox RelativePanel.Below="u_timemax" Margin="0,6" x:Name="u_timemin">
+                                            <CheckBox.Content>
+                                                <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                                                    <TextBlock x:Uid="time_txt" VerticalAlignment="Top" Text="Time" FontSize="16"/>
+                                                    <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
+                                                    <TimePicker Margin="6,0" x:Name="u_time_min_box"/>
+                                                </StackPanel>
+                                            </CheckBox.Content>
+                                        </CheckBox>
+                                    </RelativePanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </PivotItem>
+                    </Pivot>
+                </Grid>
+            </Grid>
+            <Grid x:Name="days_grid" Grid.Row="1">
+                <Grid.RenderTransform>
+                    <CompositeTransform x:Name="DaysTransform" />
+                </Grid.RenderTransform>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Rectangle Height="2" HorizontalAlignment="Stretch" Fill="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}"/>
+                <Grid Grid.Row="1" Tapped="banner_days_grid_Tapped" x:Name="banner_days_grid" Background="{ThemeResource SystemControlBackgroundListMediumBrush}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Border BorderThickness="0,0,1,0" x:Name="time_border_d" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
+                        <Viewbox Margin="12,0,0,0"  MaxHeight="36">
+                            <TextBlock x:Uid="day_banner" Margin="6" Text="day" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                        </Viewbox>
+                    </Border>
+                    <Border Margin="0,0" BorderThickness="1,0" x:Name="usage_border_d" Grid.Column="1" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
+                        <Viewbox MaxHeight="36">
+                            <TextBlock x:Uid="usage_banner" Margin="6" Text="usage" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                        </Viewbox>
+                    </Border>
+                    <Border  BorderThickness="1,0,0,0" x:Name="unlocks_border_d" Grid.Column="2" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
+                        <Viewbox Margin="0,0,12,0" MaxHeight="36">
+                            <TextBlock x:Uid="unlocks_banner" Margin="6" Text="unlocks" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                        </Viewbox>
+                    </Border>
+                </Grid>
+                <Rectangle Grid.Row="2" Height="2" HorizontalAlignment="Stretch" Fill="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}"/>
+                <Viewbox Margin="12" Grid.Row="3" MaxHeight="70" MaxWidth="70"  x:Name="d_ring_box" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel>
+                        <ProgressRing x:Name="d_ring" IsActive="False" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Viewbox>
+                <ListView Loaded="days_list_Loaded" x:Name="days_list" SelectionMode="Single" Grid.Row="3" SelectionChanged="days_list_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Border Width="{Binding ActualWidth, ElementName=time_border_d}">
+                                    <Viewbox MaxHeight="36">
+                                        <TextBlock Margin="6" Text="{Binding date}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Viewbox>
+                                </Border>
+                                <Border Width="{Binding ActualWidth, ElementName=usage_border_d}">
+                                    <Viewbox MaxHeight="36">
+                                        <TextBlock Margin="6" Grid.Column="1" Text="{Binding usage, Converter={StaticResource TimeConverter}}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Viewbox>
+                                </Border>
+                                <Border Width="{Binding ActualWidth, ElementName=unlocks_border_d}">
+                                    <Viewbox MaxHeight="36">
+                                        <TextBlock Margin="6" Grid.Column="2" Text="{Binding unlocks}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Viewbox>
+                                </Border>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <TextBlock TextWrapping="WrapWholeWords" HorizontalAlignment="Center" Visibility="Collapsed" x:Name="no_item_days_txt" Margin="0,24" Grid.Row="3" x:Uid="no_items_txt" FontSize="{ThemeResource TextStyleLargeFontSize}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
+            </Grid>
+            <Grid Visibility="Collapsed" Grid.Row="1" x:Name="unlocks_grid" RelativePanel.Below="conditions_grid" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+                <Grid.RenderTransform>
+                    <CompositeTransform x:Name="UnlocksTransform" />
+                </Grid.RenderTransform>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Rectangle Height="2" HorizontalAlignment="Stretch" Fill="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}"/>
+                <Grid Tapped="banner_unlocks_grid_Tapped" Grid.Row="1" Background="{ThemeResource SystemControlBackgroundListMediumBrush}">
+                    <Grid Margin="12,0"  x:Name="banner_unlocks_grid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Border  BorderThickness="0,0,1,0" x:Name="date_border" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
+                            <Viewbox Margin="0" MaxHeight="36">
+                                <TextBlock x:Uid="day_banner" Margin="6" Text="day" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            </Viewbox>
+                        </Border>
+                        <Border Grid.Column="1"  BorderThickness="1,0,1,0" x:Name="time_border" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
+                            <Viewbox MaxHeight="36">
+                                <TextBlock x:Uid="time_banner" Margin="6" Text="day" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            </Viewbox>
+                        </Border>
+                        <Border Margin="0,0" BorderThickness="1,0,1,0" x:Name="usage_border" Grid.Column="2" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
+                            <Viewbox MaxHeight="36">
+                                <TextBlock x:Uid="usage_banner" Margin="6" Text="usage" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            </Viewbox>
+                        </Border>
+                        <Border BorderThickness="1,0,1,0" x:Name="unlocks_border" Grid.Column="3" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
+                            <Viewbox MaxHeight="36">
+                                <TextBlock x:Uid="unlocks_banner" Margin="6" Text="unlocks" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            </Viewbox>
+                        </Border>
+                        <Border BorderThickness="1,0,0,0" x:Name="battery_border" Grid.Column="4" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
+                            <Viewbox  Margin="0" MaxHeight="36">
+                                <TextBlock x:Uid="battery_banner" Margin="6" Text="battery" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </Grid>
+                <Rectangle Grid.Row="2" Height="2" HorizontalAlignment="Stretch" Fill="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}"/>
+                <Viewbox Margin="12" Grid.Row="3" MaxHeight="70" MaxWidth="70"  x:Name="u_ring_box" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel>
+                        <ProgressRing x:Name="u_ring" IsActive="False" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Viewbox>
+                <ListView x:Name="unlocks_list" SelectionMode="None" Grid.Row="3" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Border Width="{Binding ActualWidth, ElementName=date_border}">
+                                    <Viewbox MaxHeight="36">
+                                        <TextBlock Margin="6" Text="{Binding date}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Viewbox>
+                                </Border>
+                                <Border Width="{Binding ActualWidth, ElementName=time_border}">
+                                    <Viewbox MaxHeight="36">
+                                        <TextBlock Margin="6" Text="{Binding time}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Viewbox>
+                                </Border>
+                                <Border Width="{Binding ActualWidth, ElementName=usage_border}">
+                                    <Viewbox MaxHeight="36">
+                                        <TextBlock Margin="6" Grid.Column="1" Text="{Binding usage, Converter={StaticResource TimeConverter}}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Viewbox>
+                                </Border>
+                                <Border Width="{Binding ActualWidth, ElementName=unlocks_border}">
+                                    <Viewbox MaxHeight="36">
+                                        <RelativePanel HorizontalAlignment="Center">
+                                            <TextBlock x:Name="unlocks_txt" Margin="6" Grid.Column="2" Text="{Binding unlocks}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <FontIcon Visibility="{Binding latitude, Converter={StaticResource LocationConverter}}" Margin="0,0,0,0" FontSize="{Binding FontSize, ElementName=unlocks_txt}" Foreground="#008000" Glyph="&#xE707;" RelativePanel.RightOf="unlocks_txt" RelativePanel.AlignVerticalCenterWithPanel="True" x:Name="location_ico"/>
+                                            <FontIcon Visibility="{Binding wifi_status, Converter={StaticResource IconConverter}}" Margin="0,0,0,0" FontSize="{Binding FontSize, ElementName=unlocks_txt}" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" Glyph="&#xE701;" RelativePanel.RightOf="location_ico" RelativePanel.AlignVerticalCenterWithPanel="True" x:Name="wifi_ico"/>
+                                            <FontIcon Visibility="{Binding bluetooth_status, Converter={StaticResource IconConverter}}" Margin="0,0,0,0" FontSize="{Binding FontSize, ElementName=unlocks_txt}" Foreground="#0078D7" Glyph="&#xE702;" RelativePanel.RightOf="wifi_ico" RelativePanel.AlignVerticalCenterWithPanel="True" x:Name="bluetooth_ico"/>
+                                        </RelativePanel>
+                                    </Viewbox>
+                                </Border>
+                                <Border Width="{Binding ActualWidth, ElementName=battery_border}">
+                                    <Viewbox MaxHeight="36">
+                                        <RelativePanel HorizontalAlignment="Center">
+                                            <TextBlock x:Name="battery" Margin="0,6" Grid.Column="3" Text="{Binding battery, Converter={StaticResource BatteryConverter}}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" HorizontalAlignment="Center"/>
+                                            <FontIcon Visibility="{Binding battery_status, Converter={StaticResource IconConverter}}" Margin="0,0,0,0" FontSize="{Binding FontSize, ElementName=battery}" Foreground="#CCAB29" Glyph="&#xE945;" RelativePanel.RightOf="battery" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                                        </RelativePanel>
+                                    </Viewbox>
+                                </Border>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <TextBlock HorizontalAlignment="Center" TextWrapping="WrapWholeWords" Visibility="Collapsed" Text="No items were found" x:Name="no_item_unlocks_txt" Margin="0,24" Grid.Row="3" x:Uid="no_items_txt" FontSize="{ThemeResource TextStyleLargeFontSize}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
+            </Grid>
+        </Grid>
+
+
+        <Button x:Name="up_btn" Visibility="Collapsed"  Click="Button_Click" Background="Transparent" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" Margin="12" >
+            <Button.Content>
+                <Grid>
+                    <Ellipse Fill="{ThemeResource SystemControlBackgroundAccentBrush}" RelativePanel.Below="conditions_grid" RelativePanel.AlignRightWithPanel="True" Width="48" Height="48"/>
+                    <FontIcon Glyph="&#xE110;" RelativePanel.Below="conditions_grid" RelativePanel.AlignRightWithPanel="True"/>
+                </Grid>
+            </Button.Content>
+        </Button>
+
+    </RelativePanel>
+</Page>

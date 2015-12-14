@@ -1,0 +1,143 @@
+﻿<Page
+    x:Class="Time_Sense.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Time_Sense"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <SolidColorBrush x:Key="NavButtonCheckedBackgroundBrush" Color="Azure"/>
+        <Style x:Key="NavRadioButtonStyle" TargetType="RadioButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="nav_frame_border" Margin="0,0,0,0" HorizontalAlignment="Stretch" BorderThickness="0" BorderBrush="{StaticResource SystemControlBackgroundAccentBrush}" Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderThickness" Storyboard.TargetName="nav_frame_border">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="4,0,0,0"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="tagger">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SystemControlBackgroundAccentBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SystemControlBackgroundAccentBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="BackgroundGrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="-4,0,0,0"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked"/>
+                                    <VisualState x:Name="Indeterminate"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid Height="48" x:Name="BackgroundGrid" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Center" Margin="15,0,0,0" Width="30" x:Name="tagger" Text="{TemplateBinding Tag}" FontFamily="Segoe MDL2 Assets"/>
+                                <ContentPresenter Margin="12,0,0,0" Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" Grid.Column="1" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+
+    <Grid KeyDown="Grid_KeyDown" KeyUp="Grid_KeyUp" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="vs_group">
+                <VisualState x:Name="narrow">
+                    <VisualState.Setters>
+                        <Setter Target="splitview.DisplayMode" Value="Overlay"/>
+                        <Setter Target="splitview.IsPaneOpen" Value="False"/>
+                        <Setter Target="hamburger_btn.Visibility" Value="Visible"/>
+                        <Setter Target="btn_column.Width" Value="48"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="tablet">
+                    <VisualState.Setters>
+                        <Setter Target="splitview.DisplayMode" Value="CompactOverlay"/>
+                        <Setter Target="splitview.IsPaneOpen" Value="False"/>
+                        <Setter Target="hamburger_btn.Visibility" Value="Visible"/>
+                        <Setter Target="btn_column.Width" Value="48"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="wide">
+                    <VisualState.Setters>
+                        <Setter Target="splitview.DisplayMode" Value="CompactInline"/>
+                        <Setter Target="splitview.IsPaneOpen" Value="True"/>
+                        <Setter Target="hamburger_btn.Visibility" Value="Collapsed"/>
+                        <Setter Target="btn_column.Width" Value="12"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1024"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="title_row" Height="48"/>
+            <RowDefinition x:Name="content_row"/>
+        </Grid.RowDefinitions>
+        <Grid Background="{Binding PaneBackground, ElementName=splitview}" x:Name="title_grid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="btn_column" Width="48"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                <Button Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" x:Name="hamburger_btn" Width="48" Height="48" Click="Button_Click">
+                    <Button.Content>
+                        <FontIcon Glyph="&#xE700;" Height="20" VerticalAlignment="Bottom"/>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="1" Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                <TextBlock VerticalAlignment="Center" Margin="6,0,0,0" Grid.Column="1" x:Name="app_title" FontSize="{ThemeResource TextStyleLargeFontSize}" FontWeight="Bold" Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
+            </Grid>
+        </Grid>
+
+        <SplitView Grid.Row="1" DisplayMode="CompactOverlay" x:Name="splitview" CompactPaneLength="48" OpenPaneLength="200">
+            <SplitView.Content>
+                <Frame x:Name="fr"/>
+            </SplitView.Content>
+            <SplitView.Pane>
+                <RelativePanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <ScrollViewer Margin="0,0,0,6" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden">
+                        <RelativePanel>
+                            <RadioButton x:Uid="home_btn" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True" IsChecked="True" Width="{Binding OpenPaneLength, ElementName=splitter}" HorizontalAlignment="Stretch" GroupName="nav" x:Name="home_btn" Style="{StaticResource NavRadioButtonStyle}" Margin="0" Tag="&#xE80F;" Content="Home" Checked="nav_btn_checked"/>
+                            <RadioButton x:Uid="timeline_btn" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="home_btn" HorizontalAlignment="Stretch" GroupName="nav" x:Name="timeline_btn" Style="{StaticResource NavRadioButtonStyle}" Tag="&#xE121;" Content="Timeline" Checked="nav_btn_checked"/>
+                            <RadioButton x:Uid="report_btn" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="timeline_btn" HorizontalAlignment="Stretch" GroupName="nav" x:Name="total_btn" Style="{StaticResource NavRadioButtonStyle}" Tag="&#xE82D;" Content="Report" Checked="nav_btn_checked"/>
+                            <RadioButton x:Uid="analytics_btn" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="total_btn" HorizontalAlignment="Stretch" GroupName="nav" x:Name="analytics_btn" Style="{StaticResource NavRadioButtonStyle}" Tag="&#xE11A;" Content="Analytics" Checked="nav_btn_checked"/>
+                        </RelativePanel>
+                    </ScrollViewer>
+                    <RadioButton x:Uid="settings_btn" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Above="about_btn"  VerticalAlignment="Bottom" HorizontalAlignment="Stretch" GroupName="nav" x:Name="settings_btn" Style="{StaticResource NavRadioButtonStyle}" Tag="&#xE713;" Content="Settings" Checked="nav_btn_checked"/>
+                    <RadioButton x:Uid="about_btn" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" HorizontalAlignment="Stretch" GroupName="nav" x:Name="about_btn" Style="{StaticResource NavRadioButtonStyle}" Tag="&#xE946;" Content="About" Checked="nav_btn_checked"/>
+                </RelativePanel>
+            </SplitView.Pane>
+        </SplitView>
+
+    </Grid>
+</Page>

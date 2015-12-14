@@ -1,0 +1,730 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="about_btn.Content" xml:space="preserve">
+    <value>Informazioni</value>
+  </data>
+  <data name="average.Text" xml:space="preserve">
+    <value>media</value>
+  </data>
+  <data name="avg_day" xml:space="preserve">
+    <value>{0} giorno</value>
+  </data>
+  <data name="avg_days" xml:space="preserve">
+    <value>{0} giorni</value>
+  </data>
+  <data name="backup_banner.Text" xml:space="preserve">
+    <value>Backup + ripristino</value>
+  </data>
+  <data name="backup_btn.Content" xml:space="preserve">
+    <value>Backup</value>
+  </data>
+  <data name="backup_dialog_success" xml:space="preserve">
+    <value>Il backup è stato salvato correttamente</value>
+  </data>
+  <data name="backup_header.Text" xml:space="preserve">
+    <value>Backup</value>
+  </data>
+  <data name="back_bar.Label" xml:space="preserve">
+    <value>Precedente</value>
+  </data>
+  <data name="badge_radio.Content" xml:space="preserve">
+    <value>Badge (supporto alla lockscreen)</value>
+  </data>
+  <data name="battery_banner.Text" xml:space="preserve">
+    <value>batteria</value>
+  </data>
+  <data name="battery_chart_title" xml:space="preserve">
+    <value>BATTERIA</value>
+  </data>
+  <data name="date_bar.Label" xml:space="preserve">
+    <value>Cerca</value>
+  </data>
+  <data name="date_dialog.PrimaryButtonText" xml:space="preserve">
+    <value>Seleziona</value>
+  </data>
+  <data name="date_dialog.SecondaryButtonText" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="date_dialog.Title" xml:space="preserve">
+    <value>SCEGLI DATA</value>
+  </data>
+  <data name="delete_confirm_content" xml:space="preserve">
+    <value>Vuoi veramente eliminare i dati?</value>
+  </data>
+  <data name="delete_confirm_title" xml:space="preserve">
+    <value>Sei sicuro?</value>
+  </data>
+  <data name="delete_dialog.Title" xml:space="preserve">
+    <value>ELIMINAZIONE DATI</value>
+  </data>
+  <data name="delete_dialog_error" xml:space="preserve">
+    <value>I dati non possono essere eliminati, riprova per favore</value>
+  </data>
+  <data name="delete_dialog_progress" xml:space="preserve">
+    <value>{0}/{1} elementi elimiinati</value>
+  </data>
+  <data name="delete_dialog_success" xml:space="preserve">
+    <value>I dati sono stati correttamente eliminati</value>
+  </data>
+  <data name="device_banner.Text" xml:space="preserve">
+    <value>Dispositivo</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>Errore</value>
+  </data>
+  <data name="forward_bar.Label" xml:space="preserve">
+    <value>Successivo</value>
+  </data>
+  <data name="help_btn.Label" xml:space="preserve">
+    <value>Aiuto</value>
+  </data>
+  <data name="home_btn.Content" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="hour" xml:space="preserve">
+    <value>ora</value>
+  </data>
+  <data name="hours" xml:space="preserve">
+    <value>ore</value>
+  </data>
+  <data name="hours_report" xml:space="preserve">
+    <value>ORE</value>
+  </data>
+  <data name="limit_header_1.Text" xml:space="preserve">
+    <value>Soglia di utilizzo</value>
+  </data>
+  <data name="limit_header_2.Text" xml:space="preserve">
+    <value>Invia una notifica quando usi il dispositivo per più di questo tempo</value>
+  </data>
+  <data name="limit_item_1.Content" xml:space="preserve">
+    <value>1 ora</value>
+  </data>
+  <data name="limit_item_2.Content" xml:space="preserve">
+    <value>2 ore</value>
+  </data>
+  <data name="limit_item_3.Content" xml:space="preserve">
+    <value>3 ore</value>
+  </data>
+  <data name="limit_item_4.Content" xml:space="preserve">
+    <value>4 ore</value>
+  </data>
+  <data name="limit_item_5.Content" xml:space="preserve">
+    <value>5 ore</value>
+  </data>
+  <data name="limit_toast_1" xml:space="preserve">
+    <value>1 ora</value>
+  </data>
+  <data name="limit_toast_2" xml:space="preserve">
+    <value>2 ore</value>
+  </data>
+  <data name="limit_toast_3" xml:space="preserve">
+    <value>3 ore</value>
+  </data>
+  <data name="limit_toast_4" xml:space="preserve">
+    <value>4 ore</value>
+  </data>
+  <data name="limit_toast_5" xml:space="preserve">
+    <value>5 ore</value>
+  </data>
+  <data name="limit_toast_btn" xml:space="preserve">
+    <value>Cambia</value>
+  </data>
+  <data name="limit_toast_content" xml:space="preserve">
+    <value>Hai usato il dispositivo per {0} {1}</value>
+  </data>
+  <data name="limit_toast_helper" xml:space="preserve">
+    <value>Cambia la soglia</value>
+  </data>
+  <data name="limit_toast_title" xml:space="preserve">
+    <value>Attenzione</value>
+  </data>
+  <data name="location_header_1.Text" xml:space="preserve">
+    <value>Posizione</value>
+  </data>
+  <data name="location_header_2.Text" xml:space="preserve">
+    <value>Registra la posizione quando sblocchi lo schermo (GPS deve essere acceso)</value>
+  </data>
+  <data name="map_dialog.SecondaryButtonText" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="map_dialog.Title" xml:space="preserve">
+    <value>POSIZIONE</value>
+  </data>
+  <data name="maximum.Text" xml:space="preserve">
+    <value>massimo</value>
+  </data>
+  <data name="migrate_btn.Content" xml:space="preserve">
+    <value>Importa i dati</value>
+  </data>
+  <data name="migrate_dialog.Title" xml:space="preserve">
+    <value>IMPORTAZIONE DATI</value>
+  </data>
+  <data name="migrate_dialog_error" xml:space="preserve">
+    <value>I dati non possono essere importati, riprova per favore</value>
+  </data>
+  <data name="migrate_dialog_progress" xml:space="preserve">
+    <value>{0}/{1} elementi importati</value>
+  </data>
+  <data name="migrate_dialog_success" xml:space="preserve">
+    <value>I dati sono stati correttamente importati</value>
+  </data>
+  <data name="migrate_dialog_unpresent" xml:space="preserve">
+    <value>Non ci sono dati precedenti</value>
+  </data>
+  <data name="migrate_header_1.Text" xml:space="preserve">
+    <value>Importa</value>
+  </data>
+  <data name="migrate_header_2.Text" xml:space="preserve">
+    <value>Se hai aggiornato l'app da 8.1, puoi importare i dati nella nuova versione</value>
+  </data>
+  <data name="minimum.Text" xml:space="preserve">
+    <value>minimo</value>
+  </data>
+  <data name="nfc_header_1.Text" xml:space="preserve">
+    <value>Scrivi tag NFC</value>
+  </data>
+  <data name="nfc_header_2.Text" xml:space="preserve">
+    <value>Scrivi un tag NFC per controllare i tuoi dati toccandolo</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="notifications_banner.Text" xml:space="preserve">
+    <value>Notifiche</value>
+  </data>
+  <data name="password_box.PlaceholderText" xml:space="preserve">
+    <value>Inserisci la password</value>
+  </data>
+  <data name="password_error" xml:space="preserve">
+    <value>Devi inserire una password numerica</value>
+  </data>
+  <data name="password_header_1.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="password_header_2.Text" xml:space="preserve">
+    <value>Richiedi una password per aprire l'app</value>
+  </data>
+  <data name="password_wrong" xml:space="preserve">
+    <value>Password errata</value>
+  </data>
+  <data name="privacy_banner.Text" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="progress_dialog_helper.Text" xml:space="preserve">
+    <value>Non chiudere l'app o bloccare lo schermo durante l'operazione</value>
+  </data>
+  <data name="range_14" xml:space="preserve">
+    <value>14 giorni</value>
+  </data>
+  <data name="range_30" xml:space="preserve">
+    <value>30 giorni</value>
+  </data>
+  <data name="range_7" xml:space="preserve">
+    <value>7 giorni</value>
+  </data>
+  <data name="range_all" xml:space="preserve">
+    <value>Tutti i dati</value>
+  </data>
+  <data name="range_btn.Label" xml:space="preserve">
+    <value>Intervallo</value>
+  </data>
+  <data name="refresh_bar.Label" xml:space="preserve">
+    <value>Aggiorna</value>
+  </data>
+  <data name="report_btn.Content" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="resetall_btn.Content" xml:space="preserve">
+    <value>Elimina tutti i dati</value>
+  </data>
+  <data name="resetone_btn.Content" xml:space="preserve">
+    <value>Elimina intervallo</value>
+  </data>
+  <data name="reset_header.Text" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="restore_btn.Content" xml:space="preserve">
+    <value>Ripristina</value>
+  </data>
+  <data name="restore_dialog_error" xml:space="preserve">
+    <value>Non è un valido backup di Time Sense</value>
+  </data>
+  <data name="restore_dialog_success" xml:space="preserve">
+    <value>Il backup è stato correttamente ripristinato</value>
+  </data>
+  <data name="settings" xml:space="preserve">
+    <value>IMPOSTAZIONI</value>
+  </data>
+  <data name="settings_btn.Content" xml:space="preserve">
+    <value>Impostazioni</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+    <comment>//ENGLISH</comment>
+  </data>
+  <data name="success" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="tile_header_1.Text" xml:space="preserve">
+    <value>Riepilogo sblocchi sulla tile</value>
+  </data>
+  <data name="tile_header_2.Text" xml:space="preserve">
+    <value>Scegli come mostrare il numero di sblocchi</value>
+  </data>
+  <data name="tile_radio.Content" xml:space="preserve">
+    <value>Solo testo</value>
+  </data>
+  <data name="timeline_btn.Content" xml:space="preserve">
+    <value>Timeline</value>
+  </data>
+  <data name="timeline_item_nolocation" xml:space="preserve">
+    <value>L'elemento selezionato non contiene dati di posizione</value>
+  </data>
+  <data name="time_banner.Text" xml:space="preserve">
+    <value>orario</value>
+  </data>
+  <data name="today" xml:space="preserve">
+    <value>OGGI</value>
+  </data>
+  <data name="unlock" xml:space="preserve">
+    <value>{0} sblocco</value>
+  </data>
+  <data name="unlocks" xml:space="preserve">
+    <value>{0} sblocchi</value>
+  </data>
+  <data name="unlocks_banner.Text" xml:space="preserve">
+    <value>sblocchi</value>
+  </data>
+  <data name="unlocks_hour_title" xml:space="preserve">
+    <value>SBLOCCHI/ORA</value>
+  </data>
+  <data name="unlocks_tile" xml:space="preserve">
+    <value>SBLOCCHI</value>
+  </data>
+  <data name="usage" xml:space="preserve">
+    <value>UTILIZZO</value>
+  </data>
+  <data name="usage_banner.Text" xml:space="preserve">
+    <value>utilizzo</value>
+  </data>
+  <data name="usage_chart_title" xml:space="preserve">
+    <value>UTILIZZO</value>
+  </data>
+  <data name="usage_hour_title" xml:space="preserve">
+    <value>MINUTI/ORA</value>
+  </data>
+  <data name="welcome.Text" xml:space="preserve">
+    <value>Benvenuto</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Si</value>
+  </data>
+  <data name="yesterday" xml:space="preserve">
+    <value>IERI</value>
+  </data>
+  <data name="about_banner.Text" xml:space="preserve">
+    <value>Informazioni sull'app</value>
+  </data>
+  <data name="feedback_button.Content" xml:space="preserve">
+    <value>Invia feedback</value>
+  </data>
+  <data name="rate_btn.Label" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="nfc_unavailable" xml:space="preserve">
+    <value>NFC è spento o non supportato</value>
+  </data>
+  <data name="welcome_0.Text" xml:space="preserve">
+    <value>Nella home page puoi vedere il tuo tempo di utilizzo, il tuo numero di sblocchi e un grafico orario.</value>
+  </data>
+  <data name="welcome_1.Text" xml:space="preserve">
+    <value>Nella timeline sono elencati tutti gli sblocchi dello schermo e la loro posizione nella mappa</value>
+  </data>
+  <data name="welcome_2.Text" xml:space="preserve">
+    <value>Nella pagina di report puoi visualizzare statistiche settimanali o mensili</value>
+  </data>
+  <data name="welcome_3.Text" xml:space="preserve">
+    <value>Usa le frecce o l'icona del calendario per cambiare data</value>
+  </data>
+  <data name="welcome_4.Text" xml:space="preserve">
+    <value>Per funzionare correttamente, è necessario che le attività in background siano attive anche in risparmio batteria; per risolvere è sufficiente aggiungere l'app nelle impostazioni di risparmio batteria.</value>
+  </data>
+  <data name="welcome_5.Text" xml:space="preserve">
+    <value>Se hai aggiornato la versione per 8.1, puoi importare i tuoi dati dalle impostazioni</value>
+  </data>
+  <data name="welcome_6.Text" xml:space="preserve">
+    <value>È tutto pronto, possiamo iniziare!</value>
+  </data>
+  <data name="welcome_dialog.PrimaryButtonText" xml:space="preserve">
+    <value>Inizia</value>
+  </data>
+  <data name="welcome_dialog.Title" xml:space="preserve">
+    <value>BENVENUTO</value>
+  </data>
+  <data name="letters_header_1.Text" xml:space="preserve">
+    <value>Lettere in tempo di utilizzo</value>
+  </data>
+  <data name="letters_header_2.Text" xml:space="preserve">
+    <value>Mostra il tempo di utilizzo nella forma: 1h:1m:1s</value>
+  </data>
+  <data name="analytics_btn.Content" xml:space="preserve">
+    <value>Analisi</value>
+  </data>
+  <data name="an_days_pivot.Header" xml:space="preserve">
+    <value>GIORNI</value>
+  </data>
+  <data name="an_end_pick.Header" xml:space="preserve">
+    <value>Data di fine</value>
+  </data>
+  <data name="an_param.Text" xml:space="preserve">
+    <value>Parametri</value>
+  </data>
+  <data name="an_range_header_1.Text" xml:space="preserve">
+    <value>Intervallo di analisi</value>
+  </data>
+  <data name="an_start_pick.Header" xml:space="preserve">
+    <value>Data di inizio</value>
+  </data>
+  <data name="an_unlocks_pivot.Header" xml:space="preserve">
+    <value>SBLOCCHI</value>
+  </data>
+  <data name="battery_txt.Text" xml:space="preserve">
+    <value>Batteria</value>
+  </data>
+  <data name="charging_bat_combo.Content" xml:space="preserve">
+    <value>in carica</value>
+  </data>
+  <data name="date_banner.Text" xml:space="preserve">
+    <value>giorno</value>
+  </data>
+  <data name="day_banner.Text" xml:space="preserve">
+    <value>giorno</value>
+  </data>
+  <data name="error_batmax" xml:space="preserve">
+    <value>Devi inserire una valida percentuale minima di batteria</value>
+  </data>
+  <data name="error_batmin" xml:space="preserve">
+    <value>Devi inserire una valida percentuale massima di batteria</value>
+  </data>
+  <data name="error_timemax" xml:space="preserve">
+    <value>Devi inserire un valido utilizzo minimo</value>
+  </data>
+  <data name="error_timemin" xml:space="preserve">
+    <value>Devi inserire un valido utilizzo massimo</value>
+  </data>
+  <data name="error_unlocksmax" xml:space="preserve">
+    <value>Devi inserire un valido numero minimo di sblocchi</value>
+  </data>
+  <data name="error_unlocksmin" xml:space="preserve">
+    <value>Devi inserire un valido numero massimo di sblocchi</value>
+  </data>
+  <data name="hours_combo.Content" xml:space="preserve">
+    <value>ore</value>
+  </data>
+  <data name="idle_bat_combo.Content" xml:space="preserve">
+    <value>non in carica</value>
+  </data>
+  <data name="minutes_combo.Content" xml:space="preserve">
+    <value>minuti</value>
+  </data>
+  <data name="range_all_btn.Content" xml:space="preserve">
+    <value>Tutti i dati</value>
+  </data>
+  <data name="range_custom_btn.Content" xml:space="preserve">
+    <value>Intervallo personalizzato</value>
+  </data>
+  <data name="reset_btn.Label" xml:space="preserve">
+    <value>Cancella</value>
+  </data>
+  <data name="search_btn.Label" xml:space="preserve">
+    <value>Cerca</value>
+  </data>
+  <data name="seconds_combo.Content" xml:space="preserve">
+    <value>secondi</value>
+  </data>
+  <data name="unlocks_txt.Text" xml:space="preserve">
+    <value>Sblocchi</value>
+  </data>
+  <data name="usage_txt.Text" xml:space="preserve">
+    <value>Utilizzo</value>
+  </data>
+  <data name="analytics" xml:space="preserve">
+    <value>ANALISI</value>
+  </data>
+  <data name="close_btn.Content" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="battery_dialog_check.Content" xml:space="preserve">
+    <value>Non mostrare più</value>
+  </data>
+  <data name="battery_dialog_txt.Text" xml:space="preserve">
+    <value>Risparmia batteria è attivo, assicurati che le attività in background siano attive anche in questa modalità per evitare errori</value>
+  </data>
+  <data name="battery_dialog.SecondaryButtonText" xml:space="preserve">
+    <value>Chiudi</value>
+  </data>
+  <data name="battery_dialog.Title" xml:space="preserve">
+    <value>RISPARMIA BATTERIA</value>
+  </data>
+  <data name="nfc_locoff.Content" xml:space="preserve">
+    <value>Disattiva rilevamento posizione</value>
+  </data>
+  <data name="nfc_locon.Content" xml:space="preserve">
+    <value>Attiva rilevamento posizione</value>
+  </data>
+  <data name="nfc_timeline.Content" xml:space="preserve">
+    <value>Mostra la timeline degli sblocchi</value>
+  </data>
+  <data name="nfc_usage.Content" xml:space="preserve">
+    <value>Mostra l'utilizzo</value>
+  </data>
+  <data name="nfc_success_content" xml:space="preserve">
+    <value>Il tag è stato scritto correttamente</value>
+  </data>
+  <data name="nfc_success_title" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="welcome_7.Text" xml:space="preserve">
+    <value>Nella pagina di analisi puoi cercare i dati che soddisfano determinati parametri (utilizzo, numero di sblocchi, batteria, orario...)</value>
+  </data>
+  <data name="minute" xml:space="preserve">
+    <value>minuto</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>minuti</value>
+  </data>
+  <data name="off" xml:space="preserve">
+    <value>disattivata</value>
+  </data>
+  <data name="on" xml:space="preserve">
+    <value>attivata</value>
+  </data>
+  <data name="second" xml:space="preserve">
+    <value>secondo</value>
+  </data>
+  <data name="seconds" xml:space="preserve">
+    <value>secondi</value>
+  </data>
+  <data name="time" xml:space="preserve">
+    <value>volta</value>
+  </data>
+  <data name="times" xml:space="preserve">
+    <value>volte</value>
+  </data>
+  <data name="voice_location" xml:space="preserve">
+    <value>La rilevazione della posizione è stata {0}</value>
+  </data>
+  <data name="voice_usage" xml:space="preserve">
+    <value>Ciao, oggi hai usato il dispositivo per  {0} {1}, {2} {3} e {4} {5}, e hai sbloccato lo schermo {6} {7}</value>
+  </data>
+  <data name="service_text.Text" xml:space="preserve">
+    <value>Se sei uno sviluppatore puoi accedere ai dati di utilizzo del giorno corrente utilizzando gli app services. Il nome del service è "timesense.service" e i comandi disponibili sono "seconds", "minutes" e "hours". Tutti i comandi restituiscono un valore double.</value>
+  </data>
+  <data name="rate_cancel" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="rate_later" xml:space="preserve">
+    <value>Più tardi</value>
+  </data>
+  <data name="rate_message" xml:space="preserve">
+    <value>Se trovi utile Time Sense, perchè non lasciare una recensione sullo Store? Grazie per il supporto.</value>
+  </data>
+  <data name="rate_rate" xml:space="preserve">
+    <value>Valuta</value>
+  </data>
+  <data name="rate_title" xml:space="preserve">
+    <value>Valuta Time Sense</value>
+  </data>
+  <data name="purchase_analytics.PrimaryButtonText" xml:space="preserve">
+    <value>Compra</value>
+  </data>
+  <data name="purchase_analytics.Title" xml:space="preserve">
+    <value>ANALISI AVANZATA</value>
+  </data>
+  <data name="purchase_analytics_1.Text" xml:space="preserve">
+    <value>L'analisi avanzata ti permette di analizzare a fondo i tuoi dati di utilizzo, filtrando i giorni e gli sblocchi dello schermo.</value>
+  </data>
+  <data name="purchase_analytics_2.Text" xml:space="preserve">
+    <value>Puoi analizzare tutti i dati o un intervallo specifico e impostare parametri come tempo di utilizzo, numero di sblocchi, carica della batteria e altro ancora.</value>
+  </data>
+  <data name="purchase_analytics_3.Text" xml:space="preserve">
+    <value>Questa funzione è disponibile a 0.99€ e acquistandola aiuterai lo sviluppatore a migliorare l'app.</value>
+  </data>
+  <data name="error_transaction" xml:space="preserve">
+    <value>L'operazione non è andata a buon fine, ti preghiamo di riprovare.</value>
+  </data>
+  <data name="error_transaction_internet" xml:space="preserve">
+    <value>Devi essere connesso ad Internet la prima volta che usi questa funzione</value>
+  </data>
+  <data name="jump_report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="jump_settings" xml:space="preserve">
+    <value>Impostazioni</value>
+  </data>
+  <data name="jump_timeline" xml:space="preserve">
+    <value>Timeline</value>
+  </data>
+  <data name="off_combo.Content" xml:space="preserve">
+    <value>spento</value>
+  </data>
+  <data name="on_combo.Content" xml:space="preserve">
+    <value>acceso</value>
+  </data>
+  <data name="charge_banner" xml:space="preserve">
+    <value>UTILIZZO/CARICA</value>
+  </data>
+  <data name="helper_ch_txt.Text" xml:space="preserve">
+    <value>il dispositivo è in carica</value>
+  </data>
+  <data name="helper_notch_txt.Text" xml:space="preserve">
+    <value>dall'ultima ricarica</value>
+  </data>
+  <data name="time_txt.Text" xml:space="preserve">
+    <value>Orario</value>
+  </data>
+  <data name="buy_btn" xml:space="preserve">
+    <value>Non ora</value>
+  </data>
+  <data name="try_btn" xml:space="preserve">
+    <value>Prova</value>
+  </data>
+  <data name="no_items_txt.Text" xml:space="preserve">
+    <value>Nessun elemento trovato</value>
+  </data>
+  <data name="range_dialog.PrimaryButtonText" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="range_dialog.SecondaryButtonText" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="range_dialog.Title" xml:space="preserve">
+    <value>SELEZIONA INTERVALLO</value>
+  </data>
+  <data name="note_banner" xml:space="preserve">
+    <value>NOTE</value>
+  </data>
+  <data name="no_note" xml:space="preserve">
+    <value>Il giorno selezionato non è ancora presente nel database</value>
+  </data>
+  <data name="no_note_txt.Text" xml:space="preserve">
+    <value>Nessuna nota disponibile</value>
+  </data>
+</root>

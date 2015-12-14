@@ -1,0 +1,22 @@
+﻿<ContentDialog
+    x:Class="Time_Sense.SpanDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Time_Sense"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="SELECT RANGE"
+    x:Uid="range_dialog"
+    PrimaryButtonText="Delete"
+    SecondaryButtonText="Cancel"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <Grid>
+        <StackPanel Margin="0,12">
+            <DatePicker x:Uid="an_start_pick" x:Name="startPick"/>
+            <DatePicker x:Uid="an_end_pick" Margin="0,12,0,0" x:Name="endPick"/>
+        </StackPanel>
+    </Grid>
+</ContentDialog>

@@ -1,0 +1,22 @@
+﻿<ContentDialog
+    x:Class="Time_Sense.ContactDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Time_Sense"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="NEW CONTACT"
+    PrimaryButtonText="Add"
+    SecondaryButtonText="Cancel"
+    x:Uid="contact_dialog"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <Grid>
+        <StackPanel>
+            <TextBox Margin="0,6" Header="Name" TabIndex="0" x:Name="name"/>
+            <TextBox Margin="0,6" Header="Phone number" TabIndex="1" x:Name="number" InputScope="TelephoneNumber"/>
+        </StackPanel>
+    </Grid>
+</ContentDialog>

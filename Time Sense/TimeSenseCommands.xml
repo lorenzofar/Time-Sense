@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
+  <CommandSet xml:lang="en" Name="commandSet_en">
+    <CommandPrefix>Time Sense, </CommandPrefix>
+    <Example> what's my usage?</Example>
+
+   <Command Name="usage">
+      <Example>how much I used the device?</Example>
+      <ListenFor>How much [I] used [the] [my] {device}?</ListenFor>
+      <ListenFor>What is my usage [time]?</ListenFor>
+      <Feedback>Here's your usage</Feedback>
+      <Navigate/>
+    </Command>
+    
+    <Command Name="timeline">
+      <Example>show the timeline</Example>
+      <ListenFor>{opener} [the] [my] timeline</ListenFor>
+      <ListenFor>{opener} [the] [my] list of unlocks</ListenFor>
+      <ListenFor>{opener} [my] unlocks' list</ListenFor>
+      <Feedback>Here's your timeline</Feedback>
+      <Navigate/>
+    </Command>
+    
+    <Command Name="report">
+      <Example>show my report</Example>
+      <ListenFor>{opener} [the] [my] report</ListenFor>
+      <Feedback>Here's your report</Feedback>
+      <Navigate/>
+    </Command>
+
+    <Command Name="settings">
+      <Example>Open settings</Example>
+      <ListenFor>Open [the] settings</ListenFor>
+      <Feedback>Here's your settings</Feedback>
+      <Navigate/>
+    </Command>
+<!--
+    <Command Name="resetone">
+      <Example>Delete my data of today</Example>
+      <ListenFor>delete [my] data for today</ListenFor>
+      <ListenFor>delete today [data]</ListenFor>
+      <Feedback>Deleting your data...</Feedback>
+      <VoiceCommandService Target="TimeSenseVoiceCommandService"/>      
+    </Command>
+    
+    <Command Name="resetall">
+      <Example>Delete all my data</Example>
+      <ListenFor>delete [all] [my] data</ListenFor>
+      <ListenFor>delete all [data]</ListenFor>
+      <Feedback>Deleting your data...</Feedback>
+      <VoiceCommandService Target="TimeSenseVoiceCommandService"/>      
+    </Command>
+  -->  
+    
+    <Command Name="locon">
+      <Example>Turn on location tracking</Example>
+      <ListenFor>turn on [the] location [tracking]</ListenFor>
+      <ListenFor>turn [the] location [tracking] on</ListenFor>
+      <Feedback>Turning on location tracking</Feedback>
+      <VoiceCommandService Target="TimeSenseVoiceCommandService"/>      
+    </Command>
+    
+    <Command Name="locoff">
+      <Example>Turn off location tracking</Example>
+      <ListenFor>turn off [the] location [tracking]</ListenFor>
+      <ListenFor>turn [the] location [tracking] off</ListenFor>
+      <Feedback>Turning off location tracking</Feedback>
+      <VoiceCommandService Target="TimeSenseVoiceCommandService"/>      
+    </Command>
+
+    <PhraseList Label="opener">
+      <Item>Open</Item>
+      <Item>Show</Item>
+      <Item>Tell me</Item>
+      <Item>I want to know</Item> 
+      <Item>What is</Item>
+    </PhraseList>
+    
+   <PhraseList Label="device">
+      <Item>device</Item>
+      <Item>tablet</Item>
+      <Item>phone</Item>
+      <Item>computer</Item>
+      <Item>pc</Item>
+    </PhraseList>
+  </CommandSet>
+
+<CommandSet xml:lang="it" Name="commandSet_it">
+    <CommandPrefix>Time Sense, </CommandPrefix>
+    <Example> mostra il mio utilizzo</Example>
+
+   <Command Name="usage">
+      <Example>quanto ho usato il telefono?</Example>
+      <ListenFor>Quanto ho usato [il] [mio] {device}</ListenFor>
+      <ListenFor>Qual'è [il] [mio] tempo [di] utilizzo?</ListenFor>
+      <Feedback>Ecco il tuo utilizzo</Feedback>
+      <Navigate/>
+    </Command>
+    
+    <Command Name="timeline">
+      <Example>mostra la timeline</Example>
+      <ListenFor>{opener} [la] [mia] timeline</ListenFor>
+      <ListenFor>{opener} [la] [mia] list di sblocchi</ListenFor>
+      <Feedback>Ecco la timeline</Feedback>
+      <Navigate/>
+    </Command>
+    
+    <Command Name="report">
+      <Example>mostra il mio report</Example>
+      <ListenFor>{opener} [il] [mio] report</ListenFor>
+      <Feedback>Ecco il tuo report</Feedback>
+      <Navigate/>
+    </Command>
+
+    <Command Name="settings">
+      <Example>apri le impostazioni</Example>
+      <ListenFor>apri [le] impostazioni</ListenFor>
+      <Feedback>Ecco le impostazioni</Feedback>
+      <Navigate/>
+    </Command>
+    
+    <Command Name="locon">
+      <Example>attiva rilevazione posizione</Example>
+      <ListenFor>attiva [la] [rilevazione] [della] posizione</ListenFor>
+      <ListenFor>accendi [la] [rilevazione] [della] posizione</ListenFor>
+      <Feedback>sto attivando la localizzazione</Feedback>
+      <VoiceCommandService Target="TimeSenseVoiceCommandService"/>      
+    </Command>
+    
+    
+  
+  <Command Name="locoff">
+      <Example>disattiva rilevazione posizione</Example>
+      <ListenFor>disattiva [la] [rilevazione] [della] posizione</ListenFor>
+      <ListenFor>spegni [la] [rilevazione] [della] posizione</ListenFor>
+      <Feedback>sto disattivando la localizzazione</Feedback>
+      <VoiceCommandService Target="TimeSenseVoiceCommandService"/>      
+    </Command>
+
+    <PhraseList Label="opener">
+      <Item>Apri</Item>
+      <Item>Mostra</Item>
+      <Item>Dimmi</Item>
+      <Item>Voglio sapere</Item> 
+      <Item>Dimmi</Item>
+    </PhraseList>
+
+  <PhraseList Label="device">
+    <Item>dispositivo</Item>
+    <Item>tablet</Item>
+    <Item>telefono</Item>
+    <Item>computer</Item>
+    <Item>smartphone</Item>
+  </PhraseList>
+    
+  </CommandSet>
+</VoiceCommands>

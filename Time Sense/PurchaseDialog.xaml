@@ -1,0 +1,27 @@
+﻿<ContentDialog
+    x:Class="Time_Sense.PurchaseDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Time_Sense"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Uid="purchase_analytics"
+    Title="ADVANCED ANALYSIS"
+    PrimaryButtonText="Buy"
+    SecondaryButtonText="Not now"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    >
+
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock x:Uid="purchase_analytics_1"  TextWrapping="Wrap" Margin="0,6,0,0" Style="{StaticResource SubtitleTextBlockStyle}" />
+                <TextBlock x:Uid="purchase_analytics_2"  TextWrapping="Wrap" Margin="0,6,0,0" Style="{StaticResource SubtitleTextBlockStyle}" />
+                <TextBlock Visibility="Collapsed" x:Uid="purchase_analytics_3" Text="This feature is available for 0.99$ and purchasing it you will help the developer to improve the app." TextWrapping="Wrap" Margin="0,6,0,0" Style="{StaticResource SubtitleTextBlockStyle}" />
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</ContentDialog>
