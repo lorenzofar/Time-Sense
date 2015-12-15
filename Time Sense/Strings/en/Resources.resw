@@ -727,4 +727,10 @@
   <data name="no_note_txt.Text" xml:space="preserve">
     <value>No notes available</value>
   </data>
+  <data name="thanks_banner.Text" xml:space="preserve">
+    <value>Special thanks:</value>
+  </data>
+  <data name="thanks_german.Text" xml:space="preserve">
+    <value>- german translation</value>
+  </data>
 </root>

@@ -186,7 +186,12 @@
                     <TextBlock x:Uid="about_banner" Style="{StaticResource TitleTextBlockStyle}"/>
                     <TextBlock Margin="0,3,0,0" Text="Time Sense 2.0"/>
                     <TextBlock Text="© 2015 Lorenzo Farinelli"/>
-                    <Button Margin="0,6" Content="Send feedback" x:Uid="feedback_button" x:Name="feedback_btn" Click="feedback_btn_Click"/>
+                    <TextBlock Margin="0,3,0,0" x:Uid="thanks_banner"/>
+                    <StackPanel Orientation="Horizontal">
+                        <HyperlinkButton Content="TheWinDuck" Padding="0" NavigateUri="http://www.thewinduck.com"/>
+                        <TextBlock VerticalAlignment="Center" x:Uid="thanks_german" Margin="6,0"/>
+                    </StackPanel>
+                    <Button Margin="0,12" Content="Send feedback" x:Uid="feedback_button" x:Name="feedback_btn" Click="feedback_btn_Click"/>
                 </StackPanel>
 
                 <!--<StackPanel x:Name="appservice_grid" RelativePanel.Below="about_grid" Margin="0,6" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" HorizontalAlignment="Stretch">
