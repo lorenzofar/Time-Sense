@@ -59,21 +59,21 @@
                                             <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="max_time" FontSize="28"/>
                                             <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="max_time_date"/>
                                         </StackPanel>
-                                        <TextBlock x:Uid="maximum" FontSize="18" Text="maximum" HorizontalAlignment="Center"/>
+                                        <TextBlock x:Uid="maximum" FontSize="18" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                     <StackPanel Grid.Column="1">
                                         <StackPanel HorizontalAlignment="Center">
                                             <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="min_time" FontSize="28"/>
                                             <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="min_time_date"/>
                                         </StackPanel>
-                                        <TextBlock x:Uid="minimum" FontSize="18" Text="minimum" HorizontalAlignment="Center"/>
+                                        <TextBlock x:Uid="minimum" FontSize="18" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                     <StackPanel Grid.Column="2">
                                         <StackPanel HorizontalAlignment="Center">
                                             <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="avg_time" FontSize="28"/>
                                             <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="avg_time_date"/>
                                         </StackPanel>
-                                        <TextBlock x:Uid="average" FontSize="18" Text="average" HorizontalAlignment="Center"/>
+                                        <TextBlock x:Uid="average" FontSize="18" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                 </Grid>
                             </StackPanel>
@@ -110,21 +110,21 @@
                                             <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="max_unlocks" FontSize="28"/>
                                             <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="max_unlocks_date"/>
                                         </StackPanel>
-                                        <TextBlock x:Uid="maximum" FontSize="18" Text="maximum" HorizontalAlignment="Center"/>                                            
+                                        <TextBlock x:Uid="maximum" FontSize="18" HorizontalAlignment="Center"/>                                            
                                     </StackPanel>
                                     <StackPanel Grid.Column="1">
                                         <StackPanel HorizontalAlignment="Center">
                                             <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="min_unlocks" FontSize="28"/>
                                             <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="min_unlocks_date"/>
                                         </StackPanel>
-                                        <TextBlock x:Uid="minimum" FontSize="18" Text="minimum" HorizontalAlignment="Center"/>
+                                        <TextBlock x:Uid="minimum" FontSize="18" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                     <StackPanel Grid.Column="2">
                                         <StackPanel HorizontalAlignment="Center">
                                             <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="avg_unlocks" FontSize="28"/>
                                             <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="avg_unlocks_date"/>
                                         </StackPanel>
-                                        <TextBlock x:Uid="average" FontSize="18" Text="average" HorizontalAlignment="Center"/>
+                                        <TextBlock x:Uid="average" FontSize="18" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                 </Grid>
                             </StackPanel>
@@ -136,7 +136,7 @@
     </Grid>
     <Page.BottomAppBar>
         <CommandBar x:Name="report_command" HorizontalAlignment="Right">
-            <AppBarButton x:Uid="range_btn" x:Name="range_btn" Label="Range" Icon="Trim" Click="range_btn_Click_1"/>
+            <AppBarButton x:Uid="range_btn" x:Name="range_btn" Icon="Trim" Click="range_btn_Click_1"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

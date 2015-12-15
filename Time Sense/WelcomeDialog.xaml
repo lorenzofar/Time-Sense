@@ -18,7 +18,7 @@
                     <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Stretch">
                         <StackPanel HorizontalAlignment="Stretch">
                             <FontIcon HorizontalAlignment="Center" Margin="0,6" Glyph="&#xE10F;"  FontSize="72"/>
-                            <TextBlock x:Uid="welcome_0" HorizontalAlignment="Center" Margin="0,12" TextWrapping="Wrap" Text="In the home page you can see your usage time, the number of unlocks and an hourly chart" Style="{StaticResource BaseTextBlockStyle}"  />
+                            <TextBlock x:Uid="welcome_0" HorizontalAlignment="Center" Margin="0,12" TextWrapping="Wrap" Style="{StaticResource BaseTextBlockStyle}"  />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -28,7 +28,7 @@
                     <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Stretch">
                         <StackPanel HorizontalAlignment="Stretch">
                             <FontIcon Margin="0,6" Glyph="&#xE292;" HorizontalAlignment="Center" FontSize="72"/>
-                            <TextBlock x:Uid="welcome_1" HorizontalAlignment="Center" Margin="0,12" TextWrapping="Wrap" Text="In the timeline page you can see your unlocks and their geo location on the map" Style="{StaticResource BaseTextBlockStyle}"  />
+                            <TextBlock x:Uid="welcome_1" HorizontalAlignment="Center" Margin="0,12" TextWrapping="Wrap" Style="{StaticResource BaseTextBlockStyle}"  />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -38,7 +38,7 @@
                     <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Stretch">
                         <StackPanel HorizontalAlignment="Stretch">
                             <FontIcon Margin="0,6" Glyph="&#xE82D;" HorizontalAlignment="Center" FontSize="72"/>
-                            <TextBlock x:Uid="welcome_2" HorizontalAlignment="Center" Margin="0,12" TextWrapping="Wrap" Text="In the report page you can see stats about the week or the month" Style="{StaticResource BaseTextBlockStyle}"  />
+                            <TextBlock x:Uid="welcome_2" HorizontalAlignment="Center" Margin="0,12" TextWrapping="Wrap" Style="{StaticResource BaseTextBlockStyle}"  />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -58,7 +58,7 @@
                     <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Stretch">
                         <StackPanel HorizontalAlignment="Stretch">
                             <FontIcon Margin="0,6" Glyph="&#xE787;" HorizontalAlignment="Center" FontSize="72"/>
-                            <TextBlock x:Uid="welcome_3" HorizontalAlignment="Center" Margin="0,12" TextWrapping="Wrap" Text="Use the arrows or the calendar button to change date" Style="{StaticResource BaseTextBlockStyle}"  />
+                            <TextBlock x:Uid="welcome_3" HorizontalAlignment="Center" Margin="0,12" TextWrapping="Wrap" Style="{StaticResource BaseTextBlockStyle}"  />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -68,7 +68,7 @@
                     <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Stretch">
                         <StackPanel HorizontalAlignment="Stretch" RelativePanel.AlignVerticalCenterWithPanel="True">
                             <FontIcon Margin="0,6" Glyph="&#xE8BE;" HorizontalAlignment="Center" FontSize="72"/>
-                            <TextBlock x:Uid="welcome_4" HorizontalAlignment="Center" Margin="0,12" TextWrapping="Wrap" Text="To work properly, the app requires background tasks to be allowed even in battery saver, to fix this go to battery saver settings and add Time Sense with the 'add an app' button" Style="{StaticResource BaseTextBlockStyle}"  />
+                            <TextBlock x:Uid="welcome_4" HorizontalAlignment="Center" Margin="0,12" TextWrapping="Wrap" Style="{StaticResource BaseTextBlockStyle}"  />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -78,7 +78,7 @@
                     <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Stretch">
                         <StackPanel HorizontalAlignment="Stretch">
                             <FontIcon Margin="0,6" Glyph="&#xE118;" HorizontalAlignment="Center" FontSize="72"/>
-                            <TextBlock x:Uid="welcome_5" HorizontalAlignment="Center" Margin="0,12" TextWrapping="Wrap" Text="If you updated from the 8.1 version you can import your data in the settings page" Style="{StaticResource BaseTextBlockStyle}"  />
+                            <TextBlock x:Uid="welcome_5" HorizontalAlignment="Center" Margin="0,12" TextWrapping="Wrap" Style="{StaticResource BaseTextBlockStyle}"  />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
@@ -88,7 +88,7 @@
                     <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Stretch">
                         <StackPanel HorizontalAlignment="Stretch">
                             <FontIcon Margin="0,6" Glyph="&#xEB68;" HorizontalAlignment="Center" FontSize="72"/>
-                            <TextBlock x:Uid="welcome_6" HorizontalAlignment="Center" Margin="0,12" TextWrapping="Wrap" Text="You're all set, enjoy the app!" Style="{StaticResource BaseTextBlockStyle}"  />
+                            <TextBlock x:Uid="welcome_6" HorizontalAlignment="Center" Margin="0,12" TextWrapping="Wrap" Style="{StaticResource BaseTextBlockStyle}"  />
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

@@ -17,11 +17,11 @@
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:Name="search_btn" x:Uid="search_btn" Label="Search" Icon="Find" Click="search_btn_Click"/>
-            <AppBarButton x:Name="reset_btn" x:Uid="reset_btn" Label="Reset" Icon="Delete" Click="reset_btn_Click"/>
+            <AppBarButton x:Name="search_btn" x:Uid="search_btn" Icon="Find" Click="search_btn_Click"/>
+            <AppBarButton x:Name="reset_btn" x:Uid="reset_btn" Icon="Delete" Click="reset_btn_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
-    
+
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root" SizeChanged="RelativePanel_SizeChanged" VerticalAlignment="Stretch">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup CurrentStateChanged="vs_group_CurrentStateChanged"  x:Name="vs_group">
@@ -116,8 +116,8 @@
                     <StackPanel Margin="12,0" Background="Transparent" Grid.Row="1">
                         <ScrollViewer Margin="0,6" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
                             <StackPanel Orientation="Horizontal">
-                                <RadioButton x:Uid="range_all_btn" x:Name="range_all" Content="All data" IsChecked="True" Checked="range_all_Checked"/>
-                                <RadioButton x:Uid="range_custom_btn" x:Name="range_custom" Content="Custom range" Checked="range_all_Checked"/>
+                                <RadioButton x:Uid="range_all_btn" x:Name="range_all" IsChecked="True" Checked="range_all_Checked"/>
+                                <RadioButton x:Uid="range_custom_btn" x:Name="range_custom" Checked="range_all_Checked"/>
                             </StackPanel>
                         </ScrollViewer>
                         <RelativePanel Visibility="Collapsed" x:Name="custom_range_panel">
@@ -157,12 +157,12 @@
                                             <CheckBox x:Name="d_usagemax" Margin="0,6">
                                                 <CheckBox.Content>
                                                     <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                        <TextBlock x:Uid="usage_txt" VerticalAlignment="Top" Text="Usage" FontSize="16"/>
+                                                        <TextBlock x:Uid="usage_txt" VerticalAlignment="Top" FontSize="16"/>
                                                         <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
                                                         <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="d_usage_max_box"/>
                                                         <ComboBox Margin="6,0" x:Name="d_usage_max_combo">
-                                                            <ComboBoxItem x:Uid="seconds_combo" Content="Seconds"/>
-                                                            <ComboBoxItem x:Uid="minutes_combo" Content="Minutes" IsSelected="True"/>
+                                                            <ComboBoxItem x:Uid="seconds_combo"/>
+                                                            <ComboBoxItem x:Uid="minutes_combo" IsSelected="True"/>
                                                             <ComboBoxItem x:Uid="hours_combo" Content="Hours"/>
                                                         </ComboBox>
                                                     </StackPanel>
@@ -171,13 +171,13 @@
                                             <CheckBox x:Name="d_usagemin" Margin="0,6">
                                                 <CheckBox.Content>
                                                     <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                        <TextBlock x:Uid="usage_txt" VerticalAlignment="Top" Text="Usage" FontSize="16"/>
+                                                        <TextBlock x:Uid="usage_txt" VerticalAlignment="Top" FontSize="16"/>
                                                         <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
                                                         <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="d_usage_min_box"/>
                                                         <ComboBox Margin="6,0" x:Name="d_usage_min_combo">
-                                                            <ComboBoxItem x:Uid="seconds_combo" Content="Seconds"/>
-                                                            <ComboBoxItem x:Uid="minutes_combo" Content="Minutes" IsSelected="True"/>
-                                                            <ComboBoxItem x:Uid="hours_combo" Content="Hours"/>
+                                                            <ComboBoxItem x:Uid="seconds_combo"/>
+                                                            <ComboBoxItem x:Uid="minutes_combo" IsSelected="True"/>
+                                                            <ComboBoxItem x:Uid="hours_combo"/>
                                                         </ComboBox>
                                                     </StackPanel>
                                                 </CheckBox.Content>
@@ -189,7 +189,7 @@
                                             <CheckBox Margin="0,6" x:Name="d_unlocksmax">
                                                 <CheckBox.Content>
                                                     <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                        <TextBlock x:Uid="unlocks_txt" VerticalAlignment="Top" Text="Unlocks" FontSize="16"/>
+                                                        <TextBlock x:Uid="unlocks_txt" VerticalAlignment="Top" FontSize="16"/>
                                                         <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
                                                         <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="d_unlocks_max_box"/>
                                                     </StackPanel>
@@ -198,7 +198,7 @@
                                             <CheckBox Margin="0,6" x:Name="d_unlocksmin">
                                                 <CheckBox.Content>
                                                     <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                        <TextBlock x:Uid="unlocks_txt"  VerticalAlignment="Top" Text="Unlocks" FontSize="16"/>
+                                                        <TextBlock x:Uid="unlocks_txt"  VerticalAlignment="Top" FontSize="16"/>
                                                         <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontFamily="Segoe UI" FontSize="16"/>
                                                         <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="d_unlocks_min_box"/>
                                                     </StackPanel>
@@ -218,13 +218,13 @@
                                                 <CheckBox Margin="0,6" x:Name="u_usagemax">
                                                     <CheckBox.Content>
                                                         <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock x:Uid="usage_txt" VerticalAlignment="Top" Text="Usage" FontSize="16"/>
+                                                            <TextBlock x:Uid="usage_txt" VerticalAlignment="Top" FontSize="16"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
                                                             <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_usage_max_box"/>
                                                             <ComboBox Margin="6,0" x:Name="u_usage_max_combo">
-                                                                <ComboBoxItem x:Uid="seconds_combo" Content="Seconds"/>
-                                                                <ComboBoxItem x:Uid="minutes_combo" Content="Minutes" IsSelected="True"/>
-                                                                <ComboBoxItem x:Uid="hours_combo" Content="Hours"/>
+                                                                <ComboBoxItem x:Uid="seconds_combo"/>
+                                                                <ComboBoxItem x:Uid="minutes_combo" IsSelected="True"/>
+                                                                <ComboBoxItem x:Uid="hours_combo"/>
                                                             </ComboBox>
                                                         </StackPanel>
                                                     </CheckBox.Content>
@@ -232,13 +232,13 @@
                                                 <CheckBox Margin="0,6" x:Name="u_usagemin">
                                                     <CheckBox.Content>
                                                         <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock x:Uid="usage_txt"  VerticalAlignment="Top" Text="Usage" FontSize="16"/>
+                                                            <TextBlock x:Uid="usage_txt"  VerticalAlignment="Top" FontSize="16"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
                                                             <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_usage_min_box"/>
                                                             <ComboBox Margin="6,0" x:Name="u_usage_min_combo">
-                                                                <ComboBoxItem x:Uid="seconds_combo" Content="Seconds"/>
-                                                                <ComboBoxItem x:Uid="minutes_combo" Content="Minutes" IsSelected="True"/>
-                                                                <ComboBoxItem x:Uid="hours_combo" Content="Hours"/>
+                                                                <ComboBoxItem x:Uid="seconds_combo"/>
+                                                                <ComboBoxItem x:Uid="minutes_combo" IsSelected="True"/>
+                                                                <ComboBoxItem x:Uid="hours_combo"/>
                                                             </ComboBox>
                                                         </StackPanel>
                                                     </CheckBox.Content>
@@ -250,7 +250,7 @@
                                                 <CheckBox Margin="0,6" x:Name="u_unlocksmax">
                                                     <CheckBox.Content>
                                                         <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock x:Uid="unlocks_txt" VerticalAlignment="Top" Text="Unlocks" FontSize="16"/>
+                                                            <TextBlock x:Uid="unlocks_txt" VerticalAlignment="Top" FontSize="16"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
                                                             <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_unlocks_max_box"/>
                                                         </StackPanel>
@@ -259,7 +259,7 @@
                                                 <CheckBox Margin="0,6" x:Name="u_unlocksmin">
                                                     <CheckBox.Content>
                                                         <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock x:Uid="unlocks_txt" VerticalAlignment="Top" Text="Unlocks" FontSize="16"/>
+                                                            <TextBlock x:Uid="unlocks_txt" VerticalAlignment="Top" FontSize="16"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
                                                             <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_unlocks_min_box"/>
                                                         </StackPanel>
@@ -272,7 +272,7 @@
                                                 <CheckBox Margin="0,6" x:Name="u_batmax">
                                                     <CheckBox.Content>
                                                         <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock x:Uid="battery_txt" VerticalAlignment="Top" Text="Battery" FontSize="16"/>
+                                                            <TextBlock x:Uid="battery_txt" VerticalAlignment="Top" FontSize="16"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
                                                             <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_battery_max_box"/>
                                                         </StackPanel>
@@ -281,7 +281,7 @@
                                                 <CheckBox Margin="0,6" x:Name="u_batmin">
                                                     <CheckBox.Content>
                                                         <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock x:Uid="battery_txt" VerticalAlignment="Top" Text="Battery" FontSize="16"/>
+                                                            <TextBlock x:Uid="battery_txt" VerticalAlignment="Top" FontSize="16"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
                                                             <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_battery_min_box"/>
                                                         </StackPanel>
@@ -299,8 +299,8 @@
                                                         <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
                                                             <TextBlock x:Uid="battery_txt" VerticalAlignment="Top" Text="Battery"/>
                                                             <ComboBox Margin="6,0" x:Name="u_battery_combo">
-                                                                <ComboBoxItem x:Uid="charging_bat_combo" Content="Charging" IsSelected="True"/>
-                                                                <ComboBoxItem x:Uid="idle_bat_combo" Content="Not charging"/>
+                                                                <ComboBoxItem x:Uid="charging_bat_combo" IsSelected="True"/>
+                                                                <ComboBoxItem x:Uid="idle_bat_combo"/>
                                                             </ComboBox>
                                                         </StackPanel>
                                                     </CheckBox.Content>
@@ -312,10 +312,10 @@
                                                 <CheckBox Margin="0,6" x:Name="u_wifi">
                                                     <CheckBox.Content>
                                                         <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock VerticalAlignment="Top" Text="Wi-Fi"/>
+                                                            <TextBlock VerticalAlignment="Top"/>
                                                             <ComboBox Margin="6,0" x:Name="u_wifi_combo">
-                                                                <ComboBoxItem x:Uid="on_combo" Content="Charging" IsSelected="True"/>
-                                                                <ComboBoxItem x:Uid="off_combo" Content="Not charging"/>
+                                                                <ComboBoxItem x:Uid="on_combo" IsSelected="True"/>
+                                                                <ComboBoxItem x:Uid="off_combo"/>
                                                             </ComboBox>
                                                         </StackPanel>
                                                     </CheckBox.Content>
@@ -327,10 +327,10 @@
                                                 <CheckBox Margin="0,6" x:Name="u_bluetooth">
                                                     <CheckBox.Content>
                                                         <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock VerticalAlignment="Top" Text="Bluetooth"/>
+                                                            <TextBlock VerticalAlignment="Top"/>
                                                             <ComboBox Margin="6,0" x:Name="u_bluetooth_combo">
-                                                                <ComboBoxItem x:Uid="on_combo" Content="Charging" IsSelected="True"/>
-                                                                <ComboBoxItem x:Uid="off_combo" Content="Not charging"/>
+                                                                <ComboBoxItem x:Uid="on_combo" IsSelected="True"/>
+                                                                <ComboBoxItem x:Uid="off_combo"/>
                                                             </ComboBox>
                                                         </StackPanel>
                                                     </CheckBox.Content>
@@ -343,7 +343,7 @@
                                         <CheckBox Margin="0,6" x:Name="u_timemax">
                                             <CheckBox.Content>
                                                 <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                    <TextBlock x:Uid="time_txt" VerticalAlignment="Top" Text="Time" FontSize="16"/>
+                                                    <TextBlock x:Uid="time_txt" VerticalAlignment="Top" FontSize="16"/>
                                                     <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
                                                     <TimePicker Margin="6,0" x:Name="u_time_max_box"/>
                                                 </StackPanel>
@@ -352,7 +352,7 @@
                                         <CheckBox RelativePanel.Below="u_timemax" Margin="0,6" x:Name="u_timemin">
                                             <CheckBox.Content>
                                                 <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                    <TextBlock x:Uid="time_txt" VerticalAlignment="Top" Text="Time" FontSize="16"/>
+                                                    <TextBlock x:Uid="time_txt" VerticalAlignment="Top" FontSize="16"/>
                                                     <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
                                                     <TimePicker Margin="6,0" x:Name="u_time_min_box"/>
                                                 </StackPanel>
@@ -384,17 +384,17 @@
                     </Grid.ColumnDefinitions>
                     <Border BorderThickness="0,0,1,0" x:Name="time_border_d" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                         <Viewbox Margin="12,0,0,0"  MaxHeight="36">
-                            <TextBlock x:Uid="day_banner" Margin="6" Text="day" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock x:Uid="day_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
                         </Viewbox>
                     </Border>
                     <Border Margin="0,0" BorderThickness="1,0" x:Name="usage_border_d" Grid.Column="1" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                         <Viewbox MaxHeight="36">
-                            <TextBlock x:Uid="usage_banner" Margin="6" Text="usage" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock x:Uid="usage_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
                         </Viewbox>
                     </Border>
                     <Border  BorderThickness="1,0,0,0" x:Name="unlocks_border_d" Grid.Column="2" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                         <Viewbox Margin="0,0,12,0" MaxHeight="36">
-                            <TextBlock x:Uid="unlocks_banner" Margin="6" Text="unlocks" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock x:Uid="unlocks_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
                         </Viewbox>
                     </Border>
                 </Grid>
@@ -442,7 +442,7 @@
                 </Grid.RowDefinitions>
                 <Rectangle Height="2" HorizontalAlignment="Stretch" Fill="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}"/>
                 <Grid Tapped="banner_unlocks_grid_Tapped" Grid.Row="1" Background="{ThemeResource SystemControlBackgroundListMediumBrush}">
-                    <Grid Margin="12,0"  x:Name="banner_unlocks_grid">
+                    <Grid Margin="12,0" x:Name="banner_unlocks_grid">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -452,27 +452,27 @@
                         </Grid.ColumnDefinitions>
                         <Border  BorderThickness="0,0,1,0" x:Name="date_border" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                             <Viewbox Margin="0" MaxHeight="36">
-                                <TextBlock x:Uid="day_banner" Margin="6" Text="day" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                <TextBlock x:Uid="day_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
                             </Viewbox>
                         </Border>
                         <Border Grid.Column="1"  BorderThickness="1,0,1,0" x:Name="time_border" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                             <Viewbox MaxHeight="36">
-                                <TextBlock x:Uid="time_banner" Margin="6" Text="day" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                <TextBlock x:Uid="time_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
                             </Viewbox>
                         </Border>
                         <Border Margin="0,0" BorderThickness="1,0,1,0" x:Name="usage_border" Grid.Column="2" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                             <Viewbox MaxHeight="36">
-                                <TextBlock x:Uid="usage_banner" Margin="6" Text="usage" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                <TextBlock x:Uid="usage_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
                             </Viewbox>
                         </Border>
                         <Border BorderThickness="1,0,1,0" x:Name="unlocks_border" Grid.Column="3" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                             <Viewbox MaxHeight="36">
-                                <TextBlock x:Uid="unlocks_banner" Margin="6" Text="unlocks" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                <TextBlock x:Uid="unlocks_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
                             </Viewbox>
                         </Border>
                         <Border BorderThickness="1,0,0,0" x:Name="battery_border" Grid.Column="4" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                             <Viewbox  Margin="0" MaxHeight="36">
-                                <TextBlock x:Uid="battery_banner" Margin="6" Text="battery" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                <TextBlock x:Uid="battery_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
                             </Viewbox>
                         </Border>
                     </Grid>
@@ -524,11 +524,9 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-
-                <TextBlock HorizontalAlignment="Center" TextWrapping="WrapWholeWords" Visibility="Collapsed" Text="No items were found" x:Name="no_item_unlocks_txt" Margin="0,24" Grid.Row="3" x:Uid="no_items_txt" FontSize="{ThemeResource TextStyleLargeFontSize}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="WrapWholeWords" Visibility="Collapsed" x:Name="no_item_unlocks_txt" Margin="0,24" Grid.Row="3" x:Uid="no_items_txt" FontSize="{ThemeResource TextStyleLargeFontSize}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
             </Grid>
         </Grid>
-
 
         <Button x:Name="up_btn" Visibility="Collapsed"  Click="Button_Click" Background="Transparent" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" Margin="12" >
             <Button.Content>
@@ -538,6 +536,5 @@
                 </Grid>
             </Button.Content>
         </Button>
-
     </RelativePanel>
 </Page>

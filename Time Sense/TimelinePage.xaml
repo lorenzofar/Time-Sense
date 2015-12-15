@@ -90,7 +90,7 @@
                     </chart:SfChart>
                 </PivotItem>
             </Pivot>
-            <Rectangle Grid.Row="1" x:Name="separator" Height="6" Fill="{ThemeResource SystemControlBackgroundAccentBrush}" RelativePanel.Below="chart_pivot" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"></Rectangle>
+            <Rectangle Grid.Row="1" x:Name="separator" Height="6" Fill="{ThemeResource SystemControlBackgroundAccentBrush}" RelativePanel.Below="chart_pivot" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
             <Grid Grid.Row="2" x:Name="list_grid" RelativePanel.Below="separator" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -105,22 +105,22 @@
                     </Grid.ColumnDefinitions>
                     <Border Margin="12,0,0,0" BorderThickness="0,0,1,0" x:Name="time_border" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                         <Viewbox MaxHeight="36">
-                            <TextBlock x:Uid="time_banner" Margin="6" Text="time" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock x:Uid="time_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
                         </Viewbox>
                     </Border>
                     <Border Margin="0,0" BorderThickness="1,0" x:Name="usage_border" Grid.Column="1" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                         <Viewbox MaxHeight="36">
-                            <TextBlock x:Uid="usage_banner" Margin="6" Text="usage" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock x:Uid="usage_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
                         </Viewbox>
                     </Border>
                     <Border Margin="0,0" BorderThickness="1,0" x:Name="unlocks_border" Grid.Column="2" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                         <Viewbox MaxHeight="36">
-                            <TextBlock x:Uid="unlocks_banner" Margin="6" Text="unlocks" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock x:Uid="unlocks_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
                         </Viewbox>
                     </Border>
                     <Border Margin="0,0,12,0"  BorderThickness="1,0,0,0" x:Name="battery_border" Grid.Column="3" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                         <Viewbox MaxHeight="36">
-                            <TextBlock x:Uid="battery_banner" Margin="6" Text="power" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock x:Uid="battery_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
                         </Viewbox>
                     </Border>
                 </Grid>
@@ -174,7 +174,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Grid Background="DarkGray" HorizontalAlignment="Stretch">
+                <Grid Background="Gray" HorizontalAlignment="Stretch">
                     <Button Click="HyperlinkButton_Click" Background="Red" HorizontalAlignment="Right" x:Name="close_btn" VerticalAlignment="Stretch">
                         <Button.Content>
                             <FontIcon Glyph="&#xE10A;" FontSize="20"/>
@@ -197,10 +197,10 @@
     </Grid>
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:Uid="back_bar" Label="Previous" Icon="Back" x:Name="back_timeline_bar" Click="back_timeline_bar_Click"/>
-            <AppBarButton x:Uid="forward_bar" x:Name="forward_timeline_bar" Label="Next" Icon="Forward" Click="forward_timeline_bar_Click"/>
-            <AppBarButton x:Uid="date_bar" x:Name="date_timeline_bar" Icon="Calendar" Label="Search" Click="date_timeline_bar_Click"/>
-            <AppBarButton x:Uid="refresh_bar" x:Name="refresh_timeline_bar" Icon="Refresh" Label="Refresh" Click="refresh_timeline_bar_Click"/>
+            <AppBarButton x:Uid="back_bar" Icon="Back" x:Name="back_timeline_bar" Click="back_timeline_bar_Click"/>
+            <AppBarButton x:Uid="forward_bar" x:Name="forward_timeline_bar" Icon="Forward" Click="forward_timeline_bar_Click"/>
+            <AppBarButton x:Uid="date_bar" x:Name="date_timeline_bar" Icon="Calendar" Click="date_timeline_bar_Click"/>
+            <AppBarButton x:Uid="refresh_bar" x:Name="refresh_timeline_bar" Icon="Refresh" Click="refresh_timeline_bar_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

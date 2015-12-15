@@ -11,7 +11,7 @@
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <RelativePanel Margin="18" x:Name="root_panel">
                 <StackPanel Margin="0,0,0,6" RelativePanel.AlignTopWithPanel="True" HorizontalAlignment="Stretch" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="privacy_grid">
-                    <TextBlock x:Uid="privacy_banner" Text="Privacy" Style="{StaticResource TitleTextBlockStyle}"/>
+                    <TextBlock x:Uid="privacy_banner" Style="{StaticResource TitleTextBlockStyle}"/>
                     <ToggleSwitch Margin="0,6" Toggled="password_switch_Toggled" x:Name="password_switch">
                         <ToggleSwitch.Header>
                             <StackPanel>

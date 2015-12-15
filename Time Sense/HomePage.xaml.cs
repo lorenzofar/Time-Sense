@@ -29,8 +29,7 @@ namespace Time_Sense
         
         public HomePage()
         {
-            this.InitializeComponent();  
-            
+            this.InitializeComponent();             
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -191,6 +190,7 @@ namespace Time_Sense
             }
             hour_list_raw = await Helper.GetHourList(App.report_date);
             List<Hour> hour_list = new List<Hour>();
+            
             double time_helper = 0;
             double unlocks_helper = 0;
             double time_min_helper = 1000;

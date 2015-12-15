@@ -9,7 +9,7 @@
     mc:Ignorable="d">   
 
     <Grid x:Name="root" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
             <RelativePanel>
                 <Grid x:Name="time_grid" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
                     <Grid Background="{ThemeResource SystemControlBackgroundAccentBrush}" Opacity="0.35"/>
@@ -28,7 +28,7 @@
                                 <FontIcon x:Name="hour_time_header" Glyph="&#xE121;"/>
                             </PivotItem.Header>
                             <StackPanel>
-                                <chart:SfChart IsEnabled="False" x:Name="usage_chart" Palette="Custom" MaxHeight="225" Margin="0,4,4,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <chart:SfChart MaxHeight="225" IsEnabled="False" x:Name="usage_chart" Palette="Custom" Margin="0,4,4,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                     <chart:SfChart.ColorModel>
                                         <chart:ChartColorModel>
                                             <chart:ChartColorModel.CustomBrushes>
@@ -42,7 +42,7 @@
                                     <chart:SfChart.SecondaryAxis>
                                         <chart:NumericalAxis Minimum="0" Maximum="60"/>
                                     </chart:SfChart.SecondaryAxis>
-                                    <chart:ColumnSeries EnableAnimation="True" AnimationDuration="0:0:1" x:Name="chart_time" Label="Usage" XBindingPath="hour" YBindingPath="usage"/>
+                                    <chart:ColumnSeries EnableAnimation="True" AnimationDuration="0:0:1" x:Name="chart_time" XBindingPath="hour" YBindingPath="usage"/>
                                 </chart:SfChart>
                                 <Grid Margin="0,0,0,12">
                                     <Grid.ColumnDefinitions>
@@ -52,15 +52,15 @@
                                     </Grid.ColumnDefinitions>
                                     <StackPanel>
                                         <TextBlock Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="max_time" HorizontalAlignment="Center" FontSize="28"/>
-                                        <TextBlock x:Uid="maximum" Text="maximum" HorizontalAlignment="Center"/>
+                                        <TextBlock x:Uid="maximum" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                     <StackPanel Grid.Column="1">
                                         <TextBlock Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="min_time" HorizontalAlignment="Center" FontSize="28"/>
-                                        <TextBlock x:Uid="minimum" Text="minimum" HorizontalAlignment="Center"/>
+                                        <TextBlock x:Uid="minimum" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                     <StackPanel Grid.Column="2">
                                         <TextBlock Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="avg_time" HorizontalAlignment="Center" FontSize="28"/>
-                                        <TextBlock x:Uid="average" Text="average" HorizontalAlignment="Center"/>
+                                        <TextBlock x:Uid="average" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                 </Grid>
                             </StackPanel>
@@ -70,7 +70,7 @@
                                 <FontIcon Glyph="&#xE1F7;"/>
                             </PivotItem.Header>
                             <StackPanel>
-                                <chart:SfChart IsEnabled="False" x:Name="unlocks_chart" Palette="Custom" MaxHeight="225" Margin="0,4,4,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <chart:SfChart MaxHeight="225" IsEnabled="False" x:Name="unlocks_chart" Palette="Custom" Margin="0,4,4,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                     <chart:SfChart.ColorModel>
                                         <chart:ChartColorModel>
                                             <chart:ChartColorModel.CustomBrushes>
@@ -84,7 +84,7 @@
                                     <chart:SfChart.SecondaryAxis>
                                         <chart:NumericalAxis Minimum="0"/>
                                     </chart:SfChart.SecondaryAxis>
-                                    <chart:ColumnSeries EnableAnimation="True" AnimationDuration="0:0:1" x:Name="chart_unlocks" Label="Unlocks" XBindingPath="hour" YBindingPath="unlocks"/>
+                                    <chart:ColumnSeries EnableAnimation="True" AnimationDuration="0:0:1" x:Name="chart_unlocks" XBindingPath="hour" YBindingPath="unlocks"/>
                                 </chart:SfChart>
                                 <Grid Margin="0,0,0,12">
                                     <Grid.ColumnDefinitions>
@@ -94,15 +94,15 @@
                                     </Grid.ColumnDefinitions>
                                     <StackPanel>
                                         <TextBlock Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="max_unlocks" HorizontalAlignment="Center" FontSize="28"/>
-                                        <TextBlock x:Uid="maximum" Text="maximum" HorizontalAlignment="Center"/>
+                                        <TextBlock x:Uid="maximum" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                     <StackPanel Grid.Column="1">
                                         <TextBlock Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="min_unlocks" HorizontalAlignment="Center" FontSize="28"/>
-                                        <TextBlock x:Uid="minimum" Text="minimum" HorizontalAlignment="Center"/>
+                                        <TextBlock x:Uid="minimum" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                     <StackPanel Grid.Column="2">
                                         <TextBlock Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="avg_unlocks" HorizontalAlignment="Center" FontSize="28"/>
-                                        <TextBlock x:Uid="average" Text="average" HorizontalAlignment="Center"/>
+                                        <TextBlock x:Uid="average" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                 </Grid>
                             </StackPanel>
@@ -116,8 +116,8 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <TextBox HorizontalAlignment="Center" IsTapEnabled="False" InputScope="Text" AcceptsReturn="True" IsSpellCheckEnabled="True" IsTextPredictionEnabled="True" IsReadOnly="True" Grid.Row="0" FontSize="{Binding FontSize, ElementName=hour_time_header}"  TextWrapping="Wrap" x:Name="note_txt" Background="Transparent" BorderThickness="0" />
-                                <TextBlock TextWrapping="WrapWholeWords" HorizontalAlignment="Center" Visibility="Collapsed" x:Name="no_note_txt" Margin="0,24" Grid.Row="0" x:Uid="no_note_txt" FontSize="{ThemeResource TextStyleLargeFontSize}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
+                                <TextBox HorizontalAlignment="Center" IsTapEnabled="False" InputScope="Text" AcceptsReturn="True" IsSpellCheckEnabled="True" IsReadOnly="True" FontSize="{Binding FontSize, ElementName=hour_time_header}" TextWrapping="Wrap" x:Name="note_txt" Background="Transparent" BorderThickness="0" />
+                                <TextBlock TextWrapping="WrapWholeWords" HorizontalAlignment="Center" Visibility="Collapsed" x:Name="no_note_txt" Margin="0,24" x:Uid="no_note_txt" FontSize="{ThemeResource TextStyleLargeFontSize}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
                                 <AppBarButton Click="note_edit_btn_Click" Grid.Row="1" HorizontalAlignment="Right" x:Name="note_edit_btn" Icon="Edit"/>
                             </Grid>
                         </PivotItem>
@@ -127,16 +127,16 @@
                             </PivotItem.Header>
                             <Grid>
                                 <StackPanel Margin="0,24,0,12" HorizontalAlignment="Center" Visibility="Collapsed" x:Name="notch_panel">
-                                    <TextBlock x:Name="usage_batt_txt" Text="00:00:00" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource HeaderTextBlockStyle}" />
-                                    <TextBlock x:Name="unlocks_batt_txt" Text="2 unlocks" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}" />
-                                    <TextBlock  Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" Margin="0,12" FontSize="{Binding FontSize, ElementName=hour_time_header}" x:Uid="helper_notch_txt" Text="since last charge" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <TextBlock x:Name="usage_batt_txt" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource HeaderTextBlockStyle}" />
+                                    <TextBlock x:Name="unlocks_batt_txt" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}" />
+                                    <TextBlock  Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" Margin="0,12" FontSize="{Binding FontSize, ElementName=hour_time_header}" x:Uid="helper_notch_txt" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </StackPanel>
                                 <StackPanel Visibility="Visible" x:Name="ch_panel">                                    
                                         <StackPanel Margin="0,24,0,12" HorizontalAlignment="Center">
                                         <Viewbox MaxWidth="100" Margin="48,0" HorizontalAlignment="Center" MinHeight="100">
                                             <FontIcon Glyph="&#xE945;" FontSize="10" HorizontalAlignment="Center" Foreground="#FFAF00"/>
                                         </Viewbox>
-                                        <TextBlock Margin="0,12" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" FontSize="{Binding FontSize, ElementName=hour_time_header}" Text="The device is currently charging" x:Uid="helper_ch_txt" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        <TextBlock Margin="0,12" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" FontSize="{Binding FontSize, ElementName=hour_time_header}" x:Uid="helper_ch_txt" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                         </StackPanel>
                                 </StackPanel>
                             </Grid>
@@ -148,10 +148,10 @@
     </Grid>
     <Page.BottomAppBar>
         <CommandBar HorizontalAlignment="Right" ClosedDisplayMode="Compact">            
-            <AppBarButton x:Uid="back_bar" Label="Previous" Icon="Back" x:Name="back_report_bar" Click="back_report_bar_Click"/>
-            <AppBarButton x:Uid="forward_bar" x:Name="forward_report_bar" Label="Next" Icon="Forward" Click="forward_report_bar_Click"/>            
-            <AppBarButton x:Uid="date_bar" x:Name="date_report_bar" Click="date_report_bar_Click" Label="Search" Icon="Calendar"/>
-            <AppBarButton x:Name="refresh_bar" x:Uid="refresh_bar" HorizontalAlignment="Right" Label="Refresh" Icon="Refresh" Click="refresh_home"/>
+            <AppBarButton x:Uid="back_bar" Icon="Back" x:Name="back_report_bar" Click="back_report_bar_Click"/>
+            <AppBarButton x:Uid="forward_bar" x:Name="forward_report_bar" Icon="Forward" Click="forward_report_bar_Click"/>            
+            <AppBarButton x:Uid="date_bar" x:Name="date_report_bar" Click="date_report_bar_Click" Icon="Calendar"/>
+            <AppBarButton x:Name="refresh_bar" x:Uid="refresh_bar" HorizontalAlignment="Right" Icon="Refresh" Click="refresh_home"/>
             <CommandBar.SecondaryCommands>
             </CommandBar.SecondaryCommands>
         </CommandBar>
