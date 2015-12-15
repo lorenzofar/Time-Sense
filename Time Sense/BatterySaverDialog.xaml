@@ -7,14 +7,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     x:Uid="battery_dialog"
-    Title="BATTERY SAVER"
-    SecondaryButtonText="Close"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
 
     <Grid>
         <StackPanel>
-            <TextBlock x:Uid="battery_dialog_txt" Margin="0,6" TextWrapping="Wrap"  Text="You are running in battery saver mode, make sure background tasks are allowed for the app even in this mode to avoid errors"/>
-            <CheckBox x:Uid="battery_dialog_check" Margin="0,6" x:Name="show_check" Checked="show_check_Checked" Content="Do not show this again"/>
+            <TextBlock x:Uid="battery_dialog_txt" Margin="0,6" TextWrapping="Wrap"/>
+            <CheckBox x:Uid="battery_dialog_check" Margin="0,6" x:Name="show_check" Checked="show_check_Checked"/>
         </StackPanel>
     </Grid>
 </ContentDialog>

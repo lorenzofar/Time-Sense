@@ -1,4 +1,5 @@
 ﻿using System;
+using Stuff;
 using Windows.UI.Xaml.Data;
 
 namespace Time_Sense
@@ -8,7 +9,7 @@ namespace Time_Sense
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             int usage = int.Parse(value.ToString());
-            return Stuff.utilities.FormatData(usage);
+            return utilities.FormatData(usage);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

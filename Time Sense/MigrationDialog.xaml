@@ -10,8 +10,8 @@
     x:Uid="migrate_dialog">
     
     <StackPanel Margin="0,12">
-        <TextBlock x:Name="migrate_dialog_helper" x:Uid="progress_dialog_helper" TextWrapping="Wrap" Text="This process will take a long, don't close the app or lock the screen" Style="{StaticResource CaptionTextBlockStyle}"/>
-        <ProgressBar Margin="0,12,0,3" HorizontalAlignment="Stretch" x:Name="bar" RelativePanel.Below="migrate_dialog_helper"  RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+        <TextBlock x:Name="migrate_dialog_helper" x:Uid="progress_dialog_helper" TextWrapping="Wrap" Style="{StaticResource CaptionTextBlockStyle}"/>
+        <ProgressBar Margin="0,12,0,3" HorizontalAlignment="Stretch" x:Name="bar" RelativePanel.Below="migrate_dialog_helper" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
         <TextBlock TextWrapping="Wrap" x:Name="migrate_progress" Margin="0,3"/>
     </StackPanel>
 </ContentDialog>

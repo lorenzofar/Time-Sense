@@ -9,14 +9,7 @@ namespace Time_Sense
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             string state = value as string;
-            if(state == "on" || state == "charging")
-            {
-                return Visibility.Visible;
-            }
-            else
-            {
-                return Visibility.Collapsed;
-            }
+            return state == "on" || state == "charging" ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
