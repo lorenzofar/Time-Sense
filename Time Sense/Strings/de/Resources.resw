@@ -208,7 +208,7 @@
     <value>Suche</value>
   </data>
   <data name="date_dialog.PrimaryButtonText" xml:space="preserve">
-    <value>Wähle aus</value>
+    <value>Auswählen</value>
   </data>
   <data name="date_dialog.SecondaryButtonText" xml:space="preserve">
     <value>Abbrechen</value>
@@ -646,7 +646,7 @@
     <value>In der Home-Ansicht siehst du die Nutzungszeit, die Anzahl Entsperrungen und deren Standorte auf der Karte</value>
   </data>
   <data name="welcome_1.Text" xml:space="preserve">
-    <value>In der Zeitleisten-Ansicht kannst du deine Entsperrungen sowie deren Standorte auf der Akrte sehen</value>
+    <value>In der Zeitleisten-Ansicht kannst du deine Entsperrungen sowie deren Standorte auf der Karte sehen</value>
   </data>
   <data name="welcome_2.Text" xml:space="preserve">
     <value>In der Report-Ansicht kannst du Statistiken über die Woche oder den Monaten einsehen</value>
@@ -658,7 +658,7 @@
     <value>Damit die App richtig funktioniert, müssen Hintergrund-Aktivitäten auch im Stromsparmodus erlaubt sein. Um dies zu ändern gehe zu Stomsparmodus in den Einstellungen und füge Time Sense per "App hinzufügen" hinzu.</value>
   </data>
   <data name="welcome_5.Text" xml:space="preserve">
-    <value>Wenn du von 8.1 aktualisiert hast, kannst deine Daten in den Einstellungen importieren</value>
+    <value>Wenn du von 8.1 aktualisiert hast, kannst du deine Daten in den Einstellungen importieren</value>
   </data>
   <data name="welcome_6.Text" xml:space="preserve">
     <value>Alles ist eingerichtet! Viel Spass!</value>
@@ -670,7 +670,7 @@
     <value>Start</value>
   </data>
   <data name="welcome_dialog.Title" xml:space="preserve">
-    <value>WILKOMMEN</value>
+    <value>WILLKOMMEN</value>
   </data>
   <data name="yes" xml:space="preserve">
     <value>Ja</value>
