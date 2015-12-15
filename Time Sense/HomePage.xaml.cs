@@ -67,7 +67,7 @@ namespace Time_Sense
             if (App.report_date.Date == DateTime.Now.Date)
             {
                 date[1] = DateTime.Now;
-                if (await utilities.CheckDate(settings.date))
+                if (utilities.CheckDate(settings.date))
                 {
                     for (int i = 0; i < 2; i++)
                     {

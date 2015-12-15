@@ -19,7 +19,7 @@ namespace Stuff
         public static ResourceLoader loader { get; set; }
         //public static ResourceLoader loader = new ResourceLoader();
 
-        public static async Task<bool> CheckDate(string setting)
+        public static bool CheckDate(string setting)
         {
             bool data = false;
             Object data_obj = STATS.Values[setting];

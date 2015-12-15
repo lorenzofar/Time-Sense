@@ -23,7 +23,7 @@ namespace Tasks
         public async void Run(IBackgroundTaskInstance taskInstance)
         {
             BackgroundTaskDeferral _deferral = taskInstance.GetDeferral();
-            bool date1_exist = await utilities.CheckDate(settings.date);
+            bool date1_exist = utilities.CheckDate(settings.date);
             date[1] = DateTime.Now;
             if (date1_exist)
             {

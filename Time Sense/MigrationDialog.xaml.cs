@@ -150,7 +150,7 @@ namespace Time_Sense
                     await success.ShowAsync();
                     this.Hide();
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageDialog error = new MessageDialog(utilities.loader.GetString("migrate_dialog_error"), utilities.loader.GetString("error"));
                     await error.ShowAsync();

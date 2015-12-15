@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Background;
-using Windows.Devices.Geolocation;
+﻿using Windows.ApplicationModel.Background;
 using Windows.Devices.Sms;
 
 namespace Tasks
@@ -13,7 +7,7 @@ namespace Tasks
     {
         private SmsDevice2 device = null;
 
-        public async void Run(IBackgroundTaskInstance taskInstance)
+        public void Run(IBackgroundTaskInstance taskInstance)
         {
             BackgroundTaskDeferral _deferral = taskInstance.GetDeferral();
             /*SmsMessageReceivedTriggerDetails smsDetails = taskInstance.TriggerDetails as SmsMessageReceivedTriggerDetails;

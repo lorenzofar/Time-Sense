@@ -23,7 +23,7 @@ namespace Tasks
             BackgroundTaskDeferral _deferral = taskInstance.GetDeferral();
             
             date[1] = DateTime.Now;
-            if (await utilities.CheckDate(settings.date))
+            if (utilities.CheckDate(settings.date))
             {
                 try
                 {

@@ -171,7 +171,7 @@ namespace Tasks
                var response = VoiceCommandResponse.CreateResponse(userMessage, usageTiles);
                await voiceServiceConnection.ReportSuccessAsync(response);
             }
-            catch(Exception ex)
+            catch
             {
             }
         }
