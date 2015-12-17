@@ -87,7 +87,7 @@ namespace Stuff
         public static string ToastUsageAlert(int limit)
         {
             loader = new ResourceLoader();
-            StringBuilder builder = new StringBuilder("<toast>");
+            StringBuilder builder = new StringBuilder("<toast launch=''>");
             builder.Append("<visual>");
             builder.Append("<binding template='ToastGeneric'>");
             builder.Append(String.Format("<text>{0}</text>", loader.GetString("limit_toast_title")));

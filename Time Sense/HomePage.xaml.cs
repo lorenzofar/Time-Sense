@@ -405,21 +405,25 @@ namespace Time_Sense
         private void home_charts_pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             App.t_client.TrackEvent("Home pivot swipe");
-            switch (home_charts_pivot.SelectedIndex)
+            try
             {
-                case 0:
-                    home_chart_helper.Text = utilities.loader.GetString("usage_hour_title");
-                    break;
-                case 1:
-                    home_chart_helper.Text = utilities.loader.GetString("unlocks_hour_title");
-                    break;
-                case 3:
-                    home_chart_helper.Text = utilities.loader.GetString("charge_banner");
-                    break;
-                case 2:
-                    home_chart_helper.Text = utilities.loader.GetString("note_banner");
-                    break;
+                switch (home_charts_pivot.SelectedIndex)
+                {
+                    case 0:
+                        home_chart_helper.Text = utilities.loader.GetString("usage_hour_title");
+                        break;
+                    case 1:
+                        home_chart_helper.Text = utilities.loader.GetString("unlocks_hour_title");
+                        break;
+                    case 3:
+                        home_chart_helper.Text = utilities.loader.GetString("charge_banner");
+                        break;
+                    case 2:
+                        home_chart_helper.Text = utilities.loader.GetString("note_banner");
+                        break;
+                }
             }
+            catch { }
         }
 
         public void ButtonSwitch(bool enabled)

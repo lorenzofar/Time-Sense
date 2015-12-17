@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.Storage;
 using UniversalRateReminder;
+using System.Threading.Tasks;
 
 namespace Time_Sense
 {
@@ -64,7 +65,7 @@ namespace Time_Sense
             Object password_obj = utilities.STATS.Values[settings.password];
             string password = password_obj == null ? "" : password_obj.ToString();
 
-            if (e.Arguments != null && e.Arguments != "")
+            if (e!=null && (e.Arguments != null && e.Arguments != ""))
             {
                 jump_arguments = e.Arguments;
                 if (e.PreviousExecutionState == ApplicationExecutionState.Running)
@@ -214,6 +215,10 @@ namespace Time_Sense
                         }
                     }
                 }
+            }
+            else if(args.Kind == ActivationKind.ToastNotification)
+            {
+                OnLaunched(null);
             }
             else if (args.Kind == ActivationKind.VoiceCommand)
             {
