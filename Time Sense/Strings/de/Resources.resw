@@ -685,25 +685,30 @@
     <value>ein</value>
   </data>
   <data name="charge_banner" xml:space="preserve">
-    <value>USAGE/CHARGE</value>
+    <value>NUTZUNG/BATTERIE</value>
+    <comment>TODO</comment>
   </data>
   <data name="helper_ch_txt.Text" xml:space="preserve">
     <value>the device is charging</value>
+    <comment>TODO</comment>
   </data>
   <data name="helper_notch_txt.Text" xml:space="preserve">
     <value>since last charge</value>
+    <comment>TODO</comment>
   </data>
   <data name="time_txt.Text" xml:space="preserve">
     <value>Zeit</value>
   </data>
   <data name="buy_btn" xml:space="preserve">
     <value>Not now</value>
+    <comment>TODO</comment>
   </data>
   <data name="try_btn" xml:space="preserve">
     <value>Try</value>
   </data>
   <data name="no_items_txt.Text" xml:space="preserve">
     <value>No items were found</value>
+    <comment>TODO</comment>
   </data>
   <data name="range_dialog.PrimaryButtonText" xml:space="preserve">
     <value>Löschen</value>
@@ -713,15 +718,19 @@
   </data>
   <data name="range_dialog.Title" xml:space="preserve">
     <value>SELECT RANGE</value>
+    <comment>TODO</comment>
   </data>
   <data name="note_banner" xml:space="preserve">
     <value>NOTES</value>
+    <comment>TODO</comment>
   </data>
   <data name="no_note" xml:space="preserve">
     <value>The selected day is not yet present in the database</value>
+    <comment>TODO</comment>
   </data>
   <data name="no_note_txt.Text" xml:space="preserve">
     <value>No notes available</value>
+    <comment>TODO</comment>
   </data>
   <data name="String1" xml:space="preserve">
     <value />
