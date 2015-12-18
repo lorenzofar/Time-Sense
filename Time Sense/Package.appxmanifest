@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Time_Sense.App">
-      <uap:VisualElements DisplayName="Time Sense BETA" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="A Windows 10 app to track your usage of your devices." BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="Time Sense BETA" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="A Windows 10 app to track your phone's usage" BackgroundColor="transparent">
         <uap:LockScreen Notification="badgeAndTileText" BadgeLogo="Assets\BadgeLogo.png" />
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="Time Sense" Square310x310Logo="Assets\Square310x310Logo.png" Square71x71Logo="Assets\Square71x71Logo.png">
           <uap:ShowNameOnTiles>
@@ -31,21 +31,14 @@
         </uap:InitialRotationPreference>
       </uap:VisualElements>
       <Extensions>
-        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.timer_task">
-          <BackgroundTasks>
-            <Task Type="timer" />
-          </BackgroundTasks>
-        </Extension>
-        <uap:Extension Category="windows.appService" EntryPoint="Tasks.service">
-          <uap:AppService Name="timesense.service" />
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="timesense">
+            <uap:DisplayName>Time Sense</uap:DisplayName>
+          </uap:Protocol>
         </uap:Extension>
-        <uap:Extension Category="windows.appService" EntryPoint="Tasks.VoiceCommandService">
-          <uap:AppService Name="TimeSenseVoiceCommandService" />
-        </uap:Extension>
-        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.controller_lock">
+        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.alert">
           <BackgroundTasks>
             <Task Type="systemEvent" />
-            <Task Type="deviceUse" />
           </BackgroundTasks>
         </Extension>
         <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.controller_unlock">
@@ -54,16 +47,23 @@
             <Task Type="deviceUse" />
           </BackgroundTasks>
         </Extension>
-        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.alert">
+        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.controller_lock">
           <BackgroundTasks>
             <Task Type="systemEvent" />
+            <Task Type="deviceUse" />
           </BackgroundTasks>
         </Extension>
-        <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="timesense">
-            <uap:DisplayName>Time Sense</uap:DisplayName>
-          </uap:Protocol>
+        <uap:Extension Category="windows.appService" EntryPoint="Tasks.VoiceCommandService">
+          <uap:AppService Name="TimeSenseVoiceCommandService" />
         </uap:Extension>
+        <uap:Extension Category="windows.appService" EntryPoint="Tasks.service">
+          <uap:AppService Name="timesense.service" />
+        </uap:Extension>
+        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.timer_task">
+          <BackgroundTasks>
+            <Task Type="timer" />
+          </BackgroundTasks>
+        </Extension>
       </Extensions>
     </Application>
   </Applications>

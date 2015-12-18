@@ -610,7 +610,7 @@
     <value>entsperrung</value>
   </data>
   <data name="unlocks_hour_title" xml:space="preserve">
-    <value>ENTSPERRUNGEN/STUNDE</value>
+    <value>ENTSPERR../STUNDE</value>
   </data>
   <data name="unlocks_tile" xml:space="preserve">
     <value>ENTSPERRUNGEN</value>
