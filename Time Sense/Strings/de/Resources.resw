@@ -349,7 +349,7 @@
     <value>Ändern</value>
   </data>
   <data name="limit_toast_content" xml:space="preserve">
-    <value>Du hast das Gerät für {0}{1} genutzt:</value>
+    <value>Du hast das Gerät für {0} {1} genutzt:</value>
   </data>
   <data name="limit_toast_helper" xml:space="preserve">
     <value>Ändere die Limite</value>
