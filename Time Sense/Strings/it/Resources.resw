@@ -689,7 +689,8 @@
     <value>acceso</value>
   </data>
   <data name="charge_banner" xml:space="preserve">
-    <value>UTILIZZO/CARICA</value>
+    <value />
+    <comment>UTILIZZO/CARICA</comment>
   </data>
   <data name="helper_ch_txt.Text" xml:space="preserve">
     <value>il dispositivo è in carica</value>
