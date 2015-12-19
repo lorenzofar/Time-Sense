@@ -27,7 +27,7 @@ namespace Time_Sense
 
         public static bool dialog = false;
 
-        public static string jump_arguments;
+        public static string jump_arguments = null;
 
         public static Microsoft.ApplicationInsights.TelemetryClient t_client = new Microsoft.ApplicationInsights.TelemetryClient();
         
@@ -79,7 +79,7 @@ namespace Time_Sense
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                if (e!= null && e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                 }
                 
@@ -95,7 +95,7 @@ namespace Time_Sense
                 }
                 else
                 {
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    rootFrame.Navigate(typeof(MainPage), e==null? null : e.Arguments);
                 }
             }
             activate:
@@ -133,27 +133,15 @@ namespace Time_Sense
 
         protected override async void OnActivated(IActivatedEventArgs args)
         {
+            utilities.loader = new Windows.ApplicationModel.Resources.ResourceLoader();
             Frame rootFrame = Window.Current.Content as Frame;
-            if (rootFrame == null)
-            {
-                rootFrame = new Frame();
 
-                rootFrame.NavigationFailed += OnNavigationFailed;
-                
-                Window.Current.Content = rootFrame;
-            }
-
-            if (rootFrame.Content == null)
-            {
-                rootFrame.Navigate(typeof(MainPage), null);
-            }
-            Window.Current.Activate();
+            Object password_obj = utilities.STATS.Values[settings.password];
+            string password = password_obj == null ? "" : password_obj.ToString();
             if (args.Kind == ActivationKind.Protocol)
             {
-                App.t_client.TrackEvent("URI activated");
+                App.t_client.TrackEvent("URI activated");               
                 ProtocolActivatedEventArgs eventArgs = args as ProtocolActivatedEventArgs;
-                Object password_obj = utilities.STATS.Values[settings.password];
-                string password = password_obj == null ? "" : password_obj.ToString();
                 if (eventArgs.Uri != null)
                 {
                     if (eventArgs.Uri.ToString() != "timesense:locon" && eventArgs.Uri.ToString() != "timesense:locoff")
@@ -176,22 +164,33 @@ namespace Time_Sense
                                 jump_arguments = null;
                                 break;
                         }
-                        if (args.PreviousExecutionState == ApplicationExecutionState.Running)
+                        if (rootFrame == null)
                         {
-                            rootFrame.Navigate(typeof(MainPage), jump_arguments);
+                            rootFrame = new Frame();
+
+                            rootFrame.NavigationFailed += OnNavigationFailed;
+
+                            if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                            {
+                            }
+
+                            Window.Current.Content = rootFrame;
                         }
-                        else
+
+                        if (rootFrame.Content == null)
                         {
                             if (password != "")
                             {
                                 rootFrame.Navigate(typeof(PasswordPage), password);
-                                return;
+                                goto activate_1;
                             }
                             else
                             {
                                 rootFrame.Navigate(typeof(MainPage), jump_arguments);
                             }
                         }
+                        activate_1:
+                        Window.Current.Activate();
                     }
                     else
                     {
@@ -213,6 +212,34 @@ namespace Time_Sense
                                 m_element.Play();
                                 break;
                         }
+                        OnLaunched(null);
+                        /*if (rootFrame == null)
+                        {
+                            rootFrame = new Frame();
+
+                            rootFrame.NavigationFailed += OnNavigationFailed;
+
+                            if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                            {
+                            }
+
+                            Window.Current.Content = rootFrame;
+                        }
+
+                        if (rootFrame.Content == null)
+                        {
+                            if (password != "")
+                            {
+                                rootFrame.Navigate(typeof(PasswordPage), password);
+                                goto activate_3;
+                            }
+                            else
+                            {
+                                rootFrame.Navigate(typeof(MainPage), null);
+                            }
+                        }
+                        activate_3:
+                        Window.Current.Activate();*/
                     }
                 }
             }
@@ -225,8 +252,6 @@ namespace Time_Sense
                 App.t_client.TrackEvent("URI activated");
                 VoiceCommandActivatedEventArgs eventArgs = args as VoiceCommandActivatedEventArgs;
                 SpeechRecognitionResult result = eventArgs.Result;
-                Object password_obj = utilities.STATS.Values[settings.password];
-                string password = password_obj == null ? "" : password_obj.ToString();
                 if (eventArgs != null)
                 {
                     string result_str = result.RulePath.FirstOrDefault();
@@ -248,24 +273,39 @@ namespace Time_Sense
                             jump_arguments = null;
                             break;
                     }
-                    if (args.PreviousExecutionState == ApplicationExecutionState.Running)
-                    {
-                        rootFrame.Navigate(typeof(MainPage), jump_arguments);
-                    }
-                    else
-                    {
-                        if (password != "")
-                        {
-                            rootFrame.Navigate(typeof(PasswordPage), password);
-                            return;
-                        }
-                        else
-                        {
-                            rootFrame.Navigate(typeof(MainPage), jump_arguments);
-                        }
-                    }
                 }
             }
+            else
+            {
+                jump_arguments = null;
+            }
+            if (rootFrame == null)
+            {
+                rootFrame = new Frame();
+
+                rootFrame.NavigationFailed += OnNavigationFailed;
+
+                if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                {
+                }
+
+                Window.Current.Content = rootFrame;
+            }
+
+            if (rootFrame.Content == null)
+            {
+                if (password != "")
+                {
+                    rootFrame.Navigate(typeof(PasswordPage), password);
+                    goto activate_2;
+                }
+                else
+                {
+                    rootFrame.Navigate(typeof(MainPage), jump_arguments);
+                }
+            }
+            activate_2:
+            Window.Current.Activate();
         }
     }
 }
