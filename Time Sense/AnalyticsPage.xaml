@@ -312,7 +312,7 @@
                                                 <CheckBox Margin="0,6" x:Name="u_wifi">
                                                     <CheckBox.Content>
                                                         <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock VerticalAlignment="Top"/>
+                                                            <TextBlock Text="Wi-Fi" VerticalAlignment="Top"/>
                                                             <ComboBox Margin="6,0" x:Name="u_wifi_combo">
                                                                 <ComboBoxItem x:Uid="on_combo" IsSelected="True"/>
                                                                 <ComboBoxItem x:Uid="off_combo"/>
@@ -327,7 +327,7 @@
                                                 <CheckBox Margin="0,6" x:Name="u_bluetooth">
                                                     <CheckBox.Content>
                                                         <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock VerticalAlignment="Top"/>
+                                                            <TextBlock Text="Bluetooth" VerticalAlignment="Top"/>
                                                             <ComboBox Margin="6,0" x:Name="u_bluetooth_combo">
                                                                 <ComboBoxItem x:Uid="on_combo" IsSelected="True"/>
                                                                 <ComboBoxItem x:Uid="off_combo"/>
