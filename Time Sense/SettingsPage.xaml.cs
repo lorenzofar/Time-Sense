@@ -409,8 +409,8 @@ namespace Time_Sense
         {
             String recipient = "lorenzo.farinelli@outlook.it";
             EmailMessage feedback = new EmailMessage();
-            feedback.Subject = "Time Sense App";
-            feedback.Body = "Version 2.0 for Windows 10";
+            feedback.Subject = "Time Sense";
+            feedback.Body = "Version 2.0";
             var emailRecipient = new EmailRecipient(recipient);
             feedback.To.Add(emailRecipient);
             await EmailManager.ShowComposeNewEmailAsync(feedback);
