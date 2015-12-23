@@ -76,14 +76,14 @@ namespace Time_Sense
                 try
                 {
                     //DELETE RANGE
-                    int days = SettingsPage.delete_date[1].Date.Subtract(SettingsPage.delete_date[0].Date).Days;
+                    int days = App.range_end_date.Date.Subtract(App.range_start_date.Date).Days;
                     int step = 0;
                     var t = new List<Timeline>();
                     var r = new List<Report>();
                     var h = new List<Hour>();
                     for (int i = 0; i <= days; i++)
                     {
-                        string date_str = utilities.shortdate_form.Format(SettingsPage.delete_date[0].Date.AddDays(i));
+                        string date_str = utilities.shortdate_form.Format(App.range_start_date.Date.AddDays(i));
                         Report d_item = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
                         var t_list = await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).ToListAsync();
                         var h_list = await Helper.ConnectionDb().Table<Hour>().Where(x => x.date == date_str).ToListAsync();

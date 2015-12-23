@@ -23,6 +23,9 @@ namespace Time_Sense
 
         public static DateTime report_date = DateTime.Now;
 
+        public static DateTime range_start_date = DateTime.Now;
+        public static DateTime range_end_date = DateTime.Now;
+
         public MediaElement m_element = new MediaElement();
 
         public static bool dialog = false;

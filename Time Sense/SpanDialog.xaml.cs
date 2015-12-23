@@ -13,8 +13,8 @@ namespace Time_Sense
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            SettingsPage.delete_date[0] = startPick.Date.DateTime;
-            SettingsPage.delete_date[1] = endPick.Date.DateTime;
+            App.range_start_date = startPick.Date.DateTime;
+            App.range_end_date = endPick.Date.DateTime;
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

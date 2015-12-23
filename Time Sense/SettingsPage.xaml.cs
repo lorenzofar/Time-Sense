@@ -207,16 +207,14 @@ namespace Time_Sense
                 password_switch.IsOn = false;
             }
         }
-
-        public static DateTime[] delete_date = new DateTime[2];
-
+        
         private async void resetOne_btn_Click(object sender, RoutedEventArgs e)
         {
             SpanDialog r_dialog = new SpanDialog();
             var result = await r_dialog.ShowAsync();
             if(result == ContentDialogResult.Primary)
             {
-                if((delete_date[1].Date.Subtract(DateTime.Now.Date)).Days <= 0)
+                if((App.range_end_date.Date.Subtract(DateTime.Now.Date)).Days <= 0)
                 {
                     utilities.STATS.Values[settings.date] = DateTime.Now.ToString();
                 }
