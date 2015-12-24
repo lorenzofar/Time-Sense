@@ -55,11 +55,16 @@ namespace Time_Sense
             //Adding formula
             worksheet.Range["B6"].Formula = "SUM(B2:B4)";
             StorageFile doc = await KnownFolders.VideosLibrary.CreateFileAsync("timesense_export_test.xlsx", CreationCollisionOption.ReplaceExisting);
-            await worksheet.SaveAsAsync(doc, "sep");
+            await workbook.SaveAsAsync(doc);
             // Closing the workbook.
             workbook.Close();
             // Dispose the Excel engine
             excel_engine.Dispose();
+
+        }
+
+        private void save_btn_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
