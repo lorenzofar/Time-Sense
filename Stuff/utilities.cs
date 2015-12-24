@@ -15,7 +15,7 @@ namespace Stuff
     {
         public static DateTimeFormatter shortdate_form = new DateTimeFormatter("shortdate", new[] { "it-IT"});
         public static DateTimeFormatter longtime_form = new DateTimeFormatter("longtime", new[] { "it-IT" });
-        public static ApplicationDataContainer STATS = ApplicationData.Current.RoamingSettings;
+        public static ApplicationDataContainer STATS = ApplicationData.Current.LocalSettings;
         public static ResourceLoader loader { get; set; }
         //public static ResourceLoader loader = new ResourceLoader();
 

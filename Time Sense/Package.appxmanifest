@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="12096LorenzoFarinelli.TimeSenseBETA" Publisher="CN=3E2D7EAF-A13D-4A57-AE8E-57DDB1A19BAC" Version="2.12.0.0" />
+  <Identity Name="12096LorenzoFarinelli.TimeSenseBETA" Publisher="CN=3E2D7EAF-A13D-4A57-AE8E-57DDB1A19BAC" Version="2.12.1.0" />
   <mp:PhoneIdentity PhoneProductId="12176ce2-811e-4ef0-9e16-5bdad81e5705" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Time Sense BETA</DisplayName>
@@ -31,14 +31,21 @@
         </uap:InitialRotationPreference>
       </uap:VisualElements>
       <Extensions>
-        <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="timesense">
-            <uap:DisplayName>Time Sense</uap:DisplayName>
-          </uap:Protocol>
+        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.timer_task">
+          <BackgroundTasks>
+            <Task Type="timer" />
+          </BackgroundTasks>
+        </Extension>
+        <uap:Extension Category="windows.appService" EntryPoint="Tasks.service">
+          <uap:AppService Name="timesense.service" />
         </uap:Extension>
-        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.alert">
+        <uap:Extension Category="windows.appService" EntryPoint="Tasks.VoiceCommandService">
+          <uap:AppService Name="TimeSenseVoiceCommandService" />
+        </uap:Extension>
+        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.controller_lock">
           <BackgroundTasks>
             <Task Type="systemEvent" />
+            <Task Type="deviceUse" />
           </BackgroundTasks>
         </Extension>
         <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.controller_unlock">
@@ -47,23 +54,16 @@
             <Task Type="deviceUse" />
           </BackgroundTasks>
         </Extension>
-        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.controller_lock">
+        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.alert">
           <BackgroundTasks>
             <Task Type="systemEvent" />
-            <Task Type="deviceUse" />
           </BackgroundTasks>
         </Extension>
-        <uap:Extension Category="windows.appService" EntryPoint="Tasks.VoiceCommandService">
-          <uap:AppService Name="TimeSenseVoiceCommandService" />
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="timesense">
+            <uap:DisplayName>Time Sense</uap:DisplayName>
+          </uap:Protocol>
         </uap:Extension>
-        <uap:Extension Category="windows.appService" EntryPoint="Tasks.service">
-          <uap:AppService Name="timesense.service" />
-        </uap:Extension>
-        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.timer_task">
-          <BackgroundTasks>
-            <Task Type="timer" />
-          </BackgroundTasks>
-        </Extension>
       </Extensions>
     </Application>
   </Applications>
