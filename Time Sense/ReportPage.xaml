@@ -19,8 +19,8 @@
                 <Grid x:Name="time_grid" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
                     <Grid Background="{ThemeResource SystemControlBackgroundAccentBrush}" Opacity="0.35"/>
                     <StackPanel>
-                        <TextBlock x:Name="usage_txt" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource HeaderTextBlockStyle}" />
-                        <TextBlock x:Name="unlocks_txt" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}" />                        
+                        <TextBlock Text="{Binding usage}" x:Name="usage_txt" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock Text="{Binding unlocks}" x:Name="unlocks_txt" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}" />                        
                         <ProgressBar x:Name="bar" Height="6" Margin="0,6,0,0" HorizontalAlignment="Stretch" Value="100" Maximum="100"/>
                     </StackPanel>
                 </Grid>
@@ -46,7 +46,7 @@
                                     <chart:SfChart.SecondaryAxis>
                                         <chart:NumericalAxis Minimum="0"/>
                                     </chart:SfChart.SecondaryAxis>
-                                    <chart:ColumnSeries EnableAnimation="True" AnimationDuration="0:0:1" x:Name="chart_time" XBindingPath="date" YBindingPath="usage"/>
+                                    <chart:ColumnSeries ItemsSource="{Binding r_list}" EnableAnimation="True" AnimationDuration="0:0:1" x:Name="chart_time" XBindingPath="date" YBindingPath="usage"/>
                                 </chart:SfChart>
                                 <Grid Margin="0,12">
                                     <Grid.ColumnDefinitions>
@@ -56,22 +56,22 @@
                                     </Grid.ColumnDefinitions>
                                     <StackPanel>
                                         <StackPanel HorizontalAlignment="Center">
-                                            <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="max_time" FontSize="28"/>
-                                            <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="max_time_date"/>
+                                            <TextBlock Text="{Binding usage_max}" HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="max_time" FontSize="28"/>
+                                            <TextBlock Text="{Binding usage_max_date}" HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="max_time_date"/>
                                         </StackPanel>
                                         <TextBlock x:Uid="maximum" FontSize="18" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                     <StackPanel Grid.Column="1">
                                         <StackPanel HorizontalAlignment="Center">
-                                            <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="min_time" FontSize="28"/>
-                                            <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="min_time_date"/>
+                                            <TextBlock Text="{Binding usage_min}" HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="min_time" FontSize="28"/>
+                                            <TextBlock Text="{Binding usage_min_date}" HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="min_time_date"/>
                                         </StackPanel>
                                         <TextBlock x:Uid="minimum" FontSize="18" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                     <StackPanel Grid.Column="2">
                                         <StackPanel HorizontalAlignment="Center">
-                                            <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="avg_time" FontSize="28"/>
-                                            <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="avg_time_date"/>
+                                            <TextBlock Text="{Binding usage_avg}" HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="avg_time" FontSize="28"/>
+                                            <TextBlock Text="{Binding usage_avg_date}" HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="avg_time_date"/>
                                         </StackPanel>
                                         <TextBlock x:Uid="average" FontSize="18" HorizontalAlignment="Center"/>
                                     </StackPanel>
@@ -97,7 +97,7 @@
                                     <chart:SfChart.SecondaryAxis>
                                         <chart:NumericalAxis Minimum="0"/>
                                     </chart:SfChart.SecondaryAxis>
-                                    <chart:ColumnSeries EnableAnimation="True" AnimationDuration="0:0:1" x:Name="chart_unlocks" XBindingPath="date" YBindingPath="unlocks"/>
+                                    <chart:ColumnSeries ItemsSource="{Binding r_list}" EnableAnimation="True" AnimationDuration="0:0:1" x:Name="chart_unlocks" XBindingPath="date" YBindingPath="unlocks"/>
                                 </chart:SfChart>
                                 <Grid Margin="0,12">
                                     <Grid.ColumnDefinitions>
@@ -107,22 +107,22 @@
                                     </Grid.ColumnDefinitions>
                                     <StackPanel>
                                         <StackPanel HorizontalAlignment="Center">
-                                            <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="max_unlocks" FontSize="28"/>
-                                            <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="max_unlocks_date"/>
+                                            <TextBlock Text="{Binding unlocks_max}" HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="max_unlocks" FontSize="28"/>
+                                            <TextBlock Text="{Binding unlocks_max_date}" HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="max_unlocks_date"/>
                                         </StackPanel>
                                         <TextBlock x:Uid="maximum" FontSize="18" HorizontalAlignment="Center"/>                                            
                                     </StackPanel>
                                     <StackPanel Grid.Column="1">
                                         <StackPanel HorizontalAlignment="Center">
-                                            <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="min_unlocks" FontSize="28"/>
-                                            <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="min_unlocks_date"/>
+                                            <TextBlock Text="{Binding unlocks_min}" HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="min_unlocks" FontSize="28"/>
+                                            <TextBlock Text="{Binding unlocks_min_date}" HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="min_unlocks_date"/>
                                         </StackPanel>
                                         <TextBlock x:Uid="minimum" FontSize="18" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                     <StackPanel Grid.Column="2">
                                         <StackPanel HorizontalAlignment="Center">
-                                            <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="avg_unlocks" FontSize="28"/>
-                                            <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="avg_unlocks_date"/>
+                                            <TextBlock Text="{Binding unlocks_avg}" HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" x:Name="avg_unlocks" FontSize="28"/>
+                                            <TextBlock Text="{Binding unlocks_avg_date}" HorizontalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="avg_unlocks_date"/>
                                         </StackPanel>
                                         <TextBlock x:Uid="average" FontSize="18" HorizontalAlignment="Center"/>
                                     </StackPanel>

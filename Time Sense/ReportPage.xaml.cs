@@ -21,6 +21,25 @@ namespace Time_Sense
             public double usage { get; set; }
             public int unlocks { get; set; }
         }
+
+        public class ts_data
+        {
+            public string usage { get; set; }
+            public string unlocks { get; set; }
+            public string usage_max { get; set; }
+            public string usage_min { get; set; }
+            public string usage_avg { get; set; }
+            public string unlocks_max { get; set; }
+            public string unlocks_min { get; set; }
+            public string unlocks_avg { get; set; }
+            public string usage_max_date { get; set; }
+            public string usage_min_date { get; set; }
+            public string usage_avg_date { get; set; }
+            public string unlocks_max_date { get; set; }
+            public string unlocks_min_date { get; set; }
+            public string unlocks_avg_date { get; set; }
+            public List<Stats> r_list { get; set; }
+        }
         
         public List<Report> list = new List<Report>();
         public List<Stats> stats_list = new List<Stats>();
@@ -193,25 +212,24 @@ namespace Time_Sense
                     endDate = startDate.AddDays(span);
                 }
             }
-            usage_txt.Text = FormatData(usage);
-            unlocks_txt.Text = unlocks == 1 ? String.Format(utilities.loader.GetString("unlock"), unlocks) : String.Format(utilities.loader.GetString("unlocks"), unlocks);
-            max_time.Text = time_max == 0 ? "---" : FormatData(time_max);
-            max_time_date.Text = time_max_date;
-            max_unlocks.Text = unlocks_max == 0 ? "---" : unlocks_max.ToString();
-            max_unlocks_date.Text = unlocks_max_date;
-            min_time.Text = time_min == 86400 ? "---" : FormatData(time_min);
-            min_time_date.Text = time_min_date;
-            min_unlocks.Text = unlocks_min == 10000 ? "---" : unlocks_min.ToString();
-            avg_time.Text = avg_t != 0 ? FormatData(usage/avg_t) : "---";
+            ts_data ts = new ts_data();
+            ts.usage = FormatData(usage);
+            ts.unlocks = unlocks == 1 ? String.Format(utilities.loader.GetString("unlock"), unlocks) : String.Format(utilities.loader.GetString("unlocks"), unlocks);
+            ts.usage_max = time_max == 0 ? "---" : FormatData(time_max);
+            ts.usage_max_date = time_max_date;
+            ts.unlocks_max = unlocks_max == 0 ? "---" : unlocks_max.ToString();
+            ts.unlocks_max_date = unlocks_max_date;
+            ts.usage_min = time_min == 86400 ? "---" : FormatData(time_min);
+            ts.usage_min_date = time_min_date;
+            ts.unlocks_min = unlocks_min == 10000 ? "---" : unlocks_min.ToString();
+            ts.usage_avg = avg_t != 0 ? FormatData(usage/avg_t) : "---";
             double unlocks_avg = unlocks / avg_u;
-            avg_unlocks.Text = Math.Round(unlocks_avg, 2).ToString();
-            avg_time_date.Text = avg_t == 1 ? String.Format(utilities.loader.GetString("avg_day"), avg_t) : String.Format(utilities.loader.GetString("avg_days"), avg_t);
-            avg_unlocks_date.Text = avg_u == 1 ? String.Format(utilities.loader.GetString("avg_day"), avg_u) : String.Format(utilities.loader.GetString("avg_days"), avg_u);
-            min_unlocks_date.Text = unlocks_min_date;
-            chart_time.ItemsSource = null;
-            chart_time.ItemsSource = stats_list;
-            chart_unlocks.ItemsSource = null;
-            chart_unlocks.ItemsSource = stats_list;
+            ts.unlocks_avg = Math.Round(unlocks_avg, 2).ToString();
+            ts.usage_avg_date = avg_t == 1 ? String.Format(utilities.loader.GetString("avg_day"), avg_t) : String.Format(utilities.loader.GetString("avg_days"), avg_t);
+            ts.unlocks_avg_date = avg_u == 1 ? String.Format(utilities.loader.GetString("avg_day"), avg_u) : String.Format(utilities.loader.GetString("avg_days"), avg_u);
+            ts.unlocks_min_date = unlocks_min_date;
+            ts.r_list = stats_list;
+            this.DataContext = ts;
             MainPage.title.Text = utilities.shortdate_form.Format(startDate) + " - " + utilities.shortdate_form.Format(endDate);
             root.Visibility = Visibility.Visible;
             ring.IsActive = false;
