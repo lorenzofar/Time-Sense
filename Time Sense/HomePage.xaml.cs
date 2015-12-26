@@ -22,6 +22,28 @@ namespace Time_Sense
 
         MediaElement m_element = new MediaElement();
 
+        public class ts_data
+        {
+            public string usage { get; set; }
+            public string unlocks { get; set; }
+            public string perc_str { get; set; }
+            public int perc { get; set; }
+            public string usage_max { get; set; }
+            public string usage_min { get; set; }
+            public string usage_avg { get; set; }
+            public string unlocks_max { get; set; }
+            public string unlocks_min { get; set; }
+            public string unlocks_avg { get; set; }
+            public string battery_usage { get; set; }
+            public string battery_unlocks { get; set; }
+            public Visibility ch_panel { get; set; }
+            public Visibility notch_panel { get; set; }
+            public List<Hour> h_list { get; set; }
+            public Visibility note_panel { get; set; }
+            public Visibility nonote_panel { get; set; }
+            public string note { get; set; }
+        }
+
         static int[] time = new int[2];
         static int[] unlocks = new int[2];
         static int[] total_seconds = new int[2];
@@ -48,7 +70,6 @@ namespace Time_Sense
                 MainPage.parameter = null;
             }
             App.jump_arguments = null;
-            LoadBatteryData();
             ButtonSwitch(true);
         }
 
@@ -58,7 +79,6 @@ namespace Time_Sense
             App.t_client.TrackEvent("Usage refreshed");
             refresh();
             await ShowData();
-            LoadBatteryData();
             ButtonSwitch(true);
         }
 
@@ -230,61 +250,54 @@ namespace Time_Sense
                 unlocks_total += item.unlocks;
                 hour_list.Add(item);
             }
-            max_time.Text = time_helper == 0 ? "---" : time_helper.ToString();
-            max_unlocks.Text = unlocks_helper == 0 ? "---" : unlocks_helper.ToString();
-            min_time.Text = time_min_helper == 1000 ? "---" : time_min_helper.ToString();
-            min_unlocks.Text = unlocks_min_helper == 1000 ? "---" : unlocks_min_helper.ToString();
-            avg_time.Text = Math.Round((time_total / avg_t), 2).ToString();
-            avg_unlocks.Text = Math.Round((unlocks_total / avg_u), 2).ToString();
-            usage_txt.Text = FormatData(time[1]);
-            unlocks_txt.Text = unlocks[1] == 1 ? String.Format(utilities.loader.GetString("unlock"), unlocks[1]) : String.Format(utilities.loader.GetString("unlocks"), unlocks[1]);
-            perc_txt.Text = ((time[1] * 100) / 86400).ToString() + "%";
-            bar.Value = time[1];
-            chart_time.ItemsSource = hour_list;
-            chart_unlocks.ItemsSource = hour_list;
-            MainPage.title.Text = App.report_date.Date == DateTime.Now.Date ? utilities.loader.GetString("today") : App.report_date.Date == DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0, 0)).Date ? utilities.loader.GetString("yesterday") : utilities.shortdate_form.Format(App.report_date);
-            LoadNote();
-            if (App.report_date.Date == DateTime.Now.Date)
-            {
-                UpdateTile();
-            }
-        }
 
-        private async void LoadNote()
-        {
+            ts_data ts = new ts_data();
+
+            ts.usage_max = time_helper == 0 ? "---" : time_helper.ToString();
+            ts.unlocks_max = unlocks_helper == 0 ? "---" : unlocks_helper.ToString();
+            ts.usage_min = time_min_helper == 1000 ? "---" : time_min_helper.ToString();
+            ts.unlocks_min = unlocks_min_helper == 1000 ? "---" : unlocks_min_helper.ToString();
+            ts.usage_avg = Math.Round((time_total / avg_t), 2).ToString();
+            ts.unlocks_avg = Math.Round((unlocks_total / avg_u), 2).ToString();
+            ts.usage = FormatData(time[1]);
+            ts.unlocks = unlocks[1] == 1 ? String.Format(utilities.loader.GetString("unlock"), unlocks[1]) : String.Format(utilities.loader.GetString("unlocks"), unlocks[1]);
+            ts.perc_str = ((time[1] * 100) / 86400).ToString() + "%";
+            ts.perc = time[1];
+            ts.h_list = hour_list;
+
+            //LOAD NOTE
             string date_str = utilities.shortdate_form.Format(App.report_date);
             var report = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
             if (report != null)
             {
-                note_txt.Text = report.note == null ? "" : report.note;
-                no_note_txt.Visibility = report.note == null || report.note == "" ? Visibility.Visible : Visibility.Collapsed;
-                note_txt.Visibility = report.note == null || report.note == "" ? Visibility.Collapsed : Visibility.Visible;
+                ts.note = report.note == null ? "" : report.note;
+                ts.nonote_panel = report.note == null || report.note == "" ? Visibility.Visible : Visibility.Collapsed;
+                ts.note_panel = report.note == null || report.note == "" ? Visibility.Collapsed : Visibility.Visible;
             }
             else
             {
-                note_txt.Text = "";
-                no_note_txt.Visibility = Visibility.Visible;
-                note_txt.Visibility = Visibility.Collapsed;
+                ts.note = "";
+                ts.nonote_panel = Visibility.Visible;
+                ts.note_panel = Visibility.Collapsed;
             }
-        }
 
-        private async void LoadBatteryData()
-        {
+            //BATTERY DATA
             if (Windows.Devices.Power.Battery.AggregateBattery.GetReport().Status == Windows.System.Power.BatteryStatus.Charging)
             {
-                notch_panel.Visibility = Visibility.Collapsed;
-                ch_panel.Visibility = Visibility.Visible;
+                ts.notch_panel = Visibility.Collapsed;
+                ts.ch_panel = Visibility.Visible;
             }
             else
             {
-                notch_panel.Visibility = Visibility.Visible;
-                ch_panel.Visibility = Visibility.Collapsed;
+                ts.notch_panel = Visibility.Visible;
+                ts.ch_panel = Visibility.Collapsed;
                 var list = await Helper.ConnectionDb().Table<Timeline>().ToListAsync();
-                int list_count = list.Count-1;
+                int list_count = list.Count - 1;
                 int batt_time = 0;
                 int battery = 0;
                 int batt_unlocks = 0;
-                if (list_count > 0) {
+                if (list_count > 0)
+                {
                     do
                     {
                         try
@@ -297,7 +310,8 @@ namespace Time_Sense
                                 battery = item.battery;
                             }
                         }
-                        catch(Exception e) {
+                        catch (Exception e)
+                        {
                             App.t_client.TrackException(new ExceptionTelemetry(e));
                         }
                         finally
@@ -312,8 +326,16 @@ namespace Time_Sense
                     batt_time = time[1];
                     batt_unlocks = unlocks[1];
                 }
-                usage_batt_txt.Text = FormatData(batt_time);
-                unlocks_batt_txt.Text = batt_unlocks == 1 ? String.Format(utilities.loader.GetString("unlock"), batt_unlocks) : String.Format(utilities.loader.GetString("unlocks"), batt_unlocks);
+                ts.battery_usage = FormatData(batt_time);
+                ts.battery_unlocks = batt_unlocks == 1 ? String.Format(utilities.loader.GetString("unlock"), batt_unlocks) : String.Format(utilities.loader.GetString("unlocks"), batt_unlocks);
+            }
+
+            this.DataContext = ts;
+
+            MainPage.title.Text = App.report_date.Date == DateTime.Now.Date ? utilities.loader.GetString("today") : App.report_date.Date == DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0, 0)).Date ? utilities.loader.GetString("yesterday") : utilities.shortdate_form.Format(App.report_date);
+            if (App.report_date.Date == DateTime.Now.Date)
+            {
+                UpdateTile();
             }
         }
 
@@ -375,7 +397,6 @@ namespace Time_Sense
             {
                 if (App.report_date.Date == DateTime.Now.Date) { refresh(); }
                 await ShowData();
-                LoadBatteryData();
             }
             ButtonSwitch(true);
         }
@@ -387,7 +408,6 @@ namespace Time_Sense
             App.report_date = App.report_date.Subtract(new TimeSpan(1, 0, 0, 0));
             if (App.report_date.Date == DateTime.Now.Date) { refresh(); }
             await ShowData();
-            LoadBatteryData();
             ButtonSwitch(true);
         }
 
@@ -398,7 +418,6 @@ namespace Time_Sense
             App.report_date = App.report_date.AddDays(1);
             if (App.report_date.Date == DateTime.Now.Date) { refresh(); }
             await ShowData();
-            LoadBatteryData();
             ButtonSwitch(true);
         }
         
