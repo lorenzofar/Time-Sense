@@ -57,7 +57,7 @@
                                 </chart:NumericalAxis.LabelTemplate>
                             </chart:NumericalAxis>
                         </chart:SfChart.SecondaryAxis>
-                        <chart:SplineAreaSeries EnableAnimation="True" AnimationDuration="0:0:1"  x:Name="chart_time" XBindingPath="unlocks" YBindingPath="usage"/>
+                        <chart:SplineAreaSeries ItemsSource="{Binding t_list}" EnableAnimation="True" AnimationDuration="0:0:1"  x:Name="chart_time" XBindingPath="unlocks" YBindingPath="usage"/>
                     </chart:SfChart>
                 </PivotItem>
                 <PivotItem>
@@ -86,7 +86,7 @@
                                 </chart:NumericalAxis.LabelTemplate>
                             </chart:NumericalAxis>
                         </chart:SfChart.SecondaryAxis>
-                        <chart:AreaSeries EnableAnimation="True" AnimationDuration="0:0:1" x:Name="chart_battery" XBindingPath="unlocks" YBindingPath="battery"/>
+                        <chart:AreaSeries ItemsSource="{Binding t_list}" EnableAnimation="True" AnimationDuration="0:0:1" x:Name="chart_battery" XBindingPath="unlocks" YBindingPath="battery"/>
                     </chart:SfChart>
                 </PivotItem>
             </Pivot>
@@ -129,8 +129,8 @@
                         <ProgressRing x:Name="ring" IsActive="False" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Viewbox>
-                <TextBlock Visibility="Collapsed" x:Name="no_item_txt" HorizontalAlignment="Center" TextWrapping="WrapWholeWords" Margin="0,24" Grid.Row="1" x:Uid="no_items_txt" FontSize="{Binding FontSize, ElementName=timeline_header}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
-                <ListView x:Name="timeline_list" SelectionMode="Single" Grid.Row="1" SelectionChanged="timeline_list_SelectionChanged">
+                <TextBlock Visibility="{Binding no_item}" x:Name="no_item_txt" HorizontalAlignment="Center" TextWrapping="WrapWholeWords" Margin="0,24" Grid.Row="1" x:Uid="no_items_txt" FontSize="{Binding FontSize, ElementName=timeline_header}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
+                <ListView ItemsSource="{Binding t_list}" x:Name="timeline_list" SelectionMode="Single" Grid.Row="1" SelectionChanged="timeline_list_SelectionChanged">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -196,11 +196,11 @@
         </Grid.Resources>
     </Grid>
     <Page.BottomAppBar>
-        <CommandBar>
-            <AppBarButton x:Uid="back_bar" Icon="Back" x:Name="back_timeline_bar" Click="back_timeline_bar_Click"/>
-            <AppBarButton x:Uid="forward_bar" x:Name="forward_timeline_bar" Icon="Forward" Click="forward_timeline_bar_Click"/>
-            <AppBarButton x:Uid="date_bar" x:Name="date_timeline_bar" Icon="Calendar" Click="date_timeline_bar_Click"/>
-            <AppBarButton x:Uid="refresh_bar" x:Name="refresh_timeline_bar" Icon="Refresh" Click="refresh_timeline_bar_Click"/>
+        <CommandBar x:Name="bottom_bar">
+            <AppBarButton x:Uid="back_bar" Icon="Back" Click="back_timeline_bar_Click"/>
+            <AppBarButton x:Uid="forward_bar" Icon="Forward" Click="forward_timeline_bar_Click"/>
+            <AppBarButton x:Uid="date_bar" Icon="Calendar" Click="date_timeline_bar_Click"/>
+            <AppBarButton x:Uid="refresh_bar" Icon="Refresh" Click="refresh_timeline_bar_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

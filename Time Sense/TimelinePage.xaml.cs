@@ -27,6 +27,12 @@ namespace Time_Sense
 
         public Pointer pointer { get; set; }
 
+        public class ts_data
+        {
+            public List<Timeline> t_list { get; set; }
+            public Visibility no_item { get; set; }
+        }
+
         public TimelinePage()
         {
             try
@@ -54,20 +60,18 @@ namespace Time_Sense
             Button_switch(false);
             ring.IsActive = true;
             timeline_list.Visibility = Visibility.Collapsed;
-            timeline_list.ItemsSource = null;
-            chart_time.ItemsSource = null;
-            chart_battery.ItemsSource = null;
             list_raw = await Helper.GetTimelineList(App.report_date);
-            list_raw = list_raw.OrderBy(z => z.unlocks).ToList();                     
-            timeline_list.ItemsSource = list_raw;
-            chart_time.ItemsSource = list_raw;
-            chart_battery.ItemsSource = list_raw;
+            list_raw = list_raw.OrderBy(z => z.unlocks).ToList();
+            this.DataContext = new ts_data
+            {
+                t_list = list_raw,
+                no_item = list_raw.Count == 0 ? Visibility.Visible : Visibility.Collapsed
+            };
             MainPage.title.Text = App.report_date.Date == DateTime.Now.Date ? utilities.loader.GetString("today") : App.report_date.Date == DateTime.Now.Subtract(new TimeSpan(1,0,0,0,0)).Date ? utilities.loader.GetString("yesterday") : utilities.shortdate_form.Format(App.report_date);
             ring_box.Visibility = Visibility.Collapsed;
             ring.IsActive = false;
             timeline_list.Visibility = Visibility.Visible;
             Button_switch(true);
-            no_item_txt.Visibility = list_raw.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private async void date_timeline_bar_Click(object sender, RoutedEventArgs e)
@@ -108,7 +112,7 @@ namespace Time_Sense
 
         private void timeline_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var item = (Database.Timeline)timeline_list.SelectedValue;
+            var item = (Timeline)timeline_list.SelectedValue;
             if (item != null)
             {
                 if (item.latitude != 0 || item.longitude != 0)
@@ -167,10 +171,7 @@ namespace Time_Sense
 
         public void Button_switch(bool enabled)
         {
-            back_timeline_bar.IsEnabled = enabled;
-            forward_timeline_bar.IsEnabled = enabled;
-            date_timeline_bar.IsEnabled = enabled;
-            refresh_timeline_bar.IsEnabled = enabled;
+            bottom_bar.IsEnabled = enabled;
         }
     }
 }

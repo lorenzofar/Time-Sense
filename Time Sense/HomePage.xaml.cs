@@ -447,10 +447,7 @@ namespace Time_Sense
 
         public void ButtonSwitch(bool enabled)
         {
-            back_report_bar.IsEnabled = enabled;
-            forward_report_bar.IsEnabled = enabled;
-            date_report_bar.IsEnabled = enabled;
-            refresh_bar.IsEnabled = enabled;
+            bottom_bar.IsEnabled = enabled;
         }
 
         private async void note_edit_btn_Click(object sender, RoutedEventArgs e)

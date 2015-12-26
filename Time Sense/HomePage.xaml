@@ -350,24 +350,21 @@
     <Page.BottomAppBar>
         <CommandBar
             HorizontalAlignment="Right"
-            ClosedDisplayMode="Compact">
+            ClosedDisplayMode="Compact"
+            x:Name="bottom_bar">
             <AppBarButton
-                x:Name="back_report_bar"
                 x:Uid="back_bar"
                 Click="back_report_bar_Click"
                 Icon="Back" />
             <AppBarButton
-                x:Name="forward_report_bar"
                 x:Uid="forward_bar"
                 Click="forward_report_bar_Click"
                 Icon="Forward" />
             <AppBarButton
-                x:Name="date_report_bar"
                 x:Uid="date_bar"
                 Click="date_report_bar_Click"
                 Icon="Calendar" />
             <AppBarButton
-                x:Name="refresh_bar"
                 x:Uid="refresh_bar"
                 HorizontalAlignment="Right"
                 Click="refresh_home"
