@@ -67,6 +67,8 @@ namespace Time_Sense
                 t_list = list_raw,
                 no_item = list_raw.Count == 0 ? Visibility.Visible : Visibility.Collapsed
             };
+            timeline_list.ItemsSource = null;
+            timeline_list.ItemsSource = list_raw;
             MainPage.title.Text = App.report_date.Date == DateTime.Now.Date ? utilities.loader.GetString("today") : App.report_date.Date == DateTime.Now.Subtract(new TimeSpan(1,0,0,0,0)).Date ? utilities.loader.GetString("yesterday") : utilities.shortdate_form.Format(App.report_date);
             ring_box.Visibility = Visibility.Collapsed;
             ring.IsActive = false;
