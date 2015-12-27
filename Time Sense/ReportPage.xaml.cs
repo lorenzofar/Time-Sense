@@ -175,7 +175,7 @@ namespace Time_Sense
                 for (int i = 0; i <= span; i++)
                 {
                     DateTime dt = startDate.AddDays(i);
-                    int[] data = await Database.Helper.LoadReportItem(dt);
+                    int[] data = await Helper.LoadReportItem(dt);
                     usage += data[0];
                     unlocks += data[1];
                     if (data[1] > unlocks_max)
@@ -235,6 +235,10 @@ namespace Time_Sense
             ring.IsActive = false;
             ring_box.Visibility = Visibility.Collapsed;
             range_btn.IsEnabled = true;
+            chart_time.ItemsSource = null;
+            chart_unlocks.ItemsSource = null;
+            chart_time.ItemsSource = stats_list;
+            chart_unlocks.ItemsSource = stats_list;
         }
 
         private String FormatData(int usage)
