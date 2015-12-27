@@ -37,6 +37,12 @@ namespace Time_Sense
             {
                 HideBar();
             }
+            else
+            {
+                try { RegisterTaskTimer(); } catch { }
+                try { RegisterTaskTimer2(); } catch { }
+                try { RegisterTaskTimer3(); } catch { }
+            }
             InitializeLocation();
             CheckDialogs();
         }
@@ -45,7 +51,7 @@ namespace Time_Sense
         {
             var view = ApplicationView.GetForCurrentView();
             var bar = StatusBar.GetForCurrentView();
-            await bar.HideAsync(); // IF RUNNING ON MOBILE, HIDE THE STATUS BAR
+            await bar.HideAsync();
             Windows.Phone.UI.Input.HardwareButtons.BackPressed += HardwareButtons_BackPressed;
         }
         
@@ -118,7 +124,6 @@ namespace Time_Sense
                         home_btn.IsChecked = false;
                         settings_btn.IsChecked = true;
                         break;
-
                 }
             }
         }
@@ -191,27 +196,6 @@ namespace Time_Sense
             builder.Name = "timesense_alert";
             builder.TaskEntryPoint = "Tasks.alert";
             builder.SetTrigger(new ToastNotificationActionTrigger());
-            BackgroundExecutionManager.RemoveAccess();
-            BackgroundAccessStatus x = await BackgroundExecutionManager.RequestAccessAsync();
-            if (x != BackgroundAccessStatus.Denied)
-            {
-                BackgroundTaskRegistration mytask = builder.Register();
-                mytask.Completed += Mytask_Completed;
-            }
-        }
-        private async void RegisterTaskReach()
-        {
-            foreach (var task in BackgroundTaskRegistration.AllTasks)
-            {
-                if (task.Value.Name == "timesense_reach")
-                {
-                    return;
-                }
-            }
-            var builder = new BackgroundTaskBuilder();
-            builder.Name = "timesense_reach";
-            builder.TaskEntryPoint = "Tasks.limitreach";
-            builder.SetTrigger(new ToastNotificationHistoryChangedTrigger());
             BackgroundExecutionManager.RemoveAccess();
             BackgroundAccessStatus x = await BackgroundExecutionManager.RequestAccessAsync();
             if (x != BackgroundAccessStatus.Denied)

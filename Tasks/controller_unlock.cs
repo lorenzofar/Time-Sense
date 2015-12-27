@@ -8,6 +8,7 @@ using Stuff;
 using Windows.Storage;
 using Windows.UI.Notifications;
 using Windows.Data.Xml.Dom;
+using Database;
 
 namespace Tasks
 {
@@ -20,20 +21,19 @@ namespace Tasks
         {
             BackgroundTaskDeferral _deferral = taskInstance.GetDeferral();
             utilities.STATS.Values[settings.date] = DateTime.Now.ToString();
-            await Database.Helper.InitializeDatabase();
+            await Helper.InitializeDatabase();
             string date_str = utilities.shortdate_form.Format(DateTime.Now);
-            var item = await Database.Helper.ConnectionDb().Table<Database.Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
+            var item = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
             time = item == null ? 0 : item.usage;
-            var unlocks_list = await Database.Helper.ConnectionDb().Table<Database.Timeline>().Where(x => x.date == date_str).ToListAsync();
-            unlocks = unlocks_list.Count + 1;
-            await Database.Helper.UpdateHourItem(DateTime.Now, DateTime.Now.Hour, 0, 1);
+            unlocks = ((await Helper.ConnectionDb().Table<Timeline>().ToListAsync()).Count) + 1;
+            await Helper.UpdateHourItem(DateTime.Now, DateTime.Now.Hour, 0, 1);
             var radios = await Windows.Devices.Radios.Radio.GetRadiosAsync();
             var bluetooth_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.Bluetooth).FirstOrDefault();
             var wifi_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.WiFi).FirstOrDefault();
             string bluetooth = bluetooth_device == null ? "off" : bluetooth_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
             string wifi = wifi_device == null ? "off" : wifi_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
             string battery = Windows.Devices.Power.Battery.AggregateBattery.GetReport().Status == Windows.System.Power.BatteryStatus.Charging ? "charging" : "null";
-            await Database.Helper.AddTimelineItem(DateTime.Now, utilities.longtime_form.Format(DateTime.Now), unlocks, Windows.System.Power.PowerManager.RemainingChargePercent, battery, bluetooth, wifi);
+            await Helper.AddTimelineItem(DateTime.Now, utilities.longtime_form.Format(DateTime.Now), unlocks, Windows.System.Power.PowerManager.RemainingChargePercent, battery, bluetooth, wifi);
             UpdateTile();
             CheckLimit();
             //REGISTER NEW BACKGROUND TASK IF THE PREVIOUS WAS CANCELED (ONLY ON PCS)
