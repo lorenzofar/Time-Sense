@@ -21,10 +21,7 @@ namespace Stuff
 
         public static bool CheckDate(string setting)
         {
-            bool data = false;
-            Object data_obj = STATS.Values[setting];
-            data = data_obj == null ? false : true;
-            return data;
+            return STATS.Values[setting] == null ? false : true;
         }
 
         public static string TileXmlBuilder(string usage, int unlocks, bool badge)

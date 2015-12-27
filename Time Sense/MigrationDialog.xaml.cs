@@ -146,21 +146,18 @@ namespace Time_Sense
                         bar.Value = step;
                         migrate_progress.Text = String.Format(utilities.loader.GetString("migrate_dialog_progress"), step, max);
                     }
-                    MessageDialog success = new MessageDialog(utilities.loader.GetString("migrate_dialog_success"), utilities.loader.GetString("success"));
-                    await success.ShowAsync();
+                    await new MessageDialog(utilities.loader.GetString("migrate_dialog_success"), utilities.loader.GetString("success")).ShowAsync();
                     this.Hide();
                 }
                 catch
                 {
-                    MessageDialog error = new MessageDialog(utilities.loader.GetString("migrate_dialog_error"), utilities.loader.GetString("error"));
-                    await error.ShowAsync();
+                    await new MessageDialog(utilities.loader.GetString("migrate_dialog_error"), utilities.loader.GetString("error")).ShowAsync();
                     this.Hide();
                 }
             }
             else
             {
-                MessageDialog success = new MessageDialog(utilities.loader.GetString("migrate_dialog_unpresent"), utilities.loader.GetString("error"));
-                await success.ShowAsync();
+                await new MessageDialog(utilities.loader.GetString("migrate_dialog_unpresent"), utilities.loader.GetString("error")).ShowAsync();
                 this.Hide();
             }
         }

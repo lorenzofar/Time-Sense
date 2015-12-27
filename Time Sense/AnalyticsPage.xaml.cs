@@ -157,8 +157,7 @@ namespace Time_Sense
                         }
                         catch
                         {
-                            MessageDialog usagemax_error = new MessageDialog(utilities.loader.GetString("error_timemax"), utilities.loader.GetString("error"));
-                            await usagemax_error.ShowAsync();
+                            await new MessageDialog(utilities.loader.GetString("error_timemax"), utilities.loader.GetString("error")).ShowAsync();
                             d_usage_max_box.Focus(FocusState.Programmatic);
                             goto hidering_d;
                         }
@@ -173,8 +172,7 @@ namespace Time_Sense
                         }
                         catch
                         {
-                            MessageDialog usagemin_error = new MessageDialog(utilities.loader.GetString("error_timemin"), utilities.loader.GetString("error"));
-                            await usagemin_error.ShowAsync();
+                            await new MessageDialog(utilities.loader.GetString("error_timemin"), utilities.loader.GetString("error")).ShowAsync();
                             d_usage_min_box.Focus(FocusState.Programmatic);
                             goto hidering_d;
                         }
@@ -188,8 +186,7 @@ namespace Time_Sense
                         }
                         catch
                         {
-                            MessageDialog unlocksmax_error = new MessageDialog(utilities.loader.GetString("error_unlocksmax"), utilities.loader.GetString("error"));
-                            await unlocksmax_error.ShowAsync();
+                            await new MessageDialog(utilities.loader.GetString("error_unlocksmax"), utilities.loader.GetString("error")).ShowAsync();
                             d_unlocks_max_box.Focus(FocusState.Programmatic);
                             goto hidering_d;
                         }
@@ -203,8 +200,7 @@ namespace Time_Sense
                         }
                         catch
                         {
-                            MessageDialog unlocksmin_error = new MessageDialog(utilities.loader.GetString("error_unlocksmin"), utilities.loader.GetString("error"));
-                            await unlocksmin_error.ShowAsync();
+                            await new MessageDialog(utilities.loader.GetString("error_unlocksmin"), utilities.loader.GetString("error")).ShowAsync();
                             d_unlocks_min_box.Focus(FocusState.Programmatic);
                             goto hidering_d;
                         }
@@ -264,8 +260,7 @@ namespace Time_Sense
                         }
                         catch
                         {
-                            MessageDialog usagemax_error = new MessageDialog(utilities.loader.GetString("error_timemax"), utilities.loader.GetString("error"));
-                            await usagemax_error.ShowAsync();
+                            await new MessageDialog(utilities.loader.GetString("error_timemax"), utilities.loader.GetString("error")).ShowAsync();
                             u_usage_max_box.Focus(FocusState.Programmatic);
                             goto hidering;
                         }
@@ -280,8 +275,7 @@ namespace Time_Sense
                         }
                         catch
                         {
-                            MessageDialog usagemin_error = new MessageDialog(utilities.loader.GetString("error_timemin"), utilities.loader.GetString("error"));
-                            await usagemin_error.ShowAsync();
+                            await new MessageDialog(utilities.loader.GetString("error_timemin"), utilities.loader.GetString("error")).ShowAsync();
                             u_usage_min_box.Focus(FocusState.Programmatic);
                             goto hidering;
                         }
@@ -295,8 +289,7 @@ namespace Time_Sense
                         }
                         catch
                         {
-                            MessageDialog unlocksmax_error = new MessageDialog(utilities.loader.GetString("error_unlocksmax"), utilities.loader.GetString("error"));
-                            await unlocksmax_error.ShowAsync();
+                            await new MessageDialog(utilities.loader.GetString("error_unlocksmax"), utilities.loader.GetString("error")).ShowAsync();
                             u_unlocks_max_box.Focus(FocusState.Programmatic);
                             goto hidering;
                         }
@@ -310,8 +303,7 @@ namespace Time_Sense
                         }
                         catch
                         {
-                            MessageDialog unlocksmin_error = new MessageDialog(utilities.loader.GetString("error_unlocksmin"), utilities.loader.GetString("error"));
-                            await unlocksmin_error.ShowAsync();
+                            await new MessageDialog(utilities.loader.GetString("error_unlocksmin"), utilities.loader.GetString("error")).ShowAsync();
                             u_unlocks_min_box.Focus(FocusState.Programmatic);
                             goto hidering;
                         }
@@ -325,8 +317,7 @@ namespace Time_Sense
                         }
                         catch
                         {
-                            MessageDialog batmax_error = new MessageDialog(utilities.loader.GetString("error_batmax"), utilities.loader.GetString("error"));
-                            await batmax_error.ShowAsync();
+                            await new MessageDialog(utilities.loader.GetString("error_batmax"), utilities.loader.GetString("error")).ShowAsync();
                             u_battery_max_box.Focus(FocusState.Programmatic);
                             goto hidering;
                         }
@@ -340,8 +331,7 @@ namespace Time_Sense
                         }
                         catch
                         {
-                            MessageDialog batmin_error = new MessageDialog(utilities.loader.GetString("error_batmin"), utilities.loader.GetString("error"));
-                            await batmin_error.ShowAsync();
+                            await new MessageDialog(utilities.loader.GetString("error_batmin"), utilities.loader.GetString("error")).ShowAsync();
                             u_battery_min_box.Focus(FocusState.Programmatic);
                             goto hidering;
                         }

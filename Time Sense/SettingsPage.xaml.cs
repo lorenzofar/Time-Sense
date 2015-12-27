@@ -160,11 +160,9 @@ namespace Time_Sense
                 }
                 else
                 {
-                    MessageDialog password_error = new MessageDialog(utilities.loader.GetString("password_error"), utilities.loader.GetString("error"));
-                    await password_error.ShowAsync();
+                    await new MessageDialog(utilities.loader.GetString("password_error"), utilities.loader.GetString("error")).ShowAsync();
                     password_box.Focus(FocusState.Programmatic);
-                }
-                
+                }                
             }
         }
 
@@ -210,9 +208,7 @@ namespace Time_Sense
         
         private async void resetOne_btn_Click(object sender, RoutedEventArgs e)
         {
-            SpanDialog r_dialog = new SpanDialog();
-            var result = await r_dialog.ShowAsync();
-            if(result == ContentDialogResult.Primary)
+            if((await new SpanDialog().ShowAsync()) == ContentDialogResult.Primary)
             {
                 if((App.range_end_date.Date.Subtract(DateTime.Now.Date)).Days <= 0)
                 {
@@ -240,13 +236,11 @@ namespace Time_Sense
             bool success = await Helper.DeleteData(args.NewDate.DateTime);
             if (!success)
             {
-                MessageDialog delete_error_message = new MessageDialog(utilities.loader.GetString("delete_dialog_error"), utilities.loader.GetString("error"));
-                await delete_error_message.ShowAsync();
+                await new MessageDialog(utilities.loader.GetString("delete_dialog_error"), utilities.loader.GetString("error")).ShowAsync();
             }
             else
             {
-                MessageDialog success_error_message = new MessageDialog(utilities.loader.GetString("delete_dialog_success"), utilities.loader.GetString("success"));
-                await success_error_message.ShowAsync();
+                await new MessageDialog(utilities.loader.GetString("delete_dialog_success"), utilities.loader.GetString("success")).ShowAsync();
             }
         }
 
@@ -260,8 +254,7 @@ namespace Time_Sense
             { 
                 App.t_client.TrackEvent("Reset all");
                 utilities.STATS.Values[settings.date] = DateTime.Now.ToString();
-                DeleteDialog delete_dialog = new DeleteDialog(0);
-                await delete_dialog.ShowAsync();
+                await new DeleteDialog(0).ShowAsync();
             }
         }
 
@@ -275,8 +268,7 @@ namespace Time_Sense
                 App.t_client.TrackEvent("Backup saved");
                 StorageFile database = await ApplicationData.Current.LocalFolder.GetFileAsync("timesense_database.db");
                 await database.CopyAsync(folder, "timesense_backup.db", NameCollisionOption.GenerateUniqueName);
-                MessageDialog backup_success = new MessageDialog(utilities.loader.GetString("backup_dialog_success"), utilities.loader.GetString("success"));
-                await backup_success.ShowAsync();
+                await new MessageDialog(utilities.loader.GetString("backup_dialog_success"), utilities.loader.GetString("success")).ShowAsync();
             }
         }
 
@@ -289,18 +281,16 @@ namespace Time_Sense
             {
                 App.t_client.TrackEvent("Backup restored");
                 file = await file.CopyAsync(ApplicationData.Current.TemporaryFolder, "temp", NameCollisionOption.GenerateUniqueName);
-                bool valid = await Database.Helper.CheckIntegrity(file.Path);
+                bool valid = await Helper.CheckIntegrity(file.Path);
                 if (valid)
                 {
                     await file.CopyAsync(ApplicationData.Current.LocalFolder, "timesense_database.db", NameCollisionOption.ReplaceExisting);
                     utilities.STATS.Values[settings.date] = null;
-                    MessageDialog success = new MessageDialog(utilities.loader.GetString("restore_dialog_success"), utilities.loader.GetString("success"));
-                    await success.ShowAsync();
+                    await new MessageDialog(utilities.loader.GetString("restore_dialog_success"), utilities.loader.GetString("success")).ShowAsync();
                 }
                 else
                 {
-                    MessageDialog error = new MessageDialog(utilities.loader.GetString("restore_dialog_error"), utilities.loader.GetString("error"));
-                    await error.ShowAsync();
+                    await new MessageDialog(utilities.loader.GetString("restore_dialog_error"), utilities.loader.GetString("error")).ShowAsync();
                 }
             }
         }
@@ -399,8 +389,7 @@ namespace Time_Sense
         private async void migrate_btn_Click(object sender, RoutedEventArgs e)
         {
             App.t_client.TrackEvent("Data migrated");
-            MigrationDialog m_dialog = new MigrationDialog();
-            await m_dialog.ShowAsync();
+            await new MigrationDialog().ShowAsync();
         }
 
         private async void feedback_btn_Click(object sender, RoutedEventArgs e)
@@ -423,8 +412,7 @@ namespace Time_Sense
         private async void guide_settngs_btn_Click(object sender, RoutedEventArgs e)
         {
             App.t_client.TrackEvent("Help button");
-            WelcomeDialog dialog = new WelcomeDialog();
-            await dialog.ShowAsync();
+            await new WelcomeDialog().ShowAsync();
         }
 
         private void letters_switch_Toggled(object sender, RoutedEventArgs e)
@@ -475,8 +463,7 @@ namespace Time_Sense
             nfc_device.StopPublishingMessage(messageId);
             messageId0 = messageId;
             subscriptionId = nfc_device.SubscribeForMessage("NDEF", MessageReceivedHandler);
-            MessageDialog nfc_dialog = new MessageDialog(utilities.loader.GetString("nfc_success_content"), utilities.loader.GetString("nfc_success_title"));
-            await nfc_dialog.ShowAsync();
+            await new MessageDialog(utilities.loader.GetString("nfc_success_content"), utilities.loader.GetString("nfc_success_title")).ShowAsync();
         }
 
         private void MessageReceivedHandler(ProximityDevice sender, ProximityMessage message)

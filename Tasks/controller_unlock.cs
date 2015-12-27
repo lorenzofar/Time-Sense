@@ -34,8 +34,8 @@ namespace Tasks
             string wifi = wifi_device == null ? "off" : wifi_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
             string battery = Windows.Devices.Power.Battery.AggregateBattery.GetReport().Status == Windows.System.Power.BatteryStatus.Charging ? "charging" : "null";
             await Helper.AddTimelineItem(DateTime.Now, utilities.longtime_form.Format(DateTime.Now), unlocks, Windows.System.Power.PowerManager.RemainingChargePercent, battery, bluetooth, wifi);
-            UpdateTile();
             CheckLimit();
+            UpdateTile();
             //REGISTER NEW BACKGROUND TASK IF THE PREVIOUS WAS CANCELED (ONLY ON PCS)
             if (!Windows.Foundation.Metadata.ApiInformation.IsEventPresent("Windows.Phone.UI.Input.HardwareButtons", "BackPressed"))
             {
@@ -43,7 +43,8 @@ namespace Tasks
                 try { RegisterTaskTimer2(); } catch { }
                 try { RegisterTaskTimer3(); } catch { }
             }
-            _deferral.Complete();        }
+            _deferral.Complete();
+        }
 
         private void UpdateTile()
         {

@@ -23,18 +23,18 @@ namespace Time_Sense
             {
                 try
                 {
-                    await Database.Helper.InitializeDatabase();
+                    await Helper.InitializeDatabase();
                     int step = 0;
-                    var report_query = await Database.Helper.ConnectionDb().Table<Database.Report>().ToListAsync();
-                    var hour_query = await Database.Helper.ConnectionDb().Table<Database.Hour>().ToListAsync();
-                    var timeline_query = await Database.Helper.ConnectionDb().Table<Database.Timeline>().ToListAsync();
+                    var report_query = await Helper.ConnectionDb().Table<Report>().ToListAsync();
+                    var hour_query = await Helper.ConnectionDb().Table<Hour>().ToListAsync();
+                    var timeline_query = await Helper.ConnectionDb().Table<Timeline>().ToListAsync();
                     int max = report_query.Count + hour_query.Count + timeline_query.Count;
                     bar.Maximum = max;
                     foreach (var item in report_query)
                     {
                         if (item != null)
                         {
-                            await Database.Helper.ConnectionDb().DeleteAsync(item);
+                            await Helper.ConnectionDb().DeleteAsync(item);
                             step++;
                             bar.Value = step;
                             delete_progress.Text = String.Format(utilities.loader.GetString("delete_dialog_progress"), step, max);
@@ -44,7 +44,7 @@ namespace Time_Sense
                     {
                         if (item != null)
                         {
-                            await Database.Helper.ConnectionDb().DeleteAsync(item);
+                            await Helper.ConnectionDb().DeleteAsync(item);
                             step++;
                             bar.Value = step;
                             delete_progress.Text = String.Format(utilities.loader.GetString("delete_dialog_progress"), step, max);
@@ -54,20 +54,18 @@ namespace Time_Sense
                     {
                         if (item != null)
                         {
-                            await Database.Helper.ConnectionDb().DeleteAsync(item);
+                            await Helper.ConnectionDb().DeleteAsync(item);
                             step++;
                             bar.Value = step;
                             delete_progress.Text = String.Format(utilities.loader.GetString("delete_dialog_progress"), step, max);
                         }
                     }
-                    MessageDialog success_error_message = new MessageDialog(utilities.loader.GetString("delete_dialog_success"), utilities.loader.GetString("success"));
-                    await success_error_message.ShowAsync();
+                    await new MessageDialog(utilities.loader.GetString("delete_dialog_success"), utilities.loader.GetString("success")).ShowAsync();
                     this.Hide();
                 }
                 catch
                 {
-                    MessageDialog delete_error_message = new MessageDialog(utilities.loader.GetString("delete_dialog_error"), utilities.loader.GetString("error"));
-                    await delete_error_message.ShowAsync();
+                    await new MessageDialog(utilities.loader.GetString("delete_dialog_error"), utilities.loader.GetString("error")).ShowAsync();
                     this.Hide();
                 }
             }
@@ -138,14 +136,12 @@ namespace Time_Sense
                             delete_progress.Text = String.Format(utilities.loader.GetString("delete_dialog_progress"), step, max);
                         }
                     }
-                    MessageDialog success_error_message = new MessageDialog(utilities.loader.GetString("delete_dialog_success"), utilities.loader.GetString("success"));
-                    await success_error_message.ShowAsync();
+                    await new MessageDialog(utilities.loader.GetString("delete_dialog_success"), utilities.loader.GetString("success")).ShowAsync();
                     this.Hide();
                 }
                 catch
                 {
-                    MessageDialog delete_error_message = new MessageDialog(utilities.loader.GetString("delete_dialog_error"), utilities.loader.GetString("error"));
-                    await delete_error_message.ShowAsync();
+                    await new MessageDialog(utilities.loader.GetString("delete_dialog_error"), utilities.loader.GetString("error")).ShowAsync();
                     this.Hide();
                 }
 

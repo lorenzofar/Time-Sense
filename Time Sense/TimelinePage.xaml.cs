@@ -79,9 +79,7 @@ namespace Time_Sense
         private async void date_timeline_bar_Click(object sender, RoutedEventArgs e)
         {
             App.t_client.TrackEvent("Calendar shown");
-            DateDialog date_dialog = new DateDialog();
-            ContentDialogResult result = await date_dialog.ShowAsync();
-            if (result == ContentDialogResult.Primary)
+            if ((await new DateDialog().ShowAsync()) == ContentDialogResult.Primary)
             {
                 LoadData();
             }

@@ -62,16 +62,22 @@ namespace Time_Sense
             await CheckBattery();
         }
 
+        private async Task CheckUpdate()
+        {
+            if (utilities.STATS.Values[settings.version] == null)
+            {
+                await new WelcomeDialog().ShowAsync();
+                utilities.STATS.Values[settings.version] = "10";
+            }
+        }
+
         private async Task CheckBattery()
         {
             Windows.System.Power.EnergySaverStatus saver = Windows.System.Power.PowerManager.EnergySaverStatus;
-            Object dialog_obj = utilities.STATS.Values[settings.battery_dialog];
-            bool d = dialog_obj == null ? true : false;
-            if (saver == Windows.System.Power.EnergySaverStatus.On && d)
+            if (saver == Windows.System.Power.EnergySaverStatus.On && utilities.STATS.Values[settings.battery_dialog] == null)
             {
                 App.t_client.TrackEvent("Battery dialog shown");
-                BatterySaverDialog dialog = new BatterySaverDialog();
-                await dialog.ShowAsync();
+                await new BatterySaverDialog().ShowAsync();
             }
         }
 
@@ -82,18 +88,6 @@ namespace Time_Sense
                 var accessStatus = await Geolocator.RequestAccessAsync();
             }
             catch { }
-        }
-
-        private async Task CheckUpdate()
-        {
-            Object vers = utilities.STATS.Values[settings.version];
-            bool ver = vers == null ? true : false;
-            if (ver)
-            {
-                WelcomeDialog w_dialog = new WelcomeDialog();
-                await w_dialog.ShowAsync();
-                utilities.STATS.Values[settings.version] = "10";
-            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -331,11 +325,10 @@ namespace Time_Sense
         }
         #endregion
 
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             App.t_client.TrackEvent("Hamburger_btn");
-            splitview.IsPaneOpen = !splitview.IsPaneOpen; // OPENS OR CLOSES THE SPLITVIEW PANE
+            splitview.IsPaneOpen = !splitview.IsPaneOpen;
         }
 
         private async void nav_btn_checked(object sender, RoutedEventArgs e)
@@ -361,7 +354,6 @@ namespace Time_Sense
                     fr.Navigate(typeof(ExportPage), null);
                     break;
                 case "analytics_btn":
-                //CHECK PURCHASE
                     try
                     {
                         license = CurrentApp.LicenseInformation;
@@ -370,9 +362,8 @@ namespace Time_Sense
                             fr.Navigate(typeof(AnalyticsPage), null);
                         }
                         else
-                        {
-                            PurchaseDialog p_dialog = new PurchaseDialog();
-                            var result = await p_dialog.ShowAsync();
+                        {                            
+                            var result = await new PurchaseDialog().ShowAsync();
                             if (result == ContentDialogResult.Primary)
                             {
                                 try
@@ -400,8 +391,7 @@ namespace Time_Sense
                                 }
                                 catch
                                 {
-                                    MessageDialog transaction_error = new MessageDialog(utilities.loader.GetString("error_transaction"), utilities.loader.GetString("error"));
-                                    await transaction_error.ShowAsync();
+                                    await new MessageDialog(utilities.loader.GetString("error_transaction"), utilities.loader.GetString("error")).ShowAsync();
                                     home_btn.IsChecked = true;
                                     analytics_btn.IsChecked = false;
                                 }
@@ -423,8 +413,7 @@ namespace Time_Sense
                     }
                     catch
                     {
-                        MessageDialog transaction_error = new MessageDialog(utilities.loader.GetString("error_transaction_internet"), utilities.loader.GetString("error"));
-                        await transaction_error.ShowAsync();
+                        await new MessageDialog(utilities.loader.GetString("error_transaction_internet"), utilities.loader.GetString("error")).ShowAsync();
                         home_btn.IsChecked = true;
                         analytics_btn.IsChecked = false;
                         home_btn.IsChecked = true;
