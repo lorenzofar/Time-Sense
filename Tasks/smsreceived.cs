@@ -3,14 +3,14 @@ using Windows.Devices.Sms;
 
 namespace Tasks
 {
-    public sealed class smsreceived : IBackgroundTask
+    public sealed class smsreceived //: IBackgroundTask
     {
-        private SmsDevice2 device = null;
+        /*private SmsDevice2 device = null;
 
         public void Run(IBackgroundTaskInstance taskInstance)
         {
             BackgroundTaskDeferral _deferral = taskInstance.GetDeferral();
-            /*SmsMessageReceivedTriggerDetails smsDetails = taskInstance.TriggerDetails as SmsMessageReceivedTriggerDetails;
+            SmsMessageReceivedTriggerDetails smsDetails = taskInstance.TriggerDetails as SmsMessageReceivedTriggerDetails;
             SmsTextMessage2 message;
             if(smsDetails.MessageType == SmsMessageType.Text)
             {
@@ -174,8 +174,8 @@ namespace Tasks
             else
             {
                 smsDetails.Accept();
-            }*/
+            }
             _deferral.Complete();
-        }
+        }*/
     }
 }

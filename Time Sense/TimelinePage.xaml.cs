@@ -27,7 +27,7 @@ namespace Time_Sense
 
         public Pointer pointer { get; set; }
 
-        public class ts_data
+        private class ts_data
         {
             public List<Timeline> t_list { get; set; }
             public Visibility no_item { get; set; }
