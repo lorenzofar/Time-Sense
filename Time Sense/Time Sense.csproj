@@ -133,9 +133,6 @@
     <Compile Include="DeleteDialog.xaml.cs">
       <DependentUpon>DeleteDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExportPage.xaml.cs">
-      <DependentUpon>ExportPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -214,10 +211,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ExportPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="HomePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -279,17 +272,14 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Syncfusion.SfChart.UWP, Version=13.3460.0.7, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Syncfusion\13.3.0.7\Assemblies for Universal Windows\10.0\Syncfusion.SfChart.UWP.dll</HintPath>
+    <Reference Include="Syncfusion.SfChart.UWP">
+      <HintPath>D:\Syncfusion\13.3.0.7\Assemblies for Universal Windows\10.0\Syncfusion.SfChart.UWP.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfShared.UWP, Version=13.3460.0.7, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Syncfusion\13.3.0.7\Assemblies for Universal Windows\10.0\Syncfusion.SfShared.UWP.dll</HintPath>
+    <Reference Include="Syncfusion.SfShared.UWP">
+      <HintPath>D:\Syncfusion\13.3.0.7\Assemblies for Universal Windows\10.0\Syncfusion.SfShared.UWP.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.XlsIO.UWP, Version=13.3460.0.7, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Syncfusion\13.3.0.7\Assemblies for Universal Windows\10.0\Syncfusion.XlsIO.UWP.dll</HintPath>
+    <Reference Include="Syncfusion.XlsIO.UWP">
+      <HintPath>D:\Syncfusion\13.3.0.7\Assemblies for Universal Windows\10.0\Syncfusion.XlsIO.UWP.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

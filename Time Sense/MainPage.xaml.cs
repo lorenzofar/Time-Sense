@@ -350,9 +350,6 @@ namespace Time_Sense
                 case "total_btn":
                     fr.Navigate(typeof(ReportPage), null);
                     break;
-                case "export_btn":
-                    fr.Navigate(typeof(ExportPage), null);
-                    break;
                 case "analytics_btn":
                     try
                     {
