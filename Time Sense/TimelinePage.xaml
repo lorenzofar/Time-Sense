@@ -201,6 +201,13 @@
             <AppBarButton x:Uid="forward_bar" Icon="Forward" Click="forward_timeline_bar_Click"/>
             <AppBarButton x:Uid="date_bar" Icon="Calendar" Click="date_timeline_bar_Click"/>
             <AppBarButton x:Uid="refresh_bar" Icon="Refresh" Click="refresh_timeline_bar_Click"/>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton
+                    x:Uid="export_bar"
+                    x:Name="export_bar"
+                    Label="Export to Excel"
+                    Click="export_bar_Click"/>
+            </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

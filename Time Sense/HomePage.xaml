@@ -369,7 +369,13 @@
                 HorizontalAlignment="Right"
                 Click="refresh_home"
                 Icon="Refresh" />
-            <CommandBar.SecondaryCommands />
+            <CommandBar.SecondaryCommands>
+                <AppBarButton
+                    x:Uid="export_bar"
+                    x:Name="export_bar"
+                    Label="Export to Excel"
+                    Click="export_bar_Click"/>
+            </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

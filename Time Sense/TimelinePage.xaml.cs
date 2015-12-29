@@ -173,5 +173,10 @@ namespace Time_Sense
         {
             bottom_bar.IsEnabled = enabled;
         }
+
+        private void export_bar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
