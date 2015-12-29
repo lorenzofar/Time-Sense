@@ -711,7 +711,7 @@
     <value>No items were found</value>
   </data>
   <data name="range_dialog.PrimaryButtonText" xml:space="preserve">
-    <value>Delete</value>
+    <value>Choose</value>
   </data>
   <data name="range_dialog.SecondaryButtonText" xml:space="preserve">
     <value>Cancel</value>
