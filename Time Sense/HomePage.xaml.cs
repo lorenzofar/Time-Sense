@@ -489,9 +489,9 @@ namespace Time_Sense
             }
         }
 
-        private void export_bar_Click(object sender, RoutedEventArgs e)
+        private async void export_bar_Click(object sender, RoutedEventArgs e)
         {
-
+            await ExcelExporter.CreateExcelReport();
         }
     }    
 }

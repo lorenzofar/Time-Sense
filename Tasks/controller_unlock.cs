@@ -25,7 +25,7 @@ namespace Tasks
             string date_str = utilities.shortdate_form.Format(DateTime.Now);
             var item = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
             time = item == null ? 0 : item.usage;
-            unlocks = ((await Helper.ConnectionDb().Table<Timeline>().ToListAsync()).Count) + 1;
+            unlocks = ((await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).ToListAsync()).Count) + 1;
             await Helper.UpdateHourItem(DateTime.Now, DateTime.Now.Hour, 0, 1);
             var radios = await Windows.Devices.Radios.Radio.GetRadiosAsync();
             var bluetooth_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.Bluetooth).FirstOrDefault();
