@@ -78,9 +78,12 @@ namespace Time_Sense
                     }
                     worksheet.Range["A1:I1"].CellStyle = banner_style;
                     var unlocks_list = await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).ToListAsync();
+                    object[] chart_battery = new object[unlocks_list.Count];
+                    object[] chart_unlocks = new object[unlocks_list.Count];
                     foreach (var unlock in unlocks_list)
                     {
                         //TIMELINE
+                        int index = unlocks_list.IndexOf(unlock);
                         int r = unlocks_list.IndexOf(unlock) + 2;
                         worksheet.Range[String.Format("A{0}", r.ToString())].Text = unlock.time;
                         worksheet.Range[String.Format("B{0}", r.ToString())].Text = utilities.FormatData(int.Parse(unlock.usage.ToString()));
@@ -92,13 +95,26 @@ namespace Time_Sense
                         worksheet.Range[String.Format("H{0}", r.ToString())].Number = Math.Round(unlock.latitude, 3);
                         worksheet.Range[String.Format("I{0}", r.ToString())].Number = Math.Round(unlock.longitude, 3);
                         worksheet.Range[String.Format("A{0}:I{0}", r.ToString())].CellStyle = table_style;
+                        chart_battery[index] = unlock.battery;
+                        chart_unlocks[index] = unlock.unlocks;
                     }
+                    //DAILY OVERVIEW
                     worksheet.Range["K1"].Text = "Total usage:";
                     worksheet.Range["K2"].Text = "Total unlocks:";
                     worksheet.Range["L1"].Text = utilities.FormatData(item.usage);
                     worksheet.Range["L2"].Number = item.unlocks;
                     worksheet.Range["K1:K2"].CellStyle = bold_style;
                     worksheet.Range["L1:L2"].CellStyle = overview_style;
+                    //BATTERY CHART
+                    if (unlocks_list.Count != 0) {
+                        IChartShape chart = worksheet.Charts.Add();
+                        IChartSerie serie = chart.Series.Add(ExcelChartType.Area);
+                        serie.EnteredDirectlyValues = chart_battery;
+                        serie.EnteredDirectlyCategoryLabels = chart_unlocks;
+                        chart.ChartTitle = "Battery";
+                        chart.HasLegend = false;
+                        System.Diagnostics.Debug.WriteLine(chart.XPos + " " + chart.YPos);
+                    }
                     worksheet.UsedRange.AutofitColumns();
                 }
             }
