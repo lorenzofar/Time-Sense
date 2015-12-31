@@ -734,4 +734,31 @@
   <data name="thanks_german.Text" xml:space="preserve">
     <value>- german translation</value>
   </data>
+  <data name="excel_banner_bluetooth" xml:space="preserve">
+    <value>Bluetooth</value>
+  </data>
+  <data name="excel_banner_charging" xml:space="preserve">
+    <value>Charging</value>
+  </data>
+  <data name="excel_banner_latitude" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="excel_banner_longitude" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="excel_banner_unlocks" xml:space="preserve">
+    <value>Unlocks</value>
+  </data>
+  <data name="excel_banner_usage" xml:space="preserve">
+    <value>Usage</value>
+  </data>
+  <data name="excel_banner_wifi" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="excel_banner_battery" xml:space="preserve">
+    <value>Battery</value>
+  </data>
+  <data name="excel_banner_time" xml:space="preserve">
+    <value>Time</value>
+  </data>
 </root>

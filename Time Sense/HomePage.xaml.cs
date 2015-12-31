@@ -12,6 +12,8 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Windows.Storage.Pickers;
+using Windows.Storage;
 
 namespace Time_Sense
 {
@@ -491,7 +493,19 @@ namespace Time_Sense
 
         private async void export_bar_Click(object sender, RoutedEventArgs e)
         {
-            await ExcelExporter.CreateExcelReport();
+            var span_result = await new SpanDialog().ShowAsync();
+            if (span_result == Windows.UI.Xaml.Controls.ContentDialogResult.Primary)
+            {
+                FileSavePicker export_picker = new FileSavePicker();
+                export_picker.DefaultFileExtension = ".xlsx";
+                export_picker.FileTypeChoices.Add("Excel file", new List<string>() { ".xlsx" });
+                StorageFile export_file = await export_picker.PickSaveFileAsync();
+                if (export_file != null)
+                {
+                    await ExcelExporter.CreateExcelReport(export_file);
+                    //await new MessageDialog("The Excel report has been succesfully created").ShowAsync();
+                }
+            }
         }
     }    
 }
