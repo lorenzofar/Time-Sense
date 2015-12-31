@@ -92,14 +92,13 @@ namespace Time_Sense
                         worksheet.Range[String.Format("H{0}", r.ToString())].Number = Math.Round(unlock.latitude, 3);
                         worksheet.Range[String.Format("I{0}", r.ToString())].Number = Math.Round(unlock.longitude, 3);
                         worksheet.Range[String.Format("A{0}:I{0}", r.ToString())].CellStyle = table_style;
-
-                        worksheet.Range["K1"].Text = "Total usage:";
-                        worksheet.Range["K2"].Text = "Total unlocks:";
-                        worksheet.Range["L1"].Text = utilities.FormatData(item.usage);
-                        worksheet.Range["L2"].Number = item.unlocks;
-                        worksheet.Range["K1:K2"].CellStyle = bold_style;
-                        worksheet.Range["L1:L2"].CellStyle = overview_style;
                     }
+                    worksheet.Range["K1"].Text = "Total usage:";
+                    worksheet.Range["K2"].Text = "Total unlocks:";
+                    worksheet.Range["L1"].Text = utilities.FormatData(item.usage);
+                    worksheet.Range["L2"].Number = item.unlocks;
+                    worksheet.Range["K1:K2"].CellStyle = bold_style;
+                    worksheet.Range["L1:L2"].CellStyle = overview_style;
                     worksheet.UsedRange.AutofitColumns();
                 }
             }
