@@ -496,7 +496,7 @@ namespace Time_Sense
         {
             try {
                 var span_result = await new SpanDialog().ShowAsync();
-                if (span_result == Windows.UI.Xaml.Controls.ContentDialogResult.Primary)
+                if (span_result == Windows.UI.Xaml.Controls.ContentDialogResult.Primary)      
                 {
                     FileSavePicker export_picker = new FileSavePicker();
                     export_picker.DefaultFileExtension = ".xlsx";
@@ -512,7 +512,7 @@ namespace Time_Sense
                         {
                             success = false;
                         }
-                        //await new MessageDialog(success == true ? utilities.loader.GetString("excel_success") : utilities.loader.GetString("excel_error")).ShowAsync();
+                        await new MessageDialog(success == true ? utilities.loader.GetString("excel_success") : utilities.loader.GetString("excel_error")).ShowAsync();
                     }
                 }
             }
