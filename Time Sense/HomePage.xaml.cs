@@ -504,15 +504,15 @@ namespace Time_Sense
                     StorageFile export_file = await export_picker.PickSaveFileAsync();
                     if (export_file != null)
                     {
-                        bool success = true;
+                        //bool success = true;
                         try {
                             ExcelExporter.CreateExcelReport(export_file);
                         }
                         catch
                         {
-                            success = false;
+                            //success = false;
                         }
-                        await new MessageDialog(success == true ? utilities.loader.GetString("excel_success") : utilities.loader.GetString("excel_error")).ShowAsync();
+                        //await new MessageDialog(success == true ? utilities.loader.GetString("excel_success") : utilities.loader.GetString("excel_error")).ShowAsync();
                     }
                 }
             }
