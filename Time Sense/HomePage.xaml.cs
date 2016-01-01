@@ -333,9 +333,12 @@ namespace Time_Sense
                 ts.battery_unlocks = batt_unlocks == 1 ? String.Format(utilities.loader.GetString("unlock"), batt_unlocks) : String.Format(utilities.loader.GetString("unlocks"), batt_unlocks);
             }
 
-            this.DataContext = ts;
+            await Dispatcher.RunAsync(CoreDispatcherPriority.High, () =>
+            {
+                this.DataContext = ts;
 
-            MainPage.title.Text = App.report_date.Date == DateTime.Now.Date ? utilities.loader.GetString("today") : App.report_date.Date == DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0, 0)).Date ? utilities.loader.GetString("yesterday") : utilities.shortdate_form.Format(App.report_date);
+                MainPage.title.Text = App.report_date.Date == DateTime.Now.Date ? utilities.loader.GetString("today") : App.report_date.Date == DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0, 0)).Date ? utilities.loader.GetString("yesterday") : utilities.shortdate_form.Format(App.report_date);
+            });
             if (App.report_date.Date == DateTime.Now.Date)
             {
                 UpdateTile();
@@ -498,21 +501,34 @@ namespace Time_Sense
                 var span_result = await new SpanDialog().ShowAsync();
                 if (span_result == Windows.UI.Xaml.Controls.ContentDialogResult.Primary)      
                 {
-                    FileSavePicker export_picker = new FileSavePicker();
-                    export_picker.DefaultFileExtension = ".xlsx";
-                    export_picker.FileTypeChoices.Add("Excel file", new List<string>() { ".xlsx" });
-                    StorageFile export_file = await export_picker.PickSaveFileAsync();
-                    if (export_file != null)
+                    if (App.range_start_date < App.range_end_date)
                     {
-                        //bool success = true;
-                        try {
-                            ExcelExporter.CreateExcelReport(export_file);
-                        }
-                        catch
+                        FileSavePicker export_picker = new FileSavePicker();
+                        export_picker.DefaultFileExtension = ".xlsx";
+                        export_picker.SuggestedFileName = String.Format("timesense_{0}-{1}", utilities.shortdate_form.Format(App.range_start_date), utilities.shortdate_form.Format(App.range_end_date));
+                        export_picker.FileTypeChoices.Add("Excel file", new List<string>() { ".xlsx" });
+                        StorageFile export_file = await export_picker.PickSaveFileAsync();
+                        if (export_file != null)
                         {
-                            //success = false;
+                            bool success = true;
+                            try
+                            {
+                                await  ExcelExporter.CreateExcelReport(export_file);
+                            }
+                            catch
+                            {
+                                success = false;
+                            }
+                            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                            {
+                                new MessageDialog(success == true ? utilities.loader.GetString("excel_success") : utilities.loader.GetString("excel_error")).ShowAsync();
+                            });
+                            //
                         }
-                        //await new MessageDialog(success == true ? utilities.loader.GetString("excel_success") : utilities.loader.GetString("excel_error")).ShowAsync();
+                    }
+                    else
+                    {
+                        await  new MessageDialog("The start date must be before the end date", utilities.loader.GetString("error")).ShowAsync();
                     }
                 }
             }

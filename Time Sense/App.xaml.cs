@@ -41,6 +41,11 @@ namespace Time_Sense
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            this.Resuming += App_Resuming;
+        }
+
+        private void App_Resuming(object sender, object e)
+        {
         }
 
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
@@ -130,8 +135,8 @@ namespace Time_Sense
 
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
-            var deferral = e.SuspendingOperation.GetDeferral();
-            deferral.Complete();
+            //var deferral = e.SuspendingOperation.GetDeferral();
+            //deferral.Complete();
         }
 
         protected override async void OnActivated(IActivatedEventArgs args)

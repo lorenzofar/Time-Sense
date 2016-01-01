@@ -13,7 +13,7 @@ namespace Time_Sense
         static string[] timeline_header = { "excel_banner_time", "excel_banner_usage", "excel_banner_unlocks", "excel_banner_battery", "excel_banner_charging", "excel_banner_wifi", "excel_banner_bluetooth", "excel_banner_latitude", "excel_banner_longitude" };
         static string[] timeline_alphabet = { "A", "B", "C", "D", "E", "F", "G", "H", "I" };
 
-        public static async void CreateExcelReport(StorageFile export_file)
+        public static async Task CreateExcelReport(StorageFile export_file)
         {
             DateTime start_date = App.range_start_date;
             DateTime end_date = App.range_end_date;
