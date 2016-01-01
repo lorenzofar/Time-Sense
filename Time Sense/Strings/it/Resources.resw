@@ -761,4 +761,46 @@
   <data name="excel_banner_wifi" xml:space="preserve">
     <value>Wi-Fi</value>
   </data>
+  <data name="Excel_average_unlocks" xml:space="preserve">
+    <value>Media sblocchi:</value>
+  </data>
+  <data name="Excel_average_usage" xml:space="preserve">
+    <value>Media utilizzo:</value>
+  </data>
+  <data name="Excel_creation" xml:space="preserve">
+    <value>Data di creazione:</value>
+  </data>
+  <data name="Excel_days" xml:space="preserve">
+    <value>Giorni analizzati:</value>
+  </data>
+  <data name="excel_error" xml:space="preserve">
+    <value>Si è verificato un errore, riprova per favore</value>
+  </data>
+  <data name="Excel_overview" xml:space="preserve">
+    <value>Riepilogo</value>
+  </data>
+  <data name="Excel_range" xml:space="preserve">
+    <value>Periodo di analisi:</value>
+  </data>
+  <data name="excel_success" xml:space="preserve">
+    <value>Il file Excel è stato salvato correttamente</value>
+  </data>
+  <data name="Excel_total_unlocks" xml:space="preserve">
+    <value>Sblocchi totali:</value>
+  </data>
+  <data name="Excel_total_usage" xml:space="preserve">
+    <value>Utilizzo totale:</value>
+  </data>
+  <data name="Excel_version" xml:space="preserve">
+    <value>Versione app:</value>
+  </data>
+  <data name="export_bar.Label" xml:space="preserve">
+    <value>Esporta</value>
+  </data>
+  <data name="status_off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="status_on" xml:space="preserve">
+    <value>On</value>
+  </data>
 </root>

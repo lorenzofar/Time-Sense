@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.Storage.Pickers;
 using Windows.Storage;
+using Windows.UI.Core;
 
 namespace Time_Sense
 {
@@ -493,19 +494,29 @@ namespace Time_Sense
 
         private async void export_bar_Click(object sender, RoutedEventArgs e)
         {
-            var span_result = await new SpanDialog().ShowAsync();
-            if (span_result == Windows.UI.Xaml.Controls.ContentDialogResult.Primary)
-            {
-                FileSavePicker export_picker = new FileSavePicker();
-                export_picker.DefaultFileExtension = ".xlsx";
-                export_picker.FileTypeChoices.Add("Excel file", new List<string>() { ".xlsx" });
-                StorageFile export_file = await export_picker.PickSaveFileAsync();
-                if (export_file != null)
+            try {
+                var span_result = await new SpanDialog().ShowAsync();
+                if (span_result == Windows.UI.Xaml.Controls.ContentDialogResult.Primary)
                 {
-                    await ExcelExporter.CreateExcelReport(export_file);
-                    //await new MessageDialog("The Excel report has been succesfully created").ShowAsync();
+                    FileSavePicker export_picker = new FileSavePicker();
+                    export_picker.DefaultFileExtension = ".xlsx";
+                    export_picker.FileTypeChoices.Add("Excel file", new List<string>() { ".xlsx" });
+                    StorageFile export_file = await export_picker.PickSaveFileAsync();
+                    if (export_file != null)
+                    {
+                        bool success = true;
+                        try {
+                            ExcelExporter.CreateExcelReport(export_file);
+                        }
+                        catch
+                        {
+                            success = false;
+                        }
+                        //await new MessageDialog(success == true ? utilities.loader.GetString("excel_success") : utilities.loader.GetString("excel_error")).ShowAsync();
+                    }
                 }
             }
+            catch { }
         }
     }    
 }

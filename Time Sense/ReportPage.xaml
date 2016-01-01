@@ -137,13 +137,6 @@
     <Page.BottomAppBar>
         <CommandBar x:Name="report_command" HorizontalAlignment="Right">
             <AppBarButton x:Uid="range_btn" x:Name="range_btn" Icon="Trim" Click="range_btn_Click_1"/>
-            <CommandBar.SecondaryCommands>
-                <AppBarButton
-                    x:Uid="export_bar"
-                    x:Name="export_bar"
-                    Label="Export to Excel"
-                    Click="export_bar_Click"/>
-            </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>
