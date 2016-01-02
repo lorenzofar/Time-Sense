@@ -184,7 +184,7 @@
                 </StackPanel>
                 <StackPanel x:Name="about_grid" RelativePanel.Below="backup_grid" Margin="0,6" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" HorizontalAlignment="Stretch">
                     <TextBlock x:Uid="about_banner" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <TextBlock Margin="0,3,0,0" Text="Time Sense 2.0"/>
+                    <TextBlock Margin="0,3,0,0" Text="Time Sense 2.1"/>
                     <TextBlock Text="© 2015 Lorenzo Farinelli"/>
                     <TextBlock Margin="0,3,0,0" x:Uid="thanks_banner"/>
                     <StackPanel Orientation="Horizontal">
