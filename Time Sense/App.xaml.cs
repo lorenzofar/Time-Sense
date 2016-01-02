@@ -118,20 +118,22 @@ namespace Time_Sense
             /*var storageFile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///TimeSenseCommands.xml"));
             await Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(storageFile);
             */
-            
-            var jump_list = await JumpList.LoadCurrentAsync();
-            jump_list.Items.Clear();
-            jump_list.SystemGroupKind = JumpListSystemGroupKind.None;
-            JumpListItem j_timeline = JumpListItem.CreateWithArguments("timeline", utilities.loader.GetString("jump_timeline"));
-            JumpListItem j_report = JumpListItem.CreateWithArguments("report", utilities.loader.GetString("jump_report"));
-            JumpListItem j_settings = JumpListItem.CreateWithArguments("settings", utilities.loader.GetString("jump_settings"));
-            j_settings.Logo = new Uri("ms-appx:///Assets/settings.png");
-            j_report.Logo = new Uri("ms-appx:///Assets/report.png");
-            j_timeline.Logo = new Uri("ms-appx:///Assets/list.png");
-            jump_list.Items.Add(j_timeline);
-            jump_list.Items.Add(j_report);
-            jump_list.Items.Add(j_settings);
-            await jump_list.SaveAsync();
+            if (Windows.Foundation.Metadata.ApiInformation.IsEventPresent("Windows.UI.StartScreen", "JumpList"))
+            {
+                var jump_list = await JumpList.LoadCurrentAsync();
+                jump_list.Items.Clear();
+                jump_list.SystemGroupKind = JumpListSystemGroupKind.None;
+                JumpListItem j_timeline = JumpListItem.CreateWithArguments("timeline", utilities.loader.GetString("jump_timeline"));
+                JumpListItem j_report = JumpListItem.CreateWithArguments("report", utilities.loader.GetString("jump_report"));
+                JumpListItem j_settings = JumpListItem.CreateWithArguments("settings", utilities.loader.GetString("jump_settings"));
+                j_settings.Logo = new Uri("ms-appx:///Assets/settings.png");
+                j_report.Logo = new Uri("ms-appx:///Assets/report.png");
+                j_timeline.Logo = new Uri("ms-appx:///Assets/list.png");
+                jump_list.Items.Add(j_timeline);
+                jump_list.Items.Add(j_report);
+                jump_list.Items.Add(j_settings);
+                await jump_list.SaveAsync();
+            }
         }
 
             void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
