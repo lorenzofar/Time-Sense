@@ -46,6 +46,13 @@ namespace Time_Sense
 
         private void App_Resuming(object sender, object e)
         {
+            Object password_obj = utilities.STATS.Values[settings.password];
+            string password = password_obj == null ? "" : password_obj.ToString();
+            if (password != "")
+            {
+                Frame rootFrame = Window.Current.Content as Frame;
+                rootFrame.Navigate(typeof(PasswordPage), password);
+            }
         }
 
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
