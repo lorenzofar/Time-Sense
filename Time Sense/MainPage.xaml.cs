@@ -37,14 +37,6 @@ namespace Time_Sense
             {
                 HideBar();
             }
-            else
-            {
-                try { RegisterTaskTimer(1, 15); } catch { }
-                try { RegisterTaskTimer(2, 20); } catch { }
-                try { RegisterTaskTimer(3, 25); } catch { }
-                try { RegisterTaskTimer(4, 35); } catch { }
-                try { RegisterTaskTimer(5, 50); } catch { } 
-            }
             InitializeLocation();
             CheckDialogs();
         }
@@ -107,6 +99,14 @@ namespace Time_Sense
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (!Windows.Foundation.Metadata.ApiInformation.IsEventPresent("Windows.Phone.UI.Input.HardwareButtons", "BackPressed"))
+            {
+                try { RegisterTaskTimer(1, 15); } catch { }
+                try { RegisterTaskTimer(2, 20); } catch { }
+                try { RegisterTaskTimer(3, 25); } catch { }
+                try { RegisterTaskTimer(4, 35); } catch { }
+                try { RegisterTaskTimer(5, 50); } catch { }
+            }
             base.OnNavigatedTo(e);
             if (e.Parameter != null)
             {
@@ -220,6 +220,7 @@ namespace Time_Sense
             {
                 if (task.Value.Name == String.Format("timesense_timer_{0}", index))
                 {
+                    System.Diagnostics.Debug.WriteLine("TASK: " + task.Value + "KEY: " + task.Key);
                     return;
                 }
             }
@@ -235,6 +236,7 @@ namespace Time_Sense
             if (access_status != BackgroundAccessStatus.Denied)
             {
                 BackgroundTaskRegistration mytask = builder.Register();
+                System.Diagnostics.Debug.WriteLine("REGISTERED");
                 mytask.Completed += Mytask_Completed;
             }
         }
