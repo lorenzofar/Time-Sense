@@ -39,9 +39,11 @@ namespace Tasks
             //REGISTER NEW BACKGROUND TASK IF THE PREVIOUS WAS CANCELED (ONLY ON PCS)
             if (!Windows.Foundation.Metadata.ApiInformation.IsEventPresent("Windows.Phone.UI.Input.HardwareButtons", "BackPressed"))
             {
-                try { RegisterTaskTimer(); } catch { }
-                try { RegisterTaskTimer2(); } catch { }
-                try { RegisterTaskTimer3(); } catch { }
+                try { RegisterTaskTimer(1, 15); } catch { }
+                try { RegisterTaskTimer(2, 20); } catch { }
+                try { RegisterTaskTimer(3, 25); } catch { }
+                try { RegisterTaskTimer(4, 35); } catch { }
+                try { RegisterTaskTimer(5, 50); } catch { }
             }
             _deferral.Complete();
         }
@@ -83,19 +85,19 @@ namespace Tasks
 
         #region TIMER TASKS
 
-        private async void RegisterTaskTimer()
+        private async void RegisterTaskTimer(int index, int span)
         {
             foreach (var task in BackgroundTaskRegistration.AllTasks)
             {
-                if (task.Value.Name == "timesense_timer")
+                if (task.Value.Name == String.Format("timesense_timer_{0}", index))
                 {
                     return;
                 }
-            }
+            }            
             var builder = new BackgroundTaskBuilder();
-            builder.Name = "timesense_timer";
+            builder.Name = String.Format("timesense_timer_{0}", index);
             builder.TaskEntryPoint = "Tasks.timer_task";
-            builder.SetTrigger(new TimeTrigger(15, false));
+            builder.SetTrigger(new TimeTrigger(uint.Parse(span.ToString()), false));
             builder.CancelOnConditionLoss = true;
             SystemCondition user_present_condition = new SystemCondition(SystemConditionType.UserPresent);
             builder.AddCondition(user_present_condition);
@@ -106,54 +108,7 @@ namespace Tasks
                 BackgroundTaskRegistration mytask = builder.Register();
             }
         }
-
-        private async void RegisterTaskTimer2()
-        {
-            foreach (var task in BackgroundTaskRegistration.AllTasks)
-            {
-                if (task.Value.Name == "timesense_timer2")
-                {
-                    return;
-                }
-            }
-            var builder = new BackgroundTaskBuilder();
-            builder.Name = "timesense_timer2";
-            builder.TaskEntryPoint = "Tasks.timer_task";
-            builder.SetTrigger(new TimeTrigger(20, false));
-            builder.CancelOnConditionLoss = true;
-            SystemCondition user_present_condition = new SystemCondition(SystemConditionType.UserPresent);
-            builder.AddCondition(user_present_condition);
-            BackgroundExecutionManager.RemoveAccess();
-            BackgroundAccessStatus x = await BackgroundExecutionManager.RequestAccessAsync();
-            if (x != BackgroundAccessStatus.Denied)
-            {
-                BackgroundTaskRegistration mytask = builder.Register();
-            }
-        }
-
-        private async void RegisterTaskTimer3()
-        {
-            foreach (var task in BackgroundTaskRegistration.AllTasks)
-            {
-                if (task.Value.Name == "timesense_timer3")
-                {
-                    return;
-                }
-            }
-            var builder = new BackgroundTaskBuilder();
-            builder.Name = "timesense_timer3";
-            builder.TaskEntryPoint = "Tasks.timer_task";
-            builder.SetTrigger(new TimeTrigger(25, false));
-            builder.CancelOnConditionLoss = true;
-            SystemCondition user_present_condition = new SystemCondition(SystemConditionType.UserPresent);
-            builder.AddCondition(user_present_condition);
-            BackgroundExecutionManager.RemoveAccess();
-            BackgroundAccessStatus x = await BackgroundExecutionManager.RequestAccessAsync();
-            if (x != BackgroundAccessStatus.Denied)
-            {
-                BackgroundTaskRegistration mytask = builder.Register();
-            }
-        }
+        
         #endregion
     }
 }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  

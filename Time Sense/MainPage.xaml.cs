@@ -39,9 +39,11 @@ namespace Time_Sense
             }
             else
             {
-                try { RegisterTaskTimer(); } catch { }
-                try { RegisterTaskTimer2(); } catch { }
-                try { RegisterTaskTimer3(); } catch { }
+                try { RegisterTaskTimer(1, 15); } catch { }
+                try { RegisterTaskTimer(2, 20); } catch { }
+                try { RegisterTaskTimer(3, 25); } catch { }
+                try { RegisterTaskTimer(4, 35); } catch { }
+                try { RegisterTaskTimer(5, 50); } catch { } 
             }
             InitializeLocation();
             CheckDialogs();
@@ -71,6 +73,7 @@ namespace Time_Sense
             if(utilities.STATS.Values[settings.desktop_disclaimer] == null)
             {
                 await new MessageDialog(utilities.loader.GetString("desktop_disclaimer"), utilities.loader.GetString("limit_toast_title")).ShowAsync();
+                utilities.STATS.Values[settings.desktop_disclaimer] = "shown";
             }
         }
 
@@ -211,78 +214,27 @@ namespace Time_Sense
             }
         }
         #region TIMER TASKS
-        private async void RegisterTaskTimer()
+        private async void RegisterTaskTimer(int index, int span)
         {
             foreach (var task in BackgroundTaskRegistration.AllTasks)
             {
-                if (task.Value.Name == "timesense_timer")
+                if (task.Value.Name == String.Format("timesense_timer_{0}", index))
                 {
                     return;
                 }
             }
             var builder = new BackgroundTaskBuilder();
-            builder.Name = "timesense_timer";
+            builder.Name = String.Format("timesense_timer_{0}", index);
             builder.TaskEntryPoint = "Tasks.timer_task";
-            builder.SetTrigger(new TimeTrigger(15, false));
+            builder.SetTrigger(new TimeTrigger(uint.Parse(span.ToString()), false));
             builder.CancelOnConditionLoss = true;
             SystemCondition user_present_condition = new SystemCondition(SystemConditionType.UserPresent);
             builder.AddCondition(user_present_condition);
             BackgroundExecutionManager.RemoveAccess();
-            BackgroundAccessStatus x = await BackgroundExecutionManager.RequestAccessAsync();
-            if (x != BackgroundAccessStatus.Denied)
+            BackgroundAccessStatus access_status = await BackgroundExecutionManager.RequestAccessAsync();
+            if (access_status != BackgroundAccessStatus.Denied)
             {
                 BackgroundTaskRegistration mytask = builder.Register();
-                mytask.Completed += Mytask_Completed;
-            }
-        }
-
-        private async void RegisterTaskTimer2()
-        {
-            foreach (var task in BackgroundTaskRegistration.AllTasks)
-            {
-                if (task.Value.Name == "timesense_timer2")
-                {
-                    return;
-                }
-            }
-            var builder = new BackgroundTaskBuilder();
-            builder.Name = "timesense_timer2";
-            builder.TaskEntryPoint = "Tasks.timer_task";
-            builder.SetTrigger(new TimeTrigger(20, false));
-            builder.CancelOnConditionLoss = true;
-            SystemCondition user_present_condition = new SystemCondition(SystemConditionType.UserPresent);
-            builder.AddCondition(user_present_condition);
-            BackgroundExecutionManager.RemoveAccess();
-            BackgroundAccessStatus x = await BackgroundExecutionManager.RequestAccessAsync();
-            if (x != BackgroundAccessStatus.Denied)
-            {
-                BackgroundTaskRegistration mytask = builder.Register();
-                mytask.Completed += Mytask_Completed;
-            }
-        }
-
-        private async void RegisterTaskTimer3()
-        {
-            foreach (var task in BackgroundTaskRegistration.AllTasks)
-            {
-                if (task.Value.Name == "timesense_timer3")
-                {
-                    return;
-                }
-            }
-            var builder = new BackgroundTaskBuilder();
-            builder.Name = "timesense_timer3";
-            builder.TaskEntryPoint = "Tasks.timer_task";
-            builder.SetTrigger(new TimeTrigger(25, false));
-            builder.CancelOnConditionLoss = true;
-            SystemCondition user_present_condition = new SystemCondition(SystemConditionType.UserPresent);
-            builder.AddCondition(user_present_condition);
-            BackgroundExecutionManager.RemoveAccess();
-            BackgroundAccessStatus x = await BackgroundExecutionManager.RequestAccessAsync();
-            if (x != BackgroundAccessStatus.Denied)
-            {
-                BackgroundTaskRegistration mytask = builder.Register();
-                mytask.Completed += Mytask_Completed;
             }
         }
         #endregion
