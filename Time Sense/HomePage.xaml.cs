@@ -213,7 +213,7 @@ namespace Time_Sense
             }
             hour_list_raw = await Helper.GetHourList(App.report_date);
             List<Hour> hour_list = new List<Hour>();
-            
+
             double time_helper = 0;
             double unlocks_helper = 0;
             double time_min_helper = 1000;
@@ -332,13 +332,9 @@ namespace Time_Sense
                 ts.battery_usage = FormatData(batt_time);
                 ts.battery_unlocks = batt_unlocks == 1 ? String.Format(utilities.loader.GetString("unlock"), batt_unlocks) : String.Format(utilities.loader.GetString("unlocks"), batt_unlocks);
             }
+            this.DataContext = ts;
+            MainPage.title.Text = App.report_date.Date == DateTime.Now.Date ? utilities.loader.GetString("today") : App.report_date.Date == DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0, 0)).Date ? utilities.loader.GetString("yesterday") : utilities.shortdate_form.Format(App.report_date);
 
-            await Dispatcher.RunAsync(CoreDispatcherPriority.High, () =>
-            {
-                this.DataContext = ts;
-
-                MainPage.title.Text = App.report_date.Date == DateTime.Now.Date ? utilities.loader.GetString("today") : App.report_date.Date == DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0, 0)).Date ? utilities.loader.GetString("yesterday") : utilities.shortdate_form.Format(App.report_date);
-            });
             if (App.report_date.Date == DateTime.Now.Date)
             {
                 UpdateTile();
