@@ -18,5 +18,6 @@ namespace Stuff
         public static string battery_dialog = "battery_dialog";
         public static string letters = "letters";
         public static string analysis_trial = "analysis_trial";
+        public static string desktop_disclaimer = "desktop_disclaimer";
     }
 }

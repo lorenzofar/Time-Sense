@@ -59,7 +59,19 @@ namespace Time_Sense
         private async void CheckDialogs()
         {
             await CheckUpdate();
+            if (!Windows.Foundation.Metadata.ApiInformation.IsEventPresent("Windows.Phone.UI.Input.HardwareButtons", "BackPressed"))
+            {
+                await CheckDesktop();
+            }
             await CheckBattery();
+        }
+
+        private async Task CheckDesktop()
+        {
+            if(utilities.STATS.Values[settings.desktop_disclaimer] == null)
+            {
+                await new MessageDialog(utilities.loader.GetString("desktop_disclaimer"), utilities.loader.GetString("limit_toast_title")).ShowAsync();
+            }
         }
 
         private async Task CheckUpdate()

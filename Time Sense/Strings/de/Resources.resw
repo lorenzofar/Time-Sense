@@ -819,4 +819,8 @@
     <value>On</value>
     <comment>TODO</comment>
   </data>
+  <data name="desktop_disclaimer" xml:space="preserve">
+    <value>Thank you for using Time Sense! 
+The PC version is still in development and, due to system limitations, there could be some issues. If you find a bug or you have a problem please send a feedback using the button in the settings instead of leaving a negative review.</value>
+  </data>
 </root>
