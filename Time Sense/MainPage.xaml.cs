@@ -235,6 +235,7 @@ namespace Time_Sense
             if (access_status != BackgroundAccessStatus.Denied)
             {
                 BackgroundTaskRegistration mytask = builder.Register();
+                mytask.Completed += Mytask_Completed;
             }
         }
         #endregion
