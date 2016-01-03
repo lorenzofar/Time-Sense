@@ -825,5 +825,6 @@ The PC version is still in development and, due to system limitations, there cou
   </data>
   <data name="progress_dialog.Title" xml:space="preserve">
     <value>EXPORTING</value>
+    <comment>TODO</comment>
   </data>
 </root>

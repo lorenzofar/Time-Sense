@@ -9,9 +9,11 @@
     mc:Ignorable="d">
 
     <Grid>
-        <ProgressRing
+        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center" MaxHeight="80" MaxWidth="80" Margin="0,18">
+            <ProgressRing
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             IsActive="True" />
+        </Viewbox>
     </Grid>
 </ContentDialog>
