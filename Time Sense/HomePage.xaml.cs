@@ -508,15 +508,7 @@ namespace Time_Sense
                         if (export_file != null)
                         {
                             App.file_pick = false;
-                            bool success = true;
-                            try
-                            {
-                                await  new ProgressDialog(export_file).ShowAsync();
-                            }
-                            catch
-                            {
-                                success = false;
-                            }
+                            await new ProgressDialog(export_file).ShowAsync();
                             App.t_client.TrackEvent("Excel report created");
                         }
                     }
