@@ -31,14 +31,21 @@
         </uap:InitialRotationPreference>
       </uap:VisualElements>
       <Extensions>
-        <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="timesense">
-            <uap:DisplayName>Time Sense</uap:DisplayName>
-          </uap:Protocol>
+        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.timer_task">
+          <BackgroundTasks>
+            <Task Type="timer" />
+          </BackgroundTasks>
+        </Extension>
+        <uap:Extension Category="windows.appService" EntryPoint="Tasks.service">
+          <uap:AppService Name="timesense.service" />
         </uap:Extension>
-        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.alert">
+        <uap:Extension Category="windows.appService" EntryPoint="Tasks.VoiceCommandService">
+          <uap:AppService Name="TimeSenseVoiceCommandService" />
+        </uap:Extension>
+        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.controller_lock">
           <BackgroundTasks>
             <Task Type="systemEvent" />
+            <Task Type="deviceUse" />
           </BackgroundTasks>
         </Extension>
         <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.controller_unlock">
@@ -47,29 +54,21 @@
             <Task Type="deviceUse" />
           </BackgroundTasks>
         </Extension>
-        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.controller_lock">
+        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.alert">
           <BackgroundTasks>
             <Task Type="systemEvent" />
-            <Task Type="deviceUse" />
           </BackgroundTasks>
         </Extension>
-        <uap:Extension Category="windows.appService" EntryPoint="Tasks.VoiceCommandService">
-          <uap:AppService Name="TimeSenseVoiceCommandService" />
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="timesense">
+            <uap:DisplayName>Time Sense</uap:DisplayName>
+          </uap:Protocol>
         </uap:Extension>
-        <uap:Extension Category="windows.appService" EntryPoint="Tasks.service">
-          <uap:AppService Name="timesense.service" />
-        </uap:Extension>
-        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.timer_task">
-          <BackgroundTasks>
-            <Task Type="timer" />
-          </BackgroundTasks>
-        </Extension>
       </Extensions>
     </Application>
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
-    <uap:Capability Name="videosLibrary" />
     <DeviceCapability Name="proximity" />
     <DeviceCapability Name="location" />
   </Capabilities>
