@@ -32,8 +32,10 @@ namespace Time_Sense
 
         public static string jump_arguments = null;
 
+        public static bool file_pick = false;
+
         public static Microsoft.ApplicationInsights.TelemetryClient t_client = new Microsoft.ApplicationInsights.TelemetryClient();
-        
+
         public App()
         {
             Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
@@ -46,13 +48,17 @@ namespace Time_Sense
 
         private void App_Resuming(object sender, object e)
         {
-            Object password_obj = utilities.STATS.Values[settings.password];
-            string password = password_obj == null ? "" : password_obj.ToString();
-            if (password != "")
+            if (!file_pick)
             {
-                Frame rootFrame = Window.Current.Content as Frame;
-                rootFrame.Navigate(typeof(PasswordPage), password);
+                Object password_obj = utilities.STATS.Values[settings.password];
+                string password = password_obj == null ? "" : password_obj.ToString();
+                if (password != "")
+                {
+                    Frame rootFrame = Window.Current.Content as Frame;
+                    rootFrame.Navigate(typeof(PasswordPage), password);
+                }
             }
+            else { file_pick = false; }
         }
 
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
@@ -76,7 +82,7 @@ namespace Time_Sense
             }
 
             Frame rootFrame = Window.Current.Content as Frame;
-            
+
             Object password_obj = utilities.STATS.Values[settings.password];
             string password = password_obj == null ? "" : password_obj.ToString();
 
@@ -97,7 +103,7 @@ namespace Time_Sense
                 if (e!= null && e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                 }
-                
+
                 Window.Current.Content = rootFrame;
             }
 
@@ -157,7 +163,7 @@ namespace Time_Sense
             string password = password_obj == null ? "" : password_obj.ToString();
             if (args.Kind == ActivationKind.Protocol)
             {
-                App.t_client.TrackEvent("URI activated");               
+                App.t_client.TrackEvent("URI activated");
                 ProtocolActivatedEventArgs eventArgs = args as ProtocolActivatedEventArgs;
                 if (eventArgs.Uri != null)
                 {

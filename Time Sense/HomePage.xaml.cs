@@ -51,10 +51,10 @@ namespace Time_Sense
         static int[] unlocks = new int[2];
         static int[] total_seconds = new int[2];
         static int diff = 0;
-        
+
         public HomePage()
         {
-            this.InitializeComponent();             
+            this.InitializeComponent();
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -86,7 +86,7 @@ namespace Time_Sense
         }
 
         public static async void refresh()
-        {            
+        {
             if (App.report_date.Date == DateTime.Now.Date)
             {
                 date[1] = DateTime.Now;
@@ -356,7 +356,7 @@ namespace Time_Sense
         }
 
         private void UpdateTile()
-        {           
+        {
             // UPDATE THE TILE
             bool badge = utilities.STATS.Values[settings.unlocks] == null ? true : utilities.STATS.Values[settings.unlocks].ToString() == "badge" ? true : false;
             XmlDocument doc = new XmlDocument();
@@ -422,7 +422,7 @@ namespace Time_Sense
             await ShowData();
             ButtonSwitch(true);
         }
-        
+
         private void home_charts_pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             App.t_client.TrackEvent("Home pivot swipe");
@@ -454,7 +454,7 @@ namespace Time_Sense
 
         private async void note_edit_btn_Click(object sender, RoutedEventArgs e)
         {
-            SymbolIcon icon = note_edit_btn.Icon as SymbolIcon;            
+            SymbolIcon icon = note_edit_btn.Icon as SymbolIcon;
             if(icon.Symbol  == Symbol.Edit)
             {
                 //EDIT NOTE
@@ -472,7 +472,7 @@ namespace Time_Sense
                 var report = await Database.Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
                 if(report != null)
                 {
-                    //DAY XIST IN DB, SAV 
+                    //DAY XIST IN DB, SAV
                     App.t_client.TrackEvent("Save note");
                     report.note = note_txt.Text;
                     no_note_txt.Visibility = Visibility.Collapsed;
@@ -495,7 +495,7 @@ namespace Time_Sense
         {
             try {
                 var span_result = await new SpanDialog().ShowAsync();
-                if (span_result == Windows.UI.Xaml.Controls.ContentDialogResult.Primary)      
+                if (span_result == Windows.UI.Xaml.Controls.ContentDialogResult.Primary)
                 {
                     if (App.range_start_date < App.range_end_date)
                     {
@@ -503,9 +503,11 @@ namespace Time_Sense
                         export_picker.DefaultFileExtension = ".xlsx";
                         export_picker.SuggestedFileName = String.Format("timesense_{0}-{1}", utilities.shortdate_form.Format(App.range_start_date), utilities.shortdate_form.Format(App.range_end_date));
                         export_picker.FileTypeChoices.Add("Excel file", new List<string>() { ".xlsx" });
+                        App.file_pick = true;
                         StorageFile export_file = await export_picker.PickSaveFileAsync();
                         if (export_file != null)
                         {
+                            App.file_pick = false;
                             bool success = true;
                             try
                             {
@@ -526,5 +528,5 @@ namespace Time_Sense
             }
             catch { }
         }
-    }    
+    }
 }

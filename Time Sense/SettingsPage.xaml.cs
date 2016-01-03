@@ -262,10 +262,12 @@ namespace Time_Sense
         {
             FolderPicker fold_picker = new FolderPicker();
             fold_picker.FileTypeFilter.Add(".db");
+            App.file_pick = true;
             StorageFolder folder = await fold_picker.PickSingleFolderAsync();
             if (folder != null)
             {
                 App.t_client.TrackEvent("Backup saved");
+                App.file_pick = false;
                 StorageFile database = await ApplicationData.Current.LocalFolder.GetFileAsync("timesense_database.db");
                 await database.CopyAsync(folder, "timesense_backup.db", NameCollisionOption.GenerateUniqueName);
                 await new MessageDialog(utilities.loader.GetString("backup_dialog_success"), utilities.loader.GetString("success")).ShowAsync();
@@ -275,11 +277,13 @@ namespace Time_Sense
         private async void restore_btn_Click(object sender, RoutedEventArgs e)
         {
             FileOpenPicker file_picker = new FileOpenPicker();
-            file_picker.FileTypeFilter.Add(".db");   
+            file_picker.FileTypeFilter.Add(".db");
+            App.file_pick = true;
             StorageFile file = await file_picker.PickSingleFileAsync();
             if (file != null)
             {
                 App.t_client.TrackEvent("Backup restored");
+                App.file_pick = false;
                 file = await file.CopyAsync(ApplicationData.Current.TemporaryFolder, "temp", NameCollisionOption.GenerateUniqueName);
                 bool valid = await Helper.CheckIntegrity(file.Path);
                 if (valid)

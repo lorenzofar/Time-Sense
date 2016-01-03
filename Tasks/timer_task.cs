@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Stuff;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
-using Stuff;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 
@@ -21,7 +18,6 @@ namespace Tasks
         public async void Run(IBackgroundTaskInstance taskInstance)
         {
             BackgroundTaskDeferral _deferral = taskInstance.GetDeferral();
-            
             date[1] = DateTime.Now;
             if (utilities.CheckDate(settings.date))
             {
