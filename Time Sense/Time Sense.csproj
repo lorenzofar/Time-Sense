@@ -147,6 +147,9 @@
     <Compile Include="PasswordPage.xaml.cs">
       <DependentUpon>PasswordPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProgressDialog.xaml.cs">
+      <DependentUpon>ProgressDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseDialog.xaml.cs">
       <DependentUpon>PurchaseDialog.xaml</DependentUpon>
@@ -227,6 +230,10 @@
     <Page Include="PasswordPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProgressDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PurchaseDialog.xaml">
       <Generator>MSBuild:Compile</Generator>

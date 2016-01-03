@@ -807,4 +807,7 @@
     <value>Thank you for using Time Sense! 
 The PC version is still in development and, due to system limitations, there could be some issues. If you find a bug or you have a problem please send a feedback using the button in the settings instead of leaving a negative review.</value>
   </data>
+  <data name="progress_dialog.Title" xml:space="preserve">
+    <value>EXPORTING</value>
+  </data>
 </root>

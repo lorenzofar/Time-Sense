@@ -509,16 +509,12 @@ namespace Time_Sense
                             bool success = true;
                             try
                             {
-                                await  ExcelExporter.CreateExcelReport(export_file);
+                                await  new ProgressDialog(export_file).ShowAsync();
                             }
                             catch
                             {
                                 success = false;
                             }
-                            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-                            {
-                                new MessageDialog(success == true ? utilities.loader.GetString("excel_success") : utilities.loader.GetString("excel_error")).ShowAsync();
-                            });
                             //
                         }
                     }
