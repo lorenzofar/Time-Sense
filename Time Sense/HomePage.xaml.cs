@@ -497,7 +497,7 @@ namespace Time_Sense
                 var span_result = await new SpanDialog().ShowAsync();
                 if (span_result == Windows.UI.Xaml.Controls.ContentDialogResult.Primary)
                 {
-                    if (App.range_start_date < App.range_end_date)
+                    if (App.range_start_date <= App.range_end_date)
                     {
                         FileSavePicker export_picker = new FileSavePicker();
                         export_picker.DefaultFileExtension = ".xlsx";
@@ -517,12 +517,12 @@ namespace Time_Sense
                             {
                                 success = false;
                             }
-                            //
+                            App.t_client.TrackEvent("Excel report created");
                         }
                     }
                     else
                     {
-                        await  new MessageDialog("The start date must be before the end date", utilities.loader.GetString("error")).ShowAsync();
+                        await new MessageDialog(utilities.loader.GetString("error_span"), utilities.loader.GetString("error")).ShowAsync();
                     }
                 }
             }

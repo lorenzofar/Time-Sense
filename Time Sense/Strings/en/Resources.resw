@@ -810,4 +810,7 @@ The PC version is still in development and, due to system limitations, there cou
   <data name="progress_dialog.Title" xml:space="preserve">
     <value>EXPORTING</value>
   </data>
+  <data name="error_span" xml:space="preserve">
+    <value>The start date must be before the end date</value>
+  </data>
 </root>

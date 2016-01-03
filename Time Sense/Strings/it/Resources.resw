@@ -810,4 +810,7 @@ La versione per PC è ancora in fase di sviluppo e a causa di alcune limitazioni
   <data name="progress_dialog.Title" xml:space="preserve">
     <value>ESPORTAZIONE</value>
   </data>
+  <data name="error_span" xml:space="preserve">
+    <value>La data iniziale deve essere minore della data finale</value>
+  </data>
 </root>

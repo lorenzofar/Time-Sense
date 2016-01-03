@@ -827,4 +827,8 @@ The PC version is still in development and, due to system limitations, there cou
     <value>EXPORTING</value>
     <comment>TODO</comment>
   </data>
+  <data name="error_span" xml:space="preserve">
+    <value>The start date must be before the end date</value>
+    <comment>TODO</comment>
+  </data>
 </root>

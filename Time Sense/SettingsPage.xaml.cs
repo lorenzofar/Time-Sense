@@ -29,7 +29,7 @@ namespace Time_Sense
 
         public SettingsPage()
         {
-            this.InitializeComponent();            
+            this.InitializeComponent();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -64,7 +64,7 @@ namespace Time_Sense
             }
             RadioButton radio_btn = root_panel.FindName(unlocks) as RadioButton;
             radio_btn.IsChecked = true;
-            nfc_device = ProximityDevice.GetDefault();            
+            nfc_device = ProximityDevice.GetDefault();
             if(nfc_device != null)
             {
                 nfc_box.IsEnabled = true;
@@ -83,7 +83,7 @@ namespace Time_Sense
             //contacts_list = await Database.Helper.ConnectionDb().Table<AllowedContact>().ToListAsync();
             //sms_list.ItemsSource = null;
             //sms_list.ItemsSource = contacts_list;
-            
+
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -94,7 +94,7 @@ namespace Time_Sense
             }
             catch { }
         }
-            
+
 
         private async void threshold_box_selectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -118,7 +118,7 @@ namespace Time_Sense
                 ScheduledToastNotification scheduled_toast = new ScheduledToastNotification(document, DateTime.Now.AddSeconds(span)) { Tag = utilities.shortdate_form.Format(DateTime.Now) };
                 ToastNotificationManager.CreateToastNotifier().AddToSchedule(scheduled_toast);
             }
-        }        
+        }
 
         private void location_switch_toggled(object sender, RoutedEventArgs e)
         {
@@ -162,7 +162,7 @@ namespace Time_Sense
                 {
                     await new MessageDialog(utilities.loader.GetString("password_error"), utilities.loader.GetString("error")).ShowAsync();
                     password_box.Focus(FocusState.Programmatic);
-                }                
+                }
             }
         }
 
@@ -205,42 +205,20 @@ namespace Time_Sense
                 password_switch.IsOn = false;
             }
         }
-        
+
         private async void resetOne_btn_Click(object sender, RoutedEventArgs e)
         {
             if((await new SpanDialog().ShowAsync()) == ContentDialogResult.Primary)
             {
-                if((App.range_end_date.Date.Subtract(DateTime.Now.Date)).Days <= 0)
+                if (App.range_start_date <= App.range_end_date)
                 {
-                    utilities.STATS.Values[settings.date] = DateTime.Now.ToString();
+                    if ((App.range_end_date.Date.Subtract(DateTime.Now.Date)).Days <= 0)
+                    {
+                        utilities.STATS.Values[settings.date] = DateTime.Now.ToString();
+                    }
+                    await new DeleteDialog(1).ShowAsync();
                 }
-                await new DeleteDialog(1).ShowAsync();
-            }            
-        }
-
-        private async void DtFly_DatePicked(DatePickerFlyout sender, DatePickedEventArgs args)
-        {
-            MessageDialog reset_confirm = new MessageDialog(utilities.loader.GetString("delete_confirm_content"), utilities.loader.GetString("delete_confirm_title"));
-            reset_confirm.Commands.Add(new UICommand(utilities.loader.GetString("yes"), (command) =>
-            {
-                App.t_client.TrackEvent("Reset one");
-                delete(args);                
-            }));
-            reset_confirm.Commands.Add(new UICommand(utilities.loader.GetString("no")));
-            await reset_confirm.ShowAsync();
-        }
-
-        private async void delete(DatePickedEventArgs args)
-        {
-            utilities.STATS.Values[settings.date] = DateTime.Now.ToString();
-            bool success = await Helper.DeleteData(args.NewDate.DateTime);
-            if (!success)
-            {
-                await new MessageDialog(utilities.loader.GetString("delete_dialog_error"), utilities.loader.GetString("error")).ShowAsync();
-            }
-            else
-            {
-                await new MessageDialog(utilities.loader.GetString("delete_dialog_success"), utilities.loader.GetString("success")).ShowAsync();
+                else { await new MessageDialog(utilities.loader.GetString("error_span"), utilities.loader.GetString("error")).ShowAsync(); }
             }
         }
 
@@ -251,7 +229,7 @@ namespace Time_Sense
             reset_confirm.Commands.Add(new UICommand(utilities.loader.GetString("no"),null, "no"));
             IUICommand reset_command = await reset_confirm.ShowAsync();
             if (reset_command.Id.ToString() == "yes")
-            { 
+            {
                 App.t_client.TrackEvent("Reset all");
                 utilities.STATS.Values[settings.date] = DateTime.Now.ToString();
                 await new DeleteDialog(0).ShowAsync();
