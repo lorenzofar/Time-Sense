@@ -306,7 +306,7 @@ namespace Time_Sense
                         try
                         {
                             var item = list.ElementAt(list_count);
-                            if (item != null)
+                            if (item != null && item.battery_status != "charging")
                             {
                                 batt_time += int.Parse(item.usage.ToString());
                                 batt_unlocks++;
