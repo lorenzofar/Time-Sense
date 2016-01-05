@@ -5,7 +5,8 @@
     xmlns:local="using:Time_Sense"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    KeyDown="Grid_KeyDown" KeyUp="Grid_KeyUp" >
 
     <Page.Resources>
         <SolidColorBrush x:Key="NavButtonCheckedBackgroundBrush" Color="Azure"/>
@@ -59,7 +60,7 @@
     </Page.Resources>
 
 
-    <Grid KeyDown="Grid_KeyDown" KeyUp="Grid_KeyUp" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="vs_group">
                 <VisualState x:Name="narrow">
