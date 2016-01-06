@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.UI;
 
 namespace Time_Sense
 {
@@ -56,6 +57,7 @@ namespace Time_Sense
 
             IStyle overview_style = workbook.Styles.Add("OverviewStyle");
             overview_style.HorizontalAlignment = ExcelHAlign.HAlignRight;
+            
             #endregion
 
             int total_usage = 0;
@@ -95,6 +97,10 @@ namespace Time_Sense
                         worksheet.Range[String.Format("H{0}", r.ToString())].Number = Math.Round(unlock.latitude, 3);
                         worksheet.Range[String.Format("I{0}", r.ToString())].Number = Math.Round(unlock.longitude, 3);
                         worksheet.Range[String.Format("A{0}:I{0}", r.ToString())].CellStyle = table_style;
+                        worksheet.Range[String.Format("D{0}", r.ToString())].CellStyle.Color = unlock.battery <= 10 ? Colors.Red : Colors.White;
+                        worksheet.Range[String.Format("E{0}", r.ToString())].CellStyle.Color = unlock.battery_status == "charging" ? Colors.Yellow : Colors.White;
+                        worksheet.Range[String.Format("F{0}", r.ToString())].CellStyle.Color = unlock.wifi_status == "on" ? Colors.LightGreen : Colors.White;
+                        worksheet.Range[String.Format("G{0}", r.ToString())].CellStyle.Color = unlock.bluetooth_status == "on" ? Colors.LightGreen : Colors.White;
                         chart_battery[index] = unlock.battery;
                         chart_unlocks[index] = unlock.unlocks;
                     }
