@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Storage.Pickers;
 using Windows.Storage;
 using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 
 namespace Time_Sense
 {
@@ -55,6 +56,15 @@ namespace Time_Sense
         public HomePage()
         {
             this.InitializeComponent();
+            InputPane.GetForCurrentView().Showing +=
+                (s, args) => { bottom_bar.Visibility = Visibility.Collapsed; };
+            InputPane.GetForCurrentView().Hiding += (s, args2) =>
+            {
+                if (bottom_bar.Visibility == Visibility.Collapsed)
+                {
+                    bottom_bar.Visibility = Visibility.Visible;
+                }
+            };
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
