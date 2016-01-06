@@ -31,21 +31,27 @@ namespace Time_Sense
             try { RegisterTaskLock(); } catch { }
             try { RegisterTaskUnlock(); } catch { }
             try { RegisterTaskAlert(); } catch { }
-            title = app_title;
-            home = home_btn;
-            if (Windows.Foundation.Metadata.ApiInformation.IsEventPresent("Windows.Phone.UI.Input.HardwareButtons", "BackPressed"))
+            if (!Windows.Foundation.Metadata.ApiInformation.IsEventPresent("Windows.Phone.UI.Input.HardwareButtons", "BackPressed"))
+            {
+                try { RegisterTaskTimer(1, 15); } catch { }
+                try { RegisterTaskTimer(2, 20); } catch { }
+                try { RegisterTaskTimer(3, 25); } catch { }
+                try { RegisterTaskTimer(4, 35); } catch { }
+                try { RegisterTaskTimer(5, 50); } catch { }
+            }
+            else
             {
                 HideBar();
             }
+            title = app_title;
+            home = home_btn;
             InitializeLocation();
             CheckDialogs();
         }
 
         private async void HideBar()
         {
-            var view = ApplicationView.GetForCurrentView();
-            var bar = StatusBar.GetForCurrentView();
-            await bar.HideAsync();
+            await StatusBar.GetForCurrentView().HideAsync(); 
             Windows.Phone.UI.Input.HardwareButtons.BackPressed += HardwareButtons_BackPressed;
         }
         
@@ -80,8 +86,7 @@ namespace Time_Sense
 
         private async Task CheckBattery()
         {
-            Windows.System.Power.EnergySaverStatus saver = Windows.System.Power.PowerManager.EnergySaverStatus;
-            if (saver == Windows.System.Power.EnergySaverStatus.On && utilities.STATS.Values[settings.battery_dialog] == null)
+            if (Windows.System.Power.PowerManager.EnergySaverStatus == Windows.System.Power.EnergySaverStatus.On && utilities.STATS.Values[settings.battery_dialog] == null)
             {
                 App.t_client.TrackEvent("Battery dialog shown");
                 await new BatterySaverDialog().ShowAsync();
@@ -99,14 +104,6 @@ namespace Time_Sense
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (!Windows.Foundation.Metadata.ApiInformation.IsEventPresent("Windows.Phone.UI.Input.HardwareButtons", "BackPressed"))
-            {
-                try { RegisterTaskTimer(1, 15); } catch { }
-                try { RegisterTaskTimer(2, 20); } catch { }
-                try { RegisterTaskTimer(3, 25); } catch { }
-                try { RegisterTaskTimer(4, 35); } catch { }
-                try { RegisterTaskTimer(5, 50); } catch { }
-            }
             base.OnNavigatedTo(e);
             if (e.Parameter != null)
             {
