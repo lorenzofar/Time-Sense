@@ -124,7 +124,7 @@ namespace Time_Sense
             /*var storageFile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///TimeSenseCommands.xml"));
             await Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(storageFile);
             */
-            if (Windows.Foundation.Metadata.ApiInformation.IsEventPresent("Windows.UI.StartScreen", "JumpList"))
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.StartScreen.JumpList"))
             {
                 var jump_list = await JumpList.LoadCurrentAsync();
                 jump_list.Items.Clear();
