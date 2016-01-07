@@ -96,15 +96,21 @@ namespace Time_Sense
         }
 
 
-        private async void threshold_box_selectionChanged(object sender, SelectionChangedEventArgs e)
+        private void threshold_box_selectionChanged(object sender, SelectionChangedEventArgs e)
         {
             App.t_client.TrackEvent("Threshold changed");
             utilities.STATS.Values[settings.limit] = (threshold_box.SelectedIndex + 1) * 3600;
             // GETS THE USAGE DATA AND THEN SCHEDULES THE TOAST NOTIFICATION
+            RegisterUsageToast();
+            
+        }
+
+        private async void RegisterUsageToast()
+        {
             int[] data = await Helper.LoadReportItem(DateTime.Now);
             int time = data[0];
             int limit = (threshold_box.SelectedIndex + 1) * 3600;
-            int span =  limit - time;
+            int span = limit - time;
             if (span >= 0 && DateTime.Now.AddSeconds(span).Date == DateTime.Now.Date)
             {
                 App.t_client.TrackEvent("Toast scheduled");
@@ -217,6 +223,16 @@ namespace Time_Sense
                         utilities.STATS.Values[settings.date] = DateTime.Now.ToString();
                     }
                     await new DeleteDialog(1).ShowAsync();
+                    try
+                    {
+                        IReadOnlyList<ScheduledToastNotification> list = ToastNotificationManager.CreateToastNotifier().GetScheduledToastNotifications();
+                        foreach (var toast in list)
+                        {
+                            ToastNotificationManager.CreateToastNotifier().RemoveFromSchedule(toast);
+                        }
+                    }
+                    catch { }
+                    RegisterUsageToast();
                 }
                 else { await new MessageDialog(utilities.loader.GetString("error_span"), utilities.loader.GetString("error")).ShowAsync(); }
             }
@@ -233,6 +249,16 @@ namespace Time_Sense
                 App.t_client.TrackEvent("Reset all");
                 utilities.STATS.Values[settings.date] = DateTime.Now.ToString();
                 await new DeleteDialog(0).ShowAsync();
+                try
+                {
+                    IReadOnlyList<ScheduledToastNotification> list = ToastNotificationManager.CreateToastNotifier().GetScheduledToastNotifications();
+                    foreach (var toast in list)
+                    {
+                        ToastNotificationManager.CreateToastNotifier().RemoveFromSchedule(toast);
+                    }
+                }
+                catch { }
+                RegisterUsageToast();
             }
         }
 
