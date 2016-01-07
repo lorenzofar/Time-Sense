@@ -51,10 +51,10 @@ namespace Time_Sense
 
         private async void HideBar()
         {
-            await StatusBar.GetForCurrentView().HideAsync();
+            await StatusBar.GetForCurrentView().HideAsync(); 
             Windows.Phone.UI.Input.HardwareButtons.BackPressed += HardwareButtons_BackPressed;
         }
-
+        
 
         private async void CheckDialogs()
         {
@@ -323,7 +323,7 @@ namespace Time_Sense
                             fr.Navigate(typeof(AnalyticsPage), null);
                         }
                         else
-                        {
+                        {                            
                             var result = await new PurchaseDialog().ShowAsync();
                             if (result == ContentDialogResult.Primary)
                             {
