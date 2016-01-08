@@ -22,6 +22,12 @@ bld/
 [Bb]in/
 [Oo]bj/
 
+# Windows Apps Packages
+*.appx
+
+# Text files
+*.txt
+
 # Visual Studio 2015 cache/options directory
 .vs/
 
