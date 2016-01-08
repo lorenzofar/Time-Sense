@@ -114,62 +114,62 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnalyticsPage.xaml.cs">
+    <Compile Include="Pages\AnalyticsPage.xaml.cs">
       <DependentUpon>AnalyticsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BatterySaverDialog.xaml.cs">
+    <Compile Include="Dialogs\BatterySaverDialog.xaml.cs">
       <DependentUpon>BatterySaverDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="battery_converter.cs" />
-    <Compile Include="ContactDialog.xaml.cs">
+    <Compile Include="Converters\battery_converter.cs" />
+    <Compile Include="Dialogs\ContactDialog.xaml.cs">
       <DependentUpon>ContactDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DateDialog.xaml.cs">
+    <Compile Include="Dialogs\DateDialog.xaml.cs">
       <DependentUpon>DateDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DeleteDialog.xaml.cs">
+    <Compile Include="Dialogs\DeleteDialog.xaml.cs">
       <DependentUpon>DeleteDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExcelExporter.cs" />
-    <Compile Include="HomePage.xaml.cs">
+    <Compile Include="Helpers\ExcelExporter.cs" />
+    <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LocationConverter.cs" />
+    <Compile Include="Converters\LocationConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MigrationDialog.xaml.cs">
+    <Compile Include="Dialogs\MigrationDialog.xaml.cs">
       <DependentUpon>MigrationDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PasswordPage.xaml.cs">
+    <Compile Include="Pages\PasswordPage.xaml.cs">
       <DependentUpon>PasswordPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProgressDialog.xaml.cs">
+    <Compile Include="Dialogs\ProgressDialog.xaml.cs">
       <DependentUpon>ProgressDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PurchaseDialog.xaml.cs">
+    <Compile Include="Dialogs\PurchaseDialog.xaml.cs">
       <DependentUpon>PurchaseDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ReportPage.xaml.cs">
+    <Compile Include="Pages\ReportPage.xaml.cs">
       <DependentUpon>ReportPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SettingsPage.xaml.cs">
+    <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SpanDialog.xaml.cs">
+    <Compile Include="Dialogs\SpanDialog.xaml.cs">
       <DependentUpon>SpanDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SwipeableSplitView.cs" />
-    <Compile Include="TimelineConverter.cs" />
-    <Compile Include="TimelinePage.xaml.cs">
+    <Compile Include="Controls\SwipeableSplitView.cs" />
+    <Compile Include="Converters\TimelineConverter.cs" />
+    <Compile Include="Pages\TimelinePage.xaml.cs">
       <DependentUpon>TimelinePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UsageConverter.cs" />
-    <Compile Include="WelcomeDialog.xaml.cs">
+    <Compile Include="Converters\UsageConverter.cs" />
+    <Compile Include="Dialogs\WelcomeDialog.xaml.cs">
       <DependentUpon>WelcomeDialog.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -196,27 +196,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AnalyticsPage.xaml">
+    <Page Include="Pages\AnalyticsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="BatterySaverDialog.xaml">
+    <Page Include="Dialogs\BatterySaverDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ContactDialog.xaml">
+    <Page Include="Dialogs\ContactDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DateDialog.xaml">
+    <Page Include="Dialogs\DateDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DeleteDialog.xaml">
+    <Page Include="Dialogs\DeleteDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="HomePage.xaml">
+    <Page Include="Pages\HomePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -224,31 +224,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MigrationDialog.xaml">
+    <Page Include="Dialogs\MigrationDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PasswordPage.xaml">
+    <Page Include="Pages\PasswordPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ProgressDialog.xaml">
+    <Page Include="Dialogs\ProgressDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PurchaseDialog.xaml">
+    <Page Include="Dialogs\PurchaseDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ReportPage.xaml">
+    <Page Include="Pages\ReportPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SettingsPage.xaml">
+    <Page Include="Pages\SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SpanDialog.xaml">
+    <Page Include="Dialogs\SpanDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -256,11 +256,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TimelinePage.xaml">
+    <Page Include="Pages\TimelinePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="WelcomeDialog.xaml">
+    <Page Include="Dialogs\WelcomeDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
