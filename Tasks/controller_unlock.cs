@@ -89,13 +89,13 @@ namespace Tasks
         {
             foreach (var task in BackgroundTaskRegistration.AllTasks)
             {
-                if (task.Value.Name == String.Format("timesense_timer_{0}", index))
+                if (task.Value.Name == string.Format("timesense_timer_{0}", index))
                 {
                     return;
                 }
             }            
             var builder = new BackgroundTaskBuilder();
-            builder.Name = String.Format("timesense_timer_{0}", index);
+            builder.Name = string.Format("timesense_timer_{0}", index);
             builder.TaskEntryPoint = "Tasks.timer_task";
             builder.SetTrigger(new TimeTrigger(uint.Parse(span.ToString()), false));
             builder.CancelOnConditionLoss = true;

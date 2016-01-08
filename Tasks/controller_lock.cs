@@ -141,6 +141,13 @@ namespace Tasks
             }
             catch { }
             //SendNotifications();
+            foreach (var task in BackgroundTaskRegistration.AllTasks)
+            {
+                if (task.Value.Name.Contains("timesense_timer"))
+                {
+                    task.Value.Unregister(true);
+                }
+            }
             _deferral.Complete();
         }
 
