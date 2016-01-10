@@ -24,30 +24,24 @@
                     <StackPanel>
                         <TextBlock
                             x:Name="usage_txt"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontWeight="Bold"
-                            Style="{StaticResource HeaderTextBlockStyle}"
+                            Style="{StaticResource usage_banner_text}"
                             Text="{Binding usage}" />
                         <TextBlock
                             x:Name="unlocks_txt"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontWeight="SemiBold"
-                            Style="{StaticResource SubtitleTextBlockStyle}" 
-                            Text="{Binding unlocks}"/>
+                            Style="{StaticResource unlocks_banner_text}"
+                            Text="{Binding unlocks}" />
                         <TextBlock
                             x:Name="perc_txt"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Text="{Binding perc_str}"/>
+                            Text="{Binding perc_str}" />
                         <ProgressBar
                             x:Name="bar"
                             Height="6"
                             Margin="0,6,0,0"
                             HorizontalAlignment="Stretch"
-                            Maximum="86400" 
-                            Value="{Binding perc}"/>
+                            Maximum="86400"
+                            Value="{Binding perc}" />
                     </StackPanel>
                 </Grid>
                 <RelativePanel
@@ -81,8 +75,7 @@
                                     HorizontalAlignment="Stretch"
                                     VerticalAlignment="Stretch"
                                     IsEnabled="False"
-                                    Palette="Custom"
-                                    >
+                                    Palette="Custom">
                                     <chart:SfChart.ColorModel>
                                         <chart:ChartColorModel>
                                             <chart:ChartColorModel.CustomBrushes>
@@ -105,9 +98,9 @@
                                         x:Name="chart_time"
                                         AnimationDuration="0:0:1"
                                         EnableAnimation="True"
+                                        ItemsSource="{Binding h_list}"
                                         XBindingPath="hour"
-                                        YBindingPath="usage" 
-                                        ItemsSource="{Binding h_list}"/>
+                                        YBindingPath="usage" />
                                 </chart:SfChart>
                                 <Grid Margin="0,0,0,12">
                                     <Grid.ColumnDefinitions>
@@ -118,10 +111,8 @@
                                     <StackPanel>
                                         <TextBlock
                                             x:Name="max_time"
-                                            HorizontalAlignment="Center"
-                                            FontSize="28"
-                                            Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
-                                            Text="{Binding usage_max}"/>
+                                            Style="{StaticResource chart_stats_text}"
+                                            Text="{Binding usage_max}" />
                                         <TextBlock
                                             x:Uid="maximum"
                                             HorizontalAlignment="Center" />
@@ -129,10 +120,8 @@
                                     <StackPanel Grid.Column="1">
                                         <TextBlock
                                             x:Name="min_time"
-                                            HorizontalAlignment="Center"
-                                            FontSize="28"
-                                            Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" 
-                                            Text="{Binding usage_min}"/>
+                                            Style="{StaticResource chart_stats_text}"
+                                            Text="{Binding usage_min}" />
                                         <TextBlock
                                             x:Uid="minimum"
                                             HorizontalAlignment="Center" />
@@ -140,10 +129,8 @@
                                     <StackPanel Grid.Column="2">
                                         <TextBlock
                                             x:Name="avg_time"
-                                            HorizontalAlignment="Center"
-                                            FontSize="28"
-                                            Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" 
-                                            Text="{Binding usage_avg}"/>
+                                            Style="{StaticResource chart_stats_text}"
+                                            Text="{Binding usage_avg}" />
                                         <TextBlock
                                             x:Uid="average"
                                             HorizontalAlignment="Center" />
@@ -184,9 +171,9 @@
                                         x:Name="chart_unlocks"
                                         AnimationDuration="0:0:1"
                                         EnableAnimation="True"
+                                        ItemsSource="{Binding h_list}"
                                         XBindingPath="hour"
-                                        YBindingPath="unlocks" 
-                                        ItemsSource="{Binding h_list}"/>
+                                        YBindingPath="unlocks" />
                                 </chart:SfChart>
                                 <Grid Margin="0,0,0,12">
                                     <Grid.ColumnDefinitions>
@@ -197,10 +184,8 @@
                                     <StackPanel>
                                         <TextBlock
                                             x:Name="max_unlocks"
-                                            HorizontalAlignment="Center"
-                                            FontSize="28"
-                                            Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" 
-                                            Text="{Binding unlocks_max}"/>
+                                            Style="{StaticResource chart_stats_text}"
+                                            Text="{Binding unlocks_max}" />
                                         <TextBlock
                                             x:Uid="maximum"
                                             HorizontalAlignment="Center" />
@@ -208,10 +193,8 @@
                                     <StackPanel Grid.Column="1">
                                         <TextBlock
                                             x:Name="min_unlocks"
-                                            HorizontalAlignment="Center"
-                                            FontSize="28"
-                                            Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
-                                            Text="{Binding unlocks_min}"/>
+                                            Style="{StaticResource chart_stats_text}"
+                                            Text="{Binding unlocks_min}" />
                                         <TextBlock
                                             x:Uid="minimum"
                                             HorizontalAlignment="Center" />
@@ -219,10 +202,8 @@
                                     <StackPanel Grid.Column="2">
                                         <TextBlock
                                             x:Name="avg_unlocks"
-                                            HorizontalAlignment="Center"
-                                            FontSize="28"
-                                            Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" 
-                                            Text="{Binding unlocks_avg}"/>
+                                            Style="{StaticResource chart_stats_text}"
+                                            Text="{Binding unlocks_avg}" />
                                         <TextBlock
                                             x:Uid="average"
                                             HorizontalAlignment="Center" />
@@ -256,9 +237,9 @@
                                     IsReadOnly="True"
                                     IsSpellCheckEnabled="True"
                                     IsTapEnabled="False"
-                                    TextWrapping="Wrap" 
                                     Text="{Binding note}"
-                                    Visibility="{Binding note_panel}"/>
+                                    TextWrapping="Wrap"
+                                    Visibility="{Binding note_panel}" />
                                 <TextBlock
                                     x:Name="no_note_txt"
                                     x:Uid="no_note_txt"
@@ -290,18 +271,12 @@
                                     Visibility="{Binding notch_panel}">
                                     <TextBlock
                                         x:Name="usage_batt_txt"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        FontWeight="Bold"
-                                        Style="{StaticResource HeaderTextBlockStyle}" 
-                                        Text="{Binding battery_usage}"/>
+                                        Style="{StaticResource usage_banner_text}"
+                                        Text="{Binding battery_usage}" />
                                     <TextBlock
                                         x:Name="unlocks_batt_txt"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        FontWeight="SemiBold"
-                                        Style="{StaticResource SubtitleTextBlockStyle}" 
-                                        Text="{Binding battery_unlocks}"/>
+                                        Style="{StaticResource unlocks_banner_text}"
+                                        Text="{Binding battery_unlocks}" />
                                     <TextBlock
                                         x:Uid="helper_notch_txt"
                                         Margin="0,12"
@@ -349,9 +324,9 @@
     </Grid>
     <Page.BottomAppBar>
         <CommandBar
+            x:Name="bottom_bar"
             HorizontalAlignment="Right"
-            ClosedDisplayMode="Compact"
-            x:Name="bottom_bar">
+            ClosedDisplayMode="Compact">
             <AppBarButton
                 x:Uid="back_bar"
                 Click="back_report_bar_Click"
@@ -365,11 +340,11 @@
                 Click="date_report_bar_Click"
                 Icon="Calendar" />
 
-                <AppBarButton
-                    x:Uid="export_bar"
-                    x:Name="export_bar"
-                    Click="export_bar_Click"
-		    Icon="Save"/>
+            <AppBarButton
+                x:Name="export_bar"
+                x:Uid="export_bar"
+                Click="export_bar_Click"
+                Icon="Save" />
             <AppBarButton
                 x:Uid="refresh_bar"
                 HorizontalAlignment="Right"
