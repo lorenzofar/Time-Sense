@@ -14,13 +14,8 @@ using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 using System.Threading.Tasks;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace Time_Sense
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class TimelinePage : Page
     {
         public List<Timeline> list_raw = new List<Timeline>();
@@ -30,7 +25,6 @@ namespace Time_Sense
 
         private class ts_data
         {
-            public List<Timeline> t_list { get; set; }
             public Visibility no_item { get; set; }
         }
 
@@ -57,25 +51,23 @@ namespace Time_Sense
 
         private async void LoadData()
         {
-            ring_box.Visibility = Visibility.Visible;
             Button_switch(false);
-            ring.IsActive = true;
+            timeline_list.ItemsSource = null;
             timeline_list.Visibility = Visibility.Collapsed;
-            await Task.Delay(1);
+            ring_box.Visibility = Visibility.Visible;
+            ring.IsActive = true;
             list_raw = await Helper.GetTimelineList(App.report_date);
             list_raw = list_raw.OrderBy(z => z.unlocks).ToList();
+            await Task.Delay(1);
             this.DataContext = new ts_data
             {
-                t_list = list_raw,
                 no_item = list_raw.Count == 0 ? Visibility.Visible : Visibility.Collapsed
             };
-            await Task.Delay(1);
-            timeline_list.ItemsSource = null;
-            timeline_list.ItemsSource = list_raw;
-            MainPage.title.Text = App.report_date.Date == DateTime.Now.Date ? utilities.loader.GetString("today") : App.report_date.Date == DateTime.Now.Subtract(new TimeSpan(1,0,0,0,0)).Date ? utilities.loader.GetString("yesterday") : utilities.shortdate_form.Format(App.report_date);
-            ring_box.Visibility = Visibility.Collapsed;
             ring.IsActive = false;
+            ring_box.Visibility = Visibility.Collapsed;
             timeline_list.Visibility = Visibility.Visible;
+            timeline_list.ItemsSource = list_raw;
+            MainPage.title.Text = App.report_date.Date == DateTime.Now.Date ? utilities.loader.GetString("today") : App.report_date.Date == DateTime.Now.Subtract(new TimeSpan(1,0,0,0,0)).Date ? utilities.loader.GetString("yesterday") : utilities.shortdate_form.Format(App.report_date);            
             Button_switch(true);
         }
 
