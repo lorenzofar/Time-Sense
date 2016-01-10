@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -60,6 +61,7 @@ namespace Time_Sense
             Button_switch(false);
             ring.IsActive = true;
             timeline_list.Visibility = Visibility.Collapsed;
+            await Task.Delay(1);
             list_raw = await Helper.GetTimelineList(App.report_date);
             list_raw = list_raw.OrderBy(z => z.unlocks).ToList();
             this.DataContext = new ts_data
@@ -67,6 +69,7 @@ namespace Time_Sense
                 t_list = list_raw,
                 no_item = list_raw.Count == 0 ? Visibility.Visible : Visibility.Collapsed
             };
+            await Task.Delay(1);
             timeline_list.ItemsSource = null;
             timeline_list.ItemsSource = list_raw;
             MainPage.title.Text = App.report_date.Date == DateTime.Now.Date ? utilities.loader.GetString("today") : App.report_date.Date == DateTime.Now.Subtract(new TimeSpan(1,0,0,0,0)).Date ? utilities.loader.GetString("yesterday") : utilities.shortdate_form.Format(App.report_date);
@@ -172,11 +175,6 @@ namespace Time_Sense
         public void Button_switch(bool enabled)
         {
             bottom_bar.IsEnabled = enabled;
-        }
-
-        private void export_bar_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

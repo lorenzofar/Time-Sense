@@ -255,10 +255,5 @@ namespace Time_Sense
             App.t_client.TrackEvent("Report chart swipe");
             chart_helper.Text = statistics_chart.SelectedIndex == 0 ? utilities.loader.GetString("hours_report") : utilities.loader.GetString("unlocks_tile");
         }
-
-        private void export_bar_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

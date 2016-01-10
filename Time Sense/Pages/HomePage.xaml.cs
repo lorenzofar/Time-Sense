@@ -69,10 +69,10 @@ namespace Time_Sense
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            App.t_client.TrackPageView("Home page");
             ButtonSwitch(false);
             refresh();
-            await ShowData();
-            App.t_client.TrackPageView("Home page");
+            ShowData();
             if (App.jump_arguments == "usage")
             {
                 SpeechSynthesizer syntetizer = new SpeechSynthesizer();
@@ -91,7 +91,7 @@ namespace Time_Sense
             ButtonSwitch(false);
             App.t_client.TrackEvent("Usage refreshed");
             refresh();
-            await ShowData();
+            ShowData();
             ButtonSwitch(true);
         }
 
@@ -215,7 +215,7 @@ namespace Time_Sense
             }
         }
 
-        public async Task ShowData()
+        public async void ShowData()
         {
             if (App.report_date.Date != DateTime.Now.Date)
             {
@@ -344,13 +344,15 @@ namespace Time_Sense
                 ts.battery_usage = FormatData(batt_time);
                 ts.battery_unlocks = batt_unlocks == 1 ? String.Format(utilities.loader.GetString("unlock"), batt_unlocks) : String.Format(utilities.loader.GetString("unlocks"), batt_unlocks);
             }
-            this.DataContext = ts;
-            MainPage.title.Text = App.report_date.Date == DateTime.Now.Date ? utilities.loader.GetString("today") : App.report_date.Date == DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0, 0)).Date ? utilities.loader.GetString("yesterday") : utilities.shortdate_form.Format(App.report_date);
 
             if (App.report_date.Date == DateTime.Now.Date)
             {
                 UpdateTile();
             }
+
+            await Task.Delay(1);
+            MainPage.title.Text = App.report_date.Date == DateTime.Now.Date ? utilities.loader.GetString("today") : App.report_date.Date == DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0, 0)).Date ? utilities.loader.GetString("yesterday") : utilities.shortdate_form.Format(App.report_date);
+            this.DataContext = ts;
         }
 
         private bool CheckBattery(List<Timeline> list, int battery, int count )
@@ -410,7 +412,7 @@ namespace Time_Sense
             if (await new DateDialog().ShowAsync() == ContentDialogResult.Primary)
             {
                 if (App.report_date.Date == DateTime.Now.Date) { refresh(); }
-                await ShowData();
+                ShowData();
             }
             ButtonSwitch(true);
         }
@@ -421,7 +423,7 @@ namespace Time_Sense
             App.t_client.TrackEvent("Previous day");
             App.report_date = App.report_date.Subtract(new TimeSpan(1, 0, 0, 0));
             if (App.report_date.Date == DateTime.Now.Date) { refresh(); }
-            await ShowData();
+            ShowData();
             ButtonSwitch(true);
         }
 
@@ -431,7 +433,7 @@ namespace Time_Sense
             App.t_client.TrackEvent("Next day");
             App.report_date = App.report_date.AddDays(1);
             if (App.report_date.Date == DateTime.Now.Date) { refresh(); }
-            await ShowData();
+            ShowData();
             ButtonSwitch(true);
         }
 
