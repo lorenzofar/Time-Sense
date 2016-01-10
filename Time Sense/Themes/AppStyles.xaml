@@ -3,8 +3,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:chart="using:Syncfusion.UI.Xaml.Charts"
     mc:Ignorable="d">
 
+    <!-- REGION SETTINGS -->
     <Style
         x:Key="settings_header_subtitle"
         TargetType="TextBlock">
@@ -29,7 +31,9 @@
             Property="RelativePanel.AlignRightWithPanel"
             Value="True" />
     </Style>
+    <!-- ENDREGION -->
 
+    <!-- REGION MAIN -->
     <Style
         x:Key="usage_banner_text"
         BasedOn="{StaticResource HeaderTextBlockStyle}"
@@ -84,7 +88,9 @@
             Property="Foreground"
             Value="{ThemeResource SystemControlBackgroundAccentBrush}" />
     </Style>
+    <!-- ENDREGION -->
 
+    <!-- REGION PASSWORD -->
     <Style
         x:Key="password_button"
         TargetType="Button">
@@ -98,4 +104,172 @@
             Property="VerticalAlignment"
             Value="Stretch" />
     </Style>
+    <!-- ENDREGION -->
+
+    <!-- REGION TIMELINE -->
+    <Style
+        x:Key="timeline_chart"
+        TargetType="chart:SfChart">
+        <Setter
+            Property="IsEnabled"
+            Value="False" />
+        <Setter
+            Property="BorderThickness"
+            Value="0" />
+        <Setter
+            Property="AreaBorderThickness"
+            Value="0" />
+        <Setter
+            Property="Margin"
+            Value="0,4,0,0" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Stretch" />
+        <Setter
+            Property="VerticalAlignment"
+            Value="Stretch" />
+    </Style>
+
+    <Style
+        x:Key="timeline_chart_axis"
+        TargetType="chart:NumericalAxis">
+        <Setter
+            Property="ShowGridLines"
+            Value="False" />
+        <Setter
+            Property="TickLinesPosition"
+            Value="Inside" />
+        <Setter
+            Property="TickLineSize"
+            Value="0" />
+    </Style>
+
+    <Style
+        x:Key="timeline_list"
+        TargetType="ListView">
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Border
+                            Width="{Binding
+                                ActualWidth,
+                                ElementName=time_border}">
+                            <Viewbox MaxHeight="36">
+                                <TextBlock
+                                    Margin="6"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="{StaticResource TextStyleLargeFontSize}"
+                                    Text="{Binding time}" />
+                            </Viewbox>
+                        </Border>
+                        <Border
+                            Width="{Binding
+                                ActualWidth,
+                                ElementName=usage_border}">
+                            <Viewbox MaxHeight="36">
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Margin="6"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="{StaticResource TextStyleLargeFontSize}"
+                                    Text="{Binding
+                                        usage,
+                                        Converter={StaticResource TimeConverter}}" />
+                            </Viewbox>
+                        </Border>
+                        <Border
+                            Width="{Binding
+                                ActualWidth,
+                                ElementName=unlocks_border}">
+                            <Viewbox MaxHeight="36">
+                                <RelativePanel HorizontalAlignment="Center">
+                                    <TextBlock
+                                        x:Name="unlocks_txt"
+                                        Grid.Column="2"
+                                        Margin="6"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="{StaticResource TextStyleLargeFontSize}"
+                                        Text="{Binding unlocks}" />
+                                    <FontIcon
+                                        x:Name="location_ico"
+                                        FontSize="{Binding
+                                            FontSize,
+                                            ElementName=unlocks_txt}"
+                                        Foreground="#008000"
+                                        Glyph=""
+                                        RelativePanel.AlignVerticalCenterWithPanel="True"
+                                        RelativePanel.RightOf="unlocks_txt"
+                                        Visibility="{Binding
+                                            latitude,
+                                            Converter={StaticResource LocationConverter}}" />
+                                    <FontIcon
+                                        x:Name="wifi_ico"
+                                        FontSize="{Binding
+                                            FontSize,
+                                            ElementName=unlocks_txt}"
+                                        Foreground="{ThemeResource SystemControlBackgroundAccentBrush}"
+                                        Glyph=""
+                                        RelativePanel.AlignVerticalCenterWithPanel="True"
+                                        RelativePanel.RightOf="location_ico"
+                                        Visibility="{Binding
+                                            wifi_status,
+                                            Converter={StaticResource IconConverter}}" />
+                                    <FontIcon
+                                        x:Name="bluetooth_ico"
+                                        FontSize="{Binding
+                                            FontSize,
+                                            ElementName=unlocks_txt}"
+                                        Foreground="#0078D7"
+                                        Glyph=""
+                                        RelativePanel.AlignVerticalCenterWithPanel="True"
+                                        RelativePanel.RightOf="wifi_ico"
+                                        Visibility="{Binding
+                                            bluetooth_status,
+                                            Converter={StaticResource IconConverter}}" />
+                                </RelativePanel>
+                            </Viewbox>
+                        </Border>
+                        <Border
+                            Width="{Binding
+                                ActualWidth,
+                                ElementName=battery_border}">
+                            <Viewbox MaxHeight="36">
+                                <RelativePanel HorizontalAlignment="Center">
+                                    <TextBlock
+                                        x:Name="battery"
+                                        Grid.Column="3"
+                                        Margin="0,6"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="{StaticResource TextStyleLargeFontSize}"
+                                        RelativePanel.AlignHorizontalCenterWithPanel="True"
+                                        RelativePanel.AlignVerticalCenterWithPanel="True"
+                                        Text="{Binding
+                                            battery,
+                                            Converter={StaticResource BatteryConverter}}" />
+                                    <FontIcon
+                                        FontSize="{Binding
+                                            FontSize,
+                                            ElementName=battery}"
+                                        Foreground="#CCAB29"
+                                        Glyph=""
+                                        RelativePanel.AlignVerticalCenterWithPanel="True"
+                                        RelativePanel.RightOf="battery"
+                                        Visibility="{Binding
+                                            battery_status,
+                                            Converter={StaticResource IconConverter}}" />
+                                </RelativePanel>
+                            </Viewbox>
+                        </Border>
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- ENDREGION -->
+
 </ResourceDictionary>
