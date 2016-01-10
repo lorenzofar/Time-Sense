@@ -2,208 +2,394 @@
     x:Class="Time_Sense.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Time_Sense"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Time_Sense"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <RelativePanel Margin="18" x:Name="root_panel">
-                <StackPanel Margin="0,0,0,6" RelativePanel.AlignTopWithPanel="True" HorizontalAlignment="Stretch" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" x:Name="privacy_grid">
-                    <TextBlock x:Uid="privacy_banner" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <ToggleSwitch Margin="0,6" Toggled="password_switch_Toggled" x:Name="password_switch">
+            <RelativePanel
+                x:Name="root_panel"
+                Margin="18">
+                <StackPanel
+                    x:Name="privacy_grid"
+                    Margin="0,0,0,6"
+                    RelativePanel.AlignTopWithPanel="True"
+                    Style="{StaticResource settings_section}">
+                    <TextBlock
+                        x:Uid="privacy_banner"
+                        Style="{StaticResource TitleTextBlockStyle}" />
+                    <ToggleSwitch
+                        x:Name="password_switch"
+                        Margin="0,6"
+                        Toggled="password_switch_Toggled">
                         <ToggleSwitch.Header>
                             <StackPanel>
-                                <TextBlock x:Uid="password_header_1"/>
-                                <TextBlock x:Uid="password_header_2" Foreground="#999999" TextWrapping="Wrap"/>
+                                <TextBlock x:Uid="password_header_1" />
+                                <TextBlock
+                                    x:Uid="password_header_2"
+                                    Style="{StaticResource settings_header_subtitle}" />
                             </StackPanel>
                         </ToggleSwitch.Header>
                     </ToggleSwitch>
-                    <Grid Visibility="Collapsed" Margin="0,0,0,6" x:Name="password_edit_grid">
+                    <Grid
+                        x:Name="password_edit_grid"
+                        Margin="0,0,0,6"
+                        Visibility="Collapsed">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBox KeyDown="password_box_KeyDown" LostFocus="password_box_LostFocus" IsEnabled="False" x:Name="password_box" BorderBrush="{Binding Background, ElementName=nfc_btn}" BorderThickness="2,2,0,2" VerticalAlignment="Stretch" InputScope="NumericPin"/>
-                        <Button Click="password_btn_Click" x:Name="password_btn" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Right">
+                        <TextBox
+                            x:Name="password_box"
+                            VerticalAlignment="Stretch"
+                            BorderBrush="{Binding
+                                Background,
+                                ElementName=nfc_btn}"
+                            BorderThickness="2,2,0,2"
+                            InputScope="NumericPin"
+                            IsEnabled="False"
+                            KeyDown="password_box_KeyDown"
+                            LostFocus="password_box_LostFocus" />
+                        <Button
+                            x:Name="password_btn"
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Stretch"
+                            Click="password_btn_Click">
                             <Button.Content>
-                                <FontIcon x:Name="password_icon" Glyph="&#xE104;"/>
+                                <FontIcon
+                                    x:Name="password_icon"
+                                    Glyph="" />
                             </Button.Content>
                         </Button>
                     </Grid>
                 </StackPanel>
-                
-                <StackPanel Margin="0,6" x:Name="device_grid" RelativePanel.Below="privacy_grid" HorizontalAlignment="Stretch" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" >
-                    <TextBlock x:Uid="device_banner" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <ToggleSwitch x:Name="location_switch" Margin="0,6" Toggled="location_switch_toggled">
+
+                <StackPanel
+                    x:Name="device_grid"
+                    Margin="0,6"
+                    RelativePanel.Below="privacy_grid"
+                    Style="{StaticResource settings_section}">
+                    <TextBlock
+                        x:Uid="device_banner"
+                        Style="{StaticResource TitleTextBlockStyle}" />
+                    <ToggleSwitch
+                        x:Name="location_switch"
+                        Margin="0,6"
+                        Toggled="location_switch_toggled">
                         <ToggleSwitch.Header>
                             <StackPanel>
-                                <TextBlock x:Uid="location_header_1"/>
-                                <TextBlock x:Uid="location_header_2" Foreground="#999999" TextWrapping="Wrap"/>
+                                <TextBlock x:Uid="location_header_1" />
+                                <TextBlock
+                                    x:Uid="location_header_2"
+                                    Style="{StaticResource settings_header_subtitle}" />
                             </StackPanel>
                         </ToggleSwitch.Header>
                     </ToggleSwitch>
-                    <Grid Margin="0,0,0,6" x:Name="nfc_panel">
+                    <Grid
+                        x:Name="nfc_panel"
+                        Margin="0,0,0,6">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <ComboBox BorderBrush="{Binding Background, ElementName=nfc_btn}" BorderThickness="2,2,0,2" x:Name="nfc_box" HorizontalAlignment="Stretch">
+                        <ComboBox
+                            x:Name="nfc_box"
+                            HorizontalAlignment="Stretch"
+                            BorderBrush="{Binding
+                                Background,
+                                ElementName=nfc_btn}"
+                            BorderThickness="2,2,0,2">
                             <ComboBox.Header>
                                 <StackPanel>
-                                    <TextBlock x:Uid="nfc_header_1"/>
-                                    <TextBlock x:Uid="nfc_header_2" Foreground="#999999" TextWrapping="Wrap"/>
+                                    <TextBlock x:Uid="nfc_header_1" />
+                                    <TextBlock
+                                        x:Uid="nfc_header_2"
+                                        Style="{StaticResource settings_header_subtitle}" />
                                 </StackPanel>
                             </ComboBox.Header>
-                            <ComboBoxItem x:Name="nfc_first" x:Uid="nfc_usage" IsSelected="True"/>
-                            <ComboBoxItem x:Uid="nfc_timeline"/>
-                            <ComboBoxItem x:Uid="nfc_locon"/>
-                            <ComboBoxItem x:Uid="nfc_locoff"/>
+                            <ComboBoxItem
+                                x:Name="nfc_first"
+                                x:Uid="nfc_usage"
+                                IsSelected="True" />
+                            <ComboBoxItem x:Uid="nfc_timeline" />
+                            <ComboBoxItem x:Uid="nfc_locon" />
+                            <ComboBoxItem x:Uid="nfc_locoff" />
                         </ComboBox>
-                        <Button VerticalAlignment="Bottom" x:Name="nfc_btn" Grid.Column="1" HorizontalAlignment="Stretch" Click="nfc_btn_Click">
+                        <Button
+                            x:Name="nfc_btn"
+                            Grid.Column="1"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Bottom"
+                            Click="nfc_btn_Click">
                             <Button.Content>
-                                <FontIcon Glyph="&#xE28F;"/>
+                                <FontIcon Glyph="" />
                             </Button.Content>
                         </Button>
                     </Grid>
                 </StackPanel>
-                <StackPanel Margin="0,12" x:Name="notifications_grid" RelativePanel.Below="device_grid" HorizontalAlignment="Stretch" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" >
-                    <TextBlock x:Uid="notifications_banner" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <ComboBox BorderBrush="{Binding Background, ElementName=nfc_btn}" Margin="0,6,0,18" BorderThickness="2" x:Name="threshold_box" HorizontalAlignment="Stretch" SelectionChanged="threshold_box_selectionChanged" >
+                <StackPanel
+                    x:Name="notifications_grid"
+                    Margin="0,12"
+                    RelativePanel.Below="device_grid"
+                    Style="{StaticResource settings_section}">
+                    <TextBlock
+                        x:Uid="notifications_banner"
+                        Style="{StaticResource TitleTextBlockStyle}" />
+                    <ComboBox
+                        x:Name="threshold_box"
+                        Margin="0,6,0,18"
+                        HorizontalAlignment="Stretch"
+                        BorderBrush="{Binding
+                            Background,
+                            ElementName=nfc_btn}"
+                        BorderThickness="2"
+                        SelectionChanged="threshold_box_selectionChanged">
                         <ComboBox.Header>
                             <StackPanel>
-                                <TextBlock x:Uid="limit_header_1"/>
-                                <TextBlock x:Uid="limit_header_2" Foreground="#999999" TextWrapping="Wrap"/>
+                                <TextBlock x:Uid="limit_header_1" />
+                                <TextBlock
+                                    x:Uid="limit_header_2"
+                                    Style="{StaticResource settings_header_subtitle}" />
                             </StackPanel>
                         </ComboBox.Header>
-                        <ComboBoxItem x:Uid="limit_item_1" Tag="1"/>
-                        <ComboBoxItem x:Uid="limit_item_2" Tag="2"/>
-                        <ComboBoxItem x:Uid="limit_item_3" Tag="3"/>
-                        <ComboBoxItem x:Uid="limit_item_4" Tag="4"/>
-                        <ComboBoxItem x:Uid="limit_item_5" Tag="5"/>
+                        <ComboBoxItem
+                            x:Uid="limit_item_1"
+                            Tag="1" />
+                        <ComboBoxItem
+                            x:Uid="limit_item_2"
+                            Tag="2" />
+                        <ComboBoxItem
+                            x:Uid="limit_item_3"
+                            Tag="3" />
+                        <ComboBoxItem
+                            x:Uid="limit_item_4"
+                            Tag="4" />
+                        <ComboBoxItem
+                            x:Uid="limit_item_5"
+                            Tag="5" />
                     </ComboBox>
-                    <!--<StackPanel Margin="0,12">
+                    <!--
+                        <StackPanel Margin="0,12">
                         <ToggleSwitch x:Name="sms_toggle" Toggled="sms_toggle_Toggled">
-                            <ToggleSwitch.Header>
-                                <StackPanel>
-                                    <TextBlock Text="Send an SMS notiification"/>
-                                    <TextBlock Text="Sends a text message to the specified number when you reach the threshold" Foreground="#999999" TextWrapping="Wrap"/>
-                                </StackPanel>
-                            </ToggleSwitch.Header>
+                        <ToggleSwitch.Header>
+                        <StackPanel>
+                        <TextBlock Text="Send an SMS notiification"/>
+                        <TextBlock Text="Sends a text message to the specified number when you reach the threshold" Foreground="#999999" TextWrapping="Wrap"/>
+                        </StackPanel>
+                        </ToggleSwitch.Header>
                         </ToggleSwitch>
                         <Grid x:Name="sms_grid" Visibility="Collapsed">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBox x:Name="sms_box" BorderThickness="2,2,0,2" IsEnabled="False" BorderBrush="{Binding Backround, ElementName=nfc_btn}" PlaceholderText="Type the number" InputScope="TelephoneNumber" />
-                            <Button Click="sms_btn_Click" Grid.Column="1" x:Name="sms_btn">
-                                <Button.Content>
-                                    <FontIcon x:Name="sms_icon" Glyph="&#xE104;"></FontIcon>
-                                </Button.Content>
-                            </Button>
+                        <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="sms_box" BorderThickness="2,2,0,2" IsEnabled="False" BorderBrush="{Binding Backround, ElementName=nfc_btn}" PlaceholderText="Type the number" InputScope="TelephoneNumber" />
+                        <Button Click="sms_btn_Click" Grid.Column="1" x:Name="sms_btn">
+                        <Button.Content>
+                        <FontIcon x:Name="sms_icon" Glyph="&#xE104;"></FontIcon>
+                        </Button.Content>
+                        </Button>
                         </Grid>
-                    </StackPanel>-->
+                        </StackPanel>
+                    -->
 
                     <StackPanel>
-                        <TextBlock x:Uid="tile_header_1" x:Name="tile_unlocks_helper"/>
-                        <TextBlock x:Uid="tile_header_2" Foreground="#999999" TextWrapping="Wrap"/>
+                        <TextBlock
+                            x:Name="tile_unlocks_helper"
+                            x:Uid="tile_header_1" />
+                        <TextBlock
+                            x:Uid="tile_header_2"
+                            Style="{StaticResource settings_header_subtitle}" />
                     </StackPanel>
-                    <RadioButton x:Uid="badge_radio" Tag="badge" x:Name="badge_radio" GroupName="unlocks" Checked="unlocks_radio_checked"/>
-                    <RadioButton x:Uid="tile_radio" Tag="tile" x:Name="tile_radio" GroupName="unlocks" Checked="unlocks_radio_checked"/>
+                    <RadioButton
+                        x:Name="badge_radio"
+                        x:Uid="badge_radio"
+                        Checked="unlocks_radio_checked"
+                        GroupName="unlocks"
+                        Tag="badge" />
+                    <RadioButton
+                        x:Name="tile_radio"
+                        x:Uid="tile_radio"
+                        Checked="unlocks_radio_checked"
+                        GroupName="unlocks"
+                        Tag="tile" />
                     <StackPanel Margin="0,12,0,0">
-                        <ToggleSwitch x:Name="letters_switch" Toggled="letters_switch_Toggled">
+                        <ToggleSwitch
+                            x:Name="letters_switch"
+                            Toggled="letters_switch_Toggled">
                             <ToggleSwitch.Header>
                                 <StackPanel>
-                                    <TextBlock x:Uid="letters_header_1"/>
-                                    <TextBlock x:Uid="letters_header_2" Foreground="#999999" TextWrapping="Wrap"/>
+                                    <TextBlock x:Uid="letters_header_1" />
+                                    <TextBlock
+                                        x:Uid="letters_header_2"
+                                        Style="{StaticResource settings_header_subtitle}" />
                                 </StackPanel>
                             </ToggleSwitch.Header>
                         </ToggleSwitch>
                     </StackPanel>
                 </StackPanel>
 
-                <!--<StackPanel Margin="0,6" x:Name="remote_grid" RelativePanel.Below="notifications_grid" HorizontalAlignment="Stretch" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" >
+                <!--
+                    <StackPanel Margin="0,6" x:Name="remote_grid" RelativePanel.Below="notifications_grid" HorizontalAlignment="Stretch" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" >
                     <TextBlock x:Uid="remote_banner" Text="Time Sense remote" Style="{StaticResource TitleTextBlockStyle}"/>
                     <TextBlock x:Uid="sms_header" Margin="0,6,0,0" Text="SMS"/>
                     <TextBlock x:Uid="sms_header_2" Text="People in this list can request ad see your data with a text message" Foreground="#999999" TextWrapping="Wrap"/>
                     <ListView Margin="0,12,0,6" MaxHeight="200" x:Name="sms_list" SelectionMode="None">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Margin="0,6">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <Ellipse Fill="{ThemeResource SystemControlBackgroundListMediumBrush}" Width="48" Height="48"/>
-                                    <FontIcon Glyph="&#xE13D;" VerticalAlignment="Center"/>
-                                    <StackPanel Grid.Column="1" Margin="6,0" VerticalAlignment="Center">
-                                        <TextBlock Style="{ThemeResource BaseTextBlockStyle}" Text="{Binding name}"/>
-                                        <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding number}" Foreground="#999999"/>
-                                    </StackPanel>
-                                </Grid>
-                            </DataTemplate>                            
-                        </ListView.ItemTemplate>
+                    <ListView.ItemTemplate>
+                    <DataTemplate>
+                    <Grid Margin="0,6">
+                    <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Ellipse Fill="{ThemeResource SystemControlBackgroundListMediumBrush}" Width="48" Height="48"/>
+                    <FontIcon Glyph="&#xE13D;" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Column="1" Margin="6,0" VerticalAlignment="Center">
+                    <TextBlock Style="{ThemeResource BaseTextBlockStyle}" Text="{Binding name}"/>
+                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding number}" Foreground="#999999"/>
+                    </StackPanel>
+                    </Grid>
+                    </DataTemplate>
+                    </ListView.ItemTemplate>
                     </ListView>
-                        <CommandBar HorizontalAlignment="Left" Background="Transparent">
-                            <AppBarButton x:Name="sms_add" Click="AppBarButton_Click" Icon="Add" Label="Add"/>
-                            <AppBarButton x:Name="sms_select" Click="AppBarButton_Click_1" Icon="List" Label="Select"/>
-                            <AppBarButton x:Name="sms_delete" Visibility="Collapsed" Click="AppBarButton_Click_2" Icon="Delete" Label="Delete"/>
-                            <AppBarButton x:Name="sms_cancel" Visibility="Collapsed" Click="AppBarButton_Click_3" Icon="Cancel" Label="Cancel"/>
-                        </CommandBar>
-                </StackPanel>-->
-                    <StackPanel Margin="0,6" x:Name="backup_grid" RelativePanel.Below="notifications_grid" HorizontalAlignment="Stretch" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" >
-                    <TextBlock x:Uid="backup_banner" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <TextBlock x:Uid="backup_header" Margin="0,6,0,0" />
+                    <CommandBar HorizontalAlignment="Left" Background="Transparent">
+                    <AppBarButton x:Name="sms_add" Click="AppBarButton_Click" Icon="Add" Label="Add"/>
+                    <AppBarButton x:Name="sms_select" Click="AppBarButton_Click_1" Icon="List" Label="Select"/>
+                    <AppBarButton x:Name="sms_delete" Visibility="Collapsed" Click="AppBarButton_Click_2" Icon="Delete" Label="Delete"/>
+                    <AppBarButton x:Name="sms_cancel" Visibility="Collapsed" Click="AppBarButton_Click_3" Icon="Cancel" Label="Cancel"/>
+                    </CommandBar>
+                    </StackPanel>
+                -->
+                <StackPanel
+                    x:Name="backup_grid"
+                    Margin="0,6"
+                    RelativePanel.Below="notifications_grid"
+                    Style="{StaticResource settings_section}">
+                    <TextBlock
+                        x:Uid="backup_banner"
+                        Style="{StaticResource TitleTextBlockStyle}" />
+                    <TextBlock
+                        x:Uid="backup_header"
+                        Margin="0,6,0,0" />
                     <Grid Margin="0,0,0,6">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <Button x:Uid="backup_btn" Click="backup_btn_Click" x:Name="backup_btn" Margin="0,6,3,0" HorizontalAlignment="Stretch"/>
-                        <Button x:Uid="restore_btn" Click="restore_btn_Click" x:Name="restore_btn" Margin="3,6,0,0" Grid.Column="1" HorizontalAlignment="Stretch"/>
+                        <Button
+                            x:Name="backup_btn"
+                            x:Uid="backup_btn"
+                            Margin="0,6,3,0"
+                            HorizontalAlignment="Stretch"
+                            Click="backup_btn_Click" />
+                        <Button
+                            x:Name="restore_btn"
+                            x:Uid="restore_btn"
+                            Grid.Column="1"
+                            Margin="3,6,0,0"
+                            HorizontalAlignment="Stretch"
+                            Click="restore_btn_Click" />
                     </Grid>
-                    <TextBlock x:Name="reset_header" Margin="0,6,0,0"/>
-                    <Grid Margin="0,0,0,6" x:Name="reset_grid">
+                    <TextBlock
+                        x:Name="reset_header"
+                        Margin="0,6,0,0" />
+                    <Grid
+                        x:Name="reset_grid"
+                        Margin="0,0,0,6">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <Button x:Uid="resetone_btn" Click="resetOne_btn_Click" x:Name="resetOne_btn" Margin="0,6,3,0" HorizontalAlignment="Stretch"/>
-                        <Button x:Uid="resetall_btn" Click="resetAll_btn_Click" x:Name="resetAll_btn" Margin="3,6,3,0" Grid.Column="1" HorizontalAlignment="Stretch"/>
+                        <Button
+                            x:Name="resetOne_btn"
+                            x:Uid="resetone_btn"
+                            Margin="0,6,3,0"
+                            HorizontalAlignment="Stretch"
+                            Click="resetOne_btn_Click" />
+                        <Button
+                            x:Name="resetAll_btn"
+                            x:Uid="resetall_btn"
+                            Grid.Column="1"
+                            Margin="3,6,3,0"
+                            HorizontalAlignment="Stretch"
+                            Click="resetAll_btn_Click" />
                     </Grid>
-                    <TextBlock x:Uid="migrate_header_1" Margin="0,6,0,0" Text="Migrate"/>
-                    <TextBlock x:Uid="migrate_header_2" Foreground="#999999" TextWrapping="Wrap"/>
-                    <Grid Margin="0,0,0,6" x:Name="migrate_grid">
+                    <TextBlock
+                        x:Uid="migrate_header_1"
+                        Margin="0,6,0,0" />
+                    <TextBlock
+                        x:Uid="migrate_header_2"
+                        Style="{StaticResource settings_header_subtitle}" />
+                    <Grid
+                        x:Name="migrate_grid"
+                        Margin="0,0,0,6">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <Button x:Uid="migrate_btn" Click="migrate_btn_Click" x:Name="migrate_btn" Margin="0,6,3,0" HorizontalAlignment="Stretch" Content="Migrate old data"/>
+                        <Button
+                            x:Name="migrate_btn"
+                            x:Uid="migrate_btn"
+                            Margin="0,6,3,0"
+                            HorizontalAlignment="Stretch"
+                            Click="migrate_btn_Click" />
                     </Grid>
                 </StackPanel>
-                <StackPanel x:Name="about_grid" RelativePanel.Below="backup_grid" Margin="0,6" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" HorizontalAlignment="Stretch">
-                    <TextBlock x:Uid="about_banner" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <TextBlock Margin="0,3,0,0" Text="Time Sense 2.1"/>
-                    <TextBlock Text="© 2015 Lorenzo Farinelli"/>
-                    <TextBlock Margin="0,3,0,0" x:Uid="thanks_banner"/>
+                <StackPanel
+                    x:Name="about_grid"
+                    Margin="0,6"
+                    RelativePanel.Below="backup_grid"
+                    Style="{StaticResource settings_section}">
+                    <TextBlock
+                        x:Uid="about_banner"
+                        Style="{StaticResource TitleTextBlockStyle}" />
+                    <TextBlock
+                        Margin="0,3,0,0"
+                        Text="Time Sense 2.1" />
+                    <TextBlock Text="© 2015 Lorenzo Farinelli" />
+                    <TextBlock
+                        x:Uid="thanks_banner"
+                        Margin="0,3,0,0" />
                     <StackPanel Orientation="Horizontal">
-                        <HyperlinkButton Content="TheWinDuck" Padding="0" NavigateUri="http://www.thewinduck.com"/>
-                        <TextBlock VerticalAlignment="Center" x:Uid="thanks_german" Margin="6,0"/>
+                        <HyperlinkButton
+                            Padding="0"
+                            Content="TheWinDuck"
+                            NavigateUri="http://www.thewinduck.com" />
+                        <TextBlock
+                            x:Uid="thanks_german"
+                            Margin="6,0"
+                            VerticalAlignment="Center" />
                     </StackPanel>
-                    <Button Margin="0,12" Content="Send feedback" x:Uid="feedback_button" x:Name="feedback_btn" Click="feedback_btn_Click"/>
+                    <Button
+                        x:Name="feedback_btn"
+                        x:Uid="feedback_button"
+                        Margin="0,12"
+                        Click="feedback_btn_Click"
+                        Content="Send feedback" />
                 </StackPanel>
 
-                <!--<StackPanel x:Name="appservice_grid" RelativePanel.Below="about_grid" Margin="0,6" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" HorizontalAlignment="Stretch">
+                <!--
+                    <StackPanel x:Name="appservice_grid" RelativePanel.Below="about_grid" Margin="0,6" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" HorizontalAlignment="Stretch">
                     <TextBlock x:Uid="service_text" Foreground="#999999" TextWrapping="Wrap"/>
-                </StackPanel>-->
+                    </StackPanel>
+                -->
             </RelativePanel>
         </ScrollViewer>
     </Grid>
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:Uid="help_btn" x:Name="guide_settngs_btn" Label="Tutorial" Icon="Help" HorizontalAlignment="Right" Click="guide_settngs_btn_Click"/>
-            <AppBarButton x:Uid="rate_btn" x:Name="rate_btn" Label="Rate" Icon="Favorite" HorizontalAlignment="Right" Click="rate_btn_Click"/>
+            <AppBarButton
+                x:Name="guide_settngs_btn"
+                x:Uid="help_btn"
+                Click="guide_settngs_btn_Click"
+                Icon="Help" />
+            <AppBarButton
+                x:Name="rate_btn"
+                x:Uid="rate_btn"
+                Click="rate_btn_Click"
+                Icon="Favorite" />
         </CommandBar>
-    </Page.BottomAppBar> 
+    </Page.BottomAppBar>
 </Page>
