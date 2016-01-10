@@ -32,15 +32,13 @@ namespace Time_Sense
         {
             if (password_box.Password == pass)
             {
-                Windows.UI.Core.DispatchedHandler disp = new Windows.UI.Core.DispatchedHandler(Open);
-                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, disp);
-                {
-                    lock_ellipse.Fill = new SolidColorBrush(Colors.Green);
-                    lock_icon.Glyph = "";
-                    lock_panel.Visibility = Visibility.Visible;
-                    keyboard_grid.Visibility = Visibility.Collapsed;
-                }
-                Open();
+                this.lock_ellipse.Fill = new SolidColorBrush(Colors.Green);
+                this.lock_icon.Glyph = "";
+                this.lock_panel.Visibility = Visibility.Visible;
+                this.keyboard_grid.Visibility = Visibility.Collapsed;
+
+                await Task.Delay(1);
+                Frame.Navigate(typeof(MainPage), App.jump_arguments);
             }
             else
             {
@@ -49,17 +47,6 @@ namespace Time_Sense
                 password_box.PlaceholderText = utilities.loader.GetString("password_wrong");
                 error.Begin();
             }
-        }
-
-        private async void Open()
-        {
-            await GO();
-        }
-
-        private async Task GO()
-        {
-            await Task.Delay(50);
-            Frame.Navigate(typeof(MainPage), App.jump_arguments);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
