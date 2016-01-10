@@ -2,205 +2,352 @@
     x:Class="Time_Sense.TimelinePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Time_Sense"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:chart="using:Syncfusion.UI.Xaml.Charts"
-    xmlns:map="using:Windows.UI.Xaml.Controls.Maps"
     xmlns:db="using:Database"
+    xmlns:local="using:Time_Sense"
+    xmlns:map="using:Windows.UI.Xaml.Controls.Maps"
     mc:Ignorable="d">
 
     <Page.Resources>
-        <local:TimelineConverter x:Key="IconConverter"/>
-        <local:battery_converter x:Key="BatteryConverter"/>
-        <local:UsageConverter x:Key="TimeConverter"/>
-        <local:LocationConverter x:Key="LocationConverter"/>
+        <local:TimelineConverter x:Key="IconConverter" />
+        <local:battery_converter x:Key="BatteryConverter" />
+        <local:UsageConverter x:Key="TimeConverter" />
+        <local:LocationConverter x:Key="LocationConverter" />
+        <SolidColorBrush
+            x:Key="chart_palette"
+            Color="#777C7D" />
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch">
+    <Grid
+        HorizontalAlignment="Stretch"
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="0" x:Name="map_row"/>
+            <RowDefinition Height="2*" />
+            <RowDefinition
+                x:Name="map_row"
+                Height="0" />
         </Grid.RowDefinitions>
-        <Grid SizeChanged="RelativePanel_SizeChanged" >
+        <Grid SizeChanged="RelativePanel_SizeChanged">
             <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="4*"/>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Grid HorizontalAlignment="Stretch" Background="{ThemeResource SystemControlBackgroundAccentBrush}" Opacity="0.35"/>
-            <TextBlock x:Name="charts_header" FontSize="{Binding FontSize, ElementName=timeline_header}" Margin="12" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
-            <Pivot SelectionChanged="chart_pivot_SelectionChanged" x:Name="chart_pivot">
+            <Grid
+                HorizontalAlignment="Stretch"
+                Background="{ThemeResource SystemControlBackgroundAccentBrush}"
+                Opacity="0.35" />
+            <TextBlock
+                x:Name="charts_header"
+                Margin="12"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                FontSize="{Binding
+                    FontSize,
+                    ElementName=timeline_header}"
+                Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" />
+            <Pivot
+                x:Name="chart_pivot"
+                SelectionChanged="chart_pivot_SelectionChanged">
                 <PivotItem>
                     <PivotItem.Header>
-                        <FontIcon x:Name="timeline_header" Glyph="&#xE121;"/>
+                        <FontIcon
+                            x:Name="timeline_header"
+                            Glyph="" />
                     </PivotItem.Header>
-                    <chart:SfChart IsEnabled="False" Palette="Custom" BorderThickness="0" AreaBorderThickness="0" Margin="0,4,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <chart:SfChart Style="{StaticResource timeline_chart}">
                         <chart:SfChart.ColorModel>
                             <chart:ChartColorModel>
                                 <chart:ChartColorModel.CustomBrushes>
-                                    <SolidColorBrush Color="#777C7D"/>
+                                    <SolidColorBrush Color="#777C7D" />
                                 </chart:ChartColorModel.CustomBrushes>
                             </chart:ChartColorModel>
                         </chart:SfChart.ColorModel>
                         <chart:SfChart.PrimaryAxis>
-                            <chart:NumericalAxis Minimum="1" ShowGridLines="False" TickLinesPosition="Inside" TickLineSize="0">
+                            <chart:NumericalAxis
+                                Minimum="1"
+                                Style="{StaticResource timeline_chart_axis}">
                                 <chart:NumericalAxis.LabelTemplate>
-                                    <DataTemplate/>
+                                    <DataTemplate />
                                 </chart:NumericalAxis.LabelTemplate>
                             </chart:NumericalAxis>
                         </chart:SfChart.PrimaryAxis>
                         <chart:SfChart.SecondaryAxis>
-                            <chart:NumericalAxis Minimum="0" ShowGridLines="False" TickLinesPosition="Inside" TickLineSize="0">
+                            <chart:NumericalAxis
+                                Minimum="0"
+                                Style="{StaticResource timeline_chart_axis}">
                                 <chart:NumericalAxis.LabelTemplate>
-                                    <DataTemplate/>
+                                    <DataTemplate />
                                 </chart:NumericalAxis.LabelTemplate>
                             </chart:NumericalAxis>
                         </chart:SfChart.SecondaryAxis>
-                        <chart:SplineAreaSeries ItemsSource="{Binding t_list}" EnableAnimation="True" AnimationDuration="0:0:1"  x:Name="chart_time" XBindingPath="unlocks" YBindingPath="usage"/>
+                        <chart:SplineAreaSeries
+                            x:Name="chart_time"
+                            AnimationDuration="0:0:1"
+                            EnableAnimation="True"
+                            ItemsSource="{Binding t_list}"
+                            XBindingPath="unlocks"
+                            YBindingPath="usage" />
                     </chart:SfChart>
                 </PivotItem>
                 <PivotItem>
                     <PivotItem.Header>
-                        <FontIcon Glyph="&#xEBAA;"/>
+                        <FontIcon Glyph="" />
                     </PivotItem.Header>
-                    <chart:SfChart IsEnabled="False" BorderThickness="0" AreaBorderThickness="0"  Margin="0,4,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Palette="Custom">
+                    <chart:SfChart Style="{StaticResource timeline_chart}">
                         <chart:SfChart.ColorModel>
                             <chart:ChartColorModel>
                                 <chart:ChartColorModel.CustomBrushes>
-                                    <SolidColorBrush Color="#777C7D"/>
+                                    <SolidColorBrush Color="#777C7D" />
                                 </chart:ChartColorModel.CustomBrushes>
                             </chart:ChartColorModel>
                         </chart:SfChart.ColorModel>
                         <chart:SfChart.PrimaryAxis>
-                            <chart:NumericalAxis Minimum="1" ShowGridLines="False" TickLinesPosition="Inside" TickLineSize="0">
+                            <chart:NumericalAxis
+                                Minimum="1"
+                                Style="{StaticResource timeline_chart_axis}">
                                 <chart:NumericalAxis.LabelTemplate>
-                                    <DataTemplate/>
+                                    <DataTemplate />
                                 </chart:NumericalAxis.LabelTemplate>
                             </chart:NumericalAxis>
                         </chart:SfChart.PrimaryAxis>
                         <chart:SfChart.SecondaryAxis>
-                            <chart:NumericalAxis Minimum="0" Maximum="100" ShowGridLines="False" TickLinesPosition="Inside" TickLineSize="0">
+                            <chart:NumericalAxis
+                                Maximum="100"
+                                Minimum="0"
+                                Style="{StaticResource timeline_chart_axis}">
                                 <chart:NumericalAxis.LabelTemplate>
-                                    <DataTemplate/>
+                                    <DataTemplate />
                                 </chart:NumericalAxis.LabelTemplate>
                             </chart:NumericalAxis>
                         </chart:SfChart.SecondaryAxis>
-                        <chart:AreaSeries ItemsSource="{Binding t_list}" EnableAnimation="True" AnimationDuration="0:0:1" x:Name="chart_battery" XBindingPath="unlocks" YBindingPath="battery"/>
+                        <chart:AreaSeries
+                            x:Name="chart_battery"
+                            AnimationDuration="0:0:1"
+                            EnableAnimation="True"
+                            ItemsSource="{Binding t_list}"
+                            XBindingPath="unlocks"
+                            YBindingPath="battery" />
                     </chart:SfChart>
                 </PivotItem>
             </Pivot>
-            <Rectangle Grid.Row="1" x:Name="separator" Height="6" Fill="{ThemeResource SystemControlBackgroundAccentBrush}" RelativePanel.Below="chart_pivot" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"/>
-            <Grid Grid.Row="2" x:Name="list_grid" RelativePanel.Below="separator" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+            <Rectangle
+                x:Name="separator"
+                Grid.Row="1"
+                Height="6"
+                Fill="{ThemeResource SystemControlBackgroundAccentBrush}"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="chart_pivot" />
+            <Grid
+                x:Name="list_grid"
+                Grid.Row="2"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.Below="separator">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
-                <Grid x:Name="title_grid" Background="{ThemeResource SystemControlBackgroundListMediumBrush}">
+                <Grid
+                    x:Name="title_grid"
+                    Background="{ThemeResource SystemControlBackgroundListMediumBrush}">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Border Margin="12,0,0,0" BorderThickness="0,0,1,0" x:Name="time_border" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
+                    <Border
+                        x:Name="time_border"
+                        Margin="12,0,0,0"
+                        HorizontalAlignment="Stretch"
+                        BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}"
+                        BorderThickness="0,0,1,0">
                         <Viewbox MaxHeight="36">
-                            <TextBlock x:Uid="time_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock
+                                x:Uid="time_banner"
+                                Margin="6"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource SubtitleTextBlockStyle}" />
                         </Viewbox>
                     </Border>
-                    <Border Margin="0,0" BorderThickness="1,0" x:Name="usage_border" Grid.Column="1" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
+                    <Border
+                        x:Name="usage_border"
+                        Grid.Column="1"
+                        Margin="0,0"
+                        HorizontalAlignment="Stretch"
+                        BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}"
+                        BorderThickness="1,0">
                         <Viewbox MaxHeight="36">
-                            <TextBlock x:Uid="usage_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock
+                                x:Uid="usage_banner"
+                                Margin="6"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource SubtitleTextBlockStyle}" />
                         </Viewbox>
                     </Border>
-                    <Border Margin="0,0" BorderThickness="1,0" x:Name="unlocks_border" Grid.Column="2" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
+                    <Border
+                        x:Name="unlocks_border"
+                        Grid.Column="2"
+                        Margin="0,0"
+                        HorizontalAlignment="Stretch"
+                        BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}"
+                        BorderThickness="1,0">
                         <Viewbox MaxHeight="36">
-                            <TextBlock x:Uid="unlocks_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock
+                                x:Uid="unlocks_banner"
+                                Margin="6"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource SubtitleTextBlockStyle}" />
                         </Viewbox>
                     </Border>
-                    <Border Margin="0,0,12,0"  BorderThickness="1,0,0,0" x:Name="battery_border" Grid.Column="3" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
+                    <Border
+                        x:Name="battery_border"
+                        Grid.Column="3"
+                        Margin="0,0,12,0"
+                        HorizontalAlignment="Stretch"
+                        BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}"
+                        BorderThickness="1,0,0,0">
                         <Viewbox MaxHeight="36">
-                            <TextBlock x:Uid="battery_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock
+                                x:Uid="battery_banner"
+                                Margin="6"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Style="{StaticResource SubtitleTextBlockStyle}" />
                         </Viewbox>
                     </Border>
                 </Grid>
-                <Viewbox Margin="12" Grid.Row="1" MaxHeight="80" MaxWidth="80"  x:Name="ring_box" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Viewbox
+                    x:Name="ring_box"
+                    Grid.Row="1"
+                    MaxHeight="80"
+                    MaxWidth="80"
+                    Margin="12"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Visibility="Collapsed">
                     <StackPanel>
-                        <ProgressRing x:Name="ring" IsActive="False" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <ProgressRing
+                            x:Name="ring"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            IsActive="False" />
                     </StackPanel>
                 </Viewbox>
-                <TextBlock Visibility="{Binding no_item}" x:Name="no_item_txt" HorizontalAlignment="Center" TextWrapping="WrapWholeWords" Margin="0,24" Grid.Row="1" x:Uid="no_items_txt" FontSize="{Binding FontSize, ElementName=timeline_header}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
-                <ListView ItemsSource="{Binding t_list}" x:Name="timeline_list" SelectionMode="Single" Grid.Row="1" SelectionChanged="timeline_list_SelectionChanged">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Border Width="{Binding ActualWidth, ElementName=time_border}">
-                                    <Viewbox MaxHeight="36">
-                                        <TextBlock Margin="6" Text="{Binding time}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Viewbox>
-                                </Border>
-                                <Border Width="{Binding ActualWidth, ElementName=usage_border}">
-                                    <Viewbox MaxHeight="36">
-                                        <TextBlock Margin="6" Grid.Column="1" Text="{Binding usage, Converter={StaticResource TimeConverter}}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Viewbox>
-                                </Border>
-                                <Border Width="{Binding ActualWidth, ElementName=unlocks_border}">
-                                    <Viewbox MaxHeight="36">
-                                        <RelativePanel HorizontalAlignment="Center">
-                                            <TextBlock x:Name="unlocks_txt" Margin="6" Grid.Column="2" Text="{Binding unlocks}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                            <FontIcon Visibility="{Binding latitude, Converter={StaticResource LocationConverter}}" Margin="0,0,0,0" FontSize="{Binding FontSize, ElementName=unlocks_txt}" Foreground="#008000" Glyph="&#xE707;" RelativePanel.RightOf="unlocks_txt" RelativePanel.AlignVerticalCenterWithPanel="True" x:Name="location_ico"/>
-                                            <FontIcon Visibility="{Binding wifi_status, Converter={StaticResource IconConverter}}" Margin="0,0,0,0" FontSize="{Binding FontSize, ElementName=unlocks_txt}" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" Glyph="&#xE701;" RelativePanel.RightOf="location_ico" RelativePanel.AlignVerticalCenterWithPanel="True" x:Name="wifi_ico"/>
-                                            <FontIcon Visibility="{Binding bluetooth_status, Converter={StaticResource IconConverter}}" Margin="0,0,0,0" FontSize="{Binding FontSize, ElementName=unlocks_txt}" Foreground="#0078D7" Glyph="&#xE702;" RelativePanel.RightOf="wifi_ico" RelativePanel.AlignVerticalCenterWithPanel="True" x:Name="bluetooth_ico"/>
-                                        </RelativePanel>
-                                    </Viewbox>
-                                </Border>
-                                <Border Width="{Binding ActualWidth, ElementName=battery_border}">
-                                    <Viewbox MaxHeight="36">
-                                        <RelativePanel HorizontalAlignment="Center">
-                                            <TextBlock x:Name="battery" Margin="0,6" Grid.Column="3" Text="{Binding battery, Converter={StaticResource BatteryConverter}}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" HorizontalAlignment="Center"/>
-                                            <FontIcon Visibility="{Binding battery_status, Converter={StaticResource IconConverter}}" Margin="0,0,0,0" FontSize="{Binding FontSize, ElementName=battery}" Foreground="#CCAB29" Glyph="&#xE945;" RelativePanel.RightOf="battery" RelativePanel.AlignVerticalCenterWithPanel="True"/>
-                                        </RelativePanel>
-                                    </Viewbox>
-                                </Border>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                <TextBlock
+                    x:Name="no_item_txt"
+                    x:Uid="no_items_txt"
+                    Grid.Row="1"
+                    Margin="0,24"
+                    HorizontalAlignment="Center"
+                    FontSize="{Binding
+                        FontSize,
+                        ElementName=timeline_header}"
+                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                    TextWrapping="WrapWholeWords"
+                    Visibility="{Binding no_item}" />
+                <ListView
+                    x:Name="timeline_list"
+                    Grid.Row="1"
+                    ItemsSource="{Binding t_list}"
+                    SelectionChanged="timeline_list_SelectionChanged"
+                    SelectionMode="Single"
+                    Style="{StaticResource timeline_list}" />
             </Grid>
         </Grid>
-        <RelativePanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Grid RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Opacity="0" Background="{ThemeResource SystemControlBackgroundListMediumBrush}" x:Name="map_grid" >
+        <RelativePanel
+            Grid.Row="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch">
+            <Grid
+                x:Name="map_grid"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="{ThemeResource SystemControlBackgroundListMediumBrush}"
+                Opacity="0"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.AlignTopWithPanel="True">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
-                <Grid Background="Gray" HorizontalAlignment="Stretch">
-                    <Button Click="HyperlinkButton_Click" Background="Red" HorizontalAlignment="Right" x:Name="close_btn" VerticalAlignment="Stretch">
+                <Grid
+                    HorizontalAlignment="Stretch"
+                    Background="Gray">
+                    <Button
+                        x:Name="close_btn"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Stretch"
+                        Background="Red"
+                        Click="HyperlinkButton_Click">
                         <Button.Content>
-                            <FontIcon Glyph="&#xE10A;" FontSize="20"/>
+                            <FontIcon
+                                FontSize="20"
+                                Glyph="" />
                         </Button.Content>
                     </Button>
                 </Grid>
-                <map:MapControl Grid.Row="1" Height="250" x:Name="map" Margin="0" ZoomLevel="2" LandmarksVisible="True" MapServiceToken="CIrLOuPNsva9i9TfFoAJ~5VI4aTw4jXMmbEfa81wBlg~AsnGJPYq5_rcXnI2fKYyPDPVKtxc1JaRVwIoJL67FJd9whHTUtbsguw6AtK9oWt6" RotateInteractionMode="GestureAndControl" TiltInteractionMode="GestureAndControl" ZoomInteractionMode="GestureAndControl" />
+                <map:MapControl
+                    x:Name="map"
+                    Grid.Row="1"
+                    Height="250"
+                    Margin="0"
+                    LandmarksVisible="True"
+                    MapServiceToken="CIrLOuPNsva9i9TfFoAJ~5VI4aTw4jXMmbEfa81wBlg~AsnGJPYq5_rcXnI2fKYyPDPVKtxc1JaRVwIoJL67FJd9whHTUtbsguw6AtK9oWt6"
+                    RotateInteractionMode="GestureAndControl"
+                    TiltInteractionMode="GestureAndControl"
+                    ZoomInteractionMode="GestureAndControl"
+                    ZoomLevel="2" />
             </Grid>
 
         </RelativePanel>
 
         <Grid.Resources>
             <Storyboard x:Name="map_open">
-                <DoubleAnimation Duration="0:0:0.5" From="0" To="1" Storyboard.TargetName="map_grid" Storyboard.TargetProperty="Opacity"/>
+                <DoubleAnimation
+                    Duration="0:0:0.5"
+                    From="0"
+                    Storyboard.TargetName="map_grid"
+                    Storyboard.TargetProperty="Opacity"
+                    To="1" />
             </Storyboard>
             <Storyboard x:Name="map_close">
-                <DoubleAnimation Completed="DoubleAnimation_Completed" Duration="0:0:0.5" From="1" To="0" Storyboard.TargetName="map_grid" Storyboard.TargetProperty="Opacity"/>
+                <DoubleAnimation
+                    Completed="DoubleAnimation_Completed"
+                    Duration="0:0:0.5"
+                    From="1"
+                    Storyboard.TargetName="map_grid"
+                    Storyboard.TargetProperty="Opacity"
+                    To="0" />
             </Storyboard>
         </Grid.Resources>
     </Grid>
     <Page.BottomAppBar>
         <CommandBar x:Name="bottom_bar">
-            <AppBarButton x:Uid="back_bar" Icon="Back" Click="back_timeline_bar_Click"/>
-            <AppBarButton x:Uid="forward_bar" Icon="Forward" Click="forward_timeline_bar_Click"/>
-            <AppBarButton x:Uid="date_bar" Icon="Calendar" Click="date_timeline_bar_Click"/>
-            <AppBarButton x:Uid="refresh_bar" Icon="Refresh" Click="refresh_timeline_bar_Click"/>
+            <AppBarButton
+                x:Uid="back_bar"
+                Click="back_timeline_bar_Click"
+                Icon="Back" />
+            <AppBarButton
+                x:Uid="forward_bar"
+                Click="forward_timeline_bar_Click"
+                Icon="Forward" />
+            <AppBarButton
+                x:Uid="date_bar"
+                Click="date_timeline_bar_Click"
+                Icon="Calendar" />
+            <AppBarButton
+                x:Uid="refresh_bar"
+                Click="refresh_timeline_bar_Click"
+                Icon="Refresh" />
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

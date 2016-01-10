@@ -25,6 +25,7 @@ namespace Time_Sense
 
         private class ts_data
         {
+            public List<Timeline> t_list { get; set; }
             public Visibility no_item { get; set; }
         }
 
@@ -61,6 +62,7 @@ namespace Time_Sense
             await Task.Delay(1);
             this.DataContext = new ts_data
             {
+                t_list = list_raw,
                 no_item = list_raw.Count == 0 ? Visibility.Visible : Visibility.Collapsed
             };
             ring.IsActive = false;

@@ -4,7 +4,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:chart="using:Syncfusion.UI.Xaml.Charts"
+    xmlns:local="using:Time_Sense"
     mc:Ignorable="d">
+
+    <local:TimelineConverter x:Key="IconConverter" />
+    <local:battery_converter x:Key="BatteryConverter" />
+    <local:UsageConverter x:Key="TimeConverter" />
+    <local:LocationConverter x:Key="LocationConverter" />
 
     <!-- REGION SETTINGS -->
     <Style
@@ -113,6 +119,9 @@
         <Setter
             Property="IsEnabled"
             Value="False" />
+        <Setter
+            Property="Palette"
+            Value="Custom" />
         <Setter
             Property="BorderThickness"
             Value="0" />
