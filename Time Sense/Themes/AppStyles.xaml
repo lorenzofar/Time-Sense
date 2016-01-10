@@ -84,4 +84,18 @@
             Property="Foreground"
             Value="{ThemeResource SystemControlBackgroundAccentBrush}" />
     </Style>
+
+    <Style
+        x:Key="password_button"
+        TargetType="Button">
+        <Setter
+            Property="FontSize"
+            Value="22" />
+        <Setter
+            Property="HorizontalAlignment"
+            Value="Stretch" />
+        <Setter
+            Property="VerticalAlignment"
+            Value="Stretch" />
+    </Style>
 </ResourceDictionary>
