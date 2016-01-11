@@ -19,6 +19,7 @@ namespace Time_Sense
     {
         public static TextBlock title;
         public static RadioButton home;
+        public static Frame main_fr;
         bool control = false;
 
         LicenseInformation license;
@@ -45,6 +46,7 @@ namespace Time_Sense
             }
             title = app_title;
             home = home_btn;
+            main_fr = fr;
             InitializeLocation();
             CheckDialogs();
         }
@@ -123,6 +125,11 @@ namespace Time_Sense
                         parameter = "true";
                         total_btn.IsChecked = false;
                         total_btn.IsChecked = true;
+                        break;
+                    case "analysis":
+                        parameter = "true";
+                        analytics_btn.IsChecked = false;
+                        analytics_btn.IsChecked = true;
                         break;
                     case "settings":
                         parameter = "true";

@@ -13,9 +13,6 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Time_Sense
 {
-    /// <summary>
-    /// Provides application-specific behavior to supplement the default Application class.
-    /// </summary>
     sealed partial class App : Application
     {
 
@@ -31,6 +28,8 @@ namespace Time_Sense
         public static string jump_arguments = null;
 
         public static bool file_pick = false;
+
+        public static Type current_page = null;
 
         public static Microsoft.ApplicationInsights.TelemetryClient t_client = new Microsoft.ApplicationInsights.TelemetryClient();
 
@@ -52,6 +51,7 @@ namespace Time_Sense
                 string password = password_obj == null ? "" : password_obj.ToString();
                 if (password != "")
                 {
+                    jump_arguments = current_page == typeof(MainPage) ? null : current_page == typeof(TimelinePage) ? "timeline" : current_page == typeof(ReportPage) ? "report" : current_page == typeof(AnalyticsPage) ? "analysis" : current_page == typeof(SettingsPage) ? "settings" : null;
                     Frame rootFrame = Window.Current.Content as Frame;
                     rootFrame.Navigate(typeof(PasswordPage), password);
                 }
@@ -148,8 +148,10 @@ namespace Time_Sense
 
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
-            //var deferral = e.SuspendingOperation.GetDeferral();
-            //deferral.Complete();
+            var deferral = e.SuspendingOperation.GetDeferral();
+            Frame rootFrame = MainPage.main_fr;
+            current_page = rootFrame.SourcePageType;
+            deferral.Complete();
         }
 
         protected override async void OnActivated(IActivatedEventArgs args)
@@ -180,6 +182,9 @@ namespace Time_Sense
                                 break;
                             case "timesense:settings":
                                 jump_arguments = "settings";
+                                break;
+                            case "timesense:analysis":
+                                jump_arguments = "analysis";
                                 break;
                             default:
                                 jump_arguments = null;
