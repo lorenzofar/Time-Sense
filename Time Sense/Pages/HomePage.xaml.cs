@@ -374,7 +374,7 @@ namespace Time_Sense
             // UPDATE THE TILE
             bool badge = utilities.STATS.Values[settings.unlocks] == null ? true : utilities.STATS.Values[settings.unlocks].ToString() == "badge" ? true : false;
             XmlDocument doc = new XmlDocument();
-            doc.LoadXml(utilities.TileXmlBuilder(usage_txt.Text, unlocks[1], badge));
+            doc.LoadXml(utilities.TileXmlBuilder(utilities.FormatData(time[1]), unlocks[1], badge));
             TileNotification tile = new TileNotification(doc);
             TileUpdateManager.CreateTileUpdaterForApplication().Update(tile);
             if (badge)

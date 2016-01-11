@@ -147,6 +147,14 @@ namespace Tasks
             doc.LoadXml(utilities.TileXmlBuilder(utilities.FormatData(time[1]), unlocks[1], badge));
             TileNotification tile = new TileNotification(doc);
             TileUpdateManager.CreateTileUpdaterForApplication().Update(tile);
+            if (badge)
+            {
+                string badgeXmlString = "<badge value='" + unlocks[1].ToString() + "'/>";
+                XmlDocument badgeDOM = new XmlDocument();
+                badgeDOM.LoadXml(badgeXmlString);
+                BadgeNotification badge_not = new BadgeNotification(badgeDOM);
+                BadgeUpdateManager.CreateBadgeUpdaterForApplication().Update(badge_not);
+            }
         }
     }
 }
