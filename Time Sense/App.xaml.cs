@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Stuff;
+using System;
 using System.Linq;
-using Stuff;
+using UniversalRateReminder;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Media.SpeechRecognition;
@@ -9,9 +10,6 @@ using Windows.UI.StartScreen;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Windows.Storage;
-using UniversalRateReminder;
-using System.Threading.Tasks;
 
 namespace Time_Sense
 {
