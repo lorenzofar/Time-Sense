@@ -156,10 +156,10 @@
                                         <StackPanel>
                                             <CheckBox x:Name="d_usagemax" Margin="0,6">
                                                 <CheckBox.Content>
-                                                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                        <TextBlock x:Uid="usage_txt" VerticalAlignment="Top" FontSize="16"/>
+                                                    <StackPanel Style="{StaticResource analysis_param_panel}">
+                                                        <TextBlock x:Uid="usage_txt" Style="{StaticResource analysis_param_text}"/>
                                                         <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
-                                                        <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="d_usage_max_box"/>
+                                                        <TextBox Style="{StaticResource analysis_param_box}" x:Name="d_usage_max_box"/>
                                                         <ComboBox Margin="6,0" x:Name="d_usage_max_combo">
                                                             <ComboBoxItem x:Uid="seconds_combo"/>
                                                             <ComboBoxItem x:Uid="minutes_combo" IsSelected="True"/>
@@ -170,10 +170,10 @@
                                             </CheckBox>
                                             <CheckBox x:Name="d_usagemin" Margin="0,6">
                                                 <CheckBox.Content>
-                                                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                        <TextBlock x:Uid="usage_txt" VerticalAlignment="Top" FontSize="16"/>
+                                                    <StackPanel Style="{StaticResource analysis_param_panel}">
+                                                        <TextBlock x:Uid="usage_txt" Style="{StaticResource analysis_param_text}"/>
                                                         <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
-                                                        <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="d_usage_min_box"/>
+                                                        <TextBox Style="{StaticResource analysis_param_box}" x:Name="d_usage_min_box"/>
                                                         <ComboBox Margin="6,0" x:Name="d_usage_min_combo">
                                                             <ComboBoxItem x:Uid="seconds_combo"/>
                                                             <ComboBoxItem x:Uid="minutes_combo" IsSelected="True"/>
@@ -188,19 +188,19 @@
                                         <StackPanel Width="{Binding ActualWidth, ElementName=d_umax_item}" HorizontalAlignment="Left">
                                             <CheckBox Margin="0,6" x:Name="d_unlocksmax">
                                                 <CheckBox.Content>
-                                                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                        <TextBlock x:Uid="unlocks_txt" VerticalAlignment="Top" FontSize="16"/>
+                                                    <StackPanel Style="{StaticResource analysis_param_panel}">
+                                                        <TextBlock x:Uid="unlocks_txt" Style="{StaticResource analysis_param_text}"/>
                                                         <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
-                                                        <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="d_unlocks_max_box"/>
+                                                        <TextBox Style="{StaticResource analysis_param_box}" x:Name="d_unlocks_max_box"/>
                                                     </StackPanel>
                                                 </CheckBox.Content>
                                             </CheckBox>
                                             <CheckBox Margin="0,6" x:Name="d_unlocksmin">
                                                 <CheckBox.Content>
-                                                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                        <TextBlock x:Uid="unlocks_txt"  VerticalAlignment="Top" FontSize="16"/>
-                                                        <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontFamily="Segoe UI" FontSize="16"/>
-                                                        <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="d_unlocks_min_box"/>
+                                                    <StackPanel Style="{StaticResource analysis_param_panel}">
+                                                        <TextBlock x:Uid="unlocks_txt"  Style="{StaticResource analysis_param_text}"/>
+                                                        <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
+                                                        <TextBox Style="{StaticResource analysis_param_box}" x:Name="d_unlocks_min_box"/>
                                                     </StackPanel>
                                                 </CheckBox.Content>
                                             </CheckBox>
@@ -217,10 +217,10 @@
                                             <StackPanel Width="{Binding ActualWidth, ElementName=u_usage_item}">
                                                 <CheckBox Margin="0,6" x:Name="u_usagemax">
                                                     <CheckBox.Content>
-                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock x:Uid="usage_txt" VerticalAlignment="Top" FontSize="16"/>
+                                                        <StackPanel Style="{StaticResource analysis_param_panel}">
+                                                            <TextBlock x:Uid="usage_txt" Style="{StaticResource analysis_param_text}"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
-                                                            <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_usage_max_box"/>
+                                                            <TextBox Style="{StaticResource analysis_param_box}" x:Name="u_usage_max_box"/>
                                                             <ComboBox Margin="6,0" x:Name="u_usage_max_combo">
                                                                 <ComboBoxItem x:Uid="seconds_combo"/>
                                                                 <ComboBoxItem x:Uid="minutes_combo" IsSelected="True"/>
@@ -231,10 +231,10 @@
                                                 </CheckBox>
                                                 <CheckBox Margin="0,6" x:Name="u_usagemin">
                                                     <CheckBox.Content>
-                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock x:Uid="usage_txt"  VerticalAlignment="Top" FontSize="16"/>
+                                                        <StackPanel Style="{StaticResource analysis_param_panel}">
+                                                            <TextBlock x:Uid="usage_txt" Style="{StaticResource analysis_param_text}"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
-                                                            <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_usage_min_box"/>
+                                                            <TextBox Style="{StaticResource analysis_param_box}" x:Name="u_usage_min_box"/>
                                                             <ComboBox Margin="6,0" x:Name="u_usage_min_combo">
                                                                 <ComboBoxItem x:Uid="seconds_combo"/>
                                                                 <ComboBoxItem x:Uid="minutes_combo" IsSelected="True"/>
@@ -249,19 +249,19 @@
                                             <StackPanel Width="{Binding ActualWidth, ElementName=u_unlocks_item}">
                                                 <CheckBox Margin="0,6" x:Name="u_unlocksmax">
                                                     <CheckBox.Content>
-                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock x:Uid="unlocks_txt" VerticalAlignment="Top" FontSize="16"/>
+                                                        <StackPanel Style="{StaticResource analysis_param_panel}">
+                                                            <TextBlock x:Uid="unlocks_txt" Style="{StaticResource analysis_param_text}"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
-                                                            <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_unlocks_max_box"/>
+                                                            <TextBox Style="{StaticResource analysis_param_box}" x:Name="u_unlocks_max_box"/>
                                                         </StackPanel>
                                                     </CheckBox.Content>
                                                 </CheckBox>
                                                 <CheckBox Margin="0,6" x:Name="u_unlocksmin">
                                                     <CheckBox.Content>
-                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock x:Uid="unlocks_txt" VerticalAlignment="Top" FontSize="16"/>
+                                                        <StackPanel Style="{StaticResource analysis_param_panel}">
+                                                            <TextBlock x:Uid="unlocks_txt" Style="{StaticResource analysis_param_text}"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
-                                                            <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_unlocks_min_box"/>
+                                                            <TextBox Style="{StaticResource analysis_param_box}" x:Name="u_unlocks_min_box"/>
                                                         </StackPanel>
                                                     </CheckBox.Content>
                                                 </CheckBox>
@@ -271,19 +271,19 @@
                                             <StackPanel Width="{Binding ActualWidth, ElementName=u_battery_item}">
                                                 <CheckBox Margin="0,6" x:Name="u_batmax">
                                                     <CheckBox.Content>
-                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock x:Uid="battery_txt" VerticalAlignment="Top" FontSize="16"/>
+                                                        <StackPanel Style="{StaticResource analysis_param_panel}">
+                                                            <TextBlock x:Uid="battery_txt" Style="{StaticResource analysis_param_text}"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
-                                                            <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_battery_max_box"/>
+                                                            <TextBox Style="{StaticResource analysis_param_box}" x:Name="u_battery_max_box"/>
                                                         </StackPanel>
                                                     </CheckBox.Content>
                                                 </CheckBox>
                                                 <CheckBox Margin="0,6" x:Name="u_batmin">
                                                     <CheckBox.Content>
-                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock x:Uid="battery_txt" VerticalAlignment="Top" FontSize="16"/>
+                                                        <StackPanel Style="{StaticResource analysis_param_panel}">
+                                                            <TextBlock x:Uid="battery_txt" Style="{StaticResource analysis_param_text}"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
-                                                            <TextBox InputScope="Number" Margin="6,0" VerticalAlignment="Top" BorderThickness="0,0,0,2" BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}" x:Name="u_battery_min_box"/>
+                                                            <TextBox Style="{StaticResource analysis_param_box}" x:Name="u_battery_min_box"/>
                                                         </StackPanel>
                                                     </CheckBox.Content>
                                                 </CheckBox>
@@ -296,8 +296,8 @@
                                             <StackPanel Width="{Binding ActualWidth, ElementName=u_batstat_item}">
                                                 <CheckBox Margin="0,6" x:Name="u_batstat">
                                                     <CheckBox.Content>
-                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock x:Uid="battery_txt" VerticalAlignment="Top" Text="Battery"/>
+                                                        <StackPanel Style="{StaticResource analysis_param_panel}">
+                                                            <TextBlock x:Uid="battery_txt" Style="{StaticResource analysis_param_text}"/>
                                                             <ComboBox Margin="6,0" x:Name="u_battery_combo">
                                                                 <ComboBoxItem x:Uid="charging_bat_combo" IsSelected="True"/>
                                                                 <ComboBoxItem x:Uid="idle_bat_combo"/>
@@ -311,8 +311,8 @@
                                             <StackPanel HorizontalAlignment="Left" Width="{Binding ActualWidth, ElementName=u_wifi_item}">
                                                 <CheckBox Margin="0,6" x:Name="u_wifi">
                                                     <CheckBox.Content>
-                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock Text="Wi-Fi" VerticalAlignment="Top"/>
+                                                        <StackPanel Style="{StaticResource analysis_param_panel}">
+                                                            <TextBlock Text="Wi-Fi" Style="{StaticResource analysis_param_text}"/>
                                                             <ComboBox Margin="6,0" x:Name="u_wifi_combo">
                                                                 <ComboBoxItem x:Uid="on_combo" IsSelected="True"/>
                                                                 <ComboBoxItem x:Uid="off_combo"/>
@@ -326,8 +326,8 @@
                                             <StackPanel Width="{Binding ActualWidth, ElementName=u_bluetooth_item}">
                                                 <CheckBox Margin="0,6" x:Name="u_bluetooth">
                                                     <CheckBox.Content>
-                                                        <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                            <TextBlock Text="Bluetooth" VerticalAlignment="Top"/>
+                                                        <StackPanel Style="{StaticResource analysis_param_panel}">
+                                                            <TextBlock Text="Bluetooth" Style="{StaticResource analysis_param_text}"/>
                                                             <ComboBox Margin="6,0" x:Name="u_bluetooth_combo">
                                                                 <ComboBoxItem x:Uid="on_combo" IsSelected="True"/>
                                                                 <ComboBoxItem x:Uid="off_combo"/>
@@ -342,8 +342,8 @@
                                     <RelativePanel x:Name="times_grid">
                                         <CheckBox Margin="0,6" x:Name="u_timemax">
                                             <CheckBox.Content>
-                                                <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                    <TextBlock x:Uid="time_txt" VerticalAlignment="Top" FontSize="16"/>
+                                                <StackPanel Style="{StaticResource analysis_param_panel}">
+                                                    <TextBlock x:Uid="time_txt" Style="{StaticResource analysis_param_text}"/>
                                                     <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
                                                     <TimePicker Margin="6,0" x:Name="u_time_max_box"/>
                                                 </StackPanel>
@@ -351,8 +351,8 @@
                                         </CheckBox>
                                         <CheckBox RelativePanel.Below="u_timemax" Margin="0,6" x:Name="u_timemin">
                                             <CheckBox.Content>
-                                                <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                                                    <TextBlock x:Uid="time_txt" VerticalAlignment="Top" FontSize="16"/>
+                                                <StackPanel Style="{StaticResource analysis_param_panel}">
+                                                    <TextBlock x:Uid="time_txt" Style="{StaticResource analysis_param_text}"/>
                                                     <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
                                                     <TimePicker Margin="6,0" x:Name="u_time_min_box"/>
                                                 </StackPanel>
@@ -384,17 +384,17 @@
                     </Grid.ColumnDefinitions>
                     <Border BorderThickness="0,0,1,0" x:Name="time_border_d" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                         <Viewbox Margin="12,0,0,0"  MaxHeight="36">
-                            <TextBlock x:Uid="day_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock x:Uid="day_banner" Style="{StaticResource analysis_banner_text}"/>
                         </Viewbox>
                     </Border>
                     <Border Margin="0,0" BorderThickness="1,0" x:Name="usage_border_d" Grid.Column="1" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                         <Viewbox MaxHeight="36">
-                            <TextBlock x:Uid="usage_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock x:Uid="usage_banner" Style="{StaticResource analysis_banner_text}"/>
                         </Viewbox>
                     </Border>
                     <Border  BorderThickness="1,0,0,0" x:Name="unlocks_border_d" Grid.Column="2" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                         <Viewbox Margin="0,0,12,0" MaxHeight="36">
-                            <TextBlock x:Uid="unlocks_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock x:Uid="unlocks_banner" Style="{StaticResource analysis_banner_text}"/>
                         </Viewbox>
                     </Border>
                 </Grid>
@@ -410,17 +410,17 @@
                             <StackPanel Orientation="Horizontal">
                                 <Border Width="{Binding ActualWidth, ElementName=time_border_d}">
                                     <Viewbox MaxHeight="36">
-                                        <TextBlock Margin="6" Text="{Binding date}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding date}" Style="{StaticResource analysis_list_text}"/>
                                     </Viewbox>
                                 </Border>
                                 <Border Width="{Binding ActualWidth, ElementName=usage_border_d}">
                                     <Viewbox MaxHeight="36">
-                                        <TextBlock Margin="6" Grid.Column="1" Text="{Binding usage, Converter={StaticResource TimeConverter}}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding usage, Converter={StaticResource TimeConverter}}" Style="{StaticResource analysis_list_text}"/>
                                     </Viewbox>
                                 </Border>
                                 <Border Width="{Binding ActualWidth, ElementName=unlocks_border_d}">
                                     <Viewbox MaxHeight="36">
-                                        <TextBlock Margin="6" Grid.Column="2" Text="{Binding unlocks}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding unlocks}" Style="{StaticResource analysis_list_text}"/>
                                     </Viewbox>
                                 </Border>
                             </StackPanel>
@@ -452,27 +452,27 @@
                         </Grid.ColumnDefinitions>
                         <Border  BorderThickness="0,0,1,0" x:Name="date_border" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                             <Viewbox Margin="0" MaxHeight="36">
-                                <TextBlock x:Uid="day_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                <TextBlock x:Uid="day_banner" Style="{StaticResource analysis_banner_text}"/>
                             </Viewbox>
                         </Border>
                         <Border Grid.Column="1"  BorderThickness="1,0,1,0" x:Name="time_border" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                             <Viewbox MaxHeight="36">
-                                <TextBlock x:Uid="time_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                <TextBlock x:Uid="time_banner" Style="{StaticResource analysis_banner_text}"/>
                             </Viewbox>
                         </Border>
                         <Border Margin="0,0" BorderThickness="1,0,1,0" x:Name="usage_border" Grid.Column="2" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                             <Viewbox MaxHeight="36">
-                                <TextBlock x:Uid="usage_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                <TextBlock x:Uid="usage_banner" Style="{StaticResource analysis_banner_text}"/>
                             </Viewbox>
                         </Border>
                         <Border BorderThickness="1,0,1,0" x:Name="unlocks_border" Grid.Column="3" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                             <Viewbox MaxHeight="36">
-                                <TextBlock x:Uid="unlocks_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                <TextBlock x:Uid="unlocks_banner" Style="{StaticResource analysis_banner_text}"/>
                             </Viewbox>
                         </Border>
                         <Border BorderThickness="1,0,0,0" x:Name="battery_border" Grid.Column="4" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}">
                             <Viewbox  Margin="0" MaxHeight="36">
-                                <TextBlock x:Uid="battery_banner" Margin="6" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                <TextBlock x:Uid="battery_banner" Style="{StaticResource analysis_banner_text}"/>
                             </Viewbox>
                         </Border>
                     </Grid>
@@ -489,26 +489,26 @@
                             <StackPanel Orientation="Horizontal">
                                 <Border Width="{Binding ActualWidth, ElementName=date_border}">
                                     <Viewbox MaxHeight="36">
-                                        <TextBlock Margin="6" Text="{Binding date}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding date}" Style="{StaticResource analysis_list_text}"/>
                                     </Viewbox>
                                 </Border>
                                 <Border Width="{Binding ActualWidth, ElementName=time_border}">
                                     <Viewbox MaxHeight="36">
-                                        <TextBlock Margin="6" Text="{Binding time}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding time}" Style="{StaticResource analysis_list_text}"/>
                                     </Viewbox>
                                 </Border>
                                 <Border Width="{Binding ActualWidth, ElementName=usage_border}">
                                     <Viewbox MaxHeight="36">
-                                        <TextBlock Margin="6" Grid.Column="1" Text="{Binding usage, Converter={StaticResource TimeConverter}}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding usage, Converter={StaticResource TimeConverter}}" Style="{StaticResource analysis_list_text}"/>
                                     </Viewbox>
                                 </Border>
                                 <Border Width="{Binding ActualWidth, ElementName=unlocks_border}">
                                     <Viewbox MaxHeight="36">
                                         <RelativePanel HorizontalAlignment="Center">
-                                            <TextBlock x:Name="unlocks_txt" Margin="6" Grid.Column="2" Text="{Binding unlocks}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                            <FontIcon Visibility="{Binding latitude, Converter={StaticResource LocationConverter}}" Margin="0,0,0,0" FontSize="{Binding FontSize, ElementName=unlocks_txt}" Foreground="#008000" Glyph="&#xE707;" RelativePanel.RightOf="unlocks_txt" RelativePanel.AlignVerticalCenterWithPanel="True" x:Name="location_ico"/>
-                                            <FontIcon Visibility="{Binding wifi_status, Converter={StaticResource IconConverter}}" Margin="0,0,0,0" FontSize="{Binding FontSize, ElementName=unlocks_txt}" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" Glyph="&#xE701;" RelativePanel.RightOf="location_ico" RelativePanel.AlignVerticalCenterWithPanel="True" x:Name="wifi_ico"/>
-                                            <FontIcon Visibility="{Binding bluetooth_status, Converter={StaticResource IconConverter}}" Margin="0,0,0,0" FontSize="{Binding FontSize, ElementName=unlocks_txt}" Foreground="#0078D7" Glyph="&#xE702;" RelativePanel.RightOf="wifi_ico" RelativePanel.AlignVerticalCenterWithPanel="True" x:Name="bluetooth_ico"/>
+                                            <TextBlock x:Name="unlocks_txt" Grid.Column="2" Text="{Binding unlocks}" Style="{StaticResource analysis_list_text}"/>
+                                            <FontIcon Visibility="{Binding latitude, Converter={StaticResource LocationConverter}}" FontSize="{Binding FontSize, ElementName=unlocks_txt}" Foreground="#008000" Glyph="&#xE707;" RelativePanel.RightOf="unlocks_txt" RelativePanel.AlignVerticalCenterWithPanel="True" x:Name="location_ico"/>
+                                            <FontIcon Visibility="{Binding wifi_status, Converter={StaticResource IconConverter}}" FontSize="{Binding FontSize, ElementName=unlocks_txt}" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" Glyph="&#xE701;" RelativePanel.RightOf="location_ico" RelativePanel.AlignVerticalCenterWithPanel="True" x:Name="wifi_ico"/>
+                                            <FontIcon Visibility="{Binding bluetooth_status, Converter={StaticResource IconConverter}}" FontSize="{Binding FontSize, ElementName=unlocks_txt}" Foreground="#0078D7" Glyph="&#xE702;" RelativePanel.RightOf="wifi_ico" RelativePanel.AlignVerticalCenterWithPanel="True" x:Name="bluetooth_ico"/>
                                         </RelativePanel>
                                     </Viewbox>
                                 </Border>
@@ -516,7 +516,7 @@
                                     <Viewbox MaxHeight="36">
                                         <RelativePanel HorizontalAlignment="Center">
                                             <TextBlock x:Name="battery" Margin="0,6" Grid.Column="3" Text="{Binding battery, Converter={StaticResource BatteryConverter}}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" HorizontalAlignment="Center"/>
-                                            <FontIcon Visibility="{Binding battery_status, Converter={StaticResource IconConverter}}" Margin="0,0,0,0" FontSize="{Binding FontSize, ElementName=battery}" Foreground="#CCAB29" Glyph="&#xE945;" RelativePanel.RightOf="battery" RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                                            <FontIcon Visibility="{Binding battery_status, Converter={StaticResource IconConverter}}" FontSize="{Binding FontSize, ElementName=battery}" Foreground="#CCAB29" Glyph="&#xE945;" RelativePanel.RightOf="battery" RelativePanel.AlignVerticalCenterWithPanel="True"/>
                                         </RelativePanel>
                                     </Viewbox>
                                 </Border>
