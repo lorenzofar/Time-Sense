@@ -17,6 +17,7 @@ namespace Time_Sense
         public PasswordPage()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }             
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

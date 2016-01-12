@@ -31,17 +31,14 @@ namespace Time_Sense
 
         public TimelinePage()
         {
-            try
-            {
-                this.InitializeComponent();
-                LoadData();
-            }
-            catch { }
+            this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Required;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             App.t_client.TrackPageView("Timeline page");
+            LoadData();
         }
 
         private void RelativePanel_SizeChanged(object sender, SizeChangedEventArgs e)

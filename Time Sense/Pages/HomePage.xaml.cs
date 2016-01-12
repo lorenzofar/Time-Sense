@@ -56,20 +56,13 @@ namespace Time_Sense
         public HomePage()
         {
             this.InitializeComponent();
-            InputPane.GetForCurrentView().Showing +=
-                (s, args) => { bottom_bar.Visibility = Visibility.Collapsed; };
-            InputPane.GetForCurrentView().Hiding += (s, args2) =>
-            {
-                if (bottom_bar.Visibility == Visibility.Collapsed)
-                {
-                    bottom_bar.Visibility = Visibility.Visible;
-                }
-            };
+            this.NavigationCacheMode = NavigationCacheMode.Required;            
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             App.t_client.TrackPageView("Home page");
+            ManageInputPane();
             ButtonSwitch(false);
             refresh();
             ShowData();
@@ -84,6 +77,19 @@ namespace Time_Sense
             }
             App.jump_arguments = null;
             ButtonSwitch(true);
+        }
+
+        private void ManageInputPane()
+        {
+            InputPane.GetForCurrentView().Showing +=
+                (s, args) => { bottom_bar.Visibility = Visibility.Collapsed; };
+            InputPane.GetForCurrentView().Hiding += (s, args2) =>
+            {
+                if (bottom_bar.Visibility == Visibility.Collapsed)
+                {
+                    bottom_bar.Visibility = Visibility.Visible;
+                }
+            };
         }
 
         private async void refresh_home(object sender, RoutedEventArgs e)

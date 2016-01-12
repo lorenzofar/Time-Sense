@@ -29,6 +29,7 @@ namespace Time_Sense
         public MainPage()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Required; 
             try { RegisterTaskLock(); } catch { }
             try { RegisterTaskUnlock(); } catch { }
             try { RegisterTaskAlert(); } catch { }

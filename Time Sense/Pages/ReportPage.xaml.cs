@@ -49,12 +49,13 @@ namespace Time_Sense
         public ReportPage()
         {
             this.InitializeComponent();
-            App.report_date = DateTime.Now;
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
         
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             App.t_client.TrackPageView("Report page");
+            App.report_date = DateTime.Now;
             LoadData(6, DateTime.Now.Subtract(new TimeSpan(6, 0, 0, 0, 0)));
         }
 
