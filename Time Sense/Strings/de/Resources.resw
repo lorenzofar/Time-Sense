@@ -741,16 +741,14 @@
     <value>Bluetooth</value>
   </data>
   <data name="excel_banner_charging" xml:space="preserve">
-    <value>Charging</value>
-    <comment>Todo</comment>
+    <value>Lädt</value>
+    <comment>CHECK</comment>
   </data>
   <data name="excel_banner_latitude" xml:space="preserve">
-    <value>Latitude</value>
-    <comment>Todo</comment>
+    <value>Breitengrad</value>
   </data>
   <data name="excel_banner_longitude" xml:space="preserve">
-    <value>Longitude</value>
-    <comment>Todo</comment>
+    <value>Längengrad</value>
   </data>
   <data name="excel_banner_time" xml:space="preserve">
     <value>Zeit</value>
@@ -765,59 +763,48 @@
     <value>Wi-Fi</value>
   </data>
   <data name="Excel_average_unlocks" xml:space="preserve">
-    <value>Average unlocks:</value>
-    <comment>TODO</comment>
+    <value>Durchschnittliche Entsperrungen:</value>
   </data>
   <data name="Excel_average_usage" xml:space="preserve">
-    <value>Average usage:</value>
-    <comment>TODO</comment>
+    <value>Durchschnittliche Nutzung:</value>
   </data>
   <data name="Excel_creation" xml:space="preserve">
-    <value>Creation date:</value>
-    <comment>TODO</comment>
+    <value>Erstellungsdatum:</value>
   </data>
   <data name="Excel_days" xml:space="preserve">
-    <value>Days analized:</value>
-    <comment>TODO</comment>
+    <value>Analisierte Tage:</value>
   </data>
   <data name="excel_error" xml:space="preserve">
-    <value>There was an error, try again</value>
-    <comment>TODO</comment>
+    <value>Es iste ein Fehler aufgetreten. Bitte nochmals versuchen!</value>
   </data>
   <data name="Excel_overview" xml:space="preserve">
     <value>Übersicht</value>
   </data>
   <data name="Excel_range" xml:space="preserve">
-    <value>Analysis range:</value>
-    <comment>TODO</comment>
+    <value>Analysenbereich:</value>
   </data>
   <data name="excel_success" xml:space="preserve">
-    <value>The Excel report has been succesfully created</value>
-    <comment>TODO</comment>
+    <value>Der Excel-Report ist erfolgreich erstellt worden</value>
   </data>
   <data name="Excel_total_unlocks" xml:space="preserve">
-    <value>Total unlocks:</value>
-    <comment>TODO</comment>
+    <value>Total Entsperrungen:</value>
+    <comment>CHECK</comment>
   </data>
   <data name="Excel_total_usage" xml:space="preserve">
-    <value>Total usage;</value>
-    <comment>TODO</comment>
+    <value>Gesamte Nutzung:</value>
   </data>
   <data name="Excel_version" xml:space="preserve">
     <value>App version:</value>
-    <comment>TODO</comment>
   </data>
   <data name="export_bar.Label" xml:space="preserve">
     <value>Export</value>
-    <comment>TODO</comment>
   </data>
   <data name="status_off" xml:space="preserve">
-    <value>Off</value>
-    <comment>TODO</comment>
+    <value>Ausgeschaltet</value>
   </data>
   <data name="status_on" xml:space="preserve">
-    <value>On</value>
-    <comment>TODO</comment>
+    <value>an</value>
+    <comment>CHECK</comment>
   </data>
   <data name="desktop_disclaimer" xml:space="preserve">
     <value>Thank you for using Time Sense! 
@@ -825,11 +812,9 @@ The PC version is still in development and, due to system limitations, there cou
     <comment>TODO</comment>
   </data>
   <data name="progress_dialog.Title" xml:space="preserve">
-    <value>EXPORTING</value>
-    <comment>TODO</comment>
+    <value>EXPORTIEREN</value>
   </data>
   <data name="error_span" xml:space="preserve">
-    <value>The start date must be before the end date</value>
-    <comment>TODO</comment>
+    <value>Das Anfagsdatum muss vor dem Enddatum sein</value>
   </data>
 </root>
