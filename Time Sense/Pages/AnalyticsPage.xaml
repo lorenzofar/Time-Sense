@@ -159,7 +159,7 @@
                                                     <StackPanel Style="{StaticResource analysis_param_panel}">
                                                         <TextBlock x:Uid="usage_txt" Style="{StaticResource analysis_param_text}"/>
                                                         <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
-                                                        <TextBox Style="{StaticResource analysis_param_box}" x:Name="d_usage_max_box"/>
+                                                        <TextBox Style="{StaticResource analysis_param_box}" InputScope="Number" x:Name="d_usage_max_box"/>
                                                         <ComboBox Margin="6,0" x:Name="d_usage_max_combo">
                                                             <ComboBoxItem x:Uid="seconds_combo"/>
                                                             <ComboBoxItem x:Uid="minutes_combo" IsSelected="True"/>
@@ -173,7 +173,7 @@
                                                     <StackPanel Style="{StaticResource analysis_param_panel}">
                                                         <TextBlock x:Uid="usage_txt" Style="{StaticResource analysis_param_text}"/>
                                                         <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
-                                                        <TextBox Style="{StaticResource analysis_param_box}" x:Name="d_usage_min_box"/>
+                                                        <TextBox Style="{StaticResource analysis_param_box}" InputScope="Number" x:Name="d_usage_min_box"/>
                                                         <ComboBox Margin="6,0" x:Name="d_usage_min_combo">
                                                             <ComboBoxItem x:Uid="seconds_combo"/>
                                                             <ComboBoxItem x:Uid="minutes_combo" IsSelected="True"/>
@@ -191,7 +191,7 @@
                                                     <StackPanel Style="{StaticResource analysis_param_panel}">
                                                         <TextBlock x:Uid="unlocks_txt" Style="{StaticResource analysis_param_text}"/>
                                                         <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
-                                                        <TextBox Style="{StaticResource analysis_param_box}" x:Name="d_unlocks_max_box"/>
+                                                        <TextBox Style="{StaticResource analysis_param_box}" InputScope="Number" x:Name="d_unlocks_max_box"/>
                                                     </StackPanel>
                                                 </CheckBox.Content>
                                             </CheckBox>
@@ -200,7 +200,7 @@
                                                     <StackPanel Style="{StaticResource analysis_param_panel}">
                                                         <TextBlock x:Uid="unlocks_txt"  Style="{StaticResource analysis_param_text}"/>
                                                         <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
-                                                        <TextBox Style="{StaticResource analysis_param_box}" x:Name="d_unlocks_min_box"/>
+                                                        <TextBox Style="{StaticResource analysis_param_box}" InputScope="Number" x:Name="d_unlocks_min_box"/>
                                                     </StackPanel>
                                                 </CheckBox.Content>
                                             </CheckBox>
@@ -220,7 +220,7 @@
                                                         <StackPanel Style="{StaticResource analysis_param_panel}">
                                                             <TextBlock x:Uid="usage_txt" Style="{StaticResource analysis_param_text}"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
-                                                            <TextBox Style="{StaticResource analysis_param_box}" x:Name="u_usage_max_box"/>
+                                                            <TextBox Style="{StaticResource analysis_param_box}" InputScope="Number" x:Name="u_usage_max_box"/>
                                                             <ComboBox Margin="6,0" x:Name="u_usage_max_combo">
                                                                 <ComboBoxItem x:Uid="seconds_combo"/>
                                                                 <ComboBoxItem x:Uid="minutes_combo" IsSelected="True"/>
@@ -234,7 +234,7 @@
                                                         <StackPanel Style="{StaticResource analysis_param_panel}">
                                                             <TextBlock x:Uid="usage_txt" Style="{StaticResource analysis_param_text}"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
-                                                            <TextBox Style="{StaticResource analysis_param_box}" x:Name="u_usage_min_box"/>
+                                                            <TextBox Style="{StaticResource analysis_param_box}" InputScope="Number" x:Name="u_usage_min_box"/>
                                                             <ComboBox Margin="6,0" x:Name="u_usage_min_combo">
                                                                 <ComboBoxItem x:Uid="seconds_combo"/>
                                                                 <ComboBoxItem x:Uid="minutes_combo" IsSelected="True"/>
@@ -252,7 +252,7 @@
                                                         <StackPanel Style="{StaticResource analysis_param_panel}">
                                                             <TextBlock x:Uid="unlocks_txt" Style="{StaticResource analysis_param_text}"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
-                                                            <TextBox Style="{StaticResource analysis_param_box}" x:Name="u_unlocks_max_box"/>
+                                                            <TextBox Style="{StaticResource analysis_param_box}" InputScope="Number" x:Name="u_unlocks_max_box"/>
                                                         </StackPanel>
                                                     </CheckBox.Content>
                                                 </CheckBox>
@@ -261,7 +261,7 @@
                                                         <StackPanel Style="{StaticResource analysis_param_panel}">
                                                             <TextBlock x:Uid="unlocks_txt" Style="{StaticResource analysis_param_text}"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
-                                                            <TextBox Style="{StaticResource analysis_param_box}" x:Name="u_unlocks_min_box"/>
+                                                            <TextBox Style="{StaticResource analysis_param_box}" InputScope="Number" x:Name="u_unlocks_min_box"/>
                                                         </StackPanel>
                                                     </CheckBox.Content>
                                                 </CheckBox>
@@ -274,7 +274,7 @@
                                                         <StackPanel Style="{StaticResource analysis_param_panel}">
                                                             <TextBlock x:Uid="battery_txt" Style="{StaticResource analysis_param_text}"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003E;" FontSize="16" FontFamily="Segoe UI"/>
-                                                            <TextBox Style="{StaticResource analysis_param_box}" x:Name="u_battery_max_box"/>
+                                                            <TextBox Style="{StaticResource analysis_param_box}" InputScope="Number" x:Name="u_battery_max_box"/>
                                                         </StackPanel>
                                                     </CheckBox.Content>
                                                 </CheckBox>
@@ -283,7 +283,7 @@
                                                         <StackPanel Style="{StaticResource analysis_param_panel}">
                                                             <TextBlock x:Uid="battery_txt" Style="{StaticResource analysis_param_text}"/>
                                                             <FontIcon VerticalAlignment="Top" Margin="6,0" Glyph="&#x003C;" FontSize="16" FontFamily="Segoe UI"/>
-                                                            <TextBox Style="{StaticResource analysis_param_box}" x:Name="u_battery_min_box"/>
+                                                            <TextBox Style="{StaticResource analysis_param_box}" InputScope="Number" x:Name="u_battery_min_box"/>
                                                         </StackPanel>
                                                     </CheckBox.Content>
                                                 </CheckBox>
