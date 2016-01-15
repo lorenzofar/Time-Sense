@@ -119,9 +119,14 @@ namespace Time_Sense
             }
             activate:
             Window.Current.Activate();
-            /*var storageFile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///TimeSenseCommands.xml"));
-            await Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(storageFile);
-            */
+            try {
+                var storageFile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///TimeSenseCommands.xml"));
+                await Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(storageFile);
+            }
+            catch(Exception ex)
+            {
+                t_client.TrackException(new Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry(ex));
+            }
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.StartScreen.JumpList"))
             {
                 var jump_list = await JumpList.LoadCurrentAsync();

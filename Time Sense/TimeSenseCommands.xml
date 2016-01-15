@@ -2,9 +2,9 @@
 <VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
   <CommandSet xml:lang="en" Name="commandSet_en">
     <CommandPrefix>Time Sense, </CommandPrefix>
-    <Example> what's my usage?</Example>
+    <Example> Turn on location tracking</Example>
 
-   <Command Name="usage">
+   <!--<Command Name="usage">
       <Example>how much I used the device?</Example>
       <ListenFor>How much [I] used [the] [my] {device}?</ListenFor>
       <ListenFor>What is my usage [time]?</ListenFor>
@@ -34,7 +34,6 @@
       <Feedback>Here's your settings</Feedback>
       <Navigate/>
     </Command>
-<!--
     <Command Name="resetone">
       <Example>Delete my data of today</Example>
       <ListenFor>delete [my] data for today</ListenFor>
@@ -68,7 +67,7 @@
       <VoiceCommandService Target="TimeSenseVoiceCommandService"/>      
     </Command>
 
-    <PhraseList Label="opener">
+    <!--<PhraseList Label="opener">
       <Item>Open</Item>
       <Item>Show</Item>
       <Item>Tell me</Item>
@@ -82,14 +81,14 @@
       <Item>phone</Item>
       <Item>computer</Item>
       <Item>pc</Item>
-    </PhraseList>
+    </PhraseList>-->
   </CommandSet>
 
 <CommandSet xml:lang="it" Name="commandSet_it">
     <CommandPrefix>Time Sense, </CommandPrefix>
-    <Example> mostra il mio utilizzo</Example>
+    <Example> attiva la localizzazione</Example>
 
-   <Command Name="usage">
+  <!--<Command Name="usage">
       <Example>quanto ho usato il telefono?</Example>
       <ListenFor>Quanto ho usato [il] [mio] {device}</ListenFor>
       <ListenFor>Qual'è [il] [mio] tempo [di] utilizzo?</ListenFor>
@@ -117,7 +116,7 @@
       <ListenFor>apri [le] impostazioni</ListenFor>
       <Feedback>Ecco le impostazioni</Feedback>
       <Navigate/>
-    </Command>
+    </Command>-->
     
     <Command Name="locon">
       <Example>attiva rilevazione posizione</Example>
@@ -137,7 +136,7 @@
       <VoiceCommandService Target="TimeSenseVoiceCommandService"/>      
     </Command>
 
-    <PhraseList Label="opener">
+   <!-- <PhraseList Label="opener">
       <Item>Apri</Item>
       <Item>Mostra</Item>
       <Item>Dimmi</Item>
@@ -151,7 +150,7 @@
     <Item>telefono</Item>
     <Item>computer</Item>
     <Item>smartphone</Item>
-  </PhraseList>
+  </PhraseList>-->
     
   </CommandSet>
 </VoiceCommands>
