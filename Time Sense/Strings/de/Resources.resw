@@ -511,7 +511,7 @@
     <value>Nein</value>
   </data>
   <data name="rate_later" xml:space="preserve">
-    <value>Later</value>
+    <value>Später</value>
   </data>
   <data name="rate_message" xml:space="preserve">
     <value>Du magst Time Sense? Bewerte die App im Store! Vielen Dank für die Unterstützung!</value>
@@ -787,8 +787,7 @@
     <value>Der Excel-Report ist erfolgreich erstellt worden</value>
   </data>
   <data name="Excel_total_unlocks" xml:space="preserve">
-    <value>Total Entsperrungen:</value>
-    <comment>CHECK</comment>
+    <value>Gesamte Entsperrungen:</value>
   </data>
   <data name="Excel_total_usage" xml:space="preserve">
     <value>Gesamte Nutzung:</value>
@@ -803,8 +802,7 @@
     <value>Ausgeschaltet</value>
   </data>
   <data name="status_on" xml:space="preserve">
-    <value>an</value>
-    <comment>CHECK</comment>
+    <value>auf</value>
   </data>
   <data name="desktop_disclaimer" xml:space="preserve">
     <value>Thank you for using Time Sense! 
