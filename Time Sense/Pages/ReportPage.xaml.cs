@@ -9,6 +9,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Storage.Pickers;
+using Windows.Storage;
 
 namespace Time_Sense
 {
@@ -255,6 +257,37 @@ namespace Time_Sense
         {
             App.t_client.TrackEvent("Report chart swipe");
             chart_helper.Text = statistics_chart.SelectedIndex == 0 ? utilities.loader.GetString("hours_report") : utilities.loader.GetString("unlocks_tile");
+        }
+
+        private async void export_bar_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var span_result = await new SpanDialog().ShowAsync();
+                if (span_result == Windows.UI.Xaml.Controls.ContentDialogResult.Primary)
+                {
+                    if (App.range_start_date <= App.range_end_date)
+                    {
+                        FileSavePicker export_picker = new FileSavePicker();
+                        export_picker.DefaultFileExtension = ".xlsx";
+                        export_picker.SuggestedFileName = String.Format("timesense_{0}-{1}", utilities.shortdate_form.Format(App.range_start_date), utilities.shortdate_form.Format(App.range_end_date));
+                        export_picker.FileTypeChoices.Add("Excel file", new List<string>() { ".xlsx" });
+                        App.file_pick = true;
+                        StorageFile export_file = await export_picker.PickSaveFileAsync();
+                        if (export_file != null)
+                        {
+                            App.file_pick = false;
+                            await new ProgressDialog(export_file).ShowAsync();
+                            App.t_client.TrackEvent("Excel report created");
+                        }
+                    }
+                    else
+                    {
+                        await new MessageDialog(utilities.loader.GetString("error_span"), utilities.loader.GetString("error")).ShowAsync();
+                    }
+                }
+            }
+            catch { }
         }
     }
 }

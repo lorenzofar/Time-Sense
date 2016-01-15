@@ -339,17 +339,18 @@
                 x:Uid="date_bar"
                 Click="date_report_bar_Click"
                 Icon="Calendar" />
-
-            <AppBarButton
-                x:Name="export_bar"
-                x:Uid="export_bar"
-                Click="export_bar_Click"
-                Icon="Save" />
             <AppBarButton
                 x:Uid="refresh_bar"
                 HorizontalAlignment="Right"
                 Click="refresh_home"
                 Icon="Refresh" />
+            <CommandBar.SecondaryCommands>
+                <AppBarButton
+                x:Name="export_bar"
+                x:Uid="export_bar"
+                Click="export_bar_Click"
+                Icon="Save" />
+            </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

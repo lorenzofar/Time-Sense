@@ -266,6 +266,11 @@
             x:Name="report_command"
             HorizontalAlignment="Right">
             <AppBarButton
+                x:Name="export_bar"
+                x:Uid="export_bar"
+                Click="export_bar_Click"
+                Icon="Save" />
+            <AppBarButton
                 x:Name="range_btn"
                 x:Uid="range_btn"
                 Click="range_btn_Click_1"
