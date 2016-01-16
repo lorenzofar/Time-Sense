@@ -80,9 +80,8 @@ namespace Time_Sense
             }
 
             Frame rootFrame = Window.Current.Content as Frame;
-
-            Object password_obj = utilities.STATS.Values[settings.password];
-            string password = password_obj == null ? "" : password_obj.ToString();
+            
+            string password = utilities.STATS.Values[settings.password] == null ? "" : utilities.STATS.Values[settings.password].ToString();
 
             if (e!=null && (e.Arguments != null && e.Arguments != ""))
             {
@@ -119,18 +118,11 @@ namespace Time_Sense
             }
             activate:
             Window.Current.Activate();
-            try {
-                var storageFile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///TimeSenseCommands.xml"));
-                await Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(storageFile);
-            }
-            catch(Exception ex)
-            {
-                t_client.TrackException(new Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry(ex));
-            }
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.StartScreen.JumpList"))
             {
                 var jump_list = await JumpList.LoadCurrentAsync();
                 jump_list.Items.Clear();
+                await jump_list.SaveAsync();
                 jump_list.SystemGroupKind = JumpListSystemGroupKind.None;
                 JumpListItem j_timeline = JumpListItem.CreateWithArguments("timeline", utilities.loader.GetString("jump_timeline"));
                 JumpListItem j_report = JumpListItem.CreateWithArguments("report", utilities.loader.GetString("jump_report"));
@@ -143,13 +135,17 @@ namespace Time_Sense
                 jump_list.Items.Add(j_settings);
                 await jump_list.SaveAsync();
             }
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager"))
+            {
+                var storageFile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///TimeSenseCommands.xml"));
+                await Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(storageFile);
+            }
         }
 
-            void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+        void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
-
 
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
@@ -244,33 +240,6 @@ namespace Time_Sense
                                 break;
                         }
                         OnLaunched(null);
-                        /*if (rootFrame == null)
-                        {
-                            rootFrame = new Frame();
-
-                            rootFrame.NavigationFailed += OnNavigationFailed;
-
-                            if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
-                            {
-                            }
-
-                            Window.Current.Content = rootFrame;
-                        }
-
-                        if (rootFrame.Content == null)
-                        {
-                            if (password != "")
-                            {
-                                rootFrame.Navigate(typeof(PasswordPage), password);
-                                goto activate_3;
-                            }
-                            else
-                            {
-                                rootFrame.Navigate(typeof(MainPage), null);
-                            }
-                        }
-                        activate_3:
-                        Window.Current.Activate();*/
                     }
                 }
             }
