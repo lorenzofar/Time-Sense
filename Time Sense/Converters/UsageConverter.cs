@@ -8,8 +8,7 @@ namespace Time_Sense
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            int usage = int.Parse(value.ToString());
-            return utilities.FormatData(usage);
+            return utilities.FormatData(int.Parse(value.ToString()));
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

@@ -7,8 +7,7 @@ namespace Time_Sense
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            int battery = int.Parse(value.ToString());
-            return String.Format("{0}%", battery.ToString());
+            return String.Format("{0}%", value.ToString());
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
