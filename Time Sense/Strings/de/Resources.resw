@@ -469,7 +469,7 @@
     <value>Während dem Vorgang die App nicht schliessen oder das Display ausschalten</value>
   </data>
   <data name="purchase_analytics.PrimaryButtonText" xml:space="preserve">
-    <value>Buy</value>
+    <value>Kaufen</value>
   </data>
   <data name="purchase_analytics.Title" xml:space="preserve">
     <value>ERWEITERTE ANALYSE</value>
