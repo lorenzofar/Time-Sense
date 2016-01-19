@@ -51,7 +51,7 @@ namespace Tasks
                 {
                     if (date[0].Day == 31 && date[1].Day == 1)
                     {
-                        if ((unlocks[1] == 0 || unlocks[1] == 1) && total_seconds[1] > 9000)
+                        if (total_seconds[1] > 9000)
                         {
                         }
                         else {
@@ -106,7 +106,7 @@ namespace Tasks
                     }
                     else if (date[1].DayOfYear - date[0].DayOfYear == 1)
                     {
-                        if ((unlocks[1] == 0 || unlocks[1] == 1) && total_seconds[1] > 9000)
+                        if (total_seconds[1] > 9000)
                         {
                         }
                         else {
