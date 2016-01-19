@@ -51,10 +51,8 @@ namespace Tasks
                 {
                     if (date[0].Day == 31 && date[1].Day == 1)
                     {
-                        if (total_seconds[1] > 9000)
+                        if (total_seconds[1] <= 9000)
                         {
-                        }
-                        else {
                             time[0] += (86400 - total_seconds[0]);
                             time[1] += total_seconds[1];
                             await Database.Helper.UpdateHourItem(date[0], date[0].Hour, (((date[0].Hour + 1) * 3600) - total_seconds[0]), 0);
@@ -106,10 +104,8 @@ namespace Tasks
                     }
                     else if (date[1].DayOfYear - date[0].DayOfYear == 1)
                     {
-                        if (total_seconds[1] > 9000)
+                        if (total_seconds[1] <= 9000)
                         {
-                        }
-                        else {
                             time[0] += (86400 - total_seconds[0]);
                             time[1] += total_seconds[1];
                             await Database.Helper.UpdateHourItem(date[0], date[0].Hour, (((date[0].Hour + 1) * 3600) - total_seconds[0]), 0);
@@ -135,7 +131,7 @@ namespace Tasks
                             string battery = Windows.Devices.Power.Battery.AggregateBattery.GetReport().Status == Windows.System.Power.BatteryStatus.Charging ? "charging" : "null";
                             await Database.Helper.AddTimelineItem(date[1], "00:00:00", 1, Windows.System.Power.PowerManager.RemainingChargePercent, battery, bluetooth, wifi);
                             await Database.Helper.UpdateTimelineItem(1, time[1], date[1]);
-                        }
+                        }                        
                     }
                 }
             }

@@ -138,36 +138,32 @@ namespace Time_Sense
                     {
                         if (date[0].Day == 31 && date[1].Day == 1)
                         {
-                            if (total_seconds[1] > 9000)
-                            {
-                            }
-                            else {
+                            if (total_seconds[1] <= 9000)
                                 time[0] += (86400 - total_seconds[0]);
-                                time[1] += total_seconds[1];
-                                await Helper.UpdateHourItem(date[0], date[0].Hour, (((date[0].Hour + 1) * 3600) - total_seconds[0]), 0);
-                                for (int i = 1; i < 24 - date[0].Hour; i++)
-                                {
-                                    await Helper.UpdateHourItem(date[0], date[0].Hour + i, 3600, 0);
-                                }
-                                for (int i = 0; i < date[1].Hour; i++)
-                                {
-                                    await Helper.UpdateHourItem(date[1], i, 3600, i == 0 ? 1 : 0);
-                                }
-                                await Helper.UpdateHourItem(date[1], date[1].Hour, total_seconds[1] - (date[1].Hour * 3600), 0);
-                                for (int i = 0; i < 2; i++)
-                                {
-                                    await Helper.UpdateUsageItem(time[i], unlocks[i], date[i]);
-                                }
-                                await Helper.UpdateTimelineItem(unlocks[0], (86400 - total_seconds[0]), date[0]);
-                                var radios = await Windows.Devices.Radios.Radio.GetRadiosAsync();
-                                var bluetooth_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.Bluetooth).FirstOrDefault();
-                                var wifi_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.WiFi).FirstOrDefault();
-                                string bluetooth = bluetooth_device == null ? "off" : bluetooth_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
-                                string wifi = wifi_device == null ? "off" : wifi_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
-                                string battery = Windows.Devices.Power.Battery.AggregateBattery.GetReport().Status == Windows.System.Power.BatteryStatus.Charging ? "charging" : "null";
-                                await Helper.AddTimelineItem(date[1], "00:00:00", 1, Windows.System.Power.PowerManager.RemainingChargePercent, battery, bluetooth, wifi);
-                                await Database.Helper.UpdateTimelineItem(1, time[1], date[1]);
+                            time[1] += total_seconds[1];
+                            await Helper.UpdateHourItem(date[0], date[0].Hour, (((date[0].Hour + 1) * 3600) - total_seconds[0]), 0);
+                            for (int i = 1; i < 24 - date[0].Hour; i++)
+                            {
+                                await Helper.UpdateHourItem(date[0], date[0].Hour + i, 3600, 0);
                             }
+                            for (int i = 0; i < date[1].Hour; i++)
+                            {
+                                await Helper.UpdateHourItem(date[1], i, 3600, i == 0 ? 1 : 0);
+                            }
+                            await Helper.UpdateHourItem(date[1], date[1].Hour, total_seconds[1] - (date[1].Hour * 3600), 0);
+                            for (int i = 0; i < 2; i++)
+                            {
+                                await Helper.UpdateUsageItem(time[i], unlocks[i], date[i]);
+                            }
+                            await Helper.UpdateTimelineItem(unlocks[0], (86400 - total_seconds[0]), date[0]);
+                            var radios = await Windows.Devices.Radios.Radio.GetRadiosAsync();
+                            var bluetooth_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.Bluetooth).FirstOrDefault();
+                            var wifi_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.WiFi).FirstOrDefault();
+                            string bluetooth = bluetooth_device == null ? "off" : bluetooth_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
+                            string wifi = wifi_device == null ? "off" : wifi_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
+                            string battery = Windows.Devices.Power.Battery.AggregateBattery.GetReport().Status == Windows.System.Power.BatteryStatus.Charging ? "charging" : "null";
+                            await Helper.AddTimelineItem(date[1], "00:00:00", 1, Windows.System.Power.PowerManager.RemainingChargePercent, battery, bluetooth, wifi);
+                            await Database.Helper.UpdateTimelineItem(1, time[1], date[1]);
                         }
                     }
                     else
@@ -193,10 +189,8 @@ namespace Time_Sense
                         }
                         else if (date[1].DayOfYear - date[0].DayOfYear == 1)
                         {
-                            if (total_seconds[1] > 9000)
+                            if (total_seconds[1] <= 9000)
                             {
-                            }
-                            else {
                                 time[0] += (86400 - total_seconds[0]);
                                 time[1] += total_seconds[1];
                                 await Helper.UpdateHourItem(date[0], date[0].Hour, (((date[0].Hour + 1) * 3600) - total_seconds[0]), 0);
