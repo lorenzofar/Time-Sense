@@ -135,11 +135,6 @@ namespace Time_Sense
                 jump_list.Items.Add(j_settings);
                 await jump_list.SaveAsync();
             }
-            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager"))
-            {
-                var storageFile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///TimeSenseCommands.xml"));
-                await Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(storageFile);
-            }
         }
 
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
