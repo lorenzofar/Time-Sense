@@ -172,22 +172,27 @@ namespace Time_Sense
                         {
                             if (date[0].Date == date[1].Date)
                             {
-                                time[1] += diff;
-                                if (date[0].Hour < date[1].Hour)
+                                if (unlocks[1] < 5 && diff >= 9000)
                                 {
-                                    await Helper.UpdateHourItem(date[1], date[0].Hour, ((date[0].Hour + 1) * 3600) - total_seconds[0], 0);
-                                    for (int i = 1; i < date[1].Hour - date[0].Hour; i++)
+                                }
+                                else {
+                                    time[1] += diff;
+                                    if (date[0].Hour < date[1].Hour)
                                     {
-                                        await Helper.UpdateHourItem(date[1], date[0].Hour + i, 3600, 0);
+                                        await Helper.UpdateHourItem(date[1], date[0].Hour, ((date[0].Hour + 1) * 3600) - total_seconds[0], 0);
+                                        for (int i = 1; i < date[1].Hour - date[0].Hour; i++)
+                                        {
+                                            await Helper.UpdateHourItem(date[1], date[0].Hour + i, 3600, 0);
+                                        }
+                                        await Helper.UpdateHourItem(date[1], date[1].Hour, total_seconds[1] - (date[1].Hour * 3600), 0);
                                     }
-                                    await Helper.UpdateHourItem(date[1], date[1].Hour, total_seconds[1] - (date[1].Hour * 3600), 0);
+                                    else if (date[0].Hour == date[1].Hour)
+                                    {
+                                        await Helper.UpdateHourItem(date[1], date[1].Hour, diff, 0);
+                                    }
+                                    await Helper.UpdateUsageItem(time[1], unlocks[1], date[1]);
+                                    await Helper.UpdateTimelineItem(unlocks[1], diff, date[1]); //AGGIORNA TIMELINE
                                 }
-                                else if (date[0].Hour == date[1].Hour)
-                                {
-                                    await Helper.UpdateHourItem(date[1], date[1].Hour, diff, 0);
-                                }
-                                await Helper.UpdateUsageItem(time[1], unlocks[1], date[1]);
-                                await Helper.UpdateTimelineItem(unlocks[1], diff, date[1]); //AGGIORNA TIMELINE
                             }
                             else if (date[1].DayOfYear - date[0].DayOfYear == 1)
                             {

@@ -1,14 +1,11 @@
+using Database;
+using Stuff;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
-using Stuff;
-using Windows.Storage;
-using Windows.UI.Notifications;
 using Windows.Data.Xml.Dom;
-using Database;
+using Windows.UI.Notifications;
 
 namespace Tasks
 {
