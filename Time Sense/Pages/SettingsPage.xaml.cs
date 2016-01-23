@@ -22,7 +22,7 @@ namespace Time_Sense
     public sealed partial class SettingsPage : Page
     {
         public bool loading = false;
-        private List<Database.AllowedContact> contacts_list = new List<AllowedContact>();
+        //private List<AllowedContact> contacts_list = new List<AllowedContact>();
         ProximityDevice nfc_device;
         long messageId0;
         long subscriptionId;
@@ -406,7 +406,7 @@ namespace Time_Sense
             String recipient = "lorenzo.farinelli@outlook.it";
             EmailMessage feedback = new EmailMessage();
             feedback.Subject = "Time Sense";
-            feedback.Body = "Version 2.1";
+            feedback.Body = "Version 2.1.3";
             var emailRecipient = new EmailRecipient(recipient);
             feedback.To.Add(emailRecipient);
             await EmailManager.ShowComposeNewEmailAsync(feedback);
