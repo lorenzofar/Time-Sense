@@ -813,4 +813,7 @@ La versione per PC è ancora in fase di sviluppo e a causa di alcune limitazioni
   <data name="error_span" xml:space="preserve">
     <value>La data iniziale deve essere minore della data finale</value>
   </data>
+  <data name="limit_item_6.Content" xml:space="preserve">
+    <value>Disattivato</value>
+  </data>
 </root>

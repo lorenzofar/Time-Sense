@@ -815,4 +815,7 @@ The PC version is still in development and, due to system limitations, there cou
   <data name="error_span" xml:space="preserve">
     <value>Das Anfagsdatum muss vor dem Enddatum sein</value>
   </data>
+  <data name="limit_item_6.Content" xml:space="preserve">
+    <value>Ausgeschaltet</value>
+  </data>
 </root>

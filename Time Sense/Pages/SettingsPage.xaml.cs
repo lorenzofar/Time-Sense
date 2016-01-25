@@ -16,6 +16,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.ApplicationInsights.DataContracts;
 
 namespace Time_Sense
 {
@@ -57,7 +58,7 @@ namespace Time_Sense
             bool letter = utilities.STATS.Values[settings.letters] == null ? false : true;
             letters_switch.IsOn = letter;
             unlocks += "_radio";
-            threshold_box.SelectedIndex = (limit/3600) - 1;
+            threshold_box.SelectedIndex = limit == 0 ? 5 : (limit/3600) - 1;
             password_switch.IsOn = password;
             if (password)
             {
@@ -100,7 +101,27 @@ namespace Time_Sense
         private void threshold_box_selectionChanged(object sender, SelectionChangedEventArgs e)
         {
             App.t_client.TrackEvent("Threshold changed");
-            utilities.STATS.Values[settings.limit] = (threshold_box.SelectedIndex + 1) * 3600;
+            if (threshold_box.SelectedIndex == 5)
+            {
+                //DISABLES NOTIFICATIONS AND REMOVES SCHEDULED ONES
+                utilities.STATS.Values[settings.limit] = 0;
+                try
+                {
+                    IReadOnlyList<ScheduledToastNotification> list = ToastNotificationManager.CreateToastNotifier().GetScheduledToastNotifications();
+                    foreach (var toast in list)
+                    {
+                        ToastNotificationManager.CreateToastNotifier().RemoveFromSchedule(toast);
+                    }
+                }
+                catch(Exception ex)
+                {
+                    App.t_client.TrackException(new ExceptionTelemetry(ex));
+                }
+            }
+            else
+            {
+                utilities.STATS.Values[settings.limit] = (threshold_box.SelectedIndex + 1) * 3600;
+            }
             // GETS THE USAGE DATA AND THEN SCHEDULES THE TOAST NOTIFICATION
             RegisterUsageToast();
             
@@ -112,7 +133,7 @@ namespace Time_Sense
             int time = data[0];
             int limit = (threshold_box.SelectedIndex + 1) * 3600;
             int span = limit - time;
-            if (span >= 0 && DateTime.Now.AddSeconds(span).Date == DateTime.Now.Date)
+            if (limit != 0 && span >= 0 && DateTime.Now.AddSeconds(span).Date == DateTime.Now.Date)
             {
                 App.t_client.TrackEvent("Toast scheduled");
                 IReadOnlyList<ScheduledToastNotification> list = ToastNotificationManager.CreateToastNotifier().GetScheduledToastNotifications();

@@ -1,22 +1,21 @@
-﻿using System;
+﻿using Database;
+using Microsoft.ApplicationInsights.DataContracts;
+using Stuff;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Database;
-using Microsoft.ApplicationInsights.DataContracts;
-using Stuff;
+using Windows.ApplicationModel.Email;
 using Windows.Data.Xml.Dom;
 using Windows.Media.SpeechSynthesis;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.UI.Notifications;
 using Windows.UI.Popups;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Windows.Storage.Pickers;
-using Windows.Storage;
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
-using Windows.ApplicationModel.Email;
 
 namespace Time_Sense
 {

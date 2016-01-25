@@ -170,6 +170,9 @@
                         <ComboBoxItem
                             x:Uid="limit_item_5"
                             Tag="5" />
+                        <ComboBoxItem
+                            x:Uid="limit_item_6"
+                            Tag="6" />
                     </ComboBox>
                     <!--
                         <StackPanel Margin="0,12">
