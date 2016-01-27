@@ -783,7 +783,7 @@
     <value>Total unlocks:</value>
   </data>
   <data name="Excel_total_usage" xml:space="preserve">
-    <value>Total usage;</value>
+    <value>Total usage:</value>
   </data>
   <data name="Excel_version" xml:space="preserve">
     <value>App version:</value>
