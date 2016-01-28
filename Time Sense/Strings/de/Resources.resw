@@ -818,4 +818,7 @@ The PC version is still in development and, due to system limitations, there cou
   <data name="limit_item_6.Content" xml:space="preserve">
     <value>Ausgeschaltet</value>
   </data>
+  <data name="thanks_turkish.Text" xml:space="preserve">
+    <value>- türkisch-Übersetzung</value>
+  </data>
 </root>

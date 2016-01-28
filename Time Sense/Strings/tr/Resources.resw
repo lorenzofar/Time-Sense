@@ -118,518 +118,518 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="backup_banner.Text" xml:space="preserve">
-    <value>Backup + reset</value>
+    <value>Yedekleme + sıfırlama</value>
   </data>
   <data name="backup_btn.Content" xml:space="preserve">
-    <value>Backup</value>
+    <value>Yedekleme</value>
   </data>
   <data name="backup_header.Text" xml:space="preserve">
-    <value>Backup</value>
+    <value>Yedekleme</value>
   </data>
   <data name="badge_radio.Content" xml:space="preserve">
-    <value>Badge (lockscreen support)</value>
+    <value>Işaret (kilit ekranı desteği)</value>
   </data>
   <data name="device_banner.Text" xml:space="preserve">
-    <value>Device</value>
+    <value>Cihaz</value>
   </data>
   <data name="limit_header_1.Text" xml:space="preserve">
-    <value>Usage threshold</value>
+    <value>Kullanım eşiği</value>
   </data>
   <data name="limit_header_2.Text" xml:space="preserve">
-    <value>Sends a notification when you use the device for more than this time:</value>
+    <value>Cihazınızı bu süreden fazla kullanırsanız, bildirim yollanır.</value>
   </data>
   <data name="limit_item_1.Content" xml:space="preserve">
-    <value>1 hour</value>
+    <value>1 saat</value>
   </data>
   <data name="limit_item_2.Content" xml:space="preserve">
-    <value>2 hours</value>
+    <value>2 saat</value>
   </data>
   <data name="limit_item_3.Content" xml:space="preserve">
-    <value>3 hours</value>
+    <value>3 saat</value>
   </data>
   <data name="limit_item_4.Content" xml:space="preserve">
-    <value>4 hours</value>
+    <value>4 saat</value>
   </data>
   <data name="limit_item_5.Content" xml:space="preserve">
-    <value>5 hours</value>
+    <value>5 saat</value>
   </data>
   <data name="location_header_1.Text" xml:space="preserve">
-    <value>Location</value>
+    <value>Konum</value>
   </data>
   <data name="location_header_2.Text" xml:space="preserve">
-    <value>Track the geolocation when you unlock the device (GPS must be on)</value>
+    <value>Kilit açtığında konum bilgisini kaydet (GPS açık olmalıdır)</value>
   </data>
   <data name="nfc_header_1.Text" xml:space="preserve">
-    <value>Write NFC tag</value>
+    <value>NFC etiketi yazdır</value>
   </data>
   <data name="notifications_banner.Text" xml:space="preserve">
-    <value>Notifications</value>
+    <value>Bildirimler</value>
   </data>
   <data name="password_header_1.Text" xml:space="preserve">
-    <value>Password</value>
+    <value>Şifre</value>
   </data>
   <data name="password_header_2.Text" xml:space="preserve">
-    <value>Request a password to open the app</value>
+    <value>Uyguluma açılırken şifre iste</value>
   </data>
   <data name="privacy_banner.Text" xml:space="preserve">
-    <value>Privacy</value>
+    <value>Gizlilik</value>
   </data>
   <data name="resetall_btn.Content" xml:space="preserve">
-    <value>Delete all data</value>
+    <value>Bütün veriyi sil</value>
   </data>
   <data name="resetone_btn.Content" xml:space="preserve">
-    <value>Delete a range</value>
+    <value>Aralıktaki veriyi sil</value>
   </data>
   <data name="reset_header.Text" xml:space="preserve">
-    <value>Delete</value>
+    <value>Sil</value>
   </data>
   <data name="restore_btn.Content" xml:space="preserve">
-    <value>Restore</value>
+    <value>Geri yükle</value>
   </data>
   <data name="String1" xml:space="preserve">
     <value />
-    <comment>//ENGLISH</comment>
+    <comment>//TURKISH</comment>
   </data>
   <data name="tile_header_1.Text" xml:space="preserve">
-    <value>Unlocks overview on tile:</value>
+    <value>Kutucuktaki genel görünümü aç</value>
   </data>
   <data name="tile_header_2.Text" xml:space="preserve">
-    <value>Choose how to show the count of unlocks</value>
+    <value>Kilit açma sayılarının nasıl görüneceğini seç</value>
   </data>
   <data name="tile_radio.Content" xml:space="preserve">
-    <value>Text only</value>
+    <value>Sadece yazı</value>
   </data>
   <data name="about_btn.Content" xml:space="preserve">
-    <value>About</value>
+    <value>Hakkında</value>
   </data>
   <data name="average.Text" xml:space="preserve">
-    <value>average</value>
+    <value>ortalama</value>
   </data>
   <data name="back_bar.Label" xml:space="preserve">
-    <value>Previous</value>
+    <value>Önceki</value>
   </data>
   <data name="battery_banner.Text" xml:space="preserve">
-    <value>battery</value>
+    <value>pil</value>
   </data>
   <data name="battery_chart_title" xml:space="preserve">
-    <value>BATTERY</value>
+    <value>PIL</value>
   </data>
   <data name="date_bar.Label" xml:space="preserve">
-    <value>Search</value>
+    <value>Arama</value>
   </data>
   <data name="date_dialog.PrimaryButtonText" xml:space="preserve">
-    <value>Choose</value>
+    <value>Seç</value>
   </data>
   <data name="date_dialog.SecondaryButtonText" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Iptal</value>
   </data>
   <data name="date_dialog.Title" xml:space="preserve">
-    <value>CHOOSE DATE</value>
+    <value>TARIH SEÇ</value>
   </data>
   <data name="delete_dialog.Title" xml:space="preserve">
-    <value>DELETING DATA</value>
+    <value>VERI SILINIYOR</value>
   </data>
   <data name="delete_dialog_error" xml:space="preserve">
-    <value>Data could not be deleted, please try again</value>
+    <value>Veri silinemedi, lütfen tekrar deneyin</value>
   </data>
   <data name="delete_dialog_progress" xml:space="preserve">
-    <value>{0}/{1} items deleted</value>
+    <value>{0}/{1} veri silindi</value>
   </data>
   <data name="delete_dialog_success" xml:space="preserve">
-    <value>Data have been succesfully deleted</value>
+    <value>Veri başarıyla silindi</value>
   </data>
   <data name="error" xml:space="preserve">
-    <value>Error</value>
+    <value>Hata</value>
   </data>
   <data name="forward_bar.Label" xml:space="preserve">
-    <value>Next</value>
+    <value>Sonrakı</value>
   </data>
   <data name="home_btn.Content" xml:space="preserve">
-    <value>Home</value>
+    <value>Giriş sayfası</value>
   </data>
   <data name="maximum.Text" xml:space="preserve">
-    <value>maximum</value>
+    <value>maksimum</value>
   </data>
   <data name="migrate_dialog.Title" xml:space="preserve">
-    <value>MIGRATING DATA</value>
+    <value>VERI TAŞINIYOR</value>
   </data>
   <data name="migrate_dialog_error" xml:space="preserve">
-    <value>Data could not be migrated, please try again</value>
+    <value>Veri taşınamadı, lütfen tekrar deneyin</value>
   </data>
   <data name="migrate_dialog_progress" xml:space="preserve">
-    <value>{0}/{1} items migrated</value>
+    <value>{0}/{1} veri taşındı</value>
   </data>
   <data name="migrate_dialog_success" xml:space="preserve">
-    <value>Data have been succesfully migrated</value>
+    <value>Veri başarıyla taşındı</value>
   </data>
   <data name="migrate_dialog_unpresent" xml:space="preserve">
-    <value>There are no previous data</value>
+    <value>Önceki veri yok</value>
   </data>
   <data name="minimum.Text" xml:space="preserve">
     <value>minimum</value>
   </data>
   <data name="progress_dialog_helper.Text" xml:space="preserve">
-    <value>Don't close the app or lock the screen during the process</value>
+    <value>Işlem süresince lütfen uygulamadan çıkmayın veya ekranı kapatmayın.</value>
   </data>
   <data name="refresh_bar.Label" xml:space="preserve">
-    <value>Refresh</value>
+    <value>Yenile</value>
   </data>
   <data name="report_btn.Content" xml:space="preserve">
-    <value>Report</value>
+    <value>Rapor</value>
   </data>
   <data name="settings_btn.Content" xml:space="preserve">
-    <value>Settings</value>
+    <value>Ayarlar</value>
   </data>
   <data name="success" xml:space="preserve">
-    <value>Success</value>
+    <value>Başarıyla tamamlandı</value>
   </data>
   <data name="timeline_btn.Content" xml:space="preserve">
-    <value>Timeline</value>
+    <value>Zaman çizelgesi</value>
   </data>
   <data name="timeline_item_nolocation" xml:space="preserve">
-    <value>The selected item doesn't have location data</value>
+    <value>Seçilen veriye ait konum bilgisi kaydı yok</value>
   </data>
   <data name="time_banner.Text" xml:space="preserve">
-    <value>time</value>
+    <value>zaman</value>
   </data>
   <data name="today" xml:space="preserve">
-    <value>TODAY</value>
+    <value>BUGÜN</value>
   </data>
   <data name="unlock" xml:space="preserve">
-    <value>{0} unlock</value>
+    <value>{0} kılıt açma</value>
   </data>
   <data name="unlocks" xml:space="preserve">
-    <value>{0} unlocks</value>
+    <value>{0} kılıt açma</value>
   </data>
   <data name="unlocks_banner.Text" xml:space="preserve">
-    <value>unlocks</value>
+    <value>kilit açma</value>
   </data>
   <data name="unlocks_hour_title" xml:space="preserve">
-    <value>UNLOCKS/HOUR</value>
+    <value>KILIT AÇMA/SAAT</value>
   </data>
   <data name="unlocks_tile" xml:space="preserve">
-    <value>UNLOCKS</value>
+    <value>KILIT AÇMA</value>
   </data>
   <data name="usage" xml:space="preserve">
-    <value>USAGE</value>
+    <value>KULLANIM</value>
   </data>
   <data name="usage_banner.Text" xml:space="preserve">
-    <value>usage</value>
+    <value>kullanım</value>
   </data>
   <data name="usage_chart_title" xml:space="preserve">
-    <value>USAGE</value>
+    <value>KULLANIM</value>
   </data>
   <data name="usage_hour_title" xml:space="preserve">
-    <value>MINUTES/HOUR</value>
+    <value>DAKIKA/SAAT</value>
   </data>
   <data name="yesterday" xml:space="preserve">
-    <value>YESTERDAY</value>
+    <value>DÜN</value>
   </data>
   <data name="avg_day" xml:space="preserve">
-    <value>{0} day</value>
+    <value>{0} gün</value>
   </data>
   <data name="avg_days" xml:space="preserve">
-    <value>{0} days</value>
+    <value>{0} günler</value>
   </data>
   <data name="backup_dialog_success" xml:space="preserve">
-    <value>The backup has been succesfully saved</value>
+    <value>Yedekleme başarıyla tamamlandı</value>
   </data>
   <data name="delete_confirm_content" xml:space="preserve">
-    <value>Do you really want to delete data?</value>
+    <value>Veriyi gerçekten silmek istiyormusunuz?</value>
   </data>
   <data name="delete_confirm_title" xml:space="preserve">
-    <value>Are you sure?</value>
+    <value>Emin misiniz?</value>
   </data>
   <data name="help_btn.Label" xml:space="preserve">
-    <value>Help</value>
+    <value>Yardım</value>
   </data>
   <data name="hour" xml:space="preserve">
-    <value>hour</value>
+    <value>saat</value>
   </data>
   <data name="hours" xml:space="preserve">
-    <value>hours</value>
+    <value>saat</value>
   </data>
   <data name="hours_report" xml:space="preserve">
-    <value>HOURS</value>
+    <value>SAAT</value>
   </data>
   <data name="limit_toast_1" xml:space="preserve">
-    <value>1 hour</value>
+    <value>1 saat</value>
   </data>
   <data name="limit_toast_2" xml:space="preserve">
-    <value>2 hours</value>
+    <value>2 saat</value>
   </data>
   <data name="limit_toast_3" xml:space="preserve">
-    <value>3 hours</value>
+    <value>3 saat</value>
   </data>
   <data name="limit_toast_4" xml:space="preserve">
-    <value>4 hours</value>
+    <value>4 saat</value>
   </data>
   <data name="limit_toast_5" xml:space="preserve">
-    <value>5 hours</value>
+    <value>5 saat</value>
   </data>
   <data name="limit_toast_btn" xml:space="preserve">
-    <value>Change </value>
+    <value>Değiştir</value>
   </data>
   <data name="limit_toast_content" xml:space="preserve">
-    <value>You used the device for {0} {1}</value>
+    <value>Cihazınızı {0} {1} beri kullanıyorsunuz</value>
   </data>
   <data name="limit_toast_helper" xml:space="preserve">
-    <value>Change the threshold</value>
+    <value>Sınırı değiştir</value>
   </data>
   <data name="limit_toast_title" xml:space="preserve">
-    <value>Warning</value>
+    <value>Uyarı</value>
   </data>
   <data name="map_dialog.SecondaryButtonText" xml:space="preserve">
-    <value>Close</value>
+    <value>Kapat</value>
   </data>
   <data name="map_dialog.Title" xml:space="preserve">
-    <value>LOCATION</value>
+    <value>KONUM</value>
   </data>
   <data name="migrate_btn.Content" xml:space="preserve">
-    <value>Migrate data</value>
+    <value>Veri taşıma</value>
   </data>
   <data name="migrate_header_1.Text" xml:space="preserve">
-    <value>Migrate</value>
+    <value>Taşıma</value>
   </data>
   <data name="migrate_header_2.Text" xml:space="preserve">
-    <value>If you updated the app from 8.1, you can import your old data into the new version</value>
+    <value>Eğer 8.1 sürümünden geliyorsanız, ayarlar ekranından eski verilerinizi yeni sürüme aktarabilirsiniz.</value>
   </data>
   <data name="nfc_header_2.Text" xml:space="preserve">
-    <value>Write an NFC tag to check your data by tapping it</value>
+    <value>Verinizi dokunarak kontrol etmek için, bir NFC etiketi yazdırın</value>
   </data>
   <data name="no" xml:space="preserve">
-    <value>No</value>
+    <value>Hayır</value>
   </data>
   <data name="password_box.PlaceholderText" xml:space="preserve">
-    <value>Enter password</value>
+    <value>Şifreyi girin</value>
   </data>
   <data name="password_error" xml:space="preserve">
-    <value>You must insert a numeric password</value>
+    <value>Sayısal bir şifre girmeniz gerekiyor</value>
   </data>
   <data name="password_wrong" xml:space="preserve">
-    <value>Wrong password</value>
+    <value>Hatalı şifre</value>
   </data>
   <data name="range_14" xml:space="preserve">
-    <value>14 days</value>
+    <value>14 gün</value>
   </data>
   <data name="range_30" xml:space="preserve">
-    <value>30 days</value>
+    <value>30 gün</value>
   </data>
   <data name="range_7" xml:space="preserve">
-    <value>7 days</value>
+    <value>7 gün</value>
   </data>
   <data name="range_all" xml:space="preserve">
-    <value>All the data</value>
+    <value>Bütün veri</value>
   </data>
   <data name="range_btn.Label" xml:space="preserve">
-    <value>Range</value>
+    <value>Aralık</value>
   </data>
   <data name="restore_dialog_error" xml:space="preserve">
-    <value>This is not a valid Time Sense backup</value>
+    <value>Uyumlu bir time sense yedeklemesi değil</value>
   </data>
   <data name="restore_dialog_success" xml:space="preserve">
-    <value>The backup has been sucesfully restored</value>
+    <value>Yedekleme başarıyla geri yüklendi</value>
   </data>
   <data name="settings" xml:space="preserve">
-    <value>SETTINGS</value>
+    <value>AYARLAR</value>
   </data>
   <data name="welcome.Text" xml:space="preserve">
-    <value>Welcome</value>
+    <value>Hoşgeldiniz</value>
   </data>
   <data name="yes" xml:space="preserve">
-    <value>Yes</value>
+    <value>Evet</value>
   </data>
   <data name="about_banner.Text" xml:space="preserve">
-    <value>About this app</value>
+    <value>Uygulama hakkında</value>
   </data>
   <data name="feedback_button.Content" xml:space="preserve">
-    <value>Send feedback</value>
+    <value>Geri bildirim yolla</value>
   </data>
   <data name="rate_btn.Label" xml:space="preserve">
-    <value>Rate</value>
+    <value>Derecelendir</value>
   </data>
   <data name="nfc_unavailable" xml:space="preserve">
-    <value>NFC is off or not supported</value>
+    <value>NFC kapalı veya desteklenmiyor</value>
   </data>
   <data name="welcome_0.Text" xml:space="preserve">
-    <value>In the home page you can see your usage time, the number of unlocks and an hourly chart</value>
+    <value>Giriş sayfasında kullanım sürenizi, kilit açma sayınızı ve saatlik tablonuzu görebilirsiniz.</value>
   </data>
   <data name="welcome_1.Text" xml:space="preserve">
-    <value>In the timeline page you can see your unlocks and their geo location on the map</value>
+    <value>Zaman çizelgesinde nekadar kilit açtığınızı ve harita desteği ile nerede açtığınızı görebilirsiniz.</value>
   </data>
   <data name="welcome_2.Text" xml:space="preserve">
-    <value>In the report page you can see stats about the week or the month</value>
+    <value>Rapor sayfasında haftalık veya aylık istatistiklerinizi görebilirsiniz.</value>
   </data>
   <data name="welcome_3.Text" xml:space="preserve">
-    <value>Use the arrows or the calendar button to change date</value>
+    <value>Ok tuşlarını veya takvim butonunu kullanarak tarih seçin</value>
   </data>
   <data name="welcome_4.Text" xml:space="preserve">
-    <value>To work properly, the app requires background tasks to be allowed even in battery saver, to fix this go to battery saver settings and add Time Sense with the 'add an app' button</value>
+    <value>Bu uygulamanın doğru çalışabilmesi için, pil tasarrufunda dahi arka planda devam çalışması gerekiyor. lütfen pil tasarrufu ayarlarından time sense'i "uygulama ekle" butonundan ekleyiniz.</value>
   </data>
   <data name="welcome_5.Text" xml:space="preserve">
-    <value>If you updated from the 8.1 version you can import your data in the settings page</value>
+    <value>Eğer 8.1 sürümünden geliyorsanız, ayarlar ekranından verilerinizi içe aktarabilirsiniz.</value>
   </data>
   <data name="welcome_6.Text" xml:space="preserve">
-    <value>You're all set, enjoy the app!</value>
+    <value>Herşey tamam, uygulamanın tadını çıkar!</value>
   </data>
   <data name="welcome_dialog.PrimaryButtonText" xml:space="preserve">
-    <value>Start</value>
+    <value>Başlangıç</value>
   </data>
   <data name="welcome_dialog.Title" xml:space="preserve">
-    <value>WELCOME</value>
+    <value>HOŞGELDINIZ</value>
   </data>
   <data name="letters_header_1.Text" xml:space="preserve">
-    <value>Letters in usage time</value>
+    <value>Kullanım süresinde harfleri göster</value>
   </data>
   <data name="letters_header_2.Text" xml:space="preserve">
-    <value>Show the usage time in the form: 1h:1m:1s</value>
+    <value>Kullanım süresini 1s:1d:1s şeklinde göster</value>
   </data>
   <data name="analytics_btn.Content" xml:space="preserve">
-    <value>Analysis</value>
+    <value>Analız</value>
   </data>
   <data name="an_days_pivot.Header" xml:space="preserve">
-    <value>DAYS</value>
+    <value>GÜN</value>
   </data>
   <data name="an_end_pick.Header" xml:space="preserve">
-    <value>End date</value>
+    <value>Bitiş tarihi</value>
   </data>
   <data name="an_param.Text" xml:space="preserve">
-    <value>Parameters</value>
+    <value>Parametreler</value>
   </data>
   <data name="an_range_header_1.Text" xml:space="preserve">
-    <value>Analysis range</value>
+    <value>Analiz aralığı</value>
   </data>
   <data name="an_start_pick.Header" xml:space="preserve">
-    <value>Start date</value>
+    <value>Başlangıç tarihi</value>
   </data>
   <data name="an_unlocks_pivot.Header" xml:space="preserve">
-    <value>UNLOCKS</value>
+    <value>KILIT AÇMA</value>
   </data>
   <data name="battery_txt.Text" xml:space="preserve">
-    <value>Battery</value>
+    <value>Pil</value>
   </data>
   <data name="charging_bat_combo.Content" xml:space="preserve">
-    <value>charging</value>
+    <value>şarj oluyor</value>
   </data>
   <data name="date_banner.Text" xml:space="preserve">
-    <value>date</value>
+    <value>tarıh</value>
   </data>
   <data name="day_banner.Text" xml:space="preserve">
-    <value>day</value>
+    <value>gün</value>
   </data>
   <data name="error_batmax" xml:space="preserve">
-    <value>You have to specify a valid minimum battery percentage</value>
+    <value>Geçerli minimum pil düzeyini belirlemeniz gerekiyor</value>
   </data>
   <data name="error_batmin" xml:space="preserve">
-    <value>You have to specify a valid maximum battery percentage</value>
+    <value>Geçerli maksimum pil düzeyinizi belirlemeniz gerekiyor</value>
   </data>
   <data name="error_timemax" xml:space="preserve">
-    <value>You have to specify a valid minimum usage time</value>
+    <value>Geçerli minimum kullanım süresini belirlemeniz gerekiyor</value>
   </data>
   <data name="error_timemin" xml:space="preserve">
-    <value>You have to specify a valid maximum usage time</value>
+    <value>Geçerli maksimum kullanım süresini belirlemeniz gerekiyor</value>
   </data>
   <data name="error_unlocksmax" xml:space="preserve">
-    <value>You have to specify a valid minimum number of unlocks</value>
+    <value>Geçerli minimum kilit açma sayısını belirlemeniz gerekiyor</value>
   </data>
   <data name="error_unlocksmin" xml:space="preserve">
-    <value>You have to specify a valid maximum number of unlocks</value>
+    <value>Geçerli maksimum kilit açma sayınızı belirlemeniz gerekiyor</value>
   </data>
   <data name="hours_combo.Content" xml:space="preserve">
-    <value>hours</value>
+    <value>saat</value>
   </data>
   <data name="idle_bat_combo.Content" xml:space="preserve">
-    <value>not charging</value>
+    <value>Şarj olmuyor</value>
   </data>
   <data name="minutes_combo.Content" xml:space="preserve">
-    <value>minutes</value>
+    <value>dakika</value>
   </data>
   <data name="range_all_btn.Content" xml:space="preserve">
-    <value>All data</value>
+    <value>Bütün veri</value>
   </data>
   <data name="range_custom_btn.Content" xml:space="preserve">
-    <value>Custom range</value>
+    <value>Özel aralık</value>
   </data>
   <data name="reset_btn.Label" xml:space="preserve">
-    <value>Reset</value>
+    <value>Sıfırla</value>
   </data>
   <data name="search_btn.Label" xml:space="preserve">
-    <value>Search</value>
+    <value>Arama</value>
   </data>
   <data name="seconds_combo.Content" xml:space="preserve">
-    <value>seconds</value>
+    <value>saniye</value>
   </data>
   <data name="unlocks_txt.Text" xml:space="preserve">
-    <value>Unlocks</value>
+    <value>Kılıt açma</value>
   </data>
   <data name="usage_txt.Text" xml:space="preserve">
-    <value>Usage</value>
+    <value>Kullanım</value>
   </data>
   <data name="analytics" xml:space="preserve">
-    <value>ANALYSIS</value>
+    <value>ANALIZ</value>
   </data>
   <data name="close_btn.Content" xml:space="preserve">
-    <value>Close</value>
+    <value>Kapat</value>
   </data>
   <data name="battery_dialog_check.Content" xml:space="preserve">
-    <value>Do not show this again</value>
+    <value>Bunu birdaha gösterme</value>
   </data>
   <data name="battery_dialog_txt.Text" xml:space="preserve">
-    <value>You are running in battery saver mode, make sure background tasks are allowed for the app even in this mode to avoid errors</value>
+    <value>Pil tasarrufu modundasınız. hatalı veriden kaçınmak için uygulamanın bu modda dahi arka planda devam çalıştığından emin olun</value>
   </data>
   <data name="battery_dialog.SecondaryButtonText" xml:space="preserve">
-    <value>Close</value>
+    <value>Kapat</value>
   </data>
   <data name="battery_dialog.Title" xml:space="preserve">
-    <value>BATTERY SAVER</value>
+    <value>PIL TASSARUFU</value>
   </data>
   <data name="nfc_locoff.Content" xml:space="preserve">
-    <value>Turn off location tracking</value>
+    <value>Konum takibini kapat</value>
   </data>
   <data name="nfc_locon.Content" xml:space="preserve">
-    <value>Turn on location tracking</value>
+    <value>Konum takibini aç</value>
   </data>
   <data name="nfc_timeline.Content" xml:space="preserve">
-    <value>Show the timeline</value>
+    <value>Zaman çizelgesini göster</value>
   </data>
   <data name="nfc_usage.Content" xml:space="preserve">
-    <value>Show the usage</value>
+    <value>Kullanımı göster</value>
   </data>
   <data name="nfc_success_content" xml:space="preserve">
-    <value>Tag has been succesfully written</value>
+    <value>Etiket başarıyla yazıldı</value>
   </data>
   <data name="nfc_success_title" xml:space="preserve">
-    <value>Success</value>
+    <value>Başarıyla tamamlandı</value>
   </data>
   <data name="welcome_7.Text" xml:space="preserve">
-    <value>In the analysis page you can search data that meet certain parameters (usage, unlocks, battery, time...)</value>
+    <value>Analiz ekranında belirli parametreleri kullanarak verinizi inceleyebilirsiniz (kullanım, kilit açma, pil kullanımı, zaman...)</value>
   </data>
   <data name="minute" xml:space="preserve">
-    <value>minute</value>
+    <value>dakika</value>
   </data>
   <data name="minutes" xml:space="preserve">
-    <value>minutes</value>
+    <value>dakika</value>
   </data>
   <data name="off" xml:space="preserve">
-    <value>off</value>
+    <value>kapalı</value>
   </data>
   <data name="on" xml:space="preserve">
-    <value>on</value>
+    <value>açık</value>
   </data>
   <data name="second" xml:space="preserve">
-    <value>second</value>
+    <value>saniye</value>
   </data>
   <data name="seconds" xml:space="preserve">
-    <value>seconds</value>
+    <value>saniye</value>
   </data>
   <data name="time" xml:space="preserve">
-    <value>time</value>
+    <value>zaman</value>
   </data>
   <data name="times" xml:space="preserve">
-    <value>times</value>
+    <value>defa</value>
   </data>
   <data name="voice_location" xml:space="preserve">
-    <value>Location tracking is now {0}</value>
+    <value>Konum desteği şuan {0}</value>
   </data>
   <data name="voice_usage" xml:space="preserve">
     <value>Hello, today you used the device for {0} {1}, {2} {3} and {4} {5}, and you unlocked the screen {6} {7}</value>
@@ -638,185 +638,189 @@
     <value>If you are a developer you can access usage data of the current day using app services. The name of the service is "timesense.service" and the available commands are: "seconds", "minutes", "hours". All of them return a double value</value>
   </data>
   <data name="rate_cancel" xml:space="preserve">
-    <value>No</value>
+    <value>Hayır</value>
   </data>
   <data name="rate_later" xml:space="preserve">
-    <value>Later</value>
+    <value>Daha sonra</value>
+    <comment>TODO</comment>
   </data>
   <data name="rate_message" xml:space="preserve">
-    <value>If you like Time Sense, why not to leave a review on the Store? Thanks for the support</value>
+    <value>Time sense uygulamasını sevdiysen, mağazada derecelendirmeye ne dersin? desteğin için teşekkürler.</value>
   </data>
   <data name="rate_rate" xml:space="preserve">
-    <value>Rate</value>
+    <value>Derecelendir</value>
   </data>
   <data name="rate_title" xml:space="preserve">
-    <value>Rate Time Sense</value>
+    <value>Time sense 'i derecelendir</value>
   </data>
   <data name="purchase_analytics.PrimaryButtonText" xml:space="preserve">
-    <value>Buy</value>
+    <value>Satın</value>
   </data>
   <data name="purchase_analytics.Title" xml:space="preserve">
-    <value>ADVANCED ANALYSIS</value>
+    <value>GELIŞMIŞ ANALIZ</value>
   </data>
   <data name="purchase_analytics_1.Text" xml:space="preserve">
-    <value>The advanced analysis lets you deeply analyze your usage data, filtering days and screen unlocks.</value>
+    <value>Gelişmiş analiz ile kullanım verilerinizi ister günlere istersenizde kilit açma sayısına bakarak en ince detaylarına kadar inceleyebilirsiniz.</value>
   </data>
   <data name="purchase_analytics_2.Text" xml:space="preserve">
-    <value>You can analyze all data or a custom time range and set parameters like usage time, unlocks number, battery percentage and more.</value>
+    <value>Bütün veriyi inceleyebilir veya belirli bir tarih aralığında kullanım, kilit açma, pil düzeyi gibi parametrelerle sınırlandırabilirsiniz ve daha fazlası</value>
   </data>
   <data name="purchase_analytics_3.Text" xml:space="preserve">
     <value>This feature is available for 0.99$ and purchasing it you will help the developer to improve the app.</value>
   </data>
   <data name="error_transaction" xml:space="preserve">
-    <value>An error occurred, please try again.</value>
+    <value>Bir hata oluştu, lütfen tekrar deneyin</value>
   </data>
   <data name="error_transaction_internet" xml:space="preserve">
-    <value>You must be connected to the internet the first time you use this feature</value>
+    <value>Bu özelliği ilk sefer kullanmak için, internet bağlantınız olması gerekiyor</value>
   </data>
   <data name="jump_report" xml:space="preserve">
-    <value>Report</value>
+    <value>Rapor</value>
   </data>
   <data name="jump_settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Ayarlar</value>
   </data>
   <data name="jump_timeline" xml:space="preserve">
-    <value>Timeline</value>
+    <value>Zaman çizelgesi</value>
   </data>
   <data name="off_combo.Content" xml:space="preserve">
-    <value>off</value>
+    <value>kapalı</value>
   </data>
   <data name="on_combo.Content" xml:space="preserve">
-    <value>on</value>
+    <value>açık</value>
   </data>
   <data name="charge_banner" xml:space="preserve">
     <value />
     <comment>USAGE/CHARGE</comment>
   </data>
   <data name="helper_ch_txt.Text" xml:space="preserve">
-    <value>the device is charging</value>
+    <value>cihaz şarj oluyor</value>
   </data>
   <data name="helper_notch_txt.Text" xml:space="preserve">
-    <value>since last charge</value>
+    <value>en son şarjdan beri</value>
   </data>
   <data name="time_txt.Text" xml:space="preserve">
-    <value>Time</value>
+    <value>Zaman</value>
   </data>
   <data name="buy_btn" xml:space="preserve">
-    <value>Not now</value>
+    <value>Şimdi değil</value>
   </data>
   <data name="try_btn" xml:space="preserve">
-    <value>Try</value>
+    <value>Deneme</value>
   </data>
   <data name="no_items_txt.Text" xml:space="preserve">
-    <value>No items were found</value>
+    <value>Veri bulunamadı</value>
   </data>
   <data name="range_dialog.PrimaryButtonText" xml:space="preserve">
-    <value>Choose</value>
+    <value>Seç</value>
   </data>
   <data name="range_dialog.SecondaryButtonText" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Iptal</value>
   </data>
   <data name="range_dialog.Title" xml:space="preserve">
-    <value>SELECT RANGE</value>
+    <value>ARALIĞI SEÇ</value>
   </data>
   <data name="note_banner" xml:space="preserve">
-    <value>NOTES</value>
+    <value>NOTLAR</value>
   </data>
   <data name="no_note" xml:space="preserve">
-    <value>The selected day is not yet present in the database</value>
+    <value>Seçilen gün henüz veri tabanında yok</value>
   </data>
   <data name="no_note_txt.Text" xml:space="preserve">
-    <value>No notes available</value>
+    <value>Herhangi bir not yok</value>
   </data>
   <data name="thanks_banner.Text" xml:space="preserve">
-    <value>Special thanks:</value>
+    <value>Özel teşekkürler</value>
+    <comment>TODO</comment>
   </data>
   <data name="thanks_german.Text" xml:space="preserve">
-    <value>- german translation</value>
+    <value>- almanca çeviri</value>
+    <comment>TODO</comment>
   </data>
   <data name="excel_banner_bluetooth" xml:space="preserve">
     <value>Bluetooth</value>
   </data>
   <data name="excel_banner_charging" xml:space="preserve">
-    <value>Charging</value>
+    <value>Şarj oluyor</value>
   </data>
   <data name="excel_banner_latitude" xml:space="preserve">
-    <value>Latitude</value>
+    <value>Enlem</value>
   </data>
   <data name="excel_banner_longitude" xml:space="preserve">
-    <value>Longitude</value>
+    <value>Boylam</value>
   </data>
   <data name="excel_banner_unlocks" xml:space="preserve">
-    <value>Unlocks</value>
+    <value>Kilit açma</value>
   </data>
   <data name="excel_banner_usage" xml:space="preserve">
-    <value>Usage</value>
+    <value>Kullanım</value>
   </data>
   <data name="excel_banner_wifi" xml:space="preserve">
     <value>Wi-Fi</value>
   </data>
   <data name="excel_banner_battery" xml:space="preserve">
-    <value>Battery</value>
+    <value>Pil</value>
   </data>
   <data name="excel_banner_time" xml:space="preserve">
-    <value>Time</value>
+    <value>Zaman</value>
   </data>
   <data name="Excel_average_unlocks" xml:space="preserve">
-    <value>Average unlocks:</value>
+    <value>Ortalama kilit açma:</value>
   </data>
   <data name="Excel_average_usage" xml:space="preserve">
-    <value>Average usage:</value>
+    <value>Ortalama kullanım</value>
   </data>
   <data name="Excel_creation" xml:space="preserve">
-    <value>Creation date:</value>
+    <value>Oluşturma tarihi:</value>
   </data>
   <data name="Excel_days" xml:space="preserve">
-    <value>Days analized:</value>
+    <value>Analiz edilen günler:</value>
   </data>
   <data name="Excel_overview" xml:space="preserve">
-    <value>Overview</value>
+    <value>Genel bakış</value>
   </data>
   <data name="Excel_range" xml:space="preserve">
-    <value>Analysis range:</value>
+    <value>Analiz aralığı:</value>
   </data>
   <data name="Excel_total_unlocks" xml:space="preserve">
-    <value>Total unlocks:</value>
+    <value>Toplam kilit açma:</value>
   </data>
   <data name="Excel_total_usage" xml:space="preserve">
-    <value>Total usage:</value>
+    <value>Toplam kullanım:</value>
   </data>
   <data name="Excel_version" xml:space="preserve">
-    <value>App version:</value>
+    <value>Uygulama sürümü:</value>
   </data>
   <data name="status_off" xml:space="preserve">
-    <value>Off</value>
+    <value>Kapalı</value>
   </data>
   <data name="status_on" xml:space="preserve">
-    <value>On</value>
+    <value>Açık</value>
   </data>
   <data name="excel_error" xml:space="preserve">
-    <value>There was an error, try again</value>
+    <value>Bir hata oluştu, lütfen tekrar deneyin</value>
   </data>
   <data name="excel_success" xml:space="preserve">
-    <value>The Excel report has been succesfully created</value>
+    <value>Excel raporu başarıyla oluşturuldu</value>
   </data>
   <data name="export_bar.Label" xml:space="preserve">
-    <value>Export</value>
+    <value>Dışarı aktar</value>
   </data>
   <data name="desktop_disclaimer" xml:space="preserve">
-    <value>Thank you for using Time Sense! 
-The PC version is still in development and, due to system limitations, there could be some issues. If you find a bug or you have a problem please send a feedback using the button in the settings instead of leaving a negative review.</value>
+    <value>Time sense'i kullandığınız için teşekkürler! 
+Masaüstü sürümü henüz yapım aşamasında ve sistem sınırlamalarından dolayı bazı hatalar olabilir. Eğer bir hata bulursanız veya probleminiz varsa, mağazada uygulamayı kötü değerlendirmek yerine lütfen ayarlardaki geri bildirim seçeneğini kullanın</value>
   </data>
   <data name="progress_dialog.Title" xml:space="preserve">
-    <value>EXPORTING</value>
+    <value>DIŞARI AKTARILIYOR</value>
   </data>
   <data name="error_span" xml:space="preserve">
-    <value>The start date must be before the end date</value>
+    <value>Başlangıç tarihi, bitiş tarihinden önce olmalıdır</value>
+    <comment>TODO</comment>
   </data>
   <data name="limit_item_6.Content" xml:space="preserve">
-    <value>Disabled</value>
+    <value>Kapalı</value>
   </data>
   <data name="thanks_turkish.Text" xml:space="preserve">
-    <value>- turkish translation</value>
+    <value>- türkçe çeviri</value>
   </data>
 </root>
