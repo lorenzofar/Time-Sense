@@ -19,5 +19,6 @@ namespace Stuff
         public static string letters = "letters";
         public static string analysis_trial = "analysis_trial";
         public static string desktop_disclaimer = "desktop_disclaimer";
+        public static string windows_hello = "windows_hello";
     }
 }
