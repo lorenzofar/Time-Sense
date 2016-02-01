@@ -65,6 +65,18 @@
                             </Button.Content>
                         </Button>
                     </Grid>
+                    <ToggleSwitch x:Name="hello_switch" 
+                                  Margin="0,6"
+                                  Toggled="hello_switch_Toggled">
+                        <ToggleSwitch.Header>
+                            <StackPanel>
+                                <TextBlock x:Uid="hello_header_1" />
+                                <TextBlock
+                                    x:Uid="hello_header_2"
+                                    Style="{StaticResource settings_header_subtitle}" />
+                            </StackPanel>
+                        </ToggleSwitch.Header>
+                    </ToggleSwitch>
                 </StackPanel>
 
                 <StackPanel
