@@ -49,7 +49,7 @@ namespace Time_Sense
             {
                 Object password_obj = utilities.STATS.Values[settings.password];
                 string password = password_obj == null ? "" : password_obj.ToString();
-                if (password != "")
+                if (password != "" || utilities.STATS.Values[settings.windows_hello] != null)
                 {
                     jump_arguments = current_page == typeof(MainPage) ? null : current_page == typeof(TimelinePage) ? "timeline" : current_page == typeof(ReportPage) ? "report" : current_page == typeof(AnalyticsPage) ? "analysis" : current_page == typeof(SettingsPage) ? "settings" : null;
                     Frame rootFrame = Window.Current.Content as Frame;
@@ -106,7 +106,7 @@ namespace Time_Sense
 
             if (rootFrame.Content == null)
             {
-                if (password != "")
+                if (password != "" || utilities.STATS.Values[settings.windows_hello] != null)
                 {
                     rootFrame.Navigate(typeof(PasswordPage), password);
                     goto activate;
@@ -201,7 +201,7 @@ namespace Time_Sense
 
                         if (rootFrame.Content == null)
                         {
-                            if (password != "")
+                            if (password != "" || utilities.STATS.Values[settings.windows_hello] != null)
                             {
                                 rootFrame.Navigate(typeof(PasswordPage), password);
                                 goto activate_1;
@@ -289,7 +289,7 @@ namespace Time_Sense
 
             if (rootFrame.Content == null)
             {
-                if (password != "")
+                if (password != "" || utilities.STATS.Values[settings.windows_hello] != null)
                 {
                     rootFrame.Navigate(typeof(PasswordPage), password);
                     goto activate_2;
