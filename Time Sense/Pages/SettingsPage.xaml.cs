@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.ApplicationInsights.DataContracts;
+using Windows.Security.Credentials.UI;
 
 namespace Time_Sense
 {
@@ -56,6 +57,7 @@ namespace Time_Sense
             string unlocks = utilities.STATS.Values[settings.unlocks] == null ? "badge" : utilities.STATS.Values[settings.unlocks].ToString();
             bool password = utilities.STATS.Values[settings.password] == null ? false : true;
             bool letter = utilities.STATS.Values[settings.letters] == null ? false : true;
+            bool hello = utilities.STATS.Values[settings.windows_hello] == null ? false : true;
             letters_switch.IsOn = letter;
             unlocks += "_radio";
             threshold_box.SelectedIndex = limit == 0 ? 5 : (limit/3600) - 1;
@@ -183,6 +185,7 @@ namespace Time_Sense
                 if (!string.IsNullOrWhiteSpace(password_box.Text.ToString()) && valid)
                 {
                     utilities.STATS.Values[settings.password] = password_box.Text.ToString();
+                    hello_switch.IsOn = false;
                     password_box.IsEnabled = false;
                     password_icon.Glyph = "";
                 }
@@ -233,6 +236,33 @@ namespace Time_Sense
                 password_switch.IsOn = false;
             }
         }
+
+        private async void hello_switch_Toggled(object sender, RoutedEventArgs e)
+        {
+            switch (hello_switch.IsOn)
+            {
+                case true:
+                    UserConsentVerifierAvailability consentAvailability = await UserConsentVerifier.CheckAvailabilityAsync();
+                    switch (consentAvailability)
+                    {
+                        case UserConsentVerifierAvailability.Available:
+                        case UserConsentVerifierAvailability.DeviceBusy:
+                        case UserConsentVerifierAvailability.DeviceNotPresent:
+                            utilities.STATS.Values[settings.windows_hello] = "on";
+                            password_switch.IsOn = false;
+                            break;
+                        case UserConsentVerifierAvailability.DisabledByPolicy:
+                        case UserConsentVerifierAvailability.NotConfiguredForUser:
+                            await new MessageDialog(utilities.loader.GetString("hello_not_available"), utilities.loader.GetString("error")).ShowAsync();
+                            break;
+                    }
+                    break;
+                case false:
+                    utilities.STATS.Values[settings.windows_hello] = null;
+                    break;
+            }
+        }
+
 
         private async void resetOne_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -508,7 +538,6 @@ namespace Time_Sense
         private void Nfc_device_DeviceArrived(ProximityDevice sender)
         {
         }
-
         #endregion
 
 
