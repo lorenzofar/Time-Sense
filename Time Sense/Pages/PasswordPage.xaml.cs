@@ -68,6 +68,7 @@ namespace Time_Sense
             this.lock_icon.Glyph = "";
             this.lock_panel.Visibility = Visibility.Visible;
             this.keyboard_grid.Visibility = Visibility.Collapsed;
+            this.hello_btn.Visibility = Visibility.Collapsed;
             await Task.Delay(1);
             Frame.Navigate(typeof(MainPage), App.jump_arguments);
         }
