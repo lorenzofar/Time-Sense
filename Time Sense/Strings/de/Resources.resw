@@ -822,19 +822,15 @@ The PC version is still in development and, due to system limitations, there cou
     <value>- türkisch-Übersetzung</value>
   </data>
   <data name="hello_header_1.Text" xml:space="preserve">
-    <value>Login with Windows Hello</value>
-    <comment>TODO</comment>
+    <value>Mit Windows Hello einloggen</value>
   </data>
   <data name="hello_header_2.Text" xml:space="preserve">
-    <value>Use Iris, fingerprint or pin verification to open the app</value>
-    <comment>TODO</comment>
+    <value>Öffne die App per Iris-, Fingerabdruck oder PIN-Verifikation</value>
   </data>
   <data name="hello_not_available" xml:space="preserve">
-    <value>There are no available verification options</value>
-    <comment>TODO</comment>
+    <value>Es sind keine Verifikationsoptionen verfügbar</value>
   </data>
   <data name="hello_message" xml:space="preserve">
-    <value>Verify your identity to open Time Sense</value>
-    <comment>TODO</comment>
+    <value>Bestätige deine Identität, um Time Sense zu öffnen</value>
   </data>
 </root>

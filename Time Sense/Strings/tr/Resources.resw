@@ -642,7 +642,6 @@
   </data>
   <data name="rate_later" xml:space="preserve">
     <value>Daha sonra</value>
-    <comment>TODO</comment>
   </data>
   <data name="rate_message" xml:space="preserve">
     <value>Time sense uygulamasını sevdiysen, mağazada derecelendirmeye ne dersin? desteğin için teşekkürler.</value>
@@ -731,11 +730,9 @@
   </data>
   <data name="thanks_banner.Text" xml:space="preserve">
     <value>Özel teşekkürler</value>
-    <comment>TODO</comment>
   </data>
   <data name="thanks_german.Text" xml:space="preserve">
     <value>- almanca çeviri</value>
-    <comment>TODO</comment>
   </data>
   <data name="excel_banner_bluetooth" xml:space="preserve">
     <value>Bluetooth</value>
@@ -815,7 +812,6 @@ Masaüstü sürümü henüz yapım aşamasında ve sistem sınırlamalarından d
   </data>
   <data name="error_span" xml:space="preserve">
     <value>Başlangıç tarihi, bitiş tarihinden önce olmalıdır</value>
-    <comment>TODO</comment>
   </data>
   <data name="limit_item_6.Content" xml:space="preserve">
     <value>Kapalı</value>
@@ -824,19 +820,15 @@ Masaüstü sürümü henüz yapım aşamasında ve sistem sınırlamalarından d
     <value>- türkçe çeviri</value>
   </data>
   <data name="hello_header_1.Text" xml:space="preserve">
-    <value>Login with Windows Hello</value>
-    <comment>TODO</comment>
+    <value>Windows hello ile giriş</value>
   </data>
   <data name="hello_header_2.Text" xml:space="preserve">
-    <value>Use Iris, fingerprint or pin verification to open the app</value>
-    <comment>TODO</comment>
+    <value>Iris, parmak izi veya pin kodu ile uygulamayı açın</value>
   </data>
   <data name="hello_not_available" xml:space="preserve">
-    <value>There are no available verification options</value>
-    <comment>TODO</comment>
+    <value>Doğrulama seçenekleri mevcut değil</value>
   </data>
   <data name="hello_message" xml:space="preserve">
-    <value>Verify your identity to open Time Sense</value>
-    <comment>TODO</comment>
+    <value>Time Sense'i açmak için lütfen kimliğinizi doğrulayın</value>
   </data>
 </root>
