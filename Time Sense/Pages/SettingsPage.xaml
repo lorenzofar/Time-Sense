@@ -362,7 +362,7 @@
                         Style="{StaticResource TitleTextBlockStyle}" />
                     <TextBlock
                         Margin="0,3,0,0"
-                        Text="Time Sense 2.1.3" />
+                        Text="Time Sense 2.2.0" />
                     <TextBlock Text="© 2015 Lorenzo Farinelli" />
                     <TextBlock
                         x:Uid="thanks_banner"
