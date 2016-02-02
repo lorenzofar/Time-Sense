@@ -835,4 +835,8 @@ Masaüstü sürümü henüz yapım aşamasında ve sistem sınırlamalarından d
     <value>There are no available verification options</value>
     <comment>TODO</comment>
   </data>
+  <data name="hello_message" xml:space="preserve">
+    <value>Verify your identity to open Time Sense</value>
+    <comment>TODO</comment>
+  </data>
 </root>

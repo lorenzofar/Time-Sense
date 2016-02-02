@@ -7,6 +7,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Security.Credentials.UI;
 
 namespace Time_Sense
 {
@@ -19,25 +20,31 @@ namespace Time_Sense
             this.InitializeComponent();
         }             
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             if (e != null)
             {
                 pass = e.Parameter.ToString();
             }
+            if(utilities.STATS.Values[settings.windows_hello] != null)
+            {
+                UserConsentVerificationResult consentResult = await Windows.Security.Credentials.UI.UserConsentVerifier.RequestVerificationAsync(utilities.loader.GetString("hello_message"));
+                switch (consentResult)
+                {
+                    case UserConsentVerificationResult.Verified:
+                        App.t_client.TrackEvent("Windows Hello login");
+                        Login();
+                        break;
+                }
+            }
         }
 
-        private async void go_btn_Click(object sender, RoutedEventArgs e)
+        private void go_btn_Click(object sender, RoutedEventArgs e)
         {
             if (password_box.Password == pass)
             {
-                this.lock_ellipse.Fill = new SolidColorBrush(Colors.Green);
-                this.lock_icon.Glyph = "";
-                this.lock_panel.Visibility = Visibility.Visible;
-                this.keyboard_grid.Visibility = Visibility.Collapsed;
-                await Task.Delay(1);
-                Frame.Navigate(typeof(MainPage), App.jump_arguments);
+                Login();
             }
             else
             {
@@ -46,6 +53,16 @@ namespace Time_Sense
                 password_box.PlaceholderText = utilities.loader.GetString("password_wrong");
                 error.Begin();
             }
+        }
+
+        private async void Login()
+        {
+            this.lock_ellipse.Fill = new SolidColorBrush(Colors.Green);
+            this.lock_icon.Glyph = "";
+            this.lock_panel.Visibility = Visibility.Visible;
+            this.keyboard_grid.Visibility = Visibility.Collapsed;
+            await Task.Delay(1);
+            Frame.Navigate(typeof(MainPage), App.jump_arguments);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -117,6 +134,11 @@ namespace Time_Sense
                     go_btn_Click(go_btn, null);
                     break;
             }
+        }
+
+        private void hello_btn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

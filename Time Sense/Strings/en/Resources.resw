@@ -828,4 +828,7 @@ The PC version is still in development and, due to system limitations, there cou
   <data name="hello_not_available" xml:space="preserve">
     <value>There are no available verification options</value>
   </data>
+  <data name="hello_message" xml:space="preserve">
+    <value>Verify your identity to open Time Sense</value>
+  </data>
 </root>

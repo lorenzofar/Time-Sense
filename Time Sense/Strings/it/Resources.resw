@@ -828,4 +828,7 @@ La versione per PC è ancora in fase di sviluppo e a causa di alcune limitazioni
   <data name="hello_not_available" xml:space="preserve">
     <value>Non ci sono opzioni di verifica disponibile</value>
   </data>
+  <data name="hello_message" xml:space="preserve">
+    <value>Verifica la tua identità per aprire Time Sense</value>
+  </data>
 </root>
