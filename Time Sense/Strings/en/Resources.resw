@@ -819,10 +819,10 @@ The PC version is still in development and, due to system limitations, there cou
   <data name="thanks_turkish.Text" xml:space="preserve">
     <value>- turkish translation</value>
   </data>
-  <data name="hello_header_1" xml:space="preserve">
+  <data name="hello_header_1.Text" xml:space="preserve">
     <value>Login with Windows Hello</value>
   </data>
-  <data name="hello_header_2" xml:space="preserve">
+  <data name="hello_header_2.Text" xml:space="preserve">
     <value>Use Iris, fingerprint or pin verification to open the app</value>
   </data>
   <data name="hello_not_available" xml:space="preserve">

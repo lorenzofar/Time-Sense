@@ -819,10 +819,10 @@ La versione per PC è ancora in fase di sviluppo e a causa di alcune limitazioni
   <data name="thanks_turkish.Text" xml:space="preserve">
     <value>- traduzione in turco</value>
   </data>
-  <data name="hello_header_1" xml:space="preserve">
+  <data name="hello_header_1.Text" xml:space="preserve">
     <value>Accedi con Windows Hello</value>
   </data>
-  <data name="hello_header_2" xml:space="preserve">
+  <data name="hello_header_2.Text" xml:space="preserve">
     <value>Usa la scansione dell'iride, delle impronte o il tuo pin per aprire l'app</value>
   </data>
   <data name="hello_not_available" xml:space="preserve">
