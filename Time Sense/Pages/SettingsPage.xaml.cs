@@ -56,9 +56,8 @@ namespace Time_Sense
             location_switch.IsOn = utilities.STATS.Values[settings.location] == null ? true : utilities.STATS.Values[settings.location].ToString() == "on" ? true : false;
             string unlocks = utilities.STATS.Values[settings.unlocks] == null ? "badge" : utilities.STATS.Values[settings.unlocks].ToString();
             bool password = utilities.STATS.Values[settings.password] == null ? false : true;
-            bool letter = utilities.STATS.Values[settings.letters] == null ? false : true;
-            bool hello = utilities.STATS.Values[settings.windows_hello] == null ? false : true;
-            letters_switch.IsOn = letter;
+            letters_switch.IsOn = utilities.STATS.Values[settings.letters] == null ? false : true;
+            hello_switch.IsOn = utilities.STATS.Values[settings.windows_hello] == null ? false : true;
             unlocks += "_radio";
             threshold_box.SelectedIndex = limit == 0 ? 5 : (limit/3600) - 1;
             password_switch.IsOn = password;
