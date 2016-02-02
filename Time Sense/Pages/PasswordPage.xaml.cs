@@ -27,9 +27,10 @@ namespace Time_Sense
             {
                 pass = e.Parameter.ToString();
             }
-            if(utilities.STATS.Values[settings.windows_hello] != null)
+            keyboard_grid.Visibility = utilities.STATS.Values[settings.password] == null ? Visibility.Collapsed : Visibility.Visible;
+            hello_btn.Visibility = utilities.STATS.Values[settings.windows_hello] == null ? Visibility.Collapsed : Visibility.Visible;
+            if (utilities.STATS.Values[settings.windows_hello] != null)
             {
-                hello_btn.Visibility = Visibility.Visible;
                 AuthenticateUser();
             }
         }
