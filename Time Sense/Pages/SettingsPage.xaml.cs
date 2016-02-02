@@ -185,7 +185,6 @@ namespace Time_Sense
                 if (!string.IsNullOrWhiteSpace(password_box.Text.ToString()) && valid)
                 {
                     utilities.STATS.Values[settings.password] = password_box.Text.ToString();
-                    hello_switch.IsOn = false;
                     password_box.IsEnabled = false;
                     password_icon.Glyph = "";
                 }
@@ -249,7 +248,6 @@ namespace Time_Sense
                         case UserConsentVerifierAvailability.DeviceBusy:
                         case UserConsentVerifierAvailability.DeviceNotPresent:
                             utilities.STATS.Values[settings.windows_hello] = "on";
-                            password_switch.IsOn = false;
                             break;
                         case UserConsentVerifierAvailability.DisabledByPolicy:
                         case UserConsentVerifierAvailability.NotConfiguredForUser:
