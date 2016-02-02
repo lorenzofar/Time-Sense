@@ -29,6 +29,7 @@ namespace Time_Sense
             }
             if(utilities.STATS.Values[settings.windows_hello] != null)
             {
+                hello_btn.Visibility = Visibility.Visible;
                 UserConsentVerificationResult consentResult = await Windows.Security.Credentials.UI.UserConsentVerifier.RequestVerificationAsync(utilities.loader.GetString("hello_message"));
                 switch (consentResult)
                 {
