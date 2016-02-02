@@ -20,7 +20,7 @@ namespace Time_Sense
             this.InitializeComponent();
         }             
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             if (e != null)
@@ -30,14 +30,19 @@ namespace Time_Sense
             if(utilities.STATS.Values[settings.windows_hello] != null)
             {
                 hello_btn.Visibility = Visibility.Visible;
-                UserConsentVerificationResult consentResult = await Windows.Security.Credentials.UI.UserConsentVerifier.RequestVerificationAsync(utilities.loader.GetString("hello_message"));
-                switch (consentResult)
-                {
-                    case UserConsentVerificationResult.Verified:
-                        App.t_client.TrackEvent("Windows Hello login");
-                        Login();
-                        break;
-                }
+                AuthenticateUser();
+            }
+        }
+
+        private async void AuthenticateUser()
+        {
+            UserConsentVerificationResult consentResult = await UserConsentVerifier.RequestVerificationAsync(utilities.loader.GetString("hello_message"));
+            switch (consentResult)
+            {
+                case UserConsentVerificationResult.Verified:
+                    App.t_client.TrackEvent("Windows Hello login");
+                    Login();
+                    break;
             }
         }
 
@@ -139,7 +144,7 @@ namespace Time_Sense
 
         private void hello_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            AuthenticateUser();
         }
     }
 }
