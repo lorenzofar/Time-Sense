@@ -190,7 +190,7 @@
     <value>Nicht mehr anzeigen</value>
   </data>
   <data name="battery_dialog_txt.Text" xml:space="preserve">
-    <value>Der Stromsparmodus ist eingeschaltet. Bitte stelle sicher, das Hintergrund-Aktivitäten für diese App auch in diesem Modus erlaubt sind, um Fehler zu verhindern.</value>
+    <value>Der Stromsparmodus ist eingeschaltet. Bitte stelle sicher, dass Hintergrund-Aktivitäten für diese App auch in diesem Modus erlaubt sind, um Fehler zu verhindern.</value>
   </data>
   <data name="battery_txt.Text" xml:space="preserve">
     <value>Batterie</value>
