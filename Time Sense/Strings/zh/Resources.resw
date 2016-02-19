@@ -1,0 +1,835 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="backup_banner.Text" xml:space="preserve">
+    <value>备份+重置</value>
+  </data>
+  <data name="backup_btn.Content" xml:space="preserve">
+    <value>备份</value>
+  </data>
+  <data name="backup_header.Text" xml:space="preserve">
+    <value>备份</value>
+  </data>
+  <data name="badge_radio.Content" xml:space="preserve">
+    <value>锁屏图标</value>
+  </data>
+  <data name="device_banner.Text" xml:space="preserve">
+    <value>设备</value>
+  </data>
+  <data name="limit_header_1.Text" xml:space="preserve">
+    <value>使用阈值</value>
+  </data>
+  <data name="limit_header_2.Text" xml:space="preserve">
+    <value>当您使用那个这个设备超过这段时间，将发送一条信息</value>
+  </data>
+  <data name="limit_item_1.Content" xml:space="preserve">
+    <value>1 小时</value>
+  </data>
+  <data name="limit_item_2.Content" xml:space="preserve">
+    <value>2 小时</value>
+  </data>
+  <data name="limit_item_3.Content" xml:space="preserve">
+    <value>3 小时</value>
+  </data>
+  <data name="limit_item_4.Content" xml:space="preserve">
+    <value>4 小时</value>
+  </data>
+  <data name="limit_item_5.Content" xml:space="preserve">
+    <value>5 小时</value>
+  </data>
+  <data name="location_header_1.Text" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="location_header_2.Text" xml:space="preserve">
+    <value>当您解锁设备时，将追踪您的位置（GPS必须打开）</value>
+  </data>
+  <data name="nfc_header_1.Text" xml:space="preserve">
+    <value>写入一个NFC标签</value>
+  </data>
+  <data name="notifications_banner.Text" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="password_header_1.Text" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="password_header_2.Text" xml:space="preserve">
+    <value>需输入密码才能打开此应用</value>
+  </data>
+  <data name="privacy_banner.Text" xml:space="preserve">
+    <value>隐私</value>
+  </data>
+  <data name="resetall_btn.Content" xml:space="preserve">
+    <value>删除所有数据</value>
+  </data>
+  <data name="resetone_btn.Content" xml:space="preserve">
+    <value>删除一段范围</value>
+  </data>
+  <data name="reset_header.Text" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="restore_btn.Content" xml:space="preserve">
+    <value>备份</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+    <comment>//ENGLISH</comment>
+  </data>
+  <data name="tile_header_1.Text" xml:space="preserve">
+    <value>动态磁贴预览概述</value>
+  </data>
+  <data name="tile_header_2.Text" xml:space="preserve">
+    <value>选择如何显示解锁的次数</value>
+  </data>
+  <data name="tile_radio.Content" xml:space="preserve">
+    <value>纯文本</value>
+  </data>
+  <data name="about_btn.Content" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="average.Text" xml:space="preserve">
+    <value>值</value>
+  </data>
+  <data name="back_bar.Label" xml:space="preserve">
+    <value>前一天</value>
+  </data>
+  <data name="battery_banner.Text" xml:space="preserve">
+    <value>电池</value>
+  </data>
+  <data name="battery_chart_title" xml:space="preserve">
+    <value>电池</value>
+  </data>
+  <data name="date_bar.Label" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="date_dialog.PrimaryButtonText" xml:space="preserve">
+    <value>选择</value>
+  </data>
+  <data name="date_dialog.SecondaryButtonText" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="date_dialog.Title" xml:space="preserve">
+    <value>选择日期</value>
+  </data>
+  <data name="delete_dialog.Title" xml:space="preserve">
+    <value>正在删除中</value>
+  </data>
+  <data name="delete_dialog_error" xml:space="preserve">
+    <value>数据无法删除，请重试</value>
+  </data>
+  <data name="delete_dialog_progress" xml:space="preserve">
+    <value>{0}/{1} 的项目已删除</value>
+  </data>
+  <data name="delete_dialog_success" xml:space="preserve">
+    <value>数据已成功删除</value>
+  </data>
+  <data name="error" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="forward_bar.Label" xml:space="preserve">
+    <value>后一天</value>
+  </data>
+  <data name="home_btn.Content" xml:space="preserve">
+    <value>主页</value>
+  </data>
+  <data name="maximum.Text" xml:space="preserve">
+    <value>最大值</value>
+  </data>
+  <data name="migrate_dialog.Title" xml:space="preserve">
+    <value>正在迁移数据</value>
+  </data>
+  <data name="migrate_dialog_error" xml:space="preserve">
+    <value>数据无法迁移，请重试</value>
+  </data>
+  <data name="migrate_dialog_progress" xml:space="preserve">
+    <value>{0}/{1} 的项目已迁移</value>
+  </data>
+  <data name="migrate_dialog_success" xml:space="preserve">
+    <value>数据已成功迁移</value>
+  </data>
+  <data name="migrate_dialog_unpresent" xml:space="preserve">
+    <value>没有先前数据</value>
+  </data>
+  <data name="minimum.Text" xml:space="preserve">
+    <value>最小值</value>
+  </data>
+  <data name="progress_dialog_helper.Text" xml:space="preserve">
+    <value>在此过程中不要关闭应用程序或锁幕</value>
+  </data>
+  <data name="refresh_bar.Label" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="report_btn.Content" xml:space="preserve">
+    <value>报告</value>
+  </data>
+  <data name="settings_btn.Content" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="success" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="timeline_btn.Content" xml:space="preserve">
+    <value>时间轴</value>
+  </data>
+  <data name="timeline_item_nolocation" xml:space="preserve">
+    <value>所选项目没有定位数据</value>
+  </data>
+  <data name="time_banner.Text" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="today" xml:space="preserve">
+    <value>今天</value>
+  </data>
+  <data name="unlock" xml:space="preserve">
+    <value>{0} unlock</value>
+  </data>
+  <data name="unlocks" xml:space="preserve">
+    <value>{0} unlocks</value>
+  </data>
+  <data name="unlocks_banner.Text" xml:space="preserve">
+    <value>解锁</value>
+  </data>
+  <data name="unlocks_hour_title" xml:space="preserve">
+    <value>解锁/小时</value>
+  </data>
+  <data name="unlocks_tile" xml:space="preserve">
+    <value>解锁</value>
+  </data>
+  <data name="usage" xml:space="preserve">
+    <value>使用</value>
+  </data>
+  <data name="usage_banner.Text" xml:space="preserve">
+    <value>使用</value>
+  </data>
+  <data name="usage_chart_title" xml:space="preserve">
+    <value>使用</value>
+  </data>
+  <data name="usage_hour_title" xml:space="preserve">
+    <value>分钟/小时</value>
+  </data>
+  <data name="yesterday" xml:space="preserve">
+    <value>昨天</value>
+  </data>
+  <data name="avg_day" xml:space="preserve">
+    <value>{0} 天</value>
+  </data>
+  <data name="avg_days" xml:space="preserve">
+    <value>{0} 天</value>
+  </data>
+  <data name="backup_dialog_success" xml:space="preserve">
+    <value>备份数据已经成功保存</value>
+  </data>
+  <data name="delete_confirm_content" xml:space="preserve">
+    <value>您真的想删除这些数据吗？</value>
+  </data>
+  <data name="delete_confirm_title" xml:space="preserve">
+    <value>你确定吗？</value>
+  </data>
+  <data name="help_btn.Label" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="hour" xml:space="preserve">
+    <value>小时</value>
+  </data>
+  <data name="hours" xml:space="preserve">
+    <value>小时</value>
+  </data>
+  <data name="hours_report" xml:space="preserve">
+    <value>小时</value>
+  </data>
+  <data name="limit_toast_1" xml:space="preserve">
+    <value>1 小时</value>
+  </data>
+  <data name="limit_toast_2" xml:space="preserve">
+    <value>2 小时</value>
+  </data>
+  <data name="limit_toast_3" xml:space="preserve">
+    <value>3 小时</value>
+  </data>
+  <data name="limit_toast_4" xml:space="preserve">
+    <value>4 小时</value>
+  </data>
+  <data name="limit_toast_5" xml:space="preserve">
+    <value>5 小时</value>
+  </data>
+  <data name="limit_toast_btn" xml:space="preserve">
+    <value>更改</value>
+  </data>
+  <data name="limit_toast_content" xml:space="preserve">
+    <value>您已经使用此设备{0}{1}个小时</value>
+  </data>
+  <data name="limit_toast_helper" xml:space="preserve">
+    <value>更改阈值</value>
+  </data>
+  <data name="limit_toast_title" xml:space="preserve">
+    <value>警告</value>
+    <comment>TODO</comment>
+  </data>
+  <data name="map_dialog.SecondaryButtonText" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="map_dialog.Title" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="migrate_btn.Content" xml:space="preserve">
+    <value>迁移数据</value>
+  </data>
+  <data name="migrate_header_1.Text" xml:space="preserve">
+    <value>迁移</value>
+  </data>
+  <data name="migrate_header_2.Text" xml:space="preserve">
+    <value>如果从8.1更新的应用程序，您可以导入旧数据到新版本中</value>
+  </data>
+  <data name="nfc_header_2.Text" xml:space="preserve">
+    <value>写入一个NFC标签并通过点击它来检查你的数据</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="password_box.PlaceholderText" xml:space="preserve">
+    <value>输入密码</value>
+  </data>
+  <data name="password_error" xml:space="preserve">
+    <value>您必须输入一段数字密码</value>
+  </data>
+  <data name="password_wrong" xml:space="preserve">
+    <value>密码错误</value>
+  </data>
+  <data name="range_14" xml:space="preserve">
+    <value>14 天</value>
+  </data>
+  <data name="range_30" xml:space="preserve">
+    <value>30 天</value>
+  </data>
+  <data name="range_7" xml:space="preserve">
+    <value>7 天</value>
+  </data>
+  <data name="range_all" xml:space="preserve">
+    <value>所有数据</value>
+  </data>
+  <data name="range_btn.Label" xml:space="preserve">
+    <value>范围</value>
+  </data>
+  <data name="restore_dialog_error" xml:space="preserve">
+    <value>这不是一个有效的Time Sense的备份</value>
+  </data>
+  <data name="restore_dialog_success" xml:space="preserve">
+    <value>备份数据已经成功恢复</value>
+  </data>
+  <data name="settings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="welcome.Text" xml:space="preserve">
+    <value>欢迎</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="about_banner.Text" xml:space="preserve">
+    <value>关于应用</value>
+  </data>
+  <data name="feedback_button.Content" xml:space="preserve">
+    <value>发送反馈</value>
+  </data>
+  <data name="rate_btn.Label" xml:space="preserve">
+    <value>评价</value>
+  </data>
+  <data name="nfc_unavailable" xml:space="preserve">
+    <value>NFC被关闭或不支持</value>
+  </data>
+  <data name="welcome_0.Text" xml:space="preserve">
+    <value>在主页，你可以看到你的使用时间，解锁数量和小时图</value>
+  </data>
+  <data name="welcome_1.Text" xml:space="preserve">
+    <value>在时间轴页面，您可以在地图上看到你的解锁和他们的地理位置</value>
+  </data>
+  <data name="welcome_2.Text" xml:space="preserve">
+    <value>在报告页面，您可以看到有关星期或每月的统计数据</value>
+  </data>
+  <data name="welcome_3.Text" xml:space="preserve">
+    <value>用鼠标箭头或日历上的按钮来更改日期</value>
+  </data>
+  <data name="welcome_4.Text" xml:space="preserve">
+    <value>为了程序能正常工作，在节电模式下应用程序需要后台任务的允许，要解决这个问题在节电模式中设置，并使用“添加应用程序”按钮添加Time Sense这个程序。</value>
+  </data>
+  <data name="welcome_5.Text" xml:space="preserve">
+    <value>如果您从8.1版本更新后，您可以在设置页面中导入数据</value>
+  </data>
+  <data name="welcome_6.Text" xml:space="preserve">
+    <value>您已经设置完毕，请尽情使用吧！</value>
+  </data>
+  <data name="welcome_dialog.PrimaryButtonText" xml:space="preserve">
+    <value>开始</value>
+  </data>
+  <data name="welcome_dialog.Title" xml:space="preserve">
+    <value>欢迎</value>
+  </data>
+  <data name="letters_header_1.Text" xml:space="preserve">
+    <value>使用时间预览</value>
+  </data>
+  <data name="letters_header_2.Text" xml:space="preserve">
+    <value>显示使用时间的格式为：1小时：1分钟：1秒</value>
+  </data>
+  <data name="analytics_btn.Content" xml:space="preserve">
+    <value>分析</value>
+  </data>
+  <data name="an_days_pivot.Header" xml:space="preserve">
+    <value>天</value>
+  </data>
+  <data name="an_end_pick.Header" xml:space="preserve">
+    <value>结束日期</value>
+  </data>
+  <data name="an_param.Text" xml:space="preserve">
+    <value>参数</value>
+  </data>
+  <data name="an_range_header_1.Text" xml:space="preserve">
+    <value>分析范围</value>
+  </data>
+  <data name="an_start_pick.Header" xml:space="preserve">
+    <value>起始日期</value>
+  </data>
+  <data name="an_unlocks_pivot.Header" xml:space="preserve">
+    <value>解锁</value>
+  </data>
+  <data name="battery_txt.Text" xml:space="preserve">
+    <value>电池</value>
+  </data>
+  <data name="charging_bat_combo.Content" xml:space="preserve">
+    <value>充电</value>
+  </data>
+  <data name="date_banner.Text" xml:space="preserve">
+    <value>数据</value>
+  </data>
+  <data name="day_banner.Text" xml:space="preserve">
+    <value>天</value>
+  </data>
+  <data name="error_batmax" xml:space="preserve">
+    <value>您必须指定一个有效的最低电池百分比</value>
+  </data>
+  <data name="error_batmin" xml:space="preserve">
+    <value>您必须指定一个有效的最高电池百分比</value>
+  </data>
+  <data name="error_timemax" xml:space="preserve">
+    <value>您必须指定一个有效的最短使用时间</value>
+  </data>
+  <data name="error_timemin" xml:space="preserve">
+    <value>您必须指定一个有效的最长使用时间</value>
+  </data>
+  <data name="error_unlocksmax" xml:space="preserve">
+    <value>您必须指定一个有效的最少解锁次数</value>
+  </data>
+  <data name="error_unlocksmin" xml:space="preserve">
+    <value>你必须指定一个有效的最多解锁次数</value>
+  </data>
+  <data name="hours_combo.Content" xml:space="preserve">
+    <value>小时</value>
+  </data>
+  <data name="idle_bat_combo.Content" xml:space="preserve">
+    <value>未充电</value>
+  </data>
+  <data name="minutes_combo.Content" xml:space="preserve">
+    <value>分钟</value>
+  </data>
+  <data name="range_all_btn.Content" xml:space="preserve">
+    <value>所有数据</value>
+  </data>
+  <data name="range_custom_btn.Content" xml:space="preserve">
+    <value>自定义范围</value>
+  </data>
+  <data name="reset_btn.Label" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="search_btn.Label" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="seconds_combo.Content" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="unlocks_txt.Text" xml:space="preserve">
+    <value>解锁</value>
+  </data>
+  <data name="usage_txt.Text" xml:space="preserve">
+    <value>使用</value>
+  </data>
+  <data name="analytics" xml:space="preserve">
+    <value>分析</value>
+  </data>
+  <data name="close_btn.Content" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="battery_dialog_check.Content" xml:space="preserve">
+    <value>以后不再显示此内容</value>
+  </data>
+  <data name="battery_dialog_txt.Text" xml:space="preserve">
+    <value>您的设备正处于节电模式，请确认多任务后台允许此应用在此模式下运行，以避免出现错误。</value>
+  </data>
+  <data name="battery_dialog.SecondaryButtonText" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="battery_dialog.Title" xml:space="preserve">
+    <value>省电</value>
+  </data>
+  <data name="nfc_locoff.Content" xml:space="preserve">
+    <value>关闭定位</value>
+  </data>
+  <data name="nfc_locon.Content" xml:space="preserve">
+    <value>打开定位</value>
+  </data>
+  <data name="nfc_timeline.Content" xml:space="preserve">
+    <value>显示时间轴</value>
+  </data>
+  <data name="nfc_usage.Content" xml:space="preserve">
+    <value>显示使用量</value>
+  </data>
+  <data name="nfc_success_content" xml:space="preserve">
+    <value>标签已成功写入</value>
+  </data>
+  <data name="nfc_success_title" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="welcome_7.Text" xml:space="preserve">
+    <value>在分析页面，您可以搜索满足您想要的特定参数的数据（使用，解锁，电池，时间...）</value>
+  </data>
+  <data name="minute" xml:space="preserve">
+    <value>分钟</value>
+  </data>
+  <data name="minutes" xml:space="preserve">
+    <value>分钟</value>
+  </data>
+  <data name="off" xml:space="preserve">
+    <value>关</value>
+  </data>
+  <data name="on" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="second" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="seconds" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="time" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="times" xml:space="preserve">
+    <value>次数</value>
+  </data>
+  <data name="voice_location" xml:space="preserve">
+    <value>定位追踪现在已{0}</value>
+  </data>
+  <data name="voice_usage" xml:space="preserve">
+    <value>Hello, today you used the device for {0} {1}, {2} {3} and {4} {5}, and you unlocked the screen {6} {7}</value>
+  </data>
+  <data name="service_text.Text" xml:space="preserve">
+    <value>If you are a developer you can access usage data of the current day using app services. The name of the service is "timesense.service" and the available commands are: "seconds", "minutes", "hours". All of them return a double value</value>
+  </data>
+  <data name="rate_cancel" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="rate_later" xml:space="preserve">
+    <value>稍后再说</value>
+  </data>
+  <data name="rate_message" xml:space="preserve">
+    <value>如果您喜欢 Time Sense， 为什么不在应用商店里留下您的评论呢？感谢您的支持!</value>
+  </data>
+  <data name="rate_rate" xml:space="preserve">
+    <value>评价</value>
+  </data>
+  <data name="rate_title" xml:space="preserve">
+    <value>评价Time Sense</value>
+  </data>
+  <data name="purchase_analytics.PrimaryButtonText" xml:space="preserve">
+    <value>购买</value>
+  </data>
+  <data name="purchase_analytics.Title" xml:space="preserve">
+    <value>高级分析</value>
+  </data>
+  <data name="purchase_analytics_1.Text" xml:space="preserve">
+    <value>高级分析功能可以深入分析您的设备使用情况的数据，筛选天数，查看屏幕解锁次数。</value>
+  </data>
+  <data name="purchase_analytics_2.Text" xml:space="preserve">
+    <value>您可以分析所有的数据或自定义时间范围，设置参数，如使用时间，数量解锁，电池百分比等等。</value>
+  </data>
+  <data name="purchase_analytics_3.Text" xml:space="preserve">
+    <value>This feature is available for 0.99$ and purchasing it you will help the developer to improve the app.</value>
+  </data>
+  <data name="error_transaction" xml:space="preserve">
+    <value>发生错误，请再试一次</value>
+  </data>
+  <data name="error_transaction_internet" xml:space="preserve">
+    <value>您要先连接网络才能使用此功能</value>
+  </data>
+  <data name="jump_report" xml:space="preserve">
+    <value>报告</value>
+  </data>
+  <data name="jump_settings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="jump_timeline" xml:space="preserve">
+    <value>时间轴</value>
+  </data>
+  <data name="off_combo.Content" xml:space="preserve">
+    <value>关</value>
+  </data>
+  <data name="on_combo.Content" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="charge_banner" xml:space="preserve">
+    <value />
+    <comment>USAGE/CHARGE</comment>
+  </data>
+  <data name="helper_ch_txt.Text" xml:space="preserve">
+    <value>设备正在充电</value>
+  </data>
+  <data name="helper_notch_txt.Text" xml:space="preserve">
+    <value>自上次充电后</value>
+  </data>
+  <data name="time_txt.Text" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="buy_btn" xml:space="preserve">
+    <value>以后再说</value>
+  </data>
+  <data name="try_btn" xml:space="preserve">
+    <value>试用</value>
+  </data>
+  <data name="no_items_txt.Text" xml:space="preserve">
+    <value>没有找到任何项目</value>
+  </data>
+  <data name="range_dialog.PrimaryButtonText" xml:space="preserve">
+    <value>选择</value>
+  </data>
+  <data name="range_dialog.SecondaryButtonText" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="range_dialog.Title" xml:space="preserve">
+    <value>选择范围</value>
+  </data>
+  <data name="note_banner" xml:space="preserve">
+    <value>笔记</value>
+  </data>
+  <data name="no_note" xml:space="preserve">
+    <value>所选日期不存在于数据库中</value>
+  </data>
+  <data name="no_note_txt.Text" xml:space="preserve">
+    <value>暂无笔记</value>
+  </data>
+  <data name="thanks_banner.Text" xml:space="preserve">
+    <value>特别感谢</value>
+  </data>
+  <data name="thanks_german.Text" xml:space="preserve">
+    <value>- 德文翻译</value>
+  </data>
+  <data name="excel_banner_bluetooth" xml:space="preserve">
+    <value>蓝牙</value>
+  </data>
+  <data name="excel_banner_charging" xml:space="preserve">
+    <value>充电</value>
+  </data>
+  <data name="excel_banner_latitude" xml:space="preserve">
+    <value>纬度</value>
+  </data>
+  <data name="excel_banner_longitude" xml:space="preserve">
+    <value>经度</value>
+  </data>
+  <data name="excel_banner_unlocks" xml:space="preserve">
+    <value>解锁</value>
+  </data>
+  <data name="excel_banner_usage" xml:space="preserve">
+    <value>使用</value>
+  </data>
+  <data name="excel_banner_wifi" xml:space="preserve">
+    <value>无线上网</value>
+  </data>
+  <data name="excel_banner_battery" xml:space="preserve">
+    <value>电池</value>
+  </data>
+  <data name="excel_banner_time" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="Excel_average_unlocks" xml:space="preserve">
+    <value>平均解锁时间</value>
+  </data>
+  <data name="Excel_average_usage" xml:space="preserve">
+    <value>平均使用时间</value>
+  </data>
+  <data name="Excel_creation" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Excel_days" xml:space="preserve">
+    <value>天数分析</value>
+  </data>
+  <data name="Excel_overview" xml:space="preserve">
+    <value>概览</value>
+  </data>
+  <data name="Excel_range" xml:space="preserve">
+    <value>分析范围</value>
+  </data>
+  <data name="Excel_total_unlocks" xml:space="preserve">
+    <value>总共解锁</value>
+  </data>
+  <data name="Excel_total_usage" xml:space="preserve">
+    <value>总共使用</value>
+  </data>
+  <data name="Excel_version" xml:space="preserve">
+    <value>软件版本</value>
+  </data>
+  <data name="status_off" xml:space="preserve">
+    <value>关</value>
+  </data>
+  <data name="status_on" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="excel_error" xml:space="preserve">
+    <value>出现错误，请重试</value>
+  </data>
+  <data name="excel_success" xml:space="preserve">
+    <value>Excel表格已经成功创建</value>
+  </data>
+  <data name="export_bar.Label" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="desktop_disclaimer" xml:space="preserve">
+    <value>感谢使用Time Sense。PC版正在开发中，由于系统的原因PC版还存在些问题如果您发现了bug或者你有什么问题，请在设置中点击反馈按钮，请勿随意骂人，给差评。</value>
+  </data>
+  <data name="progress_dialog.Title" xml:space="preserve">
+    <value>正在导出</value>
+  </data>
+  <data name="error_span" xml:space="preserve">
+    <value>开始日期必须在结束日期之前</value>
+  </data>
+  <data name="limit_item_6.Content" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="thanks_turkish.Text" xml:space="preserve">
+    <value>- turkish translation</value>
+  </data>
+  <data name="hello_header_1.Text" xml:space="preserve">
+    <value>与Windows Hello登录</value>
+  </data>
+  <data name="hello_header_2.Text" xml:space="preserve">
+    <value>Use Iris, fingerprint or pin verification to open the app</value>
+    <comment>TODO</comment>
+  </data>
+  <data name="hello_not_available" xml:space="preserve">
+    <value>There are no available verification options</value>
+  </data>
+  <data name="hello_message" xml:space="preserve">
+    <value>Verify your identity to open Time Sense</value>
+  </data>
+</root>
