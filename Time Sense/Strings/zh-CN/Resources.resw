@@ -296,10 +296,10 @@
     <value>今天</value>
   </data>
   <data name="unlock" xml:space="preserve">
-    <value>{0} unlock</value>
+    <value>{0} 解锁</value>
   </data>
   <data name="unlocks" xml:space="preserve">
-    <value>{0} unlocks</value>
+    <value>{0} 解锁</value>
   </data>
   <data name="unlocks_banner.Text" xml:space="preserve">
     <value>解锁</value>
@@ -823,13 +823,12 @@
     <value>与Windows Hello登录</value>
   </data>
   <data name="hello_header_2.Text" xml:space="preserve">
-    <value>Use Iris, fingerprint or pin verification to open the app</value>
-    <comment>TODO</comment>
+    <value>使用虹膜，指纹或密码验证，打开应用程序</value>
   </data>
   <data name="hello_not_available" xml:space="preserve">
-    <value>There are no available verification options</value>
+    <value>有没有可用的验证选项</value>
   </data>
   <data name="hello_message" xml:space="preserve">
-    <value>Verify your identity to open Time Sense</value>
+    <value>验证您的身份开Time Sense</value>
   </data>
 </root>
