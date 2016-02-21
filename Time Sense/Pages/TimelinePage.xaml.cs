@@ -41,12 +41,6 @@ namespace Time_Sense
             LoadData();
         }
 
-        private void RelativePanel_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            timeline_list.ItemsSource = null;
-            timeline_list.ItemsSource = list_raw;
-        }
-
         private async void LoadData()
         {
             Button_switch(false);

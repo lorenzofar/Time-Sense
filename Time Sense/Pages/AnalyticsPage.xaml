@@ -22,7 +22,7 @@
         </CommandBar>
     </Page.BottomAppBar>
 
-    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root" SizeChanged="RelativePanel_SizeChanged" VerticalAlignment="Stretch">
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root" VerticalAlignment="Stretch">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup CurrentStateChanged="vs_group_CurrentStateChanged"  x:Name="vs_group">
                 <VisualState x:Name="narrow">
@@ -79,7 +79,6 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-
 
         <Grid RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
             <Grid.RowDefinitions>
@@ -404,26 +403,31 @@
                         <ProgressRing x:Name="d_ring" IsActive="False" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Viewbox>
-                <ListView Loaded="days_list_Loaded" x:Name="days_list" SelectionMode="Single" Grid.Row="3" SelectionChanged="days_list_SelectionChanged">
+                <ListView Loaded="days_list_Loaded" ItemContainerStyle="{StaticResource list_style}" x:Name="days_list" SelectionMode="Single" Grid.Row="3" SelectionChanged="days_list_SelectionChanged">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Border Width="{Binding ActualWidth, ElementName=time_border_d}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0">
                                     <Viewbox MaxHeight="36">
                                         <TextBlock Text="{Binding date}" Style="{StaticResource analysis_list_text}"/>
                                     </Viewbox>
                                 </Border>
-                                <Border Width="{Binding ActualWidth, ElementName=usage_border_d}">
+                                <Border Grid.Column="1">
                                     <Viewbox MaxHeight="36">
                                         <TextBlock Grid.Column="1" Text="{Binding usage, Converter={StaticResource TimeConverter}}" Style="{StaticResource analysis_list_text}"/>
                                     </Viewbox>
                                 </Border>
-                                <Border Width="{Binding ActualWidth, ElementName=unlocks_border_d}">
+                                <Border Grid.Column="2">
                                     <Viewbox MaxHeight="36">
                                         <TextBlock Grid.Column="2" Text="{Binding unlocks}" Style="{StaticResource analysis_list_text}"/>
                                     </Viewbox>
                                 </Border>
-                            </StackPanel>
+                            </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -483,26 +487,33 @@
                         <ProgressRing x:Name="u_ring" IsActive="False" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Viewbox>
-                <ListView x:Name="unlocks_list" SelectionMode="None" Grid.Row="3" >
+                <ListView x:Name="unlocks_list" ItemContainerStyle="{StaticResource list_style}" SelectionMode="None" Grid.Row="3" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Border Width="{Binding ActualWidth, ElementName=date_border}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0">
                                     <Viewbox MaxHeight="36">
                                         <TextBlock Text="{Binding date}" Style="{StaticResource analysis_list_text}"/>
                                     </Viewbox>
                                 </Border>
-                                <Border Width="{Binding ActualWidth, ElementName=time_border}">
+                                <Border Grid.Column="1">
                                     <Viewbox MaxHeight="36">
                                         <TextBlock Text="{Binding time}" Style="{StaticResource analysis_list_text}"/>
                                     </Viewbox>
                                 </Border>
-                                <Border Width="{Binding ActualWidth, ElementName=usage_border}">
+                                <Border Grid.Column="2">
                                     <Viewbox MaxHeight="36">
                                         <TextBlock Grid.Column="1" Text="{Binding usage, Converter={StaticResource TimeConverter}}" Style="{StaticResource analysis_list_text}"/>
                                     </Viewbox>
                                 </Border>
-                                <Border Width="{Binding ActualWidth, ElementName=unlocks_border}">
+                                <Border Grid.Column="3">
                                     <Viewbox MaxHeight="36">
                                         <RelativePanel HorizontalAlignment="Center">
                                             <TextBlock x:Name="unlocks_txt" Grid.Column="2" Text="{Binding unlocks}" Style="{StaticResource analysis_list_text}"/>
@@ -512,7 +523,7 @@
                                         </RelativePanel>
                                     </Viewbox>
                                 </Border>
-                                <Border Width="{Binding ActualWidth, ElementName=battery_border}">
+                                <Border Grid.Column="4">
                                     <Viewbox MaxHeight="36">
                                         <RelativePanel HorizontalAlignment="Center">
                                             <TextBlock x:Name="battery" Margin="0,6" Grid.Column="3" Text="{Binding battery, Converter={StaticResource BatteryConverter}}" FontSize="{StaticResource TextStyleLargeFontSize}" VerticalAlignment="Center" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" HorizontalAlignment="Center"/>
@@ -520,7 +531,7 @@
                                         </RelativePanel>
                                     </Viewbox>
                                 </Border>
-                            </StackPanel>
+                            </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

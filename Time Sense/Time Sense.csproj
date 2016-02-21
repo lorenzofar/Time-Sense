@@ -181,7 +181,7 @@
     <PRIResource Include="Strings\it\Resources.resw" />
     <PRIResource Include="Strings\de\Resources.resw" />
     <PRIResource Include="Strings\tr\Resources.resw" />
-    <PRIResource Include="Strings\zh\Resources.resw" />
+    <PRIResource Include="Strings\zh-CN\Resources.resw" />
     <None Include="Time Sense_StoreKey.pfx" />
     <None Include="Time Sense_TemporaryKey.pfx" />
   </ItemGroup>

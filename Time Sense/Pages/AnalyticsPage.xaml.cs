@@ -38,10 +38,6 @@ namespace Time_Sense
         {
             App.t_client.TrackPageView("Analytics page");
             MainPage.title.Text = utilities.loader.GetString("analytics");
-            //days_show.To = a_h;
-            //unlocks_show.To = a_h;
-            //days_hide.To = -a_h;
-            //unlocks_hide.To = -a_h;
             switch (vs_group.CurrentState.Name)
             {
                 case "narrow":
@@ -59,14 +55,6 @@ namespace Time_Sense
                     RelativePanel.SetBelow(u_timemin, null);
                     break;
             }
-        }
-
-        private void RelativePanel_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            days_list.ItemsSource = null;
-            unlocks_list.ItemsSource = null;
-            days_list.ItemsSource = query_d;
-            unlocks_list.ItemsSource = query_l;
         }
 
         private void days_list_SelectionChanged(object sender, SelectionChangedEventArgs e)

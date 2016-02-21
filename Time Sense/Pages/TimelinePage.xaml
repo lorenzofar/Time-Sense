@@ -29,7 +29,7 @@
                 x:Name="map_row"
                 Height="0" />
         </Grid.RowDefinitions>
-        <Grid SizeChanged="RelativePanel_SizeChanged">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*" />
                 <RowDefinition Height="Auto" />
@@ -259,7 +259,8 @@
                     ItemsSource="{Binding t_list}"
                     SelectionChanged="timeline_list_SelectionChanged"
                     SelectionMode="Single"
-                    Style="{StaticResource timeline_list}" />
+                    Style="{StaticResource timeline_list}"
+                    ItemContainerStyle="{StaticResource list_style}"/>
             </Grid>
         </Grid>
         <RelativePanel

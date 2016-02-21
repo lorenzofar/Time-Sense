@@ -153,17 +153,24 @@
             Value="0" />
     </Style>
 
+    <Style x:Key="list_style" TargetType="ListViewItem">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+    </Style>
+
     <Style
         x:Key="timeline_list"
         TargetType="ListView">
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Border
-                            Width="{Binding
-                                ActualWidth,
-                                ElementName=time_border}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0">
                             <Viewbox MaxHeight="36">
                                 <TextBlock
                                     Margin="6"
@@ -173,10 +180,7 @@
                                     Text="{Binding time}" />
                             </Viewbox>
                         </Border>
-                        <Border
-                            Width="{Binding
-                                ActualWidth,
-                                ElementName=usage_border}">
+                        <Border Grid.Column="1">
                             <Viewbox MaxHeight="36">
                                 <TextBlock
                                     Grid.Column="1"
@@ -189,10 +193,7 @@
                                         Converter={StaticResource TimeConverter}}" />
                             </Viewbox>
                         </Border>
-                        <Border
-                            Width="{Binding
-                                ActualWidth,
-                                ElementName=unlocks_border}">
+                        <Border Grid.Column="2">
                             <Viewbox MaxHeight="36">
                                 <RelativePanel HorizontalAlignment="Center">
                                     <TextBlock
@@ -242,10 +243,7 @@
                                 </RelativePanel>
                             </Viewbox>
                         </Border>
-                        <Border
-                            Width="{Binding
-                                ActualWidth,
-                                ElementName=battery_border}">
+                        <Border Grid.Column="3">
                             <Viewbox MaxHeight="36">
                                 <RelativePanel HorizontalAlignment="Center">
                                     <TextBlock
@@ -274,7 +272,7 @@
                                 </RelativePanel>
                             </Viewbox>
                         </Border>
-                    </StackPanel>
+                    </Grid>
                 </DataTemplate>
             </Setter.Value>
         </Setter>
