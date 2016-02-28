@@ -358,10 +358,24 @@
     <Language Code="zu-za" InMinimumRequirementSet="true" />
   </SupportedLocales>
   <ProductReservedInfo>
-    <MainPackageIdentityName>12096LorenzoFarinelli.TimeSenseBETA</MainPackageIdentityName>
+    <MainPackageIdentityName>12096LorenzoFarinelli.TimeSense</MainPackageIdentityName>
     <ReservedNames>
-      <ReservedName>Time Sense BETA</ReservedName>
-      <ReservedName>Time Sense insider preview</ReservedName>
+      <ReservedName>Time Sense</ReservedName>
+      <ReservedName>Sense of time</ReservedName>
+      <ReservedName>Time sensitive</ReservedName>
+      <ReservedName>Time senser</ReservedName>
+      <ReservedName>Sense time</ReservedName>
+      <ReservedName>Sensing time</ReservedName>
+      <ReservedName>Screen time</ReservedName>
+      <ReservedName>screen sense</ReservedName>
+      <ReservedName>timer sense</ReservedName>
+      <ReservedName>Time test</ReservedName>
+      <ReservedName>Time sense guide</ReservedName>
+      <ReservedName>Time Sense videos</ReservedName>
+      <ReservedName>Time Panel</ReservedName>
+      <ReservedName>Time sense.</ReservedName>
+      <ReservedName>Time watcher</ReservedName>
+      <ReservedName>Screen control</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
@@ -396,8 +410,8 @@
     <MainPackageIdentityName>12096LorenzoFarinelli.Switcher</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.TagBoard</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.Tangent</MainPackageIdentityName>
-    <MainPackageIdentityName>12096LorenzoFarinelli.TimeSense</MainPackageIdentityName>
+    <MainPackageIdentityName>12096LorenzoFarinelli.TimeSenseBETA</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.TimeSenseInsider</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://dev.windows.com/dashboard/Application?appId=9WZDNCRCV71P" />
+  <PackageInfoList LandingUrl="https://dev.windows.com/dashboard/Application?appId=9WZDNCRCWWMN" />
 </StoreAssociation>

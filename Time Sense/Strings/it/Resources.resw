@@ -831,4 +831,7 @@ La versione per PC è ancora in fase di sviluppo e a causa di alcune limitazioni
   <data name="hello_message" xml:space="preserve">
     <value>Verifica la tua identità per aprire Time Sense</value>
   </data>
+  <data name="thanks_chinese.Text" xml:space="preserve">
+    <value>- traduzione cinese</value>
+  </data>
 </root>

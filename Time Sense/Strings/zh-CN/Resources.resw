@@ -203,7 +203,7 @@
     <value>关于</value>
   </data>
   <data name="average.Text" xml:space="preserve">
-    <value>值</value>
+    <value>平均值</value>
   </data>
   <data name="back_bar.Label" xml:space="preserve">
     <value>前一天</value>
@@ -820,7 +820,7 @@
     <value>- turkish translation</value>
   </data>
   <data name="hello_header_1.Text" xml:space="preserve">
-    <value>与Windows Hello登录</value>
+    <value>以Windows Hello 登录</value>
   </data>
   <data name="hello_header_2.Text" xml:space="preserve">
     <value>使用虹膜，指纹或密码验证，打开应用程序</value>
@@ -830,5 +830,8 @@
   </data>
   <data name="hello_message" xml:space="preserve">
     <value>验证您的身份开Time Sense</value>
+  </data>
+  <data name="thanks_chinese.Text" xml:space="preserve">
+    <value>- 中文翻译</value>
   </data>
 </root>

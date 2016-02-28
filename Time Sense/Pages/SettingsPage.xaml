@@ -377,6 +377,10 @@
                             Margin="6,0"
                             VerticalAlignment="Center" />
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="王瑶瑶"/>
+                        <TextBlock x:Uid="thanks_chinese" Margin="6,0" VerticalAlignment="Center"/>
+                    </StackPanel>
                     <Button
                         x:Name="feedback_btn"
                         x:Uid="feedback_button"

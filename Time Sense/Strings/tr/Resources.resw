@@ -831,4 +831,7 @@ Masaüstü sürümü henüz yapım aşamasında ve sistem sınırlamalarından d
   <data name="hello_message" xml:space="preserve">
     <value>Time Sense'i açmak için lütfen kimliğinizi doğrulayın</value>
   </data>
+  <data name="thanks_chinese.Text" xml:space="preserve">
+    <value>- çince çeviri</value>
+  </data>
 </root>

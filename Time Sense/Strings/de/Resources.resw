@@ -833,4 +833,7 @@ The PC version is still in development and, due to system limitations, there cou
   <data name="hello_message" xml:space="preserve">
     <value>Bestätige deine Identität, um Time Sense zu öffnen</value>
   </data>
+  <data name="thanks_chinese.Text" xml:space="preserve">
+    <value>- chinesische Übersetzung</value>
+  </data>
 </root>
