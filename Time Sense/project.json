@@ -4,7 +4,9 @@
     "Microsoft.ApplicationInsights.PersistenceChannel": "1.2.3",
     "Microsoft.ApplicationInsights.WindowsApps": "1.1.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "MvvmLight": "5.2.0",
     "NdefLibrary": "3.0.3",
+    "Template10": "1.1.3",
     "UniversalRateReminder": "2.0.0"
   },
   "frameworks": {
