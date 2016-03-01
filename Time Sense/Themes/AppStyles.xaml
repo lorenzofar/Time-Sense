@@ -5,12 +5,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:chart="using:Syncfusion.UI.Xaml.Charts"
     xmlns:local="using:Time_Sense"
+    xmlns:viewmodels="using:Time_Sense.ViewModels"
     mc:Ignorable="d">
 
     <local:TimelineConverter x:Key="IconConverter" />
     <local:battery_converter x:Key="BatteryConverter" />
     <local:UsageConverter x:Key="TimeConverter" />
     <local:LocationConverter x:Key="LocationConverter" />
+    <viewmodels:ViewModelLocator x:Key="ViewModelLocator"/>
 
     <!-- REGION SETTINGS -->
     <Style

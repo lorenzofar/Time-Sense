@@ -6,42 +6,21 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:chart="using:Syncfusion.UI.Xaml.Charts"
     xmlns:local="using:Time_Sense"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=Home}"
     mc:Ignorable="d">
 
-    <Grid
-        x:Name="root"
-        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <RelativePanel>
-                <Grid
-                    x:Name="time_grid"
-                    RelativePanel.AlignLeftWithPanel="True"
-                    RelativePanel.AlignRightWithPanel="True"
-                    RelativePanel.AlignTopWithPanel="True">
-                    <Grid
-                        Background="{ThemeResource SystemControlBackgroundAccentBrush}"
-                        Opacity="0.35" />
+                <Grid x:Name="time_grid" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True">
+                    <Grid Background="{ThemeResource SystemControlBackgroundAccentBrush}" Opacity="0.35" />
                     <StackPanel>
-                        <TextBlock
-                            x:Name="usage_txt"
-                            Style="{StaticResource usage_banner_text}"
-                            Text="{Binding usage}" />
-                        <TextBlock
-                            x:Name="unlocks_txt"
-                            Style="{StaticResource unlocks_banner_text}"
-                            Text="{Binding unlocks}" />
-                        <TextBlock
-                            x:Name="perc_txt"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Text="{Binding perc_str}" />
-                        <ProgressBar
-                            x:Name="bar"
-                            Height="6"
-                            Margin="0,6,0,0"
-                            HorizontalAlignment="Stretch"
-                            Maximum="86400"
-                            Value="{Binding perc}" />
+                        <TextBlock x:Name="usage_txt" Style="{StaticResource usage_banner_text}" Text="{Binding Path=homeData.usage}"/>
+                        <TextBlock x:Name="unlocks_txt" Style="{StaticResource unlocks_banner_text}" Text="{Binding Path=homeData.unlocks}"/>
+                        <TextBlock x:Name="perc_txt" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=homeData.usage}" />
+                        <ProgressBar x:Name="bar" Height="6" Margin="0,6,0,0" HorizontalAlignment="Stretch" Maximum="86400" Value="{Binding Path=homeData.usage}" />
                     </StackPanel>
                 </Grid>
                 <RelativePanel
@@ -49,23 +28,17 @@
                     HorizontalAlignment="Stretch"
                     Background="{ThemeResource SystemControlBackgroundListMediumBrush}"
                     RelativePanel.AlignLeftWithPanel="True"
-                    RelativePanel.AlignRightWithPanel="True"
-                    RelativePanel.Below="time_grid">
-                    <TextBlock
-                        x:Name="home_chart_helper"
-                        Margin="12,15,24,12"
-                        Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
-                        RelativePanel.AlignRightWithPanel="True"
-                        RelativePanel.AlignTopWithPanel="True" />
-                    <Pivot
-                        x:Name="home_charts_pivot"
-                        RelativePanel.AlignTopWithPanel="True"
-                        SelectionChanged="home_charts_pivot_SelectionChanged">
+                    RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="time_grid">
+                    <TextBlock Text="{Binding Path=selectedIndex}" x:Name="home_chart_helper" Margin="12,15,24,12" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" />
+                    <Pivot x:Name="home_charts_pivot" RelativePanel.AlignTopWithPanel="True">
+                        <interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="SelectionChanged">
+                                <core:InvokeCommandAction Command="{Binding Path=PivotSwipe}"/>
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>
                         <PivotItem>
                             <PivotItem.Header>
-                                <FontIcon
-                                    x:Name="hour_time_header"
-                                    Glyph="" />
+                                <FontIcon x:Name="hour_time_header" Glyph="" />
                             </PivotItem.Header>
                             <StackPanel>
                                 <chart:SfChart
@@ -84,15 +57,10 @@
                                         </chart:ChartColorModel>
                                     </chart:SfChart.ColorModel>
                                     <chart:SfChart.PrimaryAxis>
-                                        <chart:NumericalAxis
-                                            Maximum="23"
-                                            Minimum="0"
-                                            PlotOffset="12" />
+                                        <chart:NumericalAxis Maximum="23" Minimum="0" PlotOffset="12" />
                                     </chart:SfChart.PrimaryAxis>
                                     <chart:SfChart.SecondaryAxis>
-                                        <chart:NumericalAxis
-                                            Maximum="60"
-                                            Minimum="0" />
+                                        <chart:NumericalAxis Maximum="60" Minimum="0" />
                                     </chart:SfChart.SecondaryAxis>
                                     <chart:ColumnSeries
                                         x:Name="chart_time"
@@ -159,10 +127,7 @@
                                         </chart:ChartColorModel>
                                     </chart:SfChart.ColorModel>
                                     <chart:SfChart.PrimaryAxis>
-                                        <chart:NumericalAxis
-                                            Maximum="23"
-                                            Minimum="0"
-                                            PlotOffset="12" />
+                                        <chart:NumericalAxis Maximum="23" Minimum="0" PlotOffset="12" />
                                     </chart:SfChart.PrimaryAxis>
                                     <chart:SfChart.SecondaryAxis>
                                         <chart:NumericalAxis Minimum="0" />
@@ -230,9 +195,7 @@
                                     AcceptsReturn="True"
                                     Background="Transparent"
                                     BorderThickness="0"
-                                    FontSize="{Binding
-                                        FontSize,
-                                        ElementName=hour_time_header}"
+                                    FontSize="{Binding FontSize, ElementName=hour_time_header}"
                                     InputScope="Text"
                                     IsReadOnly="True"
                                     IsSpellCheckEnabled="True"
@@ -282,37 +245,15 @@
                                         Margin="0,12"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        FontSize="{Binding
-                                            FontSize,
-                                            ElementName=hour_time_header}"
+                                        FontSize="{Binding FontSize, ElementName=hour_time_header}"
                                         Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" />
                                 </StackPanel>
-                                <StackPanel
-                                    x:Name="ch_panel"
-                                    Visibility="{Binding ch_panel}">
-                                    <StackPanel
-                                        Margin="0,24,0,12"
-                                        HorizontalAlignment="Center">
-                                        <Viewbox
-                                            MinHeight="100"
-                                            MaxWidth="100"
-                                            Margin="48,0"
-                                            HorizontalAlignment="Center">
-                                            <FontIcon
-                                                HorizontalAlignment="Center"
-                                                FontSize="10"
-                                                Foreground="#FFAF00"
-                                                Glyph="" />
+                                <StackPanel x:Name="ch_panel" Visibility="{Binding ch_panel}">
+                                    <StackPanel Margin="0,24,0,12" HorizontalAlignment="Center">
+                                        <Viewbox MinHeight="100" MaxWidth="100" Margin="48,0" HorizontalAlignment="Center">
+                                            <FontIcon HorizontalAlignment="Center" FontSize="10" Foreground="#FFAF00" Glyph="" />
                                         </Viewbox>
-                                        <TextBlock
-                                            x:Uid="helper_ch_txt"
-                                            Margin="0,12"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            FontSize="{Binding
-                                                FontSize,
-                                                ElementName=hour_time_header}"
-                                            Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" />
+                                        <TextBlock x:Uid="helper_ch_txt" Margin="0,12" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding FontSize, ElementName=hour_time_header}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" />
                                     </StackPanel>
                                 </StackPanel>
                             </Grid>
@@ -323,33 +264,13 @@
         </ScrollViewer>
     </Grid>
     <Page.BottomAppBar>
-        <CommandBar
-            x:Name="bottom_bar"
-            HorizontalAlignment="Right"
-            ClosedDisplayMode="Compact">
-            <AppBarButton
-                x:Uid="back_bar"
-                Click="back_report_bar_Click"
-                Icon="Back" />
-            <AppBarButton
-                x:Uid="forward_bar"
-                Click="forward_report_bar_Click"
-                Icon="Forward" />
-            <AppBarButton
-                x:Uid="date_bar"
-                Click="date_report_bar_Click"
-                Icon="Calendar" />
-            <AppBarButton
-                x:Uid="refresh_bar"
-                HorizontalAlignment="Right"
-                Click="refresh_home"
-                Icon="Refresh" />
+        <CommandBar x:Name="bottom_bar" ClosedDisplayMode="Compact">
+            <AppBarButton x:Uid="back_bar" Command="{Binding Path=ChangeDay}" CommandParameter="-1" Icon="Back" />
+            <AppBarButton x:Uid="forward_bar" Command="{Binding Path=ChangeDay}" CommandParameter="1" Icon="Forward" />
+            <AppBarButton x:Uid="date_bar" Click="date_report_bar_Click" Icon="Calendar" />
+            <AppBarButton x:Uid="refresh_bar" Command="{Binding Path=RefreshBtn}" Icon="Refresh" />
             <CommandBar.SecondaryCommands>
-                <AppBarButton
-                x:Name="export_bar"
-                x:Uid="export_bar"
-                Click="export_bar_Click"
-                Icon="Save" />
+                <AppBarButton x:Name="export_bar" x:Uid="export_bar" Click="export_bar_Click" Icon="Save" />
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

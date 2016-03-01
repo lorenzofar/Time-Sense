@@ -56,12 +56,12 @@ namespace Time_Sense
         public HomePage()
         {
             this.InitializeComponent();
-            this.NavigationCacheMode = NavigationCacheMode.Required;            
+            //this.NavigationCacheMode = NavigationCacheMode.Required;            
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            App.t_client.TrackPageView("Home page");
+           /* App.t_client.TrackPageView("Home page");
             ManageInputPane();
             ButtonSwitch(false);
             refresh();
@@ -76,7 +76,7 @@ namespace Time_Sense
                 MainPage.parameter = null;
             }
             App.jump_arguments = null;
-            ButtonSwitch(true);
+            ButtonSwitch(true);*/
         }
 
         private void ManageInputPane()
@@ -91,16 +91,7 @@ namespace Time_Sense
                 }
             };
         }
-
-        private async void refresh_home(object sender, RoutedEventArgs e)
-        {
-            ButtonSwitch(false);
-            App.t_client.TrackEvent("Usage refreshed");
-            refresh();
-            ShowData();
-            ButtonSwitch(true);
-        }
-
+        
         public static async void refresh()
         {
             try {
@@ -446,34 +437,28 @@ namespace Time_Sense
 
         private async void date_report_bar_Click(object sender, RoutedEventArgs e)
         {
-            ButtonSwitch(false);
             App.t_client.TrackEvent("Calendar shown");
             if (await new DateDialog().ShowAsync() == ContentDialogResult.Primary)
             {
                 if (App.report_date.Date == DateTime.Now.Date) { refresh(); }
                 ShowData();
             }
-            ButtonSwitch(true);
         }
 
         private async void back_report_bar_Click(object sender, RoutedEventArgs e)
         {
-            ButtonSwitch(false);
             App.t_client.TrackEvent("Previous day");
             App.report_date = App.report_date.Subtract(new TimeSpan(1, 0, 0, 0));
             if (App.report_date.Date == DateTime.Now.Date) { refresh(); }
             ShowData();
-            ButtonSwitch(true);
         }
 
         private async void forward_report_bar_Click(object sender, RoutedEventArgs e)
         {
-            ButtonSwitch(false);
             App.t_client.TrackEvent("Next day");
             App.report_date = App.report_date.AddDays(1);
             if (App.report_date.Date == DateTime.Now.Date) { refresh(); }
             ShowData();
-            ButtonSwitch(true);
         }
 
         private void home_charts_pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -499,12 +484,7 @@ namespace Time_Sense
             }
             catch { }
         }
-
-        public void ButtonSwitch(bool enabled)
-        {
-            bottom_bar.IsEnabled = enabled;
-        }
-
+        
         private async void note_edit_btn_Click(object sender, RoutedEventArgs e)
         {
             SymbolIcon icon = note_edit_btn.Icon as SymbolIcon;
