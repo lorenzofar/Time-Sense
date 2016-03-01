@@ -23,12 +23,7 @@
                         <ProgressBar x:Name="bar" Height="6" Margin="0,6,0,0" HorizontalAlignment="Stretch" Maximum="86400" Value="{Binding Path=homeData.usage}" />
                     </StackPanel>
                 </Grid>
-                <RelativePanel
-                    x:Name="charts_grid"
-                    HorizontalAlignment="Stretch"
-                    Background="{ThemeResource SystemControlBackgroundListMediumBrush}"
-                    RelativePanel.AlignLeftWithPanel="True"
-                    RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="time_grid">
+                <RelativePanel x:Name="charts_grid" HorizontalAlignment="Stretch" Background="{ThemeResource SystemControlBackgroundListMediumBrush}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="time_grid">
                     <TextBlock Text="{Binding Path=selectedIndex}" x:Name="home_chart_helper" Margin="12,15,24,12" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" />
                     <Pivot x:Name="home_charts_pivot" RelativePanel.AlignTopWithPanel="True">
                         <interactivity:Interaction.Behaviors>
@@ -41,14 +36,7 @@
                                 <FontIcon x:Name="hour_time_header" Glyph="" />
                             </PivotItem.Header>
                             <StackPanel>
-                                <chart:SfChart
-                                    x:Name="usage_chart"
-                                    MaxHeight="225"
-                                    Margin="0,4,4,3"
-                                    HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    IsEnabled="False"
-                                    Palette="Custom">
+                                <chart:SfChart MaxHeight="225" Margin="0,4,4,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsEnabled="False" Palette="Custom">
                                     <chart:SfChart.ColorModel>
                                         <chart:ChartColorModel>
                                             <chart:ChartColorModel.CustomBrushes>
@@ -62,13 +50,7 @@
                                     <chart:SfChart.SecondaryAxis>
                                         <chart:NumericalAxis Maximum="60" Minimum="0" />
                                     </chart:SfChart.SecondaryAxis>
-                                    <chart:ColumnSeries
-                                        x:Name="chart_time"
-                                        AnimationDuration="0:0:1"
-                                        EnableAnimation="True"
-                                        ItemsSource="{Binding h_list}"
-                                        XBindingPath="hour"
-                                        YBindingPath="usage" />
+                                    <chart:ColumnSeries AnimationDuration="0:0:1" EnableAnimation="True" ItemsSource="{Binding Path=hourList, Converter={StaticResource MinutesConverter}}" XBindingPath="hour" YBindingPath="usage"/>
                                 </chart:SfChart>
                                 <Grid Margin="0,0,0,12">
                                     <Grid.ColumnDefinitions>
@@ -77,31 +59,16 @@
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
                                     <StackPanel>
-                                        <TextBlock
-                                            x:Name="max_time"
-                                            Style="{StaticResource chart_stats_text}"
-                                            Text="{Binding usage_max}" />
-                                        <TextBlock
-                                            x:Uid="maximum"
-                                            HorizontalAlignment="Center" />
+                                        <TextBlock Text="{Binding Path=recordData.usage_max}" Style="{StaticResource chart_stats_text}"/>
+                                        <TextBlock x:Uid="maximum" HorizontalAlignment="Center" />
                                     </StackPanel>
                                     <StackPanel Grid.Column="1">
-                                        <TextBlock
-                                            x:Name="min_time"
-                                            Style="{StaticResource chart_stats_text}"
-                                            Text="{Binding usage_min}" />
-                                        <TextBlock
-                                            x:Uid="minimum"
-                                            HorizontalAlignment="Center" />
+                                        <TextBlock Text="{Binding Path=recordData.usage_min}" Style="{StaticResource chart_stats_text}"/>
+                                        <TextBlock x:Uid="minimum" HorizontalAlignment="Center" />
                                     </StackPanel>
                                     <StackPanel Grid.Column="2">
-                                        <TextBlock
-                                            x:Name="avg_time"
-                                            Style="{StaticResource chart_stats_text}"
-                                            Text="{Binding usage_avg}" />
-                                        <TextBlock
-                                            x:Uid="average"
-                                            HorizontalAlignment="Center" />
+                                        <TextBlock Text="{Binding Path=recordData.usage_avg}" Style="{StaticResource chart_stats_text}"/>
+                                        <TextBlock x:Uid="average" HorizontalAlignment="Center" />
                                     </StackPanel>
                                 </Grid>
                             </StackPanel>
@@ -111,14 +78,7 @@
                                 <FontIcon Glyph="" />
                             </PivotItem.Header>
                             <StackPanel>
-                                <chart:SfChart
-                                    x:Name="unlocks_chart"
-                                    MaxHeight="225"
-                                    Margin="0,4,4,3"
-                                    HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    IsEnabled="False"
-                                    Palette="Custom">
+                                <chart:SfChart MaxHeight="225" Margin="0,4,4,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsEnabled="False" Palette="Custom">
                                     <chart:SfChart.ColorModel>
                                         <chart:ChartColorModel>
                                             <chart:ChartColorModel.CustomBrushes>
@@ -132,13 +92,7 @@
                                     <chart:SfChart.SecondaryAxis>
                                         <chart:NumericalAxis Minimum="0" />
                                     </chart:SfChart.SecondaryAxis>
-                                    <chart:ColumnSeries
-                                        x:Name="chart_unlocks"
-                                        AnimationDuration="0:0:1"
-                                        EnableAnimation="True"
-                                        ItemsSource="{Binding h_list}"
-                                        XBindingPath="hour"
-                                        YBindingPath="unlocks" />
+                                    <chart:ColumnSeries AnimationDuration="0:0:1" EnableAnimation="True" ItemsSource="{Binding Path=hourList}" XBindingPath="hour" YBindingPath="unlocks" />
                                 </chart:SfChart>
                                 <Grid Margin="0,0,0,12">
                                     <Grid.ColumnDefinitions>
@@ -147,44 +101,25 @@
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
                                     <StackPanel>
-                                        <TextBlock
-                                            x:Name="max_unlocks"
-                                            Style="{StaticResource chart_stats_text}"
-                                            Text="{Binding unlocks_max}" />
-                                        <TextBlock
-                                            x:Uid="maximum"
-                                            HorizontalAlignment="Center" />
+                                        <TextBlock Text="{Binding Path=recordData.unlocks_max}" Style="{StaticResource chart_stats_text}"/>
+                                        <TextBlock x:Uid="maximum" HorizontalAlignment="Center" />
                                     </StackPanel>
                                     <StackPanel Grid.Column="1">
-                                        <TextBlock
-                                            x:Name="min_unlocks"
-                                            Style="{StaticResource chart_stats_text}"
-                                            Text="{Binding unlocks_min}" />
-                                        <TextBlock
-                                            x:Uid="minimum"
-                                            HorizontalAlignment="Center" />
+                                        <TextBlock Text="{Binding Path=recordData.unlocks_min}" Style="{StaticResource chart_stats_text}"/>
+                                        <TextBlock x:Uid="minimum" HorizontalAlignment="Center" />
                                     </StackPanel>
                                     <StackPanel Grid.Column="2">
-                                        <TextBlock
-                                            x:Name="avg_unlocks"
-                                            Style="{StaticResource chart_stats_text}"
-                                            Text="{Binding unlocks_avg}" />
-                                        <TextBlock
-                                            x:Uid="average"
-                                            HorizontalAlignment="Center" />
+                                        <TextBlock Text="{Binding Path=recordData.unlocks_avg}" Style="{StaticResource chart_stats_text}"/>
+                                        <TextBlock x:Uid="average" HorizontalAlignment="Center" />
                                     </StackPanel>
                                 </Grid>
                             </StackPanel>
                         </PivotItem>
                         <PivotItem>
                             <PivotItem.Header>
-                                <FontIcon
-                                    x:Name="note_header"
-                                    Glyph="" />
+                                <FontIcon x:Name="note_header" Glyph="" />
                             </PivotItem.Header>
-                            <Grid
-                                MaxHeight="255"
-                                Margin="0,12,0,6">
+                            <Grid MaxHeight="255" Margin="0,12,0,6">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />

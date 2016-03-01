@@ -23,14 +23,14 @@ namespace Time_Sense.ViewModels
     {
         public class Records
         {
-            private int usage_max { get; set; }
-            private int usage_min { get; set; }
-            private int usage_avg { get; set; }
-            private int unlocks_max { get; set; }
-            private int unlocks_min { get; set; }
-            private int unlocks_avg { get; set; }
-            private int battery_usage { get; set; }
-            private int battery_unlocks { get; set; }
+            public int usage_max { get; set; }
+            public int usage_min { get; set; }
+            public int usage_avg { get; set; }
+            public int unlocks_max { get; set; }
+            public int unlocks_min { get; set; }
+            public int unlocks_avg { get; set; }
+            public int battery_usage { get; set; }
+            public int battery_unlocks { get; set; }
         }
 
         private DateTime[] date = new DateTime[2];
