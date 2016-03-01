@@ -11,10 +11,6 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <local:TimelineConverter x:Key="IconConverter" />
-        <local:battery_converter x:Key="BatteryConverter" />
-        <local:UsageConverter x:Key="TimeConverter" />
-        <local:LocationConverter x:Key="LocationConverter" />
         <SolidColorBrush
             x:Key="chart_palette"
             Color="#777C7D" />

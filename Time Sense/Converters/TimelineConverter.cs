@@ -2,7 +2,7 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
-namespace Time_Sense
+namespace Time_Sense.Converters
 {
     public class TimelineConverter : IValueConverter
     {

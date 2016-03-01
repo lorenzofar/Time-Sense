@@ -78,173 +78,7 @@ namespace Time_Sense
             App.jump_arguments = null;
             ButtonSwitch(true);*/
         }
-
-        private void ManageInputPane()
-        {
-            InputPane.GetForCurrentView().Showing +=
-                (s, args) => { bottom_bar.Visibility = Visibility.Collapsed; };
-            InputPane.GetForCurrentView().Hiding += (s, args2) =>
-            {
-                if (bottom_bar.Visibility == Visibility.Collapsed)
-                {
-                    bottom_bar.Visibility = Visibility.Visible;
-                }
-            };
-        }
         
-        public static async void refresh()
-        {
-            try {
-                if (App.report_date.Date == DateTime.Now.Date)
-                {
-                    date[1] = DateTime.Now;
-                    if (utilities.CheckDate(settings.date))
-                    {
-                        for (int i = 0; i < 2; i++)
-                        {
-                            time[i] = 0;
-                            unlocks[i] = 0;
-                        }
-                        try
-                        {
-                            date[0] = DateTime.Parse(utilities.STATS.Values[settings.date].ToString());
-                        }
-                        catch
-                        {
-                            goto save;
-                        }
-                        // LOAD TIME FROM DATABASE
-                        //IF THE DAY HASN'T CHANGED, LOAD ONLY ONE COUPLE OF DATA
-                        await Helper.InitializeDatabase();
-                        for (int i = date[0].Date == date[1].Date ? 1 : 0; i < 2; i++)
-                        {
-                            string date_str = utilities.shortdate_form.Format(date[i]);
-                            var item = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
-                            time[i] = item == null ? 0 : item.usage;
-                            var unlocks_list = await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).ToListAsync();
-                            unlocks[i] = unlocks_list.Count;
-                        }
-                        //END LOADING
-                        ConvertSeconds();
-                        if (date[0].Year != date[1].Year)
-                        {
-                            if (date[0].Day == 31 && date[1].Day == 1)
-                            {
-                                if (total_seconds[1] <= 9000)
-                                    time[0] += (86400 - total_seconds[0]);
-                                time[1] += total_seconds[1];
-                                await Helper.UpdateHourItem(date[0], date[0].Hour, (((date[0].Hour + 1) * 3600) - total_seconds[0]), 0);
-                                for (int i = 1; i < 24 - date[0].Hour; i++)
-                                {
-                                    await Helper.UpdateHourItem(date[0], date[0].Hour + i, 3600, 0);
-                                }
-                                for (int i = 0; i < date[1].Hour; i++)
-                                {
-                                    await Helper.UpdateHourItem(date[1], i, 3600, i == 0 ? 1 : 0);
-                                }
-                                await Helper.UpdateHourItem(date[1], date[1].Hour, total_seconds[1] - (date[1].Hour * 3600), 0);
-                                for (int i = 0; i < 2; i++)
-                                {
-                                    await Helper.UpdateUsageItem(time[i], unlocks[i], date[i]);
-                                }
-                                await Helper.UpdateTimelineItem(unlocks[0], (86400 - total_seconds[0]), date[0]);
-                                var radios = await Windows.Devices.Radios.Radio.GetRadiosAsync();
-                                var bluetooth_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.Bluetooth).FirstOrDefault();
-                                var wifi_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.WiFi).FirstOrDefault();
-                                string bluetooth = bluetooth_device == null ? "off" : bluetooth_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
-                                string wifi = wifi_device == null ? "off" : wifi_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
-                                string battery = Windows.Devices.Power.Battery.AggregateBattery.GetReport().Status == Windows.System.Power.BatteryStatus.Charging ? "charging" : "null";
-                                await Helper.AddTimelineItem(date[1], "00:00:00", 1, Windows.System.Power.PowerManager.RemainingChargePercent, battery, bluetooth, wifi);
-                                await Database.Helper.UpdateTimelineItem(1, time[1], date[1]);
-                            }
-                        }
-                        else
-                        {
-                            if (date[0].Date == date[1].Date)
-                            {
-                                if (unlocks[1] < 5 && diff >= 9000)
-                                {
-                                }
-                                else {
-                                    time[1] += diff;
-                                    if (date[0].Hour < date[1].Hour)
-                                    {
-                                        await Helper.UpdateHourItem(date[1], date[0].Hour, ((date[0].Hour + 1) * 3600) - total_seconds[0], 0);
-                                        for (int i = 1; i < date[1].Hour - date[0].Hour; i++)
-                                        {
-                                            await Helper.UpdateHourItem(date[1], date[0].Hour + i, 3600, 0);
-                                        }
-                                        await Helper.UpdateHourItem(date[1], date[1].Hour, total_seconds[1] - (date[1].Hour * 3600), 0);
-                                    }
-                                    else if (date[0].Hour == date[1].Hour)
-                                    {
-                                        await Helper.UpdateHourItem(date[1], date[1].Hour, diff, 0);
-                                    }
-                                    await Helper.UpdateUsageItem(time[1], unlocks[1], date[1]);
-                                    await Helper.UpdateTimelineItem(unlocks[1], diff, date[1]); //AGGIORNA TIMELINE
-                                }
-                            }
-                            else if (date[1].DayOfYear - date[0].DayOfYear == 1)
-                            {
-                                if (total_seconds[1] <= 9000)
-                                {
-                                    time[0] += (86400 - total_seconds[0]);
-                                    time[1] += total_seconds[1];
-                                    await Helper.UpdateHourItem(date[0], date[0].Hour, (((date[0].Hour + 1) * 3600) - total_seconds[0]), 0);
-                                    for (int i = 1; i < 24 - date[0].Hour; i++)
-                                    {
-                                        await Helper.UpdateHourItem(date[0], date[0].Hour + i, 3600, 0);
-                                    }
-                                    for (int i = 0; i < date[1].Hour; i++)
-                                    {
-                                        await Helper.UpdateHourItem(date[1], i, 3600, i == 0 ? 1 : 0);
-                                    }
-                                    await Helper.UpdateHourItem(date[1], date[1].Hour, total_seconds[1] - (date[1].Hour * 3600), 0);
-                                    for (int i = 0; i < 2; i++)
-                                    {
-                                        await Helper.UpdateUsageItem(time[i], unlocks[i], date[i]);
-                                    }
-                                    await Helper.UpdateTimelineItem(unlocks[0], (86400 - total_seconds[0]), date[0]);
-                                    var radios = await Windows.Devices.Radios.Radio.GetRadiosAsync();
-                                    var bluetooth_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.Bluetooth).FirstOrDefault();
-                                    var wifi_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.WiFi).FirstOrDefault();
-                                    string bluetooth = bluetooth_device == null ? "off" : bluetooth_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
-                                    string wifi = wifi_device == null ? "off" : wifi_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
-                                    string battery = Windows.Devices.Power.Battery.AggregateBattery.GetReport().Status == Windows.System.Power.BatteryStatus.Charging ? "charging" : "null";
-                                    await Helper.AddTimelineItem(date[1], "00:00:00", 1, Windows.System.Power.PowerManager.RemainingChargePercent, battery, bluetooth, wifi);
-                                    await Database.Helper.UpdateTimelineItem(1, time[1], date[1]);
-                                }
-                            }
-                        }
-                    }
-                    save:
-                    utilities.STATS.Values[settings.date] = date[1].ToString();
-                }
-            }
-            catch(Exception ex)
-            {
-                App.t_client.TrackException(new ExceptionTelemetry(ex));
-                MessageDialog refresh_error_msg = new MessageDialog("There was a problem when loading data, would you like to report the developer?", utilities.loader.GetString("error"));
-                
-                refresh_error_msg.Commands.Add(new UICommand("Report", (command) =>
-                {
-                    String recipient = "lorenzo.farinelli@outlook.it";
-                    EmailMessage error_report = new EmailMessage();
-                    error_report.Subject = "Time Sense exception report";
-                    error_report.Body = ex.Message;
-                    var emailRecipient = new EmailRecipient(recipient);
-                    error_report.To.Add(emailRecipient);
-                    EmailManager.ShowComposeNewEmailAsync(error_report);
-                }));
-                refresh_error_msg.Commands.Add(new UICommand("Cancel", (command) =>
-                {
-                }));
-                refresh_error_msg.DefaultCommandIndex = 0;
-                refresh_error_msg.CancelCommandIndex = 1;
-                refresh_error_msg.ShowAsync();
-            }
-        }
-
         public async void ShowData()
         {
             if (App.report_date.Date != DateTime.Now.Date)
@@ -304,7 +138,7 @@ namespace Time_Sense
             ts.unlocks_min = unlocks_min_helper == 1000 ? "---" : unlocks_min_helper.ToString();
             ts.usage_avg = Math.Round((time_total / avg_t), 2).ToString();
             ts.unlocks_avg = Math.Round((unlocks_total / avg_u), 2).ToString();
-            ts.usage = FormatData(time[1]);
+            //ts.usage = FormatData(time[1]);
             ts.unlocks = unlocks[1] == 1 ? String.Format(utilities.loader.GetString("unlock"), unlocks[1]) : String.Format(utilities.loader.GetString("unlocks"), unlocks[1]);
             ts.perc_str = ((time[1] * 100) / 86400).ToString() + "%";
             ts.perc = time[1];
@@ -371,7 +205,7 @@ namespace Time_Sense
                     batt_time = time[1];
                     batt_unlocks = unlocks[1];
                 }
-                ts.battery_usage = FormatData(batt_time);
+                //ts.battery_usage = FormatData(batt_time);
                 ts.battery_unlocks = batt_unlocks == 1 ? String.Format(utilities.loader.GetString("unlock"), batt_unlocks) : String.Format(utilities.loader.GetString("unlocks"), batt_unlocks);
             }
 
@@ -415,50 +249,6 @@ namespace Time_Sense
                 BadgeNotification badge_not = new BadgeNotification(badgeDOM);
                 BadgeUpdateManager.CreateBadgeUpdaterForApplication().Update(badge_not);
             }
-        }
-
-        private static void ConvertSeconds()
-        {
-            for (int i = 0; i < 2; i++)
-            {
-                total_seconds[i] = (date[i].Hour * 3600) + (date[i].Minute * 60) + date[i].Second;
-            }
-            diff = total_seconds[1] - total_seconds[0];
-        }
-
-        private string FormatData(int usage)
-        {
-            int hour = usage / 3600;
-            int minutes = (usage - (hour * 3600)) / 60;
-            int seconds = (usage - (hour * 3600)) - (minutes * 60);
-            string letter = utilities.STATS.Values[settings.letters] == null ? "{0}:{1}:{2}" : "{0}h:{1}m:{2}s";
-            return String.Format(letter, hour, minutes, seconds);
-        }
-
-        private async void date_report_bar_Click(object sender, RoutedEventArgs e)
-        {
-            App.t_client.TrackEvent("Calendar shown");
-            if (await new DateDialog().ShowAsync() == ContentDialogResult.Primary)
-            {
-                if (App.report_date.Date == DateTime.Now.Date) { refresh(); }
-                ShowData();
-            }
-        }
-
-        private async void back_report_bar_Click(object sender, RoutedEventArgs e)
-        {
-            App.t_client.TrackEvent("Previous day");
-            App.report_date = App.report_date.Subtract(new TimeSpan(1, 0, 0, 0));
-            if (App.report_date.Date == DateTime.Now.Date) { refresh(); }
-            ShowData();
-        }
-
-        private async void forward_report_bar_Click(object sender, RoutedEventArgs e)
-        {
-            App.t_client.TrackEvent("Next day");
-            App.report_date = App.report_date.AddDays(1);
-            if (App.report_date.Date == DateTime.Now.Date) { refresh(); }
-            ShowData();
         }
 
         private void home_charts_pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)

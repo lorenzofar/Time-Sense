@@ -114,6 +114,8 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\PercentageConverter.cs" />
+    <Compile Include="Converters\UnlocksConverter.cs" />
     <Compile Include="Pages\AnalyticsPage.xaml.cs">
       <DependentUpon>AnalyticsPage.xaml</DependentUpon>
     </Compile>

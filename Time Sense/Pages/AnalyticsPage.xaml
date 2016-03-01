@@ -2,18 +2,11 @@
     x:Class="Time_Sense.AnalyticsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Time_Sense"
+    xmlns:local="using:Time_Sense"    
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:db="using:Database"
     mc:Ignorable="d">
-
-    <Page.Resources>
-        <local:TimelineConverter x:Key="IconConverter"/>
-        <local:battery_converter x:Key="BatteryConverter"/>
-        <local:UsageConverter x:Key="TimeConverter"/>
-        <local:LocationConverter x:Key="LocationConverter"/>
-    </Page.Resources>
 
     <Page.BottomAppBar>
         <CommandBar>

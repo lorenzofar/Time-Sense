@@ -17,9 +17,9 @@
                 <Grid x:Name="time_grid" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True">
                     <Grid Background="{ThemeResource SystemControlBackgroundAccentBrush}" Opacity="0.35" />
                     <StackPanel>
-                        <TextBlock x:Name="usage_txt" Style="{StaticResource usage_banner_text}" Text="{Binding Path=homeData.usage}"/>
-                        <TextBlock x:Name="unlocks_txt" Style="{StaticResource unlocks_banner_text}" Text="{Binding Path=homeData.unlocks}"/>
-                        <TextBlock x:Name="perc_txt" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=homeData.usage}" />
+                        <TextBlock x:Name="usage_txt" Style="{StaticResource usage_banner_text}" Text="{Binding Path=homeData.usage, Converter={StaticResource TimeConverter}}"/>
+                        <TextBlock x:Name="unlocks_txt" Style="{StaticResource unlocks_banner_text}" Text="{Binding Path=homeData.unlocks, Converter={StaticResource UnlocksConverter}}"/>
+                        <TextBlock x:Name="perc_txt" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=homeData.usage, Converter={StaticResource PercentageConverter}}" />
                         <ProgressBar x:Name="bar" Height="6" Margin="0,6,0,0" HorizontalAlignment="Stretch" Maximum="86400" Value="{Binding Path=homeData.usage}" />
                     </StackPanel>
                 </Grid>
@@ -212,41 +212,18 @@
                                     Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
                                     TextWrapping="WrapWholeWords"
                                     Visibility="{Binding nonote_panel}" />
-                                <AppBarButton
-                                    x:Name="note_edit_btn"
-                                    Grid.Row="1"
-                                    HorizontalAlignment="Right"
-                                    Click="note_edit_btn_Click"
-                                    Icon="Edit" />
+                                <AppBarButton x:Name="note_edit_btn" Grid.Row="1" HorizontalAlignment="Right" Click="note_edit_btn_Click" Icon="Edit" />
                             </Grid>
                         </PivotItem>
                         <PivotItem>
                             <PivotItem.Header>
-                                <FontIcon
-                                    x:Name="battery_header"
-                                    Glyph="" />
+                                <FontIcon x:Name="battery_header" Glyph="" />
                             </PivotItem.Header>
                             <Grid>
-                                <StackPanel
-                                    x:Name="notch_panel"
-                                    Margin="0,24,0,12"
-                                    HorizontalAlignment="Center"
-                                    Visibility="{Binding notch_panel}">
-                                    <TextBlock
-                                        x:Name="usage_batt_txt"
-                                        Style="{StaticResource usage_banner_text}"
-                                        Text="{Binding battery_usage}" />
-                                    <TextBlock
-                                        x:Name="unlocks_batt_txt"
-                                        Style="{StaticResource unlocks_banner_text}"
-                                        Text="{Binding battery_unlocks}" />
-                                    <TextBlock
-                                        x:Uid="helper_notch_txt"
-                                        Margin="0,12"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        FontSize="{Binding FontSize, ElementName=hour_time_header}"
-                                        Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" />
+                                <StackPanel x:Name="notch_panel" Margin="0,24,0,12" HorizontalAlignment="Center" Visibility="{Binding notch_panel}">
+                                    <TextBlock x:Name="usage_batt_txt" Style="{StaticResource usage_banner_text}" Text="{Binding battery_usage}" />
+                                    <TextBlock x:Name="unlocks_batt_txt" Style="{StaticResource unlocks_banner_text}" Text="{Binding battery_unlocks}" />
+                                    <TextBlock x:Uid="helper_notch_txt" Margin="0,12" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding FontSize, ElementName=hour_time_header}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" />
                                 </StackPanel>
                                 <StackPanel x:Name="ch_panel" Visibility="{Binding ch_panel}">
                                     <StackPanel Margin="0,24,0,12" HorizontalAlignment="Center">
@@ -264,13 +241,13 @@
         </ScrollViewer>
     </Grid>
     <Page.BottomAppBar>
-        <CommandBar x:Name="bottom_bar" ClosedDisplayMode="Compact">
+        <CommandBar ClosedDisplayMode="Compact">
             <AppBarButton x:Uid="back_bar" Command="{Binding Path=ChangeDay}" CommandParameter="-1" Icon="Back" />
             <AppBarButton x:Uid="forward_bar" Command="{Binding Path=ChangeDay}" CommandParameter="1" Icon="Forward" />
-            <AppBarButton x:Uid="date_bar" Click="date_report_bar_Click" Icon="Calendar" />
+            <AppBarButton x:Uid="date_bar" Command="{Binding Path=DatePick}" Icon="Calendar" />
             <AppBarButton x:Uid="refresh_bar" Command="{Binding Path=RefreshBtn}" Icon="Refresh" />
             <CommandBar.SecondaryCommands>
-                <AppBarButton x:Name="export_bar" x:Uid="export_bar" Click="export_bar_Click" Icon="Save" />
+                <AppBarButton x:Uid="export_bar" Command="{Binding Path=ExportData}" Icon="Save" />
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

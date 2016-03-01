@@ -3,11 +3,13 @@ using Windows.UI.Xaml.Data;
 
 namespace Time_Sense.Converters
 {
-    public class battery_converter : IValueConverter
+    class PercentageConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return String.Format("{0}%", value.ToString());
+            double usage = value == null ? 0 : double.Parse(value.ToString());
+            double percentage = Math.Round((usage / 86400) * 100, 2);
+            return $"{percentage}%";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

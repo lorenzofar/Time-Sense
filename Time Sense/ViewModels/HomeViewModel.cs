@@ -14,6 +14,8 @@ using Windows.ApplicationModel.Email;
 using Microsoft.ApplicationInsights.DataContracts;
 using Windows.UI.ViewManagement;
 using GalaSoft.MvvmLight.Command;
+using Windows.Storage.Pickers;
+using Windows.Storage;
 
 namespace Time_Sense.ViewModels
 {
@@ -119,6 +121,42 @@ namespace Time_Sense.ViewModels
                     });
                 }
                 return _ChangeDay;
+            }
+        }
+
+        private RelayCommand _PickDate;
+        public RelayCommand PickDate
+        {
+            get
+            {
+                if(_PickDate == null)
+                {
+                    _PickDate = new RelayCommand(async() => {
+                        App.t_client.TrackEvent("Calendar shown");
+                        if (await new DateDialog().ShowAsync() == ContentDialogResult.Primary)
+                        {
+                            Refresh();
+                            ShowData();
+                        }
+                    });
+                }
+                return _PickDate;
+            }
+        }
+
+        private RelayCommand _ExportData;
+        public RelayCommand ExportData
+        {
+            get
+            {
+                if(_ExportData == null)
+                {
+                    _ExportData = new RelayCommand(() =>
+                    {
+                        Export();
+                    });
+                }
+                return _ExportData;
             }
         }
         #endregion
@@ -323,10 +361,43 @@ namespace Time_Sense.ViewModels
         }
         #endregion
 
+        private async void Export()
+        {
+            try
+            {
+                var span_result = await new SpanDialog().ShowAsync();
+                if (span_result == ContentDialogResult.Primary)
+                {
+                    if (App.range_start_date <= App.range_end_date)
+                    {
+                        FileSavePicker export_picker = new FileSavePicker();
+                        export_picker.DefaultFileExtension = ".xlsx";
+                        export_picker.SuggestedFileName = String.Format("timesense_{0}-{1}", utilities.shortdate_form.Format(App.range_start_date), utilities.shortdate_form.Format(App.range_end_date));
+                        export_picker.FileTypeChoices.Add("Excel file", new List<string>() { ".xlsx" });
+                        App.file_pick = true;
+                        StorageFile export_file = await export_picker.PickSaveFileAsync();
+                        if (export_file != null)
+                        {
+                            App.file_pick = false;
+                            await new ProgressDialog(export_file).ShowAsync();
+                            App.t_client.TrackEvent("Excel report created");
+                        }
+                    }
+                    else
+                    {
+                        await new MessageDialog(utilities.loader.GetString("error_span"), utilities.loader.GetString("error")).ShowAsync();
+                    }
+                }
+            }
+            catch { }
+        }
+
+        #region UI MANAGEMENT
         private void ManageInputPane()
         {
             InputPane.GetForCurrentView().Showing += (s, args) => { inputBool = true; };
             InputPane.GetForCurrentView().Hiding += (s, args2) => { inputBool = false; };
         }
+        #endregion
     }
 }
