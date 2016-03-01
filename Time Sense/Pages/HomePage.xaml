@@ -244,7 +244,7 @@
         <CommandBar ClosedDisplayMode="Compact">
             <AppBarButton x:Uid="back_bar" Command="{Binding Path=ChangeDay}" CommandParameter="-1" Icon="Back" />
             <AppBarButton x:Uid="forward_bar" Command="{Binding Path=ChangeDay}" CommandParameter="1" Icon="Forward" />
-            <AppBarButton x:Uid="date_bar" Command="{Binding Path=DatePick}" Icon="Calendar" />
+            <AppBarButton x:Uid="date_bar" Command="{Binding Path=PickDate}" Icon="Calendar" />
             <AppBarButton x:Uid="refresh_bar" Command="{Binding Path=RefreshBtn}" Icon="Refresh" />
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="export_bar" Command="{Binding Path=ExportData}" Icon="Save" />
