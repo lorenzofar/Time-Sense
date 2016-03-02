@@ -8,8 +8,8 @@ namespace Time_Sense.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            string unlocks = value == null ? "0" : value.ToString();
-            return String.Format(utilities.loader.GetString("unlocks"), unlocks);
+            int unlocks = value == null ? 0 : int.Parse(value.ToString());
+            return String.Format(utilities.loader.GetString(unlocks == 1 ? "unlock" : "unlocks"), unlocks);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
