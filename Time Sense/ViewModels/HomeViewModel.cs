@@ -1,21 +1,19 @@
-﻿using System;
+﻿using Database;
+using GalaSoft.MvvmLight.Command;
+using Microsoft.ApplicationInsights.DataContracts;
+using Stuff;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Template10.Mvvm;
-using Database;
-using Windows.UI.Xaml.Navigation;
-using Windows.UI.Xaml.Controls;
 using Windows.Media.SpeechSynthesis;
-using Stuff;
-using Windows.UI.Popups;
-using Windows.ApplicationModel.Email;
-using Microsoft.ApplicationInsights.DataContracts;
-using Windows.UI.ViewManagement;
-using GalaSoft.MvvmLight.Command;
-using Windows.Storage.Pickers;
 using Windows.Storage;
+using Windows.Storage.Pickers;
+using Windows.UI.Popups;
+using Windows.UI.ViewManagement;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace Time_Sense.ViewModels
 {
@@ -82,6 +80,19 @@ namespace Time_Sense.ViewModels
             set
             {
                 Set(ref _hourList, value);
+            }
+        }
+
+        private bool _editingNote = false;
+        public bool editingNote
+        {
+            get
+            {
+                return _editingNote;
+            }
+            set
+            {
+                Set(ref _editingNote, value);
             }
         }
         #endregion
@@ -157,6 +168,40 @@ namespace Time_Sense.ViewModels
                     });
                 }
                 return _ExportData;
+            }
+        }
+
+        private RelayCommand _EditNote;
+        public RelayCommand EditNote
+        {
+            get
+            {
+                if(_EditNote == null)
+                {
+                    _EditNote = new RelayCommand(async() =>
+                    {
+                        editingNote = !editingNote;
+                        App.t_client.TrackEvent(editingNote ? "Edit note" : "Save Note");
+                        if (!editingNote)
+                        {
+                            var day = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == homeData.date).FirstOrDefaultAsync();
+                            if(day != null)
+                            {
+                                if (homeData.note != null && string.IsNullOrWhiteSpace(homeData.note))
+                                {
+                                    day.note = homeData.note;
+                                    await Helper.ConnectionDb().UpdateAsync(day);
+                                }
+                            }
+                            else
+                            {
+                                await new MessageDialog(utilities.loader.GetString("no_note"), utilities.loader.GetString("error")).ShowAsync();
+                                homeData.note = null;
+                            }
+                        }
+                    });
+                }
+                return _EditNote;
             }
         }
         #endregion

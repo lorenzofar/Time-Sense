@@ -275,45 +275,6 @@ namespace Time_Sense
             catch { }
         }
         
-        private async void note_edit_btn_Click(object sender, RoutedEventArgs e)
-        {
-            SymbolIcon icon = note_edit_btn.Icon as SymbolIcon;
-            if(icon.Symbol  == Symbol.Edit)
-            {
-                //EDIT NOTE
-                App.t_client.TrackEvent("Edit note");
-                note_txt.Visibility = Visibility.Visible;
-                note_edit_btn.Icon = new SymbolIcon(Symbol.Accept);
-                note_txt.IsReadOnly = false;
-                note_txt.Focus(FocusState.Programmatic);
-                no_note_txt.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                //SAVE NOTE
-                string date_str = utilities.shortdate_form.Format(App.report_date);
-                var report = await Database.Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
-                if(report != null)
-                {
-                    //DAY XIST IN DB, SAV
-                    App.t_client.TrackEvent("Save note");
-                    report.note = note_txt.Text;
-                    no_note_txt.Visibility = Visibility.Collapsed;
-                    await Helper.ConnectionDb().UpdateAsync(report);
-                }
-                else
-                {
-                    await new MessageDialog(utilities.loader.GetString("no_note"), utilities.loader.GetString("error")).ShowAsync();
-                    note_txt.Text = "";
-                }
-                no_note_txt.Visibility = string.IsNullOrEmpty(note_txt.Text) ? Visibility.Visible : Visibility.Collapsed;
-                note_txt.Visibility = string.IsNullOrEmpty(note_txt.Text) ? Visibility.Collapsed : Visibility.Visible;
-                note_edit_btn.Icon = new SymbolIcon(Symbol.Edit);
-                note_txt.IsReadOnly = true;
-
-            }
-        }
-
         private async void export_bar_Click(object sender, RoutedEventArgs e)
         {
             try {

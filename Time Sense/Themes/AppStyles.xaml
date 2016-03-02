@@ -16,6 +16,8 @@
     <converters:UnlocksConverter x:Key="UnlocksConverter"/>
     <converters:PercentageConverter x:Key="PercentageConverter"/>
     <converters:MinutesConverter x:Key="MinutesConverter"/>
+    <converters:BoolConverter x:Key="BoolConverter"/>
+    <converters:NoteEditConverter x:Key="NoteEditConverter"/>
     <viewmodels:ViewModelLocator x:Key="ViewModelLocator"/>
 
     <!-- REGION SETTINGS -->
