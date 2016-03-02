@@ -187,7 +187,7 @@ namespace Time_Sense.ViewModels
                             var day = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == homeData.date).FirstOrDefaultAsync();
                             if(day != null)
                             {
-                                if (homeData.note != null && string.IsNullOrWhiteSpace(homeData.note))
+                                if (homeData.note != null && !string.IsNullOrWhiteSpace(homeData.note))
                                 {
                                     day.note = homeData.note;
                                     await Helper.ConnectionDb().UpdateAsync(day);

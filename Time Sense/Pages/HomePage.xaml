@@ -125,6 +125,7 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <TextBox
+                                    x:Uid="note_box"
                                     HorizontalAlignment="Center"
                                     AcceptsReturn="True"
                                     Background="Transparent"

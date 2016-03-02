@@ -725,7 +725,7 @@
   <data name="no_note" xml:space="preserve">
     <value>Seçilen gün henüz veri tabanında yok</value>
   </data>
-  <data name="no_note_txt.Text" xml:space="preserve">
+  <data name="note_box.PlaceholderText" xml:space="preserve">
     <value>Herhangi bir not yok</value>
   </data>
   <data name="thanks_banner.Text" xml:space="preserve">
