@@ -1,4 +1,5 @@
 ﻿using Database;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.ApplicationInsights.DataContracts;
@@ -7,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Template10.Mvvm;
 using Windows.Media.SpeechSynthesis;
 using Windows.Storage;
 using Windows.Storage.Pickers;
