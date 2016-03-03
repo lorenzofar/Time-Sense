@@ -152,7 +152,6 @@ namespace Time_Sense
 
         protected override async void OnActivated(IActivatedEventArgs args)
         {
-            utilities.loader = new Windows.ApplicationModel.Resources.ResourceLoader();
             Frame rootFrame = Window.Current.Content as Frame;
 
             Object password_obj = utilities.STATS.Values[settings.password];
@@ -210,6 +209,10 @@ namespace Time_Sense
                             {
                                 rootFrame.Navigate(typeof(MainPage), jump_arguments);
                             }
+                        }
+                        else
+                        {
+                            rootFrame.Navigate(typeof(MainPage), jump_arguments);
                         }
                         activate_1:
                         Window.Current.Activate();
