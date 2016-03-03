@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQLite;
-using System.IO;
-using Windows.Storage;
-using Windows.Devices.Geolocation;
+﻿using SQLite;
 using Stuff;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
+using Windows.Storage;
 
 namespace Database
 {

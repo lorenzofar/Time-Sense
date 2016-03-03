@@ -24,10 +24,10 @@ namespace Time_Sense.ViewModels
         {
             public int usage_max { get; set; }
             public int usage_min { get; set; }
-            public int usage_avg { get; set; }
+            public double usage_avg { get; set; }
             public int unlocks_max { get; set; }
             public int unlocks_min { get; set; }
-            public int unlocks_avg { get; set; }
+            public double unlocks_avg { get; set; }
             public int battery_usage { get; set; }
             public int battery_unlocks { get; set; }
         }
@@ -246,6 +246,7 @@ namespace Time_Sense.ViewModels
         {
             try
             {
+                await Helper.InitializeDatabase();
                 if (App.report_date.Date == DateTime.Now.Date)
                 {
                     date[1] = DateTime.Now;
@@ -264,7 +265,6 @@ namespace Time_Sense.ViewModels
                         {
                             goto save;
                         }
-                        await Helper.InitializeDatabase();
                         for (int i = date[0].Date == date[1].Date ? 1 : 0; i < 2; i++)
                         {
                             string date_str = utilities.shortdate_form.Format(date[i]);
@@ -399,6 +399,49 @@ namespace Time_Sense.ViewModels
                 };
             }
             hourList = await Helper.GetHourList(App.report_date);
+            var usage_list = hourList.Where(x => x.usage != 0).ToList();
+            var unlocks_list = hourList.Where(x => x.unlocks != 0).ToList();
+            int usage_max = 0;
+            int unlocks_max = 0;
+            int usage_min = 3700;
+            int unlocks_min = 1000;
+            double usage_tot = 0;
+            double unlocks_tot = 0;
+            foreach(var item in usage_list)
+            {
+                if(item.usage >= usage_max)
+                {
+                    usage_max = item.usage;
+                }
+                if(item.usage <= usage_min)
+                {
+                    usage_min = item.usage;
+                }
+                usage_tot += item.usage;
+            }
+            foreach (var item in unlocks_list)
+            {
+                if (item.unlocks >= unlocks_max)
+                {
+                    unlocks_max = item.unlocks;
+                }
+                if (item.unlocks <= unlocks_min)
+                {
+                    unlocks_min = item.unlocks;
+                }
+                unlocks_tot += item.unlocks;
+            }
+            var usage_avg = Math.Round((usage_tot / usage_list.Count), 2);
+            var unlocks_avg = Math.Round((unlocks_tot / unlocks_list.Count), 2);
+            recordData = new Records()
+            {
+                usage_max = usage_max,
+                usage_min = usage_min == 3700 ? 0 : usage_min,
+                unlocks_max = unlocks_max,
+                unlocks_min = unlocks_min == 1000 ? 0 : unlocks_min,
+                usage_avg = double.IsNaN(usage_avg)? 0 : usage_avg,
+                unlocks_avg = double.IsNaN(unlocks_avg)? 0 : unlocks_avg
+            };
         }
 
         private void ConvertSeconds()

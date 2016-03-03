@@ -1,17 +1,4 @@
-﻿using Database;
-using GalaSoft.MvvmLight.Messaging;
-using Microsoft.ApplicationInsights.DataContracts;
-using Stuff;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Windows.Data.Xml.Dom;
-using Windows.Storage;
-using Windows.Storage.Pickers;
-using Windows.UI.Notifications;
-using Windows.UI.Popups;
-using Windows.UI.Xaml;
+﻿using GalaSoft.MvvmLight.Messaging;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -30,79 +17,7 @@ namespace Time_Sense
         }
 
         /*public async void ShowData()
-        {
-            List<Hour> hour_list = new List<Hour>();
-
-            double time_helper = 0;
-            double unlocks_helper = 0;
-            double time_min_helper = 1000;
-            double unlocks_min_helper = 1000;
-            double time_total = 0;
-            double unlocks_total = 0;
-            double avg_t = 0;
-            double avg_u = 0;
-            foreach (var item in hour_list_raw)
-            {
-                item.usage = item.usage / 60;
-                if (item.usage != 0)
-                {
-                    if (item.usage > time_helper)
-                    {
-                        time_helper = item.usage;
-                    }
-                    if (item.usage < time_min_helper && item.usage != 0)
-                    {
-                        time_min_helper = item.usage;
-                    }
-                    avg_t++;
-                }
-                if (item.unlocks != 0)
-                {
-                    if (item.unlocks > unlocks_helper)
-                    {
-                        unlocks_helper = item.unlocks;
-                    }
-                    if (item.unlocks < unlocks_min_helper && item.unlocks != 0)
-                    {
-                        unlocks_min_helper = item.unlocks;
-                    }
-                    avg_u++;
-                }
-                time_total += item.usage;
-                unlocks_total += item.unlocks;
-                hour_list.Add(item);
-            }
-
-            ts_data ts = new ts_data();
-
-            ts.usage_max = time_helper == 0 ? "---" : time_helper.ToString();
-            ts.unlocks_max = unlocks_helper == 0 ? "---" : unlocks_helper.ToString();
-            ts.usage_min = time_min_helper == 1000 ? "---" : time_min_helper.ToString();
-            ts.unlocks_min = unlocks_min_helper == 1000 ? "---" : unlocks_min_helper.ToString();
-            ts.usage_avg = Math.Round((time_total / avg_t), 2).ToString();
-            ts.unlocks_avg = Math.Round((unlocks_total / avg_u), 2).ToString();
-            //ts.usage = FormatData(time[1]);
-            ts.unlocks = unlocks[1] == 1 ? String.Format(utilities.loader.GetString("unlock"), unlocks[1]) : String.Format(utilities.loader.GetString("unlocks"), unlocks[1]);
-            ts.perc_str = ((time[1] * 100) / 86400).ToString() + "%";
-            ts.perc = time[1];
-            ts.h_list = hour_list;
-
-            //LOAD NOTE
-            string date_str = utilities.shortdate_form.Format(App.report_date);
-            var report = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
-            if (report != null)
-            {
-                ts.note = report.note == null ? "" : report.note;
-                ts.nonote_panel = report.note == null || report.note == "" ? Visibility.Visible : Visibility.Collapsed;
-                ts.note_panel = report.note == null || report.note == "" ? Visibility.Collapsed : Visibility.Visible;
-            }
-            else
-            {
-                ts.note = "";
-                ts.nonote_panel = Visibility.Visible;
-                ts.note_panel = Visibility.Collapsed;
-            }
-
+        {          
             //BATTERY DATA
             if (Windows.Devices.Power.Battery.AggregateBattery.GetReport().Status == Windows.System.Power.BatteryStatus.Charging)
             {
@@ -216,36 +131,7 @@ namespace Time_Sense
                 }
             }
             catch { }
-        }
+        }*/      
         
-        private async void export_bar_Click(object sender, RoutedEventArgs e)
-        {
-            try {
-                var span_result = await new SpanDialog().ShowAsync();
-                if (span_result == Windows.UI.Xaml.Controls.ContentDialogResult.Primary)
-                {
-                    if (App.range_start_date <= App.range_end_date)
-                    {
-                        FileSavePicker export_picker = new FileSavePicker();
-                        export_picker.DefaultFileExtension = ".xlsx";
-                        export_picker.SuggestedFileName = String.Format("timesense_{0}-{1}", utilities.shortdate_form.Format(App.range_start_date), utilities.shortdate_form.Format(App.range_end_date));
-                        export_picker.FileTypeChoices.Add("Excel file", new List<string>() { ".xlsx" });
-                        App.file_pick = true;
-                        StorageFile export_file = await export_picker.PickSaveFileAsync();
-                        if (export_file != null)
-                        {
-                            App.file_pick = false;
-                            await new ProgressDialog(export_file).ShowAsync();
-                            App.t_client.TrackEvent("Excel report created");
-                        }
-                    }
-                    else
-                    {
-                        await new MessageDialog(utilities.loader.GetString("error_span"), utilities.loader.GetString("error")).ShowAsync();
-                    }
-                }
-            }
-            catch { }
-        }*/
     }
 }
