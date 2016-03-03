@@ -1,0 +1,505 @@
+[33mcommit 18df4f13ca35cd3483e553585012f48891703e2e[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sun Jan 10 13:09:23 2016 +0100
+
+    Added styles to home page and report page.
+
+[33mcommit 1903ec9e86a9868632421d9991050ab8b7548431[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sun Jan 10 12:26:08 2016 +0100
+
+    Added resource dictionary file.
+
+[33mcommit a13f6d5904fcb0307b71608dec74c8e885a2c828[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sun Jan 10 02:22:04 2016 +0100
+
+    Improved performances.
+
+[33mcommit ac6d4adb3a0416e797b4e5bc0da326f9d044a596[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sun Jan 10 02:10:51 2016 +0100
+
+    Fixed performances of password page.
+
+[33mcommit 946892bd5e764bbf46aee77768d1b7e641287ed3[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Fri Jan 8 23:26:30 2016 +0100
+
+    Periodic background tasks are unregister when the user goes absent and registered again when the user goes present.
+
+[33mcommit 3c972961cd6422e43e34c5adc408b3744e19203f[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Fri Jan 8 23:06:25 2016 +0100
+
+    Updated gitignore file (ignored .appx files)
+
+[33mcommit d467d4bdfdee4ac9b66b3903b2368af89e77b9e4[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Fri Jan 8 23:01:19 2016 +0100
+
+    Organized code in folders for better management.
+
+[33mcommit 1c0fb07d0289a5ec7eacdb7b8706fd4f3832d375[m
+Merge: eb61ff9 8dcb48f
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Thu Jan 7 18:54:22 2016 +0100
+
+    Merged test Excel features.
+
+[33mcommit eb61ff97aa1fc4d9c8e9289b3df755520a26eebf[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Thu Jan 7 18:47:24 2016 +0100
+
+    Usage notifications are re-scheduled when deleting data.
+
+[33mcommit f7a2bb94b2e5c1757f4d1bcc1b9f7d21c8f13a5a[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Thu Jan 7 18:08:08 2016 +0100
+
+    Cleaned code.
+
+[33mcommit 8dcb48ff63a5abe05d3834d2a2da6baab5d2d832[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Wed Jan 6 22:13:55 2016 +0100
+
+    Periodic background tasks are registered only when the app is started.
+
+[33mcommit 47c93be9af85baa3c435519d9b781e4a666d6241[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Wed Jan 6 22:06:13 2016 +0100
+
+    Added colors to excel file.
+
+[33mcommit fa93a5a307cc793c2e92be94974207a93f42736d[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Wed Jan 6 19:48:00 2016 +0100
+
+    Fixed API check for Jump Lists.
+
+[33mcommit 722b153601491090bcd4b0580098160856d538ea[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Wed Jan 6 10:08:02 2016 +0100
+
+    When the keyboard is shown the bottom app bar is hidden.
+
+[33mcommit 3eec568563da51abade218bb0b278de84d926e7a[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Wed Jan 6 09:57:16 2016 +0100
+
+    Added swipeable Split View.
+
+[33mcommit 473c7bff96e585f7ee9e99e0d95b21c1c95ccd12[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Tue Jan 5 19:52:25 2016 +0100
+
+    Fixed timeline update when using the device during midnight.
+    Moved key handler to page element in MainPage.
+
+[33mcommit 1a2f9a95b7a159ecb29461a70670704cb2eef2c8[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Mon Jan 4 00:25:22 2016 +0100
+
+    Removed videos folder capability.
+
+[33mcommit 641fd799da87935f179c0362e96161f6845e9a39[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Mon Jan 4 00:18:04 2016 +0100
+
+    Removed try/catch when creating Excel file.
+
+[33mcommit a14b8fd2b9977c56e8372f5a8d632c9f923b99b4[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Mon Jan 4 00:13:35 2016 +0100
+
+    Fixed and added date pickers check when resetting data.
+
+[33mcommit bdd8bcbf283cfeb7cbc71a9ecaab1f143b5077ba[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sun Jan 3 15:06:26 2016 +0100
+
+    Removed diagnostic code in periodic background task.
+    Added a boolean value to avoid password page when picking a file.
+
+[33mcommit c38a45369ca9ad6b5a919c29acde009bd035dd97[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sun Jan 3 12:41:40 2016 +0100
+
+    Fixed progress dialog UI.
+
+[33mcommit fd7924512bff5d7549e91418574667f8dbd3ce5a[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sun Jan 3 12:34:49 2016 +0100
+
+    Added a content dialog to show a progress ring when creating the excel file.
+    Fixed crash when showing the "success" message dialog.
+
+[33mcommit 9fc6491f702cd1e48441555eaeea12ac1805b1cf[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sun Jan 3 12:17:34 2016 +0100
+
+    Fixed bug in usage/charge: the first unlock of the list was considered even if the device was charging.
+
+[33mcommit 8904a8acb3ecb59453b1a9140a91e3bf83552151[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sun Jan 3 00:35:42 2016 +0100
+
+    Moved background tasks registration to OnNavigated.
+
+[33mcommit 3b1c0ea53f6b1cc2c831c2af5fcf63295093a6fc[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Jan 2 19:20:31 2016 +0100
+
+    Added handler for Completed method to background task registration.
+
+[33mcommit 4af1b853d1b7e9aa4dd0d022e4852f0e63a0d24f[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Jan 2 19:16:14 2016 +0100
+
+    Changed version number in settings page.
+
+[33mcommit ec7e95f269296f2a0a50a78195937bb2c4597113[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Jan 2 23:58:18 2016 +0100
+
+    Translated desktop disclaimer into italian.
+
+[33mcommit 43959187223e605e4e2c1a502e8f4ecb88e87b06[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Jan 2 20:09:49 2016 +0100
+
+    When registering Jump lists the app chehck if API is supported.
+
+[33mcommit 99df3ae615de68cf695eff0df08e0345779852cb[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Jan 2 20:09:21 2016 +0100
+
+    Added two new bacground tasks (every 35 and 50 minutes). Reused only one function to register all of them.
+
+[33mcommit 9b651b491cb61550d033f6c72460c42e2a0887a7[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Jan 2 19:50:36 2016 +0100
+
+    When the app is resumed the user must enter the password.
+
+[33mcommit 20297496d60d2af7fbe2b30636c3c2648446ab0d[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Jan 2 10:35:36 2016 +0100
+
+    Added disclaimer when the app is running on a PC.
+
+[33mcommit 156c874f8d5876606fc45d25505604f8f2f3ad93[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Jan 2 10:23:04 2016 +0100
+
+    Removed core dispatcher when setting data context.
+
+[33mcommit c5d42359dbc28d372bd87ed13fe92f131c9ce7f9[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Jan 2 00:57:28 2016 +0100
+
+    The app does not crash anymore when showing the popup for succesful excel export.
+    Added core dispatcher when setting Data Context.
+
+[33mcommit d320b3394c351a12c7da887df1250363fd7d6614[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Fri Jan 1 10:10:11 2016 +0100
+
+    Removed success popup after export (caused app to crash).
+
+[33mcommit e7a3ed463537b028af346c1001bbd2a8b113511e[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Fri Jan 1 10:07:24 2016 +0100
+
+    Moved the export icon between refresh and calendar.
+
+[33mcommit e0133b5488a394a040651854495045f20aeacfc7[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Fri Jan 1 03:38:17 2016 +0100
+
+    Translated excel file (parts are missing in german).
+    Export button has now an icon.
+    Fixed bugs in excel file creation.
+
+[33mcommit 3f774eebe37aff9c31a0dd9345ded51a2bdb9d0a[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Fri Jan 1 02:39:52 2016 +0100
+
+    The chart is now placed correctly.
+
+[33mcommit da033cc06446500a413b8e29626326fc2fa00abe[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Thu Dec 31 18:26:11 2015 +0100
+
+    Added chart (has to be positioned under the daily overview).
+
+[33mcommit 8d39db7317dbff102d34ffaabc34f06d728e2291[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Thu Dec 31 16:53:47 2015 +0100
+
+    Moved the day overview creation outside the timeline loop.
+
+[33mcommit a9ffd8cfd4121b7a1d98871cd210e860970b2221[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Thu Dec 31 16:44:17 2015 +0100
+
+    Added excel generation.
+    The excel file contains the timeline and  the overview.
+
+[33mcommit 06c770a74dbee3fc712b702bdd90334f654f7de5[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Wed Dec 30 22:25:03 2015 +0100
+
+    Fixed bug in background task that caused the current number of unlocks to be the number of all the unlocks.
+    Started adding code-behind for Excel export.
+
+[33mcommit 21b9ae83f202606b6172abdf73d3f1f83b06c6f3[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Tue Dec 29 17:18:33 2015 +0100
+
+    Changed primary button in span dialog, to be used for Excel export.
+
+[33mcommit 1afb6fb28ee14cd855d6ccdd5aadd690b54e995f[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Tue Dec 29 17:02:57 2015 +0100
+
+    Added bottom app bar button to save the excel file.
+
+[33mcommit 782f313725e985a9fa5f46385cc24d916e1d5edf[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Tue Dec 29 16:46:31 2015 +0100
+
+    Rimossa export page.
+
+[33mcommit f304827b98d0ffcda333d6b1e0e0984e7106cfb7[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Tue Dec 29 15:49:42 2015 +0100
+
+    Moved project folder to sd card.
+    Retarged Syncfusion controls.
+
+[33mcommit 8815e54d42b4fdd076b36d42cafcb351ae8949ca[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sun Dec 27 16:36:21 2015 +0100
+
+    Commented smsreceived.cs.
+    changed ts_data in timeline to private.
+
+[33mcommit 9b2c7485fc1510d42926160492ed3ae20ce6bd27[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sun Dec 27 16:18:22 2015 +0100
+
+    Fixed binding in report page.
+
+[33mcommit 1e0969f890c8f14bc899295dd41ef72da30e41d2[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sun Dec 27 16:08:07 2015 +0100
+
+    Cleaned methods when showing dialogs.
+
+[33mcommit d9ce91d3057c7d90e8dafa52f79c058d6c97961a[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sun Dec 27 15:39:01 2015 +0100
+
+    Cleaned code.
+    Added registration of timer tasks for PCs.
+    Removed code to register limit_reach task (not used anymore)
+
+[33mcommit ee991f6a8bb87b6a5a873c3c059808b7cdbb20eb[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Dec 26 23:56:43 2015 +0100
+
+    Fixed binding in timeline page.
+
+[33mcommit eec7f90725387a9e19d75a5c45b6a6f271abbff7[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Dec 26 16:09:38 2015 +0100
+
+    Added binding to report page.
+
+[33mcommit 4f4619e3daa1d6721c775440df551e2c160efc35[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Dec 26 15:54:43 2015 +0100
+
+    Added binding to timeline page.
+    When data are refreshing is now disabled only the command bar (not all the buttons)
+
+[33mcommit 2ecbab1345caae7acdd36dc81c812e7c10bb8f65[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Dec 26 15:38:54 2015 +0100
+
+    Added binding to home page.
+
+[33mcommit 2ea7f9208166773a012ddbe13df3bc23feb69b86[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Dec 26 12:55:08 2015 +0100
+
+    Added file save picker to export page.
+
+[33mcommit 1363491f9c2cf5dcff0abe23ff3fecf945990af1[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Dec 26 10:41:25 2015 +0100
+
+    Changed spash screen background to black.
+
+[33mcommit 2f2b676a4cc7ec1df870647a6334f1c605fba1c6[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Thu Dec 24 15:23:13 2015 +0100
+
+    Fixed excel generation.
+    Added bottom app bar.
+
+[33mcommit 026731e35874508a6bd8762881b4644f1a206a8e[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Thu Dec 24 15:03:48 2015 +0100
+
+    Changed settings from roaming to local
+
+[33mcommit e3b1d2ebf0143c9d5227abd02354817a3acf701b[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Wed Dec 23 23:18:21 2015 +0100
+
+    Added code behind to export navigation button.
+    Added videos folder capability (have to be removed).
+    Created a test excel file.
+
+[33mcommit 09de11b41c145911cbb143a1203c59f17ced6517[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Wed Dec 23 22:56:05 2015 +0100
+
+    Added Export page.
+    Added navigation button in split pane for export page
+
+[33mcommit 9c62e890cecc015dc7007a76f5839536aba0e2a4[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Wed Dec 23 22:46:31 2015 +0100
+
+    Reassociated App with Beta version.
+    Moved range variables to App.xaml.cs, to reuse the same range dialog in different scenarios.
+
+[33mcommit 6e2c2a1359d38ba00a4662375248cd091500fa5f[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Tue Dec 22 23:18:24 2015 +0100
+
+    Changed feedback template.
+
+[33mcommit c916b6861c40d873b73de7b349f9f7ff92b8e132[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Dec 19 22:40:37 2015 +0100
+
+    Fixed missing text for wifi and bluetooth filters in analysis page.
+
+[33mcommit 6d6b90a1112ec516d287ff21920960e52c6cb478[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Dec 19 17:06:31 2015 +0100
+
+    Associated app to the stable version.
+
+[33mcommit e905a5f4abedcb102776a6db0f4d35e97f18ddc3[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Dec 19 16:34:42 2015 +0100
+
+    Fixed URI launch bug
+
+[33mcommit 229878f4838d5890bca8ff3ddf794680a8e7c815[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Sat Dec 19 15:05:15 2015 +0100
+
+    Completed german translation.
+    Removed usage/charge banner from strings.
+
+[33mcommit 959e350cb15805212cfd3298d0521079d44fe044[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Fri Dec 18 19:24:33 2015 +0100
+
+    Fixed typo in toast content for german.
+
+[33mcommit 9fdd94a04064074f2b2b0f7430c57849c2fea200[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Fri Dec 18 18:30:53 2015 +0100
+
+    Added a placeholder to identify missing translations in german.
+
+[33mcommit 799f3a9ca6898ac029e7418fdfea413c1271ef40[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Fri Dec 18 18:24:57 2015 +0100
+
+    Reduced lenght of unlocks/hour banner for german.
+
+[33mcommit 934dd42abf5499bfd4fb5047e3757bcfd1321250[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Thu Dec 17 22:50:44 2015 +0100
+
+    Fixed bug that caused the app to crash when opened from toast notification.
+
+[33mcommit fd5352ad605c495790fc76e0f2809ee523533247[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Tue Dec 15 19:50:13 2015 +0100
+
+    Changed CheckDate from async Task<bool> to bool.
+    Fixed coding errors.
+
+[33mcommit 7dccd5b0c4022e76444f43881f743967d2f78c30[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Tue Dec 15 19:26:28 2015 +0100
+
+    Translated special thanks section in german
+
+[33mcommit 93e07da443fb587f93185d5ab46bc7ee401668fa[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Tue Dec 15 18:48:52 2015 +0100
+
+    Added special thanks to TheWinDuck in settings page.
+
+[33mcommit 266be3af75c3e8553c31ee144f353c631fcad39f[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Tue Dec 15 17:57:35 2015 +0100
+
+    Fixed german translation mistakes.
+
+[33mcommit c86a485435d89bb381ce0a4c896f17fa5b852a51[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Tue Dec 15 15:43:09 2015 +0100
+
+    Removed screenshot picture.
+    Cleaned code.
+
+[33mcommit af0a5b3b0e9c19a1489532fda64ecf619c3a130b[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Tue Dec 15 15:20:10 2015 +0100
+
+    Removed hardcoded text.
+    Cleaned code and layouts.
+
+[33mcommit 9e94c53ae8409013f949430120c5a80c6edd9f59[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Mon Dec 14 23:18:31 2015 +0100
+
+    Improved location tracking.
+    Removed unused methods from helper.cs.
+
+[33mcommit e599be6fbb52f8a2e7b173de45910d161628042a[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Mon Dec 14 23:10:50 2015 +0100
+
+    Removed limitreach.cs;
+    Changed default usage threshold to 2 hours.
+
+[33mcommit a87f0e4ee38c0621245319c7ba11613079f8e09d[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Mon Dec 14 23:08:22 2015 +0100
+
+    Fixed italian translation.
+    Fixed rate reminder,
+
+[33mcommit 8ca1b9bf8eb92834d34712d2db59b4457cb9d767[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Mon Dec 14 22:53:36 2015 +0100
+
+    Fixed Keyboard support (Ctrl+4 now opens analysis page)
+
+[33mcommit 6941520af2cae6c3bf06695422979ba901bba326[m
+Author: Lorenzo Farinelli <lori.gami@live.it>
+Date:   Mon Dec 14 17:38:54 2015 +0100
+
+    First commit after reinstalling Visual Studio

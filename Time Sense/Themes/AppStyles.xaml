@@ -18,6 +18,7 @@
     <converters:MinutesConverter x:Key="MinutesConverter"/>
     <converters:BoolConverter x:Key="BoolConverter"/>
     <converters:NoteEditConverter x:Key="NoteEditConverter"/>
+    <converters:BoolVisibilityConverter x:Key="BoolVisibilityConverter"/>
     <viewmodels:ViewModelLocator x:Key="ViewModelLocator"/>
 
     <!-- REGION SETTINGS -->

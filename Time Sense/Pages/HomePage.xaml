@@ -12,6 +12,10 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <RelativePanel>
                 <Grid x:Name="time_grid" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True">
@@ -145,12 +149,12 @@
                                 <FontIcon x:Name="battery_header" Glyph="" />
                             </PivotItem.Header>
                             <Grid>
-                                <StackPanel x:Name="notch_panel" Margin="0,24,0,12" HorizontalAlignment="Center" Visibility="{Binding notch_panel}">
-                                    <TextBlock x:Name="usage_batt_txt" Style="{StaticResource usage_banner_text}" Text="{Binding battery_usage}" />
-                                    <TextBlock x:Name="unlocks_batt_txt" Style="{StaticResource unlocks_banner_text}" Text="{Binding battery_unlocks}" />
+                                <StackPanel Margin="0,24,0,12" HorizontalAlignment="Center" Visibility="{Binding Path=charging, Converter={StaticResource BoolVisibilityConverter}, ConverterParameter=false}">
+                                    <TextBlock Style="{StaticResource usage_banner_text}" Text="{Binding Path=recordData.battery_usage, Converter={StaticResource TimeConverter}}" />
+                                    <TextBlock Style="{StaticResource unlocks_banner_text}" Text="{Binding Path=recordData.battery_unlocks, Converter={StaticResource UnlocksConverter}}" />
                                     <TextBlock x:Uid="helper_notch_txt" Margin="0,12" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding FontSize, ElementName=hour_time_header}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" />
                                 </StackPanel>
-                                <StackPanel x:Name="ch_panel" Visibility="{Binding ch_panel}">
+                                <StackPanel Visibility="{Binding Path=charging, Converter={StaticResource BoolVisibilityConverter}}">
                                     <StackPanel Margin="0,24,0,12" HorizontalAlignment="Center">
                                         <Viewbox MinHeight="100" MaxWidth="100" Margin="48,0" HorizontalAlignment="Center">
                                             <FontIcon HorizontalAlignment="Center" FontSize="10" Foreground="#FFAF00" Glyph="" />
@@ -164,9 +168,8 @@
                 </RelativePanel>
             </RelativePanel>
         </ScrollViewer>
-    </Grid>
-    <Page.BottomAppBar>
-        <CommandBar ClosedDisplayMode="Compact">
+
+        <CommandBar Grid.Row="1" ClosedDisplayMode="Compact">
             <AppBarButton x:Uid="back_bar" Command="{Binding Path=ChangeDay}" CommandParameter="-1" Icon="Back" />
             <AppBarButton x:Uid="forward_bar" Command="{Binding Path=ChangeDay}" CommandParameter="1" Icon="Forward" />
             <AppBarButton x:Uid="date_bar" Command="{Binding Path=PickDate}" Icon="Calendar" />
@@ -175,5 +178,5 @@
                 <AppBarButton x:Uid="export_bar" Command="{Binding Path=ExportData}" Icon="Save" />
             </CommandBar.SecondaryCommands>
         </CommandBar>
-    </Page.BottomAppBar>
+    </Grid>
 </Page>

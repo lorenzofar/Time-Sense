@@ -8,13 +8,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Windows.Devices.Power;
 using Windows.Media.SpeechSynthesis;
 using Windows.Storage;
 using Windows.Storage.Pickers;
+using Windows.System.Power;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 
 namespace Time_Sense.ViewModels
 {
@@ -112,6 +113,19 @@ namespace Time_Sense.ViewModels
             set
             {
                 Set(ref _editingNote, value);
+            }
+        }
+
+        private bool _charging;
+        public bool charging
+        {
+            get
+            {
+                return _charging;
+            }
+            set
+            {
+                Set(ref _charging, value);
             }
         }
         #endregion
@@ -364,7 +378,7 @@ namespace Time_Sense.ViewModels
                                     string wifi = wifi_device == null ? "off" : wifi_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
                                     string battery = Windows.Devices.Power.Battery.AggregateBattery.GetReport().Status == Windows.System.Power.BatteryStatus.Charging ? "charging" : "null";
                                     await Helper.AddTimelineItem(date[1], "00:00:00", 1, Windows.System.Power.PowerManager.RemainingChargePercent, battery, bluetooth, wifi);
-                                    await Database.Helper.UpdateTimelineItem(1, time[1], date[1]);
+                                    await Helper.UpdateTimelineItem(1, time[1], date[1]);
                                 }
                             }
                         }
@@ -398,6 +412,7 @@ namespace Time_Sense.ViewModels
                     unlocks = 0
                 };
             }
+            #region HOURLY REPORT
             hourList = await Helper.GetHourList(App.report_date);
             var usage_list = hourList.Where(x => x.usage != 0).ToList();
             var unlocks_list = hourList.Where(x => x.unlocks != 0).ToList();
@@ -433,6 +448,48 @@ namespace Time_Sense.ViewModels
             }
             var usage_avg = Math.Round((usage_tot / usage_list.Count), 2);
             var unlocks_avg = Math.Round((unlocks_tot / unlocks_list.Count), 2);
+            #endregion
+            #region BATTERY DATA
+            charging = Battery.AggregateBattery.GetReport().Status == BatteryStatus.Charging;
+            int batt_time = 0;
+            int batt_unlocks = 0;
+            if (!charging)
+            {
+                var timeline = await Helper.ConnectionDb().Table<Timeline>().ToListAsync();
+                int list_count = timeline.Count - 1;
+                int battery = 0;
+                if (list_count > 0)
+                {
+                    do
+                    {
+                        try
+                        {
+                            var item = timeline.ElementAt(list_count);
+                            if (item != null && item.battery_status != "charging")
+                            {
+                                batt_time += int.Parse(item.usage.ToString());
+                                batt_unlocks++;
+                                battery = item.battery;
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            App.t_client.TrackException(new ExceptionTelemetry(e));
+                        }
+                        finally
+                        {
+                            list_count--;
+                        }
+                    }
+                    while (CheckBattery(timeline, battery, list_count));
+                }
+                else
+                {
+                    batt_time = homeData.usage;
+                    batt_unlocks = homeData.unlocks;
+                }
+            }
+            #endregion
             recordData = new Records()
             {
                 usage_max = usage_max,
@@ -440,8 +497,26 @@ namespace Time_Sense.ViewModels
                 unlocks_max = unlocks_max,
                 unlocks_min = unlocks_min == 1000 ? 0 : unlocks_min,
                 usage_avg = double.IsNaN(usage_avg)? 0 : usage_avg,
-                unlocks_avg = double.IsNaN(unlocks_avg)? 0 : unlocks_avg
-            };
+                unlocks_avg = double.IsNaN(unlocks_avg)? 0 : unlocks_avg,
+                battery_usage = batt_time,
+                battery_unlocks = batt_unlocks
+            };            
+        }
+
+        private bool CheckBattery(List<Timeline> list, int battery, int count)
+        {
+            count = count--;
+            if (count >= 0)
+            {
+                var item = list.ElementAt(count);
+                if (item != null)
+                {
+                    if (item.battery < battery || item.battery_status == "charging") { return false; }
+                    else { return true; }
+                }
+                else { return false; }
+            }
+            else { return false; }
         }
 
         private void ConvertSeconds()
@@ -465,7 +540,7 @@ namespace Time_Sense.ViewModels
         private async void Speak()
         {
             SpeechSynthesizer syntetizer = new SpeechSynthesizer();
-            int[] data = utilities.SplitData(time[1]);
+            int[] data = utilities.SplitData(homeData.usage);
             SpeechSynthesisStream stream = await syntetizer.SynthesizeTextToStreamAsync(String.Format(utilities.loader.GetString("voice_usage"), data[0], data[0] == 1 ? utilities.loader.GetString("hour") : utilities.loader.GetString("hours"), data[1], data[1] == 1 ? utilities.loader.GetString("minute") : utilities.loader.GetString("minutes"), data[2], data[2] == 1 ? utilities.loader.GetString("second") : utilities.loader.GetString("seconds"), unlocks[1], unlocks[1] == 1 ? utilities.loader.GetString("time") : utilities.loader.GetString("times")));
             m_element.SetSource(stream, stream.ContentType);
             m_element.Play();
