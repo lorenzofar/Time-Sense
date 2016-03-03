@@ -147,7 +147,7 @@ namespace Time_Sense
             if (fr.SourcePageType != typeof(HomePage))
             {
                 home_btn.IsChecked = true;
-                splitview.IsSwipeablePaneOpen = false;
+                splitview.IsPaneOpen = false;
                 e.Handled = true;
             }
         }
@@ -300,7 +300,7 @@ namespace Time_Sense
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             App.t_client.TrackEvent("Hamburger_btn");
-            splitview.IsSwipeablePaneOpen = !splitview.IsSwipeablePaneOpen;
+            splitview.IsPaneOpen = !splitview.IsPaneOpen;
         }
 
         private async void nav_btn_checked(object sender, RoutedEventArgs e)
@@ -394,7 +394,7 @@ namespace Time_Sense
             {
                 if (vs_group.CurrentState.Name != "wide")
                 {
-                    splitview.IsSwipeablePaneOpen = false;
+                    splitview.IsPaneOpen = false;
                 }
             }
             catch { }
@@ -407,7 +407,7 @@ namespace Time_Sense
             switch (e.Key)
             {
                 case Windows.System.VirtualKey.Tab:
-                    splitview.IsSwipeablePaneOpen = !splitview.IsSwipeablePaneOpen;
+                    splitview.IsPaneOpen = !splitview.IsPaneOpen;
                     break;
                 case Windows.System.VirtualKey.Control:
                     control = true;

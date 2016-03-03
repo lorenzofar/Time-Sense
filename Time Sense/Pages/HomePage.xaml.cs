@@ -1,18 +1,16 @@
 ﻿using Database;
+using GalaSoft.MvvmLight.Messaging;
 using Microsoft.ApplicationInsights.DataContracts;
 using Stuff;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Email;
 using Windows.Data.Xml.Dom;
-using Windows.Media.SpeechSynthesis;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.UI.Notifications;
 using Windows.UI.Popups;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -21,73 +19,18 @@ namespace Time_Sense
 {
     public sealed partial class HomePage : Page
     {
-        static DateTime[] date = new DateTime[2];
-        public List<Hour> hour_list_raw = new List<Hour>();
-
-        MediaElement m_element = new MediaElement();
-
-        public class ts_data
-        {
-            public string usage { get; set; }
-            public string unlocks { get; set; }
-            public string perc_str { get; set; }
-            public int perc { get; set; }
-            public string usage_max { get; set; }
-            public string usage_min { get; set; }
-            public string usage_avg { get; set; }
-            public string unlocks_max { get; set; }
-            public string unlocks_min { get; set; }
-            public string unlocks_avg { get; set; }
-            public string battery_usage { get; set; }
-            public string battery_unlocks { get; set; }
-            public Visibility ch_panel { get; set; }
-            public Visibility notch_panel { get; set; }
-            public List<Hour> h_list { get; set; }
-            public Visibility note_panel { get; set; }
-            public Visibility nonote_panel { get; set; }
-            public string note { get; set; }
-        }
-
-        static int[] time = new int[2];
-        static int[] unlocks = new int[2];
-        static int[] total_seconds = new int[2];
-        static int diff = 0;
-
         public HomePage()
         {
             this.InitializeComponent();
-            //this.NavigationCacheMode = NavigationCacheMode.Required;            
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-           /* App.t_client.TrackPageView("Home page");
-            ManageInputPane();
-            ButtonSwitch(false);
-            refresh();
-            ShowData();
-            if (App.jump_arguments == "usage")
-            {
-                SpeechSynthesizer syntetizer = new SpeechSynthesizer();
-                int[] data = utilities.SplitData(time[1]);
-                SpeechSynthesisStream stream = await syntetizer.SynthesizeTextToStreamAsync(String.Format(utilities.loader.GetString("voice_usage"), data[0], data[0] == 1 ? utilities.loader.GetString("hour") : utilities.loader.GetString("hours"), data[1], data[1] == 1 ? utilities.loader.GetString("minute") : utilities.loader.GetString("minutes"), data[2], data[2] == 1 ? utilities.loader.GetString("second") : utilities.loader.GetString("seconds"), unlocks[1], unlocks[1] == 1 ? utilities.loader.GetString("time") : utilities.loader.GetString("times")));
-                m_element.SetSource(stream, stream.ContentType);
-                m_element.Play();
-                MainPage.parameter = null;
-            }
-            App.jump_arguments = null;
-            ButtonSwitch(true);*/
+            Messenger.Default.Send<MessageHelper.HomeMessage>(new MessageHelper.HomeMessage());
         }
-        
-        public async void ShowData()
+
+        /*public async void ShowData()
         {
-            if (App.report_date.Date != DateTime.Now.Date)
-            {
-                int[] usage = await Helper.LoadReportItem(App.report_date);
-                time[1] = usage[0];
-                unlocks[1] = usage[1];
-            }
-            hour_list_raw = await Helper.GetHourList(App.report_date);
             List<Hour> hour_list = new List<Hour>();
 
             double time_helper = 0;
@@ -303,6 +246,6 @@ namespace Time_Sense
                 }
             }
             catch { }
-        }
+        }*/
     }
 }

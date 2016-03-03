@@ -119,6 +119,7 @@
     <Compile Include="Converters\NoteEditConverter.cs" />
     <Compile Include="Converters\PercentageConverter.cs" />
     <Compile Include="Converters\UnlocksConverter.cs" />
+    <Compile Include="MessageHelper.cs" />
     <Compile Include="Pages\AnalyticsPage.xaml.cs">
       <DependentUpon>AnalyticsPage.xaml</DependentUpon>
     </Compile>

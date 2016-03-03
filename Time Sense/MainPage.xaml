@@ -118,7 +118,7 @@
             </Grid>
         </Grid>
 
-        <local:SwipeableSplitView IsPanSelectorEnabled="False" Grid.Row="1" DisplayMode="CompactOverlay" x:Name="splitview" CompactPaneLength="48" OpenPaneLength="200">
+        <SplitView Grid.Row="1" DisplayMode="CompactOverlay" x:Name="splitview" CompactPaneLength="48" OpenPaneLength="200">
             <SplitView.Content>
                 <Frame x:Name="fr"/>
             </SplitView.Content>
@@ -136,7 +136,7 @@
                     <RadioButton x:Uid="about_btn" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" HorizontalAlignment="Stretch" GroupName="nav" x:Name="about_btn" Style="{StaticResource NavRadioButtonStyle}" Tag="&#xE946;" Content="About" Checked="nav_btn_checked"/>
                 </RelativePanel>
             </SplitView.Pane>
-        </local:SwipeableSplitView>
+        </SplitView>
 
     </Grid>
 </Page>

@@ -1,5 +1,6 @@
 ﻿using Database;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using Microsoft.ApplicationInsights.DataContracts;
 using Stuff;
 using System;
@@ -42,6 +43,24 @@ namespace Time_Sense.ViewModels
         private bool _inputBool = false;
         public bool inputBool { get { return _inputBool; } set { Set(ref _inputBool, value); } }
         #endregion
+
+        public HomeViewModel()
+        {
+            Messenger.Default.Register<MessageHelper.HomeMessage>(this, message => {
+                OnNavigatedTo();
+            });
+        }
+
+        public async Task OnNavigatedTo()
+        {
+            Refresh();
+            ShowData();
+            if (App.jump_arguments == "usage")
+            {
+                Speak();
+            }
+            App.jump_arguments = null;
+        }
 
         #region DATA
         private Report _homeData;
@@ -204,19 +223,24 @@ namespace Time_Sense.ViewModels
                 return _EditNote;
             }
         }
-        #endregion
 
-        public override Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
+        private RelayCommand _PivotSwipe;
+        public RelayCommand PivotSwipe
         {
-            Refresh();
-            if (App.jump_arguments == "usage")
+            get
             {
-                Speak();
-            }
-            App.jump_arguments = null;
-            return base.OnNavigatedToAsync(parameter, mode, state); ;
-        }
+                if(_PivotSwipe == null)
+                {
+                    _PivotSwipe = new RelayCommand(() =>
+                    {
 
+                    });
+                }
+                return _PivotSwipe;
+            }
+        }
+        #endregion
+        
         #region RETRIEVE AND SHOW DATA
         private async void Refresh()
         {
