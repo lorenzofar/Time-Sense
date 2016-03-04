@@ -28,13 +28,8 @@
                     </StackPanel>
                 </Grid>
                 <RelativePanel x:Name="charts_grid" HorizontalAlignment="Stretch" Background="{ThemeResource SystemControlBackgroundListMediumBrush}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="time_grid">
-                    <TextBlock Text="{Binding Path=selectedIndex}" x:Name="home_chart_helper" Margin="12,15,24,12" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" />
-                    <Pivot x:Name="home_charts_pivot" RelativePanel.AlignTopWithPanel="True">
-                        <interactivity:Interaction.Behaviors>
-                            <core:EventTriggerBehavior EventName="SelectionChanged">
-                                <core:InvokeCommandAction Command="{Binding Path=PivotSwipe}"/>
-                            </core:EventTriggerBehavior>
-                        </interactivity:Interaction.Behaviors>
+                    <TextBlock Text="{Binding Path=pivotBanner}" x:Name="home_chart_helper" Margin="12,15,24,12" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignTopWithPanel="True" />
+                    <Pivot x:Name="home_charts_pivot" SelectedIndex="{Binding Path=pivotIndex, Mode=TwoWay}" RelativePanel.AlignTopWithPanel="True">                        
                         <PivotItem>
                             <PivotItem.Header>
                                 <FontIcon x:Name="hour_time_header" Glyph="" />

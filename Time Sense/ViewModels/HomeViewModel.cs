@@ -8,11 +8,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Windows.Data.Xml.Dom;
 using Windows.Devices.Power;
 using Windows.Media.SpeechSynthesis;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.System.Power;
+using Windows.UI.Notifications;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml.Controls;
@@ -40,6 +42,8 @@ namespace Time_Sense.ViewModels
         private int[] total_seconds = new int[2];
         private int diff = 0;
 
+        private static string[] pivot_strings = { "usage_hour_title", "unlocks_hour_title", "charge_banner", "note_banner" };
+
         #region Visibility bools
         private bool _inputBool = false;
         public bool inputBool { get { return _inputBool; } set { Set(ref _inputBool, value); } }
@@ -55,7 +59,6 @@ namespace Time_Sense.ViewModels
         public async Task OnNavigatedTo()
         {
             Refresh();
-            ShowData();
             if (App.jump_arguments == "usage")
             {
                 Speak();
@@ -128,6 +131,34 @@ namespace Time_Sense.ViewModels
                 Set(ref _charging, value);
             }
         }
+
+        private int _pivotIndex = 0;
+        public int pivotIndex
+        {
+            get
+            {
+                return _pivotIndex;
+            }
+            set
+            {
+                Set(ref _pivotIndex, value);
+                App.t_client.TrackEvent("Home pivot swipe");
+                pivotBanner = utilities.loader.GetString(pivot_strings[_pivotIndex]);
+            }
+        }
+
+        private string _pivotBanner = utilities.loader.GetString(pivot_strings[0]);
+        public string pivotBanner
+        {
+            get
+            {
+                return _pivotBanner;
+            }
+            set
+            {
+                Set(ref _pivotBanner, value);
+            }
+        }
         #endregion
 
         #region COMMANDS
@@ -141,7 +172,6 @@ namespace Time_Sense.ViewModels
                     _RefreshBtn = new RelayCommand(() => 
                     {
                         Refresh();
-                        ShowData();
                     });
                 }
                 return _RefreshBtn;
@@ -160,8 +190,7 @@ namespace Time_Sense.ViewModels
                         int days = int.Parse(parameter.ToString());
                         App.t_client.TrackEvent(days == 1 ? "Next day" : "Previous day");
                         App.report_date = App.report_date.AddDays(days);
-                        if (App.report_date.Date == DateTime.Now.Date) { Refresh(); }
-                        ShowData();
+                        Refresh();
                     });
                 }
                 return _ChangeDay;
@@ -180,7 +209,6 @@ namespace Time_Sense.ViewModels
                         if (await new DateDialog().ShowAsync() == ContentDialogResult.Primary)
                         {
                             Refresh();
-                            ShowData();
                         }
                     });
                 }
@@ -238,16 +266,16 @@ namespace Time_Sense.ViewModels
             }
         }
 
-        private RelayCommand _PivotSwipe;
-        public RelayCommand PivotSwipe
+        private RelayCommand<object> _PivotSwipe;
+        public RelayCommand<object> PivotSwipe
         {
             get
             {
                 if(_PivotSwipe == null)
                 {
-                    _PivotSwipe = new RelayCommand(() =>
+                    _PivotSwipe = new RelayCommand<object>((e) =>
                     {
-
+                        var args = e as SelectionChangedEventArgs;
                     });
                 }
                 return _PivotSwipe;
@@ -317,8 +345,8 @@ namespace Time_Sense.ViewModels
                                     var wifi_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.WiFi).FirstOrDefault();
                                     string bluetooth = bluetooth_device == null ? "off" : bluetooth_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
                                     string wifi = wifi_device == null ? "off" : wifi_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
-                                    string battery = Windows.Devices.Power.Battery.AggregateBattery.GetReport().Status == Windows.System.Power.BatteryStatus.Charging ? "charging" : "null";
-                                    await Helper.AddTimelineItem(date[1], "00:00:00", 1, Windows.System.Power.PowerManager.RemainingChargePercent, battery, bluetooth, wifi);
+                                    string battery = Battery.AggregateBattery.GetReport().Status == BatteryStatus.Charging ? "charging" : "null";
+                                    await Helper.AddTimelineItem(date[1], "00:00:00", 1, PowerManager.RemainingChargePercent, battery, bluetooth, wifi);
                                     await Helper.UpdateTimelineItem(1, time[1], date[1]);
                                 }
                             }
@@ -376,8 +404,8 @@ namespace Time_Sense.ViewModels
                                     var wifi_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.WiFi).FirstOrDefault();
                                     string bluetooth = bluetooth_device == null ? "off" : bluetooth_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
                                     string wifi = wifi_device == null ? "off" : wifi_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
-                                    string battery = Windows.Devices.Power.Battery.AggregateBattery.GetReport().Status == Windows.System.Power.BatteryStatus.Charging ? "charging" : "null";
-                                    await Helper.AddTimelineItem(date[1], "00:00:00", 1, Windows.System.Power.PowerManager.RemainingChargePercent, battery, bluetooth, wifi);
+                                    string battery = Battery.AggregateBattery.GetReport().Status == BatteryStatus.Charging ? "charging" : "null";
+                                    await Helper.AddTimelineItem(date[1], "00:00:00", 1, PowerManager.RemainingChargePercent, battery, bluetooth, wifi);
                                     await Helper.UpdateTimelineItem(1, time[1], date[1]);
                                 }
                             }
@@ -385,7 +413,10 @@ namespace Time_Sense.ViewModels
                     }
                 save:
                     utilities.STATS.Values[settings.date] = date[1].ToString();
+                    await ShowData();
+                    UpdateTile();
                 }
+                await ShowData();
             }
             catch (Exception ex)
             {
@@ -394,7 +425,7 @@ namespace Time_Sense.ViewModels
             }
         }
 
-        private async void ShowData()
+        private async Task ShowData()
         {
             string date_str = utilities.shortdate_form.Format(App.report_date);
             var data = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
@@ -535,6 +566,23 @@ namespace Time_Sense.ViewModels
             int seconds = (usage - (hour * 3600)) - (minutes * 60);
             string letter = utilities.STATS.Values[settings.letters] == null ? "{0}:{1}:{2}" : "{0}h:{1}m:{2}s";
             return string.Format(letter, hour, minutes, seconds);
+        }
+
+        private void UpdateTile()
+        {
+            bool badge = utilities.STATS.Values[settings.unlocks] == null ? true : utilities.STATS.Values[settings.unlocks].ToString() == "badge" ? true : false;
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(utilities.TileXmlBuilder(utilities.FormatData(homeData.usage), homeData.unlocks, badge));
+            TileNotification tile = new TileNotification(doc);
+            TileUpdateManager.CreateTileUpdaterForApplication().Update(tile);
+            if (badge)
+            {
+                string badgeXmlString = "<badge value='" + homeData.unlocks.ToString() + "'/>";
+                XmlDocument badgeDOM = new XmlDocument();
+                badgeDOM.LoadXml(badgeXmlString);
+                BadgeNotification badge_not = new BadgeNotification(badgeDOM);
+                BadgeUpdateManager.CreateBadgeUpdaterForApplication().Update(badge_not);
+            }
         }
 
         private async void Speak()
