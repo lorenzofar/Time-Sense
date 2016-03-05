@@ -13,5 +13,13 @@
                 return new HomeViewModel();
             }
         }
+
+        public TimelineViewModel Timeline
+        {
+            get
+            {
+                return new TimelineViewModel();
+            }
+        }
     }
 }

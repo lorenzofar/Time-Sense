@@ -18,6 +18,16 @@ namespace Time_Sense
 
         }
 
+        public class ShowMapMessage
+        {
+            public Database.Timeline unlock { get; set; }
+        }
+
+        public class CloseMapMessage
+        {
+
+        }
+
         public class ReportMessage
         {
 

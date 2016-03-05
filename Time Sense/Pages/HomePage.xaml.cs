@@ -13,6 +13,7 @@ namespace Time_Sense
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            App.t_client.TrackPageView("Home Page");
             Messenger.Default.Send<MessageHelper.HomeMessage>(new MessageHelper.HomeMessage());
         }        
     }

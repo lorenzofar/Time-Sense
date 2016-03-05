@@ -415,8 +415,11 @@ namespace Time_Sense.ViewModels
                     utilities.STATS.Values[settings.date] = date[1].ToString();
                     await ShowData();
                     UpdateTile();
+                    goto already_loaded;
                 }
                 await ShowData();
+            already_loaded:
+                int load = 0;
             }
             catch (Exception ex)
             {

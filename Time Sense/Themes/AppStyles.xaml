@@ -19,6 +19,7 @@
     <converters:BoolConverter x:Key="BoolConverter"/>
     <converters:NoteEditConverter x:Key="NoteEditConverter"/>
     <converters:BoolVisibilityConverter x:Key="BoolVisibilityConverter"/>
+    <converters:ListEmptyConverter x:Key="ListEmptyConverter"/>
     <viewmodels:ViewModelLocator x:Key="ViewModelLocator"/>
 
     <!-- REGION SETTINGS -->

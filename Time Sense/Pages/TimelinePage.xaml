@@ -7,23 +7,21 @@
     xmlns:chart="using:Syncfusion.UI.Xaml.Charts"
     xmlns:db="using:Database"
     xmlns:local="using:Time_Sense"
-    xmlns:map="using:Windows.UI.Xaml.Controls.Maps"
+    xmlns:map="using:Windows.UI.Xaml.Controls.Maps"    
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=Timeline}"
     mc:Ignorable="d">
 
     <Page.Resources>
-        <SolidColorBrush
-            x:Key="chart_palette"
-            Color="#777C7D" />
+        <SolidColorBrush x:Key="chart_palette" Color="#777C7D" />
     </Page.Resources>
 
-    <Grid
-        HorizontalAlignment="Stretch"
-        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid HorizontalAlignment="Stretch" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
-            <RowDefinition
-                x:Name="map_row"
-                Height="0" />
+            <RowDefinition x:Name="map_row" Height="0" />
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid>
             <Grid.RowDefinitions>
@@ -31,27 +29,12 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <Grid
-                HorizontalAlignment="Stretch"
-                Background="{ThemeResource SystemControlBackgroundAccentBrush}"
-                Opacity="0.35" />
-            <TextBlock
-                x:Name="charts_header"
-                Margin="12"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                FontSize="{Binding
-                    FontSize,
-                    ElementName=timeline_header}"
-                Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" />
-            <Pivot
-                x:Name="chart_pivot"
-                SelectionChanged="chart_pivot_SelectionChanged">
+            <Grid HorizontalAlignment="Stretch" Background="{ThemeResource SystemControlBackgroundAccentBrush}" Opacity="0.35" />
+            <TextBlock Text="{Binding Path=pivotBanner}" Margin="12" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="{Binding FontSize, ElementName=timeline_header}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" />
+            <Pivot SelectedIndex="{Binding Path=pivotIndex, Mode=TwoWay}">
                 <PivotItem>
                     <PivotItem.Header>
-                        <FontIcon
-                            x:Name="timeline_header"
-                            Glyph="" />
+                        <FontIcon x:Name="timeline_header" Glyph="" />
                     </PivotItem.Header>
                     <chart:SfChart Style="{StaticResource timeline_chart}">
                         <chart:SfChart.ColorModel>
@@ -62,30 +45,20 @@
                             </chart:ChartColorModel>
                         </chart:SfChart.ColorModel>
                         <chart:SfChart.PrimaryAxis>
-                            <chart:NumericalAxis
-                                Minimum="1"
-                                Style="{StaticResource timeline_chart_axis}">
+                            <chart:NumericalAxis Minimum="1" Style="{StaticResource timeline_chart_axis}">
                                 <chart:NumericalAxis.LabelTemplate>
                                     <DataTemplate />
                                 </chart:NumericalAxis.LabelTemplate>
                             </chart:NumericalAxis>
                         </chart:SfChart.PrimaryAxis>
                         <chart:SfChart.SecondaryAxis>
-                            <chart:NumericalAxis
-                                Minimum="0"
-                                Style="{StaticResource timeline_chart_axis}">
+                            <chart:NumericalAxis Minimum="0" Style="{StaticResource timeline_chart_axis}">
                                 <chart:NumericalAxis.LabelTemplate>
                                     <DataTemplate />
                                 </chart:NumericalAxis.LabelTemplate>
                             </chart:NumericalAxis>
                         </chart:SfChart.SecondaryAxis>
-                        <chart:SplineAreaSeries
-                            x:Name="chart_time"
-                            AnimationDuration="0:0:1"
-                            EnableAnimation="True"
-                            ItemsSource="{Binding t_list}"
-                            XBindingPath="unlocks"
-                            YBindingPath="usage" />
+                        <chart:SplineAreaSeries AnimationDuration="0:0:1" EnableAnimation="True" ItemsSource="{Binding Path=timelineList}" XBindingPath="unlocks" YBindingPath="usage" />
                     </chart:SfChart>
                 </PivotItem>
                 <PivotItem>
@@ -101,42 +74,24 @@
                             </chart:ChartColorModel>
                         </chart:SfChart.ColorModel>
                         <chart:SfChart.PrimaryAxis>
-                            <chart:NumericalAxis
-                                Minimum="1"
-                                Style="{StaticResource timeline_chart_axis}">
+                            <chart:NumericalAxis Minimum="1" Style="{StaticResource timeline_chart_axis}">
                                 <chart:NumericalAxis.LabelTemplate>
                                     <DataTemplate />
                                 </chart:NumericalAxis.LabelTemplate>
                             </chart:NumericalAxis>
                         </chart:SfChart.PrimaryAxis>
                         <chart:SfChart.SecondaryAxis>
-                            <chart:NumericalAxis
-                                Maximum="100"
-                                Minimum="0"
-                                Style="{StaticResource timeline_chart_axis}">
+                            <chart:NumericalAxis Maximum="100" Minimum="0" Style="{StaticResource timeline_chart_axis}">
                                 <chart:NumericalAxis.LabelTemplate>
                                     <DataTemplate />
                                 </chart:NumericalAxis.LabelTemplate>
                             </chart:NumericalAxis>
                         </chart:SfChart.SecondaryAxis>
-                        <chart:AreaSeries
-                            x:Name="chart_battery"
-                            AnimationDuration="0:0:1"
-                            EnableAnimation="True"
-                            ItemsSource="{Binding t_list}"
-                            XBindingPath="unlocks"
-                            YBindingPath="battery" />
+                        <chart:AreaSeries AnimationDuration="0:0:1" EnableAnimation="True" ItemsSource="{Binding Path=timelineList}" XBindingPath="unlocks" YBindingPath="battery" />
                     </chart:SfChart>
                 </PivotItem>
             </Pivot>
-            <Rectangle
-                x:Name="separator"
-                Grid.Row="1"
-                Height="6"
-                Fill="{ThemeResource SystemControlBackgroundAccentBrush}"
-                RelativePanel.AlignLeftWithPanel="True"
-                RelativePanel.AlignRightWithPanel="True"
-                RelativePanel.Below="chart_pivot" />
+            <Rectangle x:Name="separator" Grid.Row="1" Height="6" Fill="{ThemeResource SystemControlBackgroundAccentBrush}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="chart_pivot" />
             <Grid
                 x:Name="list_grid"
                 Grid.Row="2"
@@ -221,42 +176,35 @@
                     </Border>
                 </Grid>
                 <Viewbox
-                    x:Name="ring_box"
                     Grid.Row="1"
                     MaxHeight="80"
                     MaxWidth="80"
                     Margin="12"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Visibility="Collapsed">
+                    Visibility="{Binding Path=loading, Converter={StaticResource BoolVisibilityConverter}}">
                     <StackPanel>
                         <ProgressRing
-                            x:Name="ring"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            IsActive="False" />
+                            IsActive="{Binding Path=loading, Converter={StaticResource BoolVisibilityConverter}}" />
                     </StackPanel>
                 </Viewbox>
-                <TextBlock
-                    x:Name="no_item_txt"
-                    x:Uid="no_items_txt"
-                    Grid.Row="1"
-                    Margin="0,24"
-                    HorizontalAlignment="Center"
-                    FontSize="{Binding
-                        FontSize,
-                        ElementName=timeline_header}"
-                    Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
-                    TextWrapping="WrapWholeWords"
-                    Visibility="{Binding no_item}" />
+                <TextBlock x:Uid="no_items_txt" Grid.Row="1" Margin="0,24" HorizontalAlignment="Center" FontSize="{Binding FontSize, ElementName=timeline_header}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" TextWrapping="WrapWholeWords" Visibility="{Binding Path=timelineList.Count, Converter={StaticResource ListEmptyConverter}}" />
                 <ListView
-                    x:Name="timeline_list"
                     Grid.Row="1"
-                    ItemsSource="{Binding t_list}"
-                    SelectionChanged="timeline_list_SelectionChanged"
-                    SelectionMode="Single"
+                    ItemsSource="{Binding Path=timelineList}"
+                    SelectionMode="None"
+                    IsItemClickEnabled="True"
                     Style="{StaticResource timeline_list}"
-                    ItemContainerStyle="{StaticResource list_style}"/>
+                    ItemContainerStyle="{StaticResource list_style}"
+                    Visibility="{Binding Path=loading, Converter={StaticResource BoolVisibilityConverter}, ConverterParameter=false}">
+                   <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="ItemClick">
+                            <core:InvokeCommandAction Command="{Binding Path=ItemClick}"/>
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                </ListView>
             </Grid>
         </Grid>
         <RelativePanel
@@ -284,7 +232,7 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Stretch"
                         Background="Red"
-                        Click="HyperlinkButton_Click">
+                        Command="{Binding Path=CloseMap}">
                         <Button.Content>
                             <FontIcon
                                 FontSize="20"
@@ -302,10 +250,18 @@
                     RotateInteractionMode="GestureAndControl"
                     TiltInteractionMode="GestureAndControl"
                     ZoomInteractionMode="GestureAndControl"
+                    ManipulationMode="All"
                     ZoomLevel="2" />
             </Grid>
 
         </RelativePanel>
+
+        <CommandBar Grid.Row="2">
+            <AppBarButton x:Uid="back_bar" Command="{Binding Path=ChangeDate}" CommandParameter="-1" Icon="Back" />
+            <AppBarButton x:Uid="forward_bar" Command="{Binding Path=ChangeDate}" CommandParameter="1" Icon="Forward" />
+            <AppBarButton x:Uid="date_bar" Command="{Binding Path=PickDate}" Icon="Calendar" />
+            <AppBarButton x:Uid="refresh_bar" Command="{Binding Path=RefreshData}" Icon="Refresh" />
+        </CommandBar>
 
         <Grid.Resources>
             <Storyboard x:Name="map_open">
@@ -317,34 +273,15 @@
                     To="1" />
             </Storyboard>
             <Storyboard x:Name="map_close">
-                <DoubleAnimation
-                    Completed="DoubleAnimation_Completed"
+                <DoubleAnimation                    
                     Duration="0:0:0.5"
                     From="1"
+                    Completed="DoubleAnimation_Completed"
                     Storyboard.TargetName="map_grid"
                     Storyboard.TargetProperty="Opacity"
                     To="0" />
             </Storyboard>
         </Grid.Resources>
+        
     </Grid>
-    <Page.BottomAppBar>
-        <CommandBar x:Name="bottom_bar">
-            <AppBarButton
-                x:Uid="back_bar"
-                Click="back_timeline_bar_Click"
-                Icon="Back" />
-            <AppBarButton
-                x:Uid="forward_bar"
-                Click="forward_timeline_bar_Click"
-                Icon="Forward" />
-            <AppBarButton
-                x:Uid="date_bar"
-                Click="date_timeline_bar_Click"
-                Icon="Calendar" />
-            <AppBarButton
-                x:Uid="refresh_bar"
-                Click="refresh_timeline_bar_Click"
-                Icon="Refresh" />
-        </CommandBar>
-    </Page.BottomAppBar>
 </Page>
