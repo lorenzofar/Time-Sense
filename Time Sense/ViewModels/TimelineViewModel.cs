@@ -193,6 +193,7 @@ namespace Time_Sense.ViewModels
             loading = true;
             string date_str = utilities.shortdate_form.Format(App.report_date);
             timelineList = await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).ToListAsync();
+            MainPage.title.Text = App.report_date.Date == DateTime.Now.Date ? utilities.loader.GetString("today") : App.report_date.Date == DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0, 0)).Date ? utilities.loader.GetString("yesterday") : utilities.shortdate_form.Format(App.report_date);
             loading = false;
         }
 

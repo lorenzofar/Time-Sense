@@ -419,7 +419,7 @@ namespace Time_Sense.ViewModels
                 }
                 await ShowData();
             already_loaded:
-                int load = 0;
+                bool loaded = true;
             }
             catch (Exception ex)
             {
@@ -534,7 +534,8 @@ namespace Time_Sense.ViewModels
                 unlocks_avg = double.IsNaN(unlocks_avg)? 0 : unlocks_avg,
                 battery_usage = batt_time,
                 battery_unlocks = batt_unlocks
-            };            
+            };
+            MainPage.title.Text = App.report_date.Date == DateTime.Now.Date ? utilities.loader.GetString("today") : App.report_date.Date == DateTime.Now.Subtract(new TimeSpan(1, 0, 0, 0, 0)).Date ? utilities.loader.GetString("yesterday") : utilities.shortdate_form.Format(App.report_date);
         }
 
         private bool CheckBattery(List<Timeline> list, int battery, int count)
