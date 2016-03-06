@@ -5,27 +5,34 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:chart="using:Syncfusion.UI.Xaml.Charts"
-    xmlns:local="using:Time_Sense"
+    xmlns:local="using:Time_Sense"    
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=Report}"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <Viewbox
             x:Name="ring_box"
             MaxHeight="80"
             MaxWidth="80"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Visibility="Collapsed">
+            Visibility="{Binding Path=loading, Converter={StaticResource BoolVisibilityConverter}}">
             <StackPanel>
                 <ProgressRing
                     x:Name="ring"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center" />
+                    VerticalAlignment="Center"
+                    IsActive="{Binding Path=loading, Converter={StaticResource BoolConverter}}"/>
             </StackPanel>
         </Viewbox>
         <ScrollViewer
             x:Name="root"
-            VerticalScrollBarVisibility="Auto">
+            VerticalScrollBarVisibility="Auto"
+            Visibility="{Binding Path=loading, Converter={StaticResource BoolVisibilityConverter}, ConverterParameter=false}">
             <RelativePanel>
                 <Grid
                     x:Name="time_grid"
@@ -37,13 +44,12 @@
                         Opacity="0.35" />
                     <StackPanel>
                         <TextBlock
-                            x:Name="usage_txt"
                             Style="{StaticResource usage_banner_text}"
-                            Text="{Binding usage}" />
+                            Text="{Binding Path=data.usage, Converter={StaticResource TimeConverter}}" />
                         <TextBlock
                             x:Name="unlocks_txt"
                             Style="{StaticResource unlocks_banner_text}"
-                            Text="{Binding unlocks}" />
+                            Text="{Binding Path=data.unlocks, Converter={StaticResource UnlocksConverter}}" />
                         <ProgressBar
                             x:Name="bar"
                             Height="6"
@@ -61,19 +67,16 @@
                     RelativePanel.AlignRightWithPanel="True"
                     RelativePanel.Below="time_grid">
                     <TextBlock
-                        x:Name="chart_helper"
                         Margin="12"
-                        FontSize="{Binding
-                            FontSize,
-                            ElementName=hour_time_header}"
+                        FontSize="{Binding FontSize, ElementName=hour_time_header}"
                         Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
                         RelativePanel.AlignRightWithPanel="True"
                         RelativePanel.AlignTopWithPanel="True"
-                        Text="" />
+                        Text="{Binding Path=pivotBanner}" />
                     <Pivot
                         x:Name="statistics_chart"
                         RelativePanel.AlignTopWithPanel="True"
-                        SelectionChanged="statistics_chart_SelectionChanged">
+                        SelectedIndex="{Binding Path=pivotIndex, Mode=TwoWay}">
                         <PivotItem>
                             <PivotItem.Header>
                                 <FontIcon
@@ -105,7 +108,7 @@
                                         x:Name="chart_time"
                                         AnimationDuration="0:0:1"
                                         EnableAnimation="True"
-                                        ItemsSource="{Binding r_list}"
+                                        ItemsSource="{Binding Path=reportList}"
                                         XBindingPath="date"
                                         YBindingPath="usage" />
                                 </chart:SfChart>
@@ -118,13 +121,11 @@
                                     <StackPanel>
                                         <StackPanel HorizontalAlignment="Center">
                                             <TextBlock
-                                                x:Name="max_time"
                                                 Style="{StaticResource chart_stats_text}"
-                                                Text="{Binding usage_max}" />
+                                                Text="{Binding Path=data.usage_max, Converter={StaticResource TimeConverter}}" />
                                             <TextBlock
-                                                x:Name="max_time_date"
                                                 Style="{StaticResource chart_date_text}"
-                                                Text="{Binding usage_max_date}" />
+                                                Text="{Binding Path=data.usage_max_date}" />
                                         </StackPanel>
                                         <TextBlock
                                             x:Uid="maximum"
@@ -134,13 +135,11 @@
                                     <StackPanel Grid.Column="1">
                                         <StackPanel HorizontalAlignment="Center">
                                             <TextBlock
-                                                x:Name="min_time"
                                                 Style="{StaticResource chart_stats_text}"
-                                                Text="{Binding usage_min}" />
+                                                Text="{Binding Path=data.usage_min, Converter={StaticResource TimeConverter}}" />
                                             <TextBlock
-                                                x:Name="min_time_date"
                                                 Style="{StaticResource chart_date_text}"
-                                                Text="{Binding usage_min_date}" />
+                                                Text="{Binding Path=data.usage_min_date}" />
                                         </StackPanel>
                                         <TextBlock
                                             x:Uid="minimum"
@@ -150,13 +149,11 @@
                                     <StackPanel Grid.Column="2">
                                         <StackPanel HorizontalAlignment="Center">
                                             <TextBlock
-                                                x:Name="avg_time"
                                                 Style="{StaticResource chart_stats_text}"
-                                                Text="{Binding usage_avg}" />
+                                                Text="{Binding Path=data.usage_avg, Converter={StaticResource TimeConverter}}" />
                                             <TextBlock
-                                                x:Name="avg_time_date"
                                                 Style="{StaticResource chart_date_text}"
-                                                Text="{Binding usage_avg_date}" />
+                                                Text="{Binding Path=data.usage_avg_date}" />
                                         </StackPanel>
                                         <TextBlock
                                             x:Uid="average"
@@ -195,7 +192,7 @@
                                         x:Name="chart_unlocks"
                                         AnimationDuration="0:0:1"
                                         EnableAnimation="True"
-                                        ItemsSource="{Binding r_list}"
+                                        ItemsSource="{Binding Path=reportList}"
                                         XBindingPath="date"
                                         YBindingPath="unlocks" />
                                 </chart:SfChart>
@@ -208,13 +205,11 @@
                                     <StackPanel>
                                         <StackPanel HorizontalAlignment="Center">
                                             <TextBlock
-                                                x:Name="max_unlocks"
                                                 Style="{StaticResource chart_stats_text}"
-                                                Text="{Binding unlocks_max}" />
+                                                Text="{Binding Path=data.unlocks_max}" />
                                             <TextBlock
-                                                x:Name="max_unlocks_date"
                                                 Style="{StaticResource chart_date_text}"
-                                                Text="{Binding unlocks_max_date}" />
+                                                Text="{Binding Path=data.unlocks_max_date}" />
                                         </StackPanel>
                                         <TextBlock
                                             x:Uid="maximum"
@@ -224,13 +219,11 @@
                                     <StackPanel Grid.Column="1">
                                         <StackPanel HorizontalAlignment="Center">
                                             <TextBlock
-                                                x:Name="min_unlocks"
                                                 Style="{StaticResource chart_stats_text}"
-                                                Text="{Binding unlocks_min}" />
+                                                Text="{Binding Path=data.unlocks_min}" />
                                             <TextBlock
-                                                x:Name="min_unlocks_date"
                                                 Style="{StaticResource chart_date_text}"
-                                                Text="{Binding unlocks_min_date}" />
+                                                Text="{Binding Path=data.unlocks_min_date}" />
                                         </StackPanel>
                                         <TextBlock
                                             x:Uid="minimum"
@@ -240,13 +233,11 @@
                                     <StackPanel Grid.Column="2">
                                         <StackPanel HorizontalAlignment="Center">
                                             <TextBlock
-                                                x:Name="avg_unlocks"
                                                 Style="{StaticResource chart_stats_text}"
-                                                Text="{Binding unlocks_avg}" />
+                                                Text="{Binding Path=data.unlocks_avg}" />
                                             <TextBlock
-                                                x:Name="avg_unlocks_date"
                                                 Style="{StaticResource chart_date_text}"
-                                                Text="{Binding unlocks_avg_date}" />
+                                                Text="{Binding Path=data.unlocks_avg_date}" />
                                         </StackPanel>
                                         <TextBlock
                                             x:Uid="average"
@@ -260,21 +251,17 @@
                 </RelativePanel>
             </RelativePanel>
         </ScrollViewer>
-    </Grid>
-    <Page.BottomAppBar>
-        <CommandBar
-            x:Name="report_command"
-            HorizontalAlignment="Right">
+
+        <CommandBar Grid.Row="1">
             <AppBarButton
-                x:Name="export_bar"
                 x:Uid="export_bar"
-                Click="export_bar_Click"
+                Command="{Binding Path=ExportData}"
                 Icon="Save" />
             <AppBarButton
-                x:Name="range_btn"
                 x:Uid="range_btn"
-                Click="range_btn_Click_1"
+                x:Name="range_btn"
+                Command="{Binding Path=ChangeRange}"
                 Icon="Trim" />
         </CommandBar>
-    </Page.BottomAppBar>
+    </Grid>
 </Page>

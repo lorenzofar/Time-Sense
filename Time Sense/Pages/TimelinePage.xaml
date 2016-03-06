@@ -187,7 +187,7 @@
                         <ProgressRing
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            IsActive="{Binding Path=loading, Converter={StaticResource BoolVisibilityConverter}}" />
+                            IsActive="{Binding Path=loading, Converter={StaticResource BoolConverter}}" />
                     </StackPanel>
                 </Viewbox>
                 <TextBlock x:Uid="no_items_txt" Grid.Row="1" Margin="0,24" HorizontalAlignment="Center" FontSize="{Binding FontSize, ElementName=timeline_header}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" TextWrapping="WrapWholeWords" Visibility="{Binding Path=timelineList.Count, Converter={StaticResource ListEmptyConverter}}" />

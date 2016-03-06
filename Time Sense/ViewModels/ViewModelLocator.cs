@@ -21,5 +21,13 @@
                 return new TimelineViewModel();
             }
         }
+
+        public ReportViewModel Report
+        {
+            get
+            {
+                return new ReportViewModel();
+            }
+        }
     }
 }

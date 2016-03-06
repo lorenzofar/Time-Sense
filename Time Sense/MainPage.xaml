@@ -132,7 +132,7 @@
                             <RadioButton x:Uid="analytics_btn" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="total_btn" HorizontalAlignment="Stretch" GroupName="nav" x:Name="analytics_btn" Style="{StaticResource NavRadioButtonStyle}" Tag="&#xE11A;" Content="Analytics" Checked="nav_btn_checked"/>
                         </RelativePanel>
                     </ScrollViewer>
-                    <RadioButton x:Uid="settings_btn" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Above="about_btn"  VerticalAlignment="Bottom" HorizontalAlignment="Stretch" GroupName="nav" x:Name="settings_btn" Style="{StaticResource NavRadioButtonStyle}" Tag="&#xE713;" Content="Settings" Checked="nav_btn_checked"/>
+                    <RadioButton x:Uid="settings_btn" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" HorizontalAlignment="Stretch" GroupName="nav" x:Name="settings_btn" Style="{StaticResource NavRadioButtonStyle}" Tag="&#xE713;" Content="Settings" Checked="nav_btn_checked"/>
                 </RelativePanel>
             </SplitView.Pane>
         </SplitView>

@@ -33,6 +33,16 @@ namespace Time_Sense
 
         }
 
+        public class LoadReportMessage
+        {
+            public int days { get; set; }
+        }
+
+        public class ShowReportMessage
+        {
+            
+        }
+
         public class AnalysisMessage
         {
 
