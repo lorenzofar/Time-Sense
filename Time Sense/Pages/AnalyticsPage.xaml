@@ -8,13 +8,6 @@
     xmlns:db="using:Database"
     mc:Ignorable="d">
 
-    <Page.BottomAppBar>
-        <CommandBar>
-            <AppBarButton x:Name="search_btn" x:Uid="search_btn" Icon="Find" Click="search_btn_Click"/>
-            <AppBarButton x:Name="reset_btn" x:Uid="reset_btn" Icon="Delete" Click="reset_btn_Click"/>
-        </CommandBar>
-    </Page.BottomAppBar>
-
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root" VerticalAlignment="Stretch">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup CurrentStateChanged="vs_group_CurrentStateChanged"  x:Name="vs_group">
@@ -77,6 +70,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition x:Name="param_r" Height="11*"/>
                 <RowDefinition x:Name="list_r" Height="7*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <Grid>
@@ -530,6 +524,10 @@
                 </ListView>
                 <TextBlock HorizontalAlignment="Center" TextWrapping="WrapWholeWords" Visibility="Collapsed" x:Name="no_item_unlocks_txt" Margin="0,24" Grid.Row="3" x:Uid="no_items_txt" FontSize="{ThemeResource TextStyleLargeFontSize}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
             </Grid>
+            <CommandBar Grid.Row="2">
+                <AppBarButton x:Name="search_btn" x:Uid="search_btn" Icon="Find" Click="search_btn_Click"/>
+                <AppBarButton x:Name="reset_btn" x:Uid="reset_btn" Icon="Delete" Click="reset_btn_Click"/>
+            </CommandBar>
         </Grid>
 
         <Button x:Name="up_btn" Visibility="Collapsed"  Click="Button_Click" Background="Transparent" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" Margin="12" >

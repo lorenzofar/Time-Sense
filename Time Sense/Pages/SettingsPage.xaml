@@ -8,6 +8,10 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <RelativePanel
                 x:Name="root_panel"
@@ -396,9 +400,7 @@
                 -->
             </RelativePanel>
         </ScrollViewer>
-    </Grid>
-    <Page.BottomAppBar>
-        <CommandBar>
+        <CommandBar Grid.Row="1">
             <AppBarButton
                 x:Name="guide_settngs_btn"
                 x:Uid="help_btn"
@@ -410,5 +412,5 @@
                 Click="rate_btn_Click"
                 Icon="Favorite" />
         </CommandBar>
-    </Page.BottomAppBar>
+    </Grid>
 </Page>
