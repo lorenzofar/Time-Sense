@@ -180,7 +180,7 @@ namespace Time_Sense.ViewModels
             string unlocks_max_date = "---";
             string unlocks_min_date = "---";
             var list = new List<Report>();
-            reportList = new List<Stats>();
+            var rawList = new List<Stats>();
             if (span == 0)
             {
                 list = await Helper.LoadAllData();
@@ -231,13 +231,13 @@ namespace Time_Sense.ViewModels
                             usage = double.Parse(item.usage.ToString()) / s_in_h
                         };
                         s.usage = Math.Round(s.usage, 1);
-                        reportList.Add(s);
+                        rawList.Add(s);
                     }
                     catch { }
                 }
-                reportList = reportList.OrderBy(z => z.date_raw).ToList();
-                startDate = reportList.First().date_raw.Date;
-                endDate = reportList.Last().date_raw.Date;
+                rawList = rawList.OrderBy(z => z.date_raw).ToList();
+                startDate = rawList.First().date_raw.Date;
+                endDate = rawList.Last().date_raw.Date;
             }
             else
             {
@@ -277,8 +277,8 @@ namespace Time_Sense.ViewModels
                         unlocks = data[1]
                     };
                     item.usage = Math.Round(item.usage, 1);
-                    reportList.Add(item);
-                    reportList = reportList.OrderBy(z => z.date_raw).ToList();
+                    rawList.Add(item);
+                    rawList = rawList.OrderBy(z => z.date_raw).ToList();
                     startDate = startDt;
                     endDate = startDt.AddDays(span);
                 }
@@ -300,6 +300,7 @@ namespace Time_Sense.ViewModels
                 unlocks_avg = Math.Round(unlocks / avg_u, 2),
                 unlocks_avg_date = String.Format(utilities.loader.GetString(avg_u == 1 ? "avg_day" : "avg_days"), avg_u)
             };
+            reportList = rawList;
             MainPage.title.Text = utilities.shortdate_form.Format(startDate) + " - " + utilities.shortdate_form.Format(endDate);
             loading = false;         
         }
