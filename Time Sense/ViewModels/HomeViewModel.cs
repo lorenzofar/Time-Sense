@@ -42,7 +42,7 @@ namespace Time_Sense.ViewModels
         private int[] total_seconds = new int[2];
         private int diff = 0;
 
-        private static string[] pivot_strings = { "usage_hour_title", "unlocks_hour_title", "charge_banner", "note_banner" };
+        private static string[] pivot_strings = { "usage_hour_title", "unlocks_hour_title", "note_banner", "charge_banner" };
 
         #region Visibility bools
         private bool _inputBool = false;
