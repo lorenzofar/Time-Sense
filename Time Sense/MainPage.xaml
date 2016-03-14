@@ -86,7 +86,7 @@
                 <VisualState x:Name="wide">
                     <VisualState.Setters>
                         <Setter Target="splitview.DisplayMode" Value="CompactInline"/>
-                        <Setter Target="splitview.IsPaneOpen" Value="True"/>
+                        <Setter Target="splitview.IsSwipeablePaneOpen" Value="True"/>
                         <Setter Target="hamburger_btn.Visibility" Value="Collapsed"/>
                         <Setter Target="btn_column.Width" Value="12"/>
                     </VisualState.Setters>
@@ -118,7 +118,7 @@
             </Grid>
         </Grid>
 
-        <SplitView Grid.Row="1" DisplayMode="CompactOverlay" x:Name="splitview" CompactPaneLength="48" OpenPaneLength="200">
+        <local:SwipeableSplitView IsPanSelectorEnabled="False" Grid.Row="1" DisplayMode="CompactOverlay" x:Name="splitview" CompactPaneLength="48" OpenPaneLength="200">
             <SplitView.Content>
                 <Frame x:Name="fr"/>
             </SplitView.Content>
@@ -135,7 +135,7 @@
                     <RadioButton x:Uid="settings_btn" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" HorizontalAlignment="Stretch" GroupName="nav" x:Name="settings_btn" Style="{StaticResource NavRadioButtonStyle}" Tag="&#xE713;" Content="Settings" Checked="nav_btn_checked"/>
                 </RelativePanel>
             </SplitView.Pane>
-        </SplitView>
+        </local:SwipeableSplitView>
 
     </Grid>
 </Page>
