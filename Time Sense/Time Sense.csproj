@@ -305,16 +305,15 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Syncfusion.SfChart.UWP">
-      <HintPath>D:\Syncfusion\13.3.0.7\Assemblies for Universal Windows\10.0\Syncfusion.SfChart.UWP.dll</HintPath>
+      <HintPath>..\..\..\..\..\Syncfusion\13.3.0.7\Assemblies for Universal Windows\10.0\Syncfusion.SfChart.UWP.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfShared.UWP">
-      <HintPath>D:\Syncfusion\13.3.0.7\Assemblies for Universal Windows\10.0\Syncfusion.SfShared.UWP.dll</HintPath>
+      <HintPath>..\..\..\..\..\Syncfusion\13.3.0.7\Assemblies for Universal Windows\10.0\Syncfusion.SfShared.UWP.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.XlsIO.UWP">
-      <HintPath>D:\Syncfusion\13.3.0.7\Assemblies for Universal Windows\10.0\Syncfusion.XlsIO.UWP.dll</HintPath>
+      <HintPath>..\..\..\..\..\Syncfusion\13.3.0.7\Assemblies for Universal Windows\10.0\Syncfusion.XlsIO.UWP.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
