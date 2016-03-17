@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="alert.cs" />
+    <Compile Include="backup_task.cs" />
     <Compile Include="controller_lock.cs" />
     <Compile Include="controller_unlock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -12,6 +12,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
+using System.Linq;
 
 namespace Time_Sense
 {
@@ -33,6 +34,7 @@ namespace Time_Sense
             try { RegisterTaskLock(); } catch { }
             try { RegisterTaskUnlock(); } catch { }
             try { RegisterTaskAlert(); } catch { }
+            try { RegisterTaskBackup(); } catch { }
             if (!Windows.Foundation.Metadata.ApiInformation.IsEventPresent("Windows.Phone.UI.Input.HardwareButtons", "BackPressed"))
             {
                 try { RegisterTaskTimer(1, 15); } catch { }
@@ -216,6 +218,36 @@ namespace Time_Sense
             {
                 BackgroundTaskRegistration mytask = builder.Register();
                 mytask.Completed += Mytask_Completed;
+            }
+        }
+
+        private async void RegisterTaskBackup()
+        {
+            var auto_backup = utilities.STATS.Values[settings.automatic_backup] == null ? false : true;
+            if (auto_backup)
+            {
+                foreach (var task in BackgroundTaskRegistration.AllTasks)
+                {
+                    if (task.Value.Name == "timesense_backup")
+                    {
+                        return;
+                    }
+                }
+                var builder = new BackgroundTaskBuilder();
+                builder.Name = "timesense_backup";
+                builder.TaskEntryPoint = "Tasks.backup_task";
+                builder.SetTrigger(new TimeTrigger(1440, false));
+                BackgroundExecutionManager.RemoveAccess();
+                BackgroundAccessStatus access_status = await BackgroundExecutionManager.RequestAccessAsync();
+                if (access_status != BackgroundAccessStatus.Denied)
+                {
+                    BackgroundTaskRegistration mytask = builder.Register();
+                    mytask.Completed += Mytask_Completed;
+                }
+            }
+            else
+            {
+                BackgroundTaskRegistration.AllTasks.Where(x => x.Value.Name == "timesense_backup").FirstOrDefault().Value.Unregister(true);
             }
         }
         #region TIMER TASKS

@@ -64,11 +64,17 @@
             <uap:DisplayName>Time Sense</uap:DisplayName>
           </uap:Protocol>
         </uap:Extension>
+        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.backup_task">
+          <BackgroundTasks>
+            <Task Type="timer" />
+          </BackgroundTasks>
+        </Extension>
       </Extensions>
     </Application>
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
+    <uap:Capability Name="documentsLibrary" />
     <DeviceCapability Name="proximity" />
     <DeviceCapability Name="location" />
   </Capabilities>

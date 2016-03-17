@@ -18,6 +18,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.ApplicationInsights.DataContracts;
 using Windows.Security.Credentials.UI;
+using Windows.ApplicationModel.Background;
+using System.Linq;
 
 namespace Time_Sense
 {
@@ -260,9 +262,33 @@ namespace Time_Sense
             }
         }
 
-        private void auto_backup_switch_Toggled(object sender, RoutedEventArgs e)
+        private async void auto_backup_switch_Toggled(object sender, RoutedEventArgs e)
         {
             utilities.STATS.Values[settings.automatic_backup] = auto_backup_switch.IsOn ? "on" : null;
+            if (auto_backup_switch.IsOn)
+            {
+                foreach (var task in BackgroundTaskRegistration.AllTasks)
+                {
+                    if (task.Value.Name == "timesense_backup")
+                    {
+                        return;
+                    }
+                }
+                var builder = new BackgroundTaskBuilder();
+                builder.Name = "timesense_backup";
+                builder.TaskEntryPoint = "Tasks.backup_task";
+                builder.SetTrigger(new TimeTrigger(1440, false));
+                BackgroundExecutionManager.RemoveAccess();
+                BackgroundAccessStatus access_status = await BackgroundExecutionManager.RequestAccessAsync();
+                if (access_status != BackgroundAccessStatus.Denied)
+                {
+                    BackgroundTaskRegistration mytask = builder.Register();
+                }
+            }
+            else
+            {
+                BackgroundTaskRegistration.AllTasks.Where(x => x.Value.Name == "timesense_backup").FirstOrDefault().Value.Unregister(true);
+            }
         }
 
         private async void resetOne_btn_Click(object sender, RoutedEventArgs e)
