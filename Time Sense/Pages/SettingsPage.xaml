@@ -290,7 +290,7 @@
                     <TextBlock
                         x:Uid="backup_banner"
                         Style="{StaticResource TitleTextBlockStyle}" />
-                    <ToggleSwitch x:Name="auto_backup_switch">
+                    <ToggleSwitch Margin="0,6,0,0" x:Name="auto_backup_switch" Toggled="auto_backup_switch_Toggled">
                         <ToggleSwitch.Header>
                             <StackPanel>
                                 <TextBlock x:Uid="autoBackup_header_1" />

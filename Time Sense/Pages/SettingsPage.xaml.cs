@@ -32,7 +32,6 @@ namespace Time_Sense
         public SettingsPage()
         {
             this.InitializeComponent();
-            this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -58,6 +57,7 @@ namespace Time_Sense
             bool password = utilities.STATS.Values[settings.password] == null ? false : true;
             letters_switch.IsOn = utilities.STATS.Values[settings.letters] == null ? false : true;
             hello_switch.IsOn = utilities.STATS.Values[settings.windows_hello] == null ? false : true;
+            auto_backup_switch.IsOn = utilities.STATS.Values[settings.automatic_backup] == null ? false : true;
             unlocks += "_radio";
             threshold_box.SelectedIndex = limit == 0 ? 5 : (limit/3600) - 1;
             password_switch.IsOn = password;
@@ -260,6 +260,10 @@ namespace Time_Sense
             }
         }
 
+        private void auto_backup_switch_Toggled(object sender, RoutedEventArgs e)
+        {
+            utilities.STATS.Values[settings.automatic_backup] = auto_backup_switch.IsOn ? "on" : null;
+        }
 
         private async void resetOne_btn_Click(object sender, RoutedEventArgs e)
         {

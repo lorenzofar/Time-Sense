@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Stuff
+﻿namespace Stuff
 {
     public sealed class settings
     {
@@ -20,5 +14,6 @@ namespace Stuff
         public static string analysis_trial = "analysis_trial";
         public static string desktop_disclaimer = "desktop_disclaimer";
         public static string windows_hello = "windows_hello";
+        public static string automatic_backup = "automatic_backup";
     }
 }
