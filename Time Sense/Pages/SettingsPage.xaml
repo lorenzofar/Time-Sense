@@ -286,10 +286,20 @@
                     x:Name="backup_grid"
                     Margin="0,6"
                     RelativePanel.Below="notifications_grid"
-                    Style="{StaticResource settings_section}">
+                    Style="{StaticResource settings_section}">                    
                     <TextBlock
                         x:Uid="backup_banner"
                         Style="{StaticResource TitleTextBlockStyle}" />
+                    <ToggleSwitch x:Name="auto_backup_switch">
+                        <ToggleSwitch.Header>
+                            <StackPanel>
+                                <TextBlock x:Uid="autoBackup_header_1" />
+                                <TextBlock
+                                        x:Uid="autoBackup_header_2"
+                                        Style="{StaticResource settings_header_subtitle}" />
+                            </StackPanel>
+                        </ToggleSwitch.Header>
+                    </ToggleSwitch>
                     <TextBlock
                         x:Uid="backup_header"
                         Margin="0,6,0,0" />

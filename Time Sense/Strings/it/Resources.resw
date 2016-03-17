@@ -834,4 +834,10 @@ La versione per PC è ancora in fase di sviluppo e a causa di alcune limitazioni
   <data name="thanks_chinese.Text" xml:space="preserve">
     <value>- traduzione cinese</value>
   </data>
+  <data name="autoBackup_header_1.Text" xml:space="preserve">
+    <value>Backup automatico</value>
+  </data>
+  <data name="autoBackup_header_2.Text" xml:space="preserve">
+    <value>Salva un backup dei tuoi dati ogni giorno</value>
+  </data>
 </root>

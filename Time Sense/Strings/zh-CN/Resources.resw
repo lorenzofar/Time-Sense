@@ -834,4 +834,12 @@
   <data name="thanks_chinese.Text" xml:space="preserve">
     <value>- 中文翻译</value>
   </data>
+  <data name="autoBackup_header_1.Text" xml:space="preserve">
+    <value>Automatic backup</value>
+    <comment>TODO</comment>
+  </data>
+  <data name="autoBackup_header_2.Text" xml:space="preserve">
+    <value>Save a backup of your data every day</value>
+    <comment>TODO</comment>
+  </data>
 </root>
