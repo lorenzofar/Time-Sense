@@ -31,6 +31,16 @@
         </uap:InitialRotationPreference>
       </uap:VisualElements>
       <Extensions>
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="ts_backup">
+            <uap:DisplayName>Time Sense</uap:DisplayName>
+            <uap:InfoTip>Restore Time Sense backup</uap:InfoTip>
+            <uap:EditFlags OpenIsSafe="true" />
+            <uap:SupportedFileTypes>
+              <uap:FileType>.db</uap:FileType>
+            </uap:SupportedFileTypes>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
         <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.timer_task">
           <BackgroundTasks>
             <Task Type="timer" />
