@@ -352,42 +352,6 @@ namespace Database
             public int unlocks { get; set; }
         }
 
-        public static async Task<bool> convert_db (string path)
-        {
-            var old_conn = new SQLiteAsyncConnection(path, true);
-            bool output = true;
-            try
-            {
-                var r_list = await old_conn.Table<Report>().ToListAsync();
-                var t_list = await old_conn.Table<Timeline>().ToListAsync();
-                var h_list = await old_conn.Table<Hour>().ToListAsync();
-                await DeleteAllData();
-                foreach(var item in r_list)
-                {
-                    Database.Report r = new Database.Report
-                    {
-                        date = item.date,
-                        unlocks = item.unlocks,
-                        usage = item.usage
-                    };
-                    await ConnectionDb().InsertAsync(r);
-                }
-                foreach (var item in t_list)
-                {
-                    await ConnectionDb().InsertAsync(item);
-                }
-                foreach (var item in h_list)
-                {
-                    await ConnectionDb().InsertAsync(item);
-                }
-            }
-            catch
-            {
-                output = false;
-            }
-            return output;
-        }
-
         public static async Task<bool> DataMigration(string path, string name)
         {
             bool success = false;

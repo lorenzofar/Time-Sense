@@ -1,4 +1,5 @@
-﻿using Stuff;
+﻿using Database;
+using Stuff;
 using System;
 using System.Linq;
 using UniversalRateReminder;
@@ -6,6 +7,8 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Media.SpeechRecognition;
 using Windows.Media.SpeechSynthesis;
+using Windows.Storage;
+using Windows.UI.Popups;
 using Windows.UI.StartScreen;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -61,7 +64,6 @@ namespace Time_Sense
 
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-            utilities.loader = new Windows.ApplicationModel.Resources.ResourceLoader();
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -80,10 +82,10 @@ namespace Time_Sense
             }
 
             Frame rootFrame = Window.Current.Content as Frame;
-            
+
             string password = utilities.STATS.Values[settings.password] == null ? "" : utilities.STATS.Values[settings.password].ToString();
 
-            if (e!=null && (e.Arguments != null && e.Arguments != ""))
+            if (e != null && (e.Arguments != null && e.Arguments != ""))
             {
                 jump_arguments = e.Arguments;
                 if (e.PreviousExecutionState == ApplicationExecutionState.Running)
@@ -97,7 +99,7 @@ namespace Time_Sense
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                if (e!= null && e.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                if (e != null && e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                 }
 
@@ -113,7 +115,7 @@ namespace Time_Sense
                 }
                 else
                 {
-                    rootFrame.Navigate(typeof(MainPage), e==null? null : e.Arguments);
+                    rootFrame.Navigate(typeof(MainPage), e == null ? null : e.Arguments);
                 }
             }
             activate:
@@ -148,6 +150,39 @@ namespace Time_Sense
             Frame rootFrame = MainPage.main_fr;
             current_page = rootFrame.SourcePageType;
             deferral.Complete();
+        }
+
+        protected override async void OnFileActivated(FileActivatedEventArgs args)
+        {
+            FileActivatedEventArgs fileArgs = args as FileActivatedEventArgs;
+            if (fileArgs.Files.Count != 0)
+            {
+                var file = fileArgs.Files[0] as StorageFile;
+                if (file != null)
+                {
+                    file = await file.CopyAsync(ApplicationData.Current.TemporaryFolder, "temp", NameCollisionOption.GenerateUniqueName);
+                    bool valid = await Helper.CheckIntegrity(file.Path);
+                    if (valid)
+                    {
+                        var restoreDialog = new MessageDialog(utilities.loader.GetString("backup_restore_confirm"), utilities.loader.GetString("backup_restore_title"));
+                        restoreDialog.Commands.Add(new UICommand(utilities.loader.GetString("yes"), async (command) =>
+                        {
+                            await file.CopyAsync(ApplicationData.Current.LocalFolder, "timesense_database.db", NameCollisionOption.ReplaceExisting);
+                            utilities.STATS.Values[settings.date] = null;
+                            await new MessageDialog(utilities.loader.GetString("restore_dialog_success"), utilities.loader.GetString("success")).ShowAsync();
+                        }));
+                        restoreDialog.Commands.Add(new UICommand(utilities.loader.GetString("no")));
+                        restoreDialog.DefaultCommandIndex = 0;
+                        restoreDialog.CancelCommandIndex = 1;
+                        await restoreDialog.ShowAsync();
+                    }
+                    else
+                    {
+                        await new MessageDialog(utilities.loader.GetString("restore_dialog_error"), utilities.loader.GetString("error")).ShowAsync();
+                    }
+                }
+                OnLaunched(null);
+            }
         }
 
         protected override async void OnActivated(IActivatedEventArgs args)
@@ -241,7 +276,7 @@ namespace Time_Sense
                     }
                 }
             }
-            else if(args.Kind == ActivationKind.ToastNotification)
+            else if (args.Kind == ActivationKind.ToastNotification)
             {
                 OnLaunched(null);
             }

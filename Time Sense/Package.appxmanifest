@@ -31,31 +31,19 @@
         </uap:InitialRotationPreference>
       </uap:VisualElements>
       <Extensions>
-        <uap:Extension Category="windows.fileTypeAssociation">
-          <uap:FileTypeAssociation Name="ts_backup">
-            <uap:DisplayName>Time Sense</uap:DisplayName>
-            <uap:InfoTip>Restore Time Sense backup</uap:InfoTip>
-            <uap:EditFlags OpenIsSafe="true" />
-            <uap:SupportedFileTypes>
-              <uap:FileType>.db</uap:FileType>
-            </uap:SupportedFileTypes>
-          </uap:FileTypeAssociation>
-        </uap:Extension>
-        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.timer_task">
+        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.backup_task">
           <BackgroundTasks>
             <Task Type="timer" />
           </BackgroundTasks>
         </Extension>
-        <uap:Extension Category="windows.appService" EntryPoint="Tasks.service">
-          <uap:AppService Name="timesense.service" />
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="timesense">
+            <uap:DisplayName>Time Sense</uap:DisplayName>
+          </uap:Protocol>
         </uap:Extension>
-        <uap:Extension Category="windows.appService" EntryPoint="Tasks.VoiceCommandService">
-          <uap:AppService Name="TimeSenseVoiceCommandService" />
-        </uap:Extension>
-        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.controller_lock">
+        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.alert">
           <BackgroundTasks>
             <Task Type="systemEvent" />
-            <Task Type="deviceUse" />
           </BackgroundTasks>
         </Extension>
         <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.controller_unlock">
@@ -64,21 +52,34 @@
             <Task Type="deviceUse" />
           </BackgroundTasks>
         </Extension>
-        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.alert">
+        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.controller_lock">
           <BackgroundTasks>
             <Task Type="systemEvent" />
+            <Task Type="deviceUse" />
           </BackgroundTasks>
         </Extension>
-        <uap:Extension Category="windows.protocol">
-          <uap:Protocol Name="timesense">
-            <uap:DisplayName>Time Sense</uap:DisplayName>
-          </uap:Protocol>
+        <uap:Extension Category="windows.appService" EntryPoint="Tasks.VoiceCommandService">
+          <uap:AppService Name="TimeSenseVoiceCommandService" />
         </uap:Extension>
-        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.backup_task">
+        <uap:Extension Category="windows.appService" EntryPoint="Tasks.service">
+          <uap:AppService Name="timesense.service" />
+        </uap:Extension>
+        <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.timer_task">
           <BackgroundTasks>
             <Task Type="timer" />
           </BackgroundTasks>
         </Extension>
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="tsbackup">
+            <uap:DisplayName>Time Sense</uap:DisplayName>
+            <uap:Logo>Assets\fileIcon.png</uap:Logo>
+            <uap:InfoTip>Time Sense backup</uap:InfoTip>
+            <uap:SupportedFileTypes>
+              <uap:FileType>.tsb</uap:FileType>
+              <uap:FileType>.db</uap:FileType>
+            </uap:SupportedFileTypes>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
       </Extensions>
     </Application>
   </Applications>

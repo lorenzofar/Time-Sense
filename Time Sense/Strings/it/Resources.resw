@@ -840,4 +840,10 @@ La versione per PC è ancora in fase di sviluppo e a causa di alcune limitazioni
   <data name="autoBackup_header_2.Text" xml:space="preserve">
     <value>Salva un backup dei tuoi dati ogni giorno</value>
   </data>
+  <data name="backup_restore_confirm" xml:space="preserve">
+    <value>Vuoi ripristinare questo backup?</value>
+  </data>
+  <data name="backup_restore_title" xml:space="preserve">
+    <value>Ripristina</value>
+  </data>
 </root>

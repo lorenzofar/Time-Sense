@@ -101,6 +101,7 @@
     </Content>
     <Content Include="Assets\alert.png" />
     <Content Include="Assets\BadgeLogo.scale-200.png" />
+    <Content Include="Assets\fileIcon.png" />
     <Content Include="Assets\icon.png" />
     <Content Include="Assets\list.png" />
     <Content Include="Assets\report.png" />
