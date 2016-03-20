@@ -277,7 +277,7 @@ namespace Time_Sense
                 var builder = new BackgroundTaskBuilder();
                 builder.Name = "timesense_backup";
                 builder.TaskEntryPoint = "Tasks.backup_task";
-                builder.SetTrigger(new TimeTrigger(1440, false));
+                builder.SetTrigger(new TimeTrigger(720, false));
                 BackgroundExecutionManager.RemoveAccess();
                 BackgroundAccessStatus access_status = await BackgroundExecutionManager.RequestAccessAsync();
                 if (access_status != BackgroundAccessStatus.Denied)
