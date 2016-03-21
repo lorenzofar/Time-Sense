@@ -247,7 +247,11 @@ namespace Time_Sense
             }
             else
             {
-                BackgroundTaskRegistration.AllTasks.Where(x => x.Value.Name == "timesense_backup").FirstOrDefault().Value.Unregister(true);
+                try
+                {
+                    BackgroundTaskRegistration.AllTasks.Where(x => x.Value.Name == "timesense_backup").FirstOrDefault().Value.Unregister(true);
+                }
+                catch { }
             }
         }
         #region TIMER TASKS

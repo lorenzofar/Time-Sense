@@ -167,9 +167,16 @@ namespace Time_Sense
                         var restoreDialog = new MessageDialog(utilities.loader.GetString("backup_restore_confirm"), utilities.loader.GetString("backup_restore_title"));
                         restoreDialog.Commands.Add(new UICommand(utilities.loader.GetString("yes"), async (command) =>
                         {
-                            await file.CopyAsync(ApplicationData.Current.LocalFolder, "timesense_database.db", NameCollisionOption.ReplaceExisting);
-                            utilities.STATS.Values[settings.date] = null;
-                            await new MessageDialog(utilities.loader.GetString("restore_dialog_success"), utilities.loader.GetString("success")).ShowAsync();
+                            try
+                            {
+                                await file.CopyAsync(ApplicationData.Current.LocalFolder, "timesense_database.db", NameCollisionOption.ReplaceExisting);
+                                utilities.STATS.Values[settings.date] = null;
+                                await new MessageDialog(utilities.loader.GetString("restore_dialog_success"), utilities.loader.GetString("success")).ShowAsync();
+                            }
+                            catch
+                            {
+                                await new MessageDialog(utilities.loader.GetString("error_transaction"), utilities.loader.GetString("error")).ShowAsync();
+                            }
                         }));
                         restoreDialog.Commands.Add(new UICommand(utilities.loader.GetString("no")));
                         restoreDialog.DefaultCommandIndex = 0;

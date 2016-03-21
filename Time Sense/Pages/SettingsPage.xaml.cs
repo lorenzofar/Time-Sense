@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Database;
+﻿using Database;
+using Microsoft.ApplicationInsights.DataContracts;
 using NdefLibrary.Ndef;
 using Stuff;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.Chat;
 using Windows.ApplicationModel.Email;
 using Windows.Data.Xml.Dom;
 using Windows.Networking.Proximity;
+using Windows.Security.Credentials.UI;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.UI.Notifications;
@@ -16,10 +20,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
-using Microsoft.ApplicationInsights.DataContracts;
-using Windows.Security.Credentials.UI;
-using Windows.ApplicationModel.Background;
-using System.Linq;
 
 namespace Time_Sense
 {
