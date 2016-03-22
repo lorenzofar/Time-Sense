@@ -343,18 +343,24 @@ namespace Time_Sense
 
         private async void backup_btn_Click(object sender, RoutedEventArgs e)
         {
-            FolderPicker fold_picker = new FolderPicker();
-            fold_picker.FileTypeFilter.Add(".tsb");
-            fold_picker.FileTypeFilter.Add(".db");
-            App.file_pick = true;
-            StorageFolder folder = await fold_picker.PickSingleFolderAsync();
-            if (folder != null)
+            try {
+                FolderPicker fold_picker = new FolderPicker();
+                fold_picker.FileTypeFilter.Add(".tsb");
+                fold_picker.FileTypeFilter.Add(".db");
+                App.file_pick = true;
+                StorageFolder folder = await fold_picker.PickSingleFolderAsync();
+                if (folder != null)
+                {
+                    App.t_client.TrackEvent("Backup saved");
+                    App.file_pick = false;
+                    StorageFile database = await ApplicationData.Current.LocalFolder.GetFileAsync("timesense_database.db");
+                    await database.CopyAsync(folder, "timesense_backup.tsb", NameCollisionOption.GenerateUniqueName);
+                    await new MessageDialog(utilities.loader.GetString("backup_dialog_success"), utilities.loader.GetString("success")).ShowAsync();
+                }
+            }
+            catch
             {
-                App.t_client.TrackEvent("Backup saved");
-                App.file_pick = false;
-                StorageFile database = await ApplicationData.Current.LocalFolder.GetFileAsync("timesense_database.db");
-                await database.CopyAsync(folder, "timesense_backup.tsb", NameCollisionOption.GenerateUniqueName);
-                await new MessageDialog(utilities.loader.GetString("backup_dialog_success"), utilities.loader.GetString("success")).ShowAsync();
+                await new MessageDialog(utilities.loader.GetString("error_transaction"), utilities.loader.GetString("error")).ShowAsync();
             }
         }
 
