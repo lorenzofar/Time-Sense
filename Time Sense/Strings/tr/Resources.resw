@@ -835,19 +835,15 @@ Masaüstü sürümü henüz yapım aşamasında ve sistem sınırlamalarından d
     <value>- çince çeviri</value>
   </data>
   <data name="autoBackup_header_1.Text" xml:space="preserve">
-    <value>Automatic backup</value>
-    <comment>TODO</comment>
+    <value>Otomatik yedekleme</value>
   </data>
   <data name="autoBackup_header_2.Text" xml:space="preserve">
-    <value>Save a backup of your data every day</value>
-    <comment>TODO</comment>
+    <value>Her gün verilerinizin bir yedeğini kaydedin</value>
   </data>
   <data name="backup_restore_confirm" xml:space="preserve">
-    <value>Do you want to restore this backup?</value>
-    <comment>TODO</comment>
+    <value>Eğer bu yedeği geri yüklemek istiyor musunuz?</value>
   </data>
   <data name="backup_restore_title" xml:space="preserve">
-    <value>Restore</value>
-    <comment>TODO</comment>
+    <value>Geri yükle</value>
   </data>
 </root>
