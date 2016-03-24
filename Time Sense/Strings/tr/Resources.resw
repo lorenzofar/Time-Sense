@@ -838,7 +838,7 @@ Masaüstü sürümü henüz yapım aşamasında ve sistem sınırlamalarından d
     <value>Otomatik yedekleme</value>
   </data>
   <data name="autoBackup_header_2.Text" xml:space="preserve">
-    <value>Her gün verilerinizin bir yedeğini kaydedin</value>
+    <value>Her gün verilerinizin bir yedeğini kaydedin (Yedek video klasörüne kaydedilir)</value>
   </data>
   <data name="backup_restore_confirm" xml:space="preserve">
     <value>Eğer bu yedeği geri yüklemek istiyor musunuz?</value>

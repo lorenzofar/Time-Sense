@@ -838,7 +838,7 @@ La versione per PC è ancora in fase di sviluppo e a causa di alcune limitazioni
     <value>Backup automatico</value>
   </data>
   <data name="autoBackup_header_2.Text" xml:space="preserve">
-    <value>Salva un backup dei tuoi dati ogni giorno</value>
+    <value>Salva un backup dei tuoi dati ogni giorno (il backup é salvato nella cartella video)</value>
   </data>
   <data name="backup_restore_confirm" xml:space="preserve">
     <value>Vuoi ripristinare questo backup?</value>

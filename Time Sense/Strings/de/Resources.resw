@@ -840,7 +840,7 @@ The PC version is still in development and, due to system limitations, there cou
     <value>Automatische Sicherung</value>
   </data>
   <data name="autoBackup_header_2.Text" xml:space="preserve">
-    <value>Speichern Sie eine Sicherungskopie Ihrer Daten jeden Tag</value>
+    <value>Speichern Sie eine Sicherungskopie Ihrer Daten jeden Tag (das Backup wird im Video-Ordner abgelegt)</value>
   </data>
   <data name="backup_restore_confirm" xml:space="preserve">
     <value>Wollen Sie dieses Backup wiederherstellen?</value>

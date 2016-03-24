@@ -837,7 +837,7 @@
     <value>自动备份</value>
   </data>
   <data name="autoBackup_header_2.Text" xml:space="preserve">
-    <value>每天保存数据的备份</value>
+    <value>每天保存数据的备份 (备份保存在视频文件夹)</value>
   </data>
   <data name="backup_restore_confirm" xml:space="preserve">
     <value>你想恢复这个备份？</value>
