@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Stuff;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using Stuff;
 using Windows.ApplicationModel.Background;
-using Windows.ApplicationModel.Store;
 using Windows.Devices.Geolocation;
 using Windows.Devices.Sms;
 using Windows.UI.Popups;
@@ -12,7 +12,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
-using System.Linq;
 
 namespace Time_Sense
 {
@@ -22,8 +21,6 @@ namespace Time_Sense
         public static RadioButton home;
         public static Frame main_fr;
         bool control = false;
-
-        LicenseInformation license;
 
         public static string parameter = null;
 
@@ -93,7 +90,6 @@ namespace Time_Sense
         {
             if (Windows.System.Power.PowerManager.EnergySaverStatus == Windows.System.Power.EnergySaverStatus.On && utilities.STATS.Values[settings.battery_dialog] == null)
             {
-                App.t_client.TrackEvent("Battery dialog shown");
                 await new BatterySaverDialog().ShowAsync();
             }
         }
@@ -333,9 +329,8 @@ namespace Time_Sense
         }
         #endregion
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void hamburger_btn_Click(object sender, RoutedEventArgs e)
         {
-            App.t_client.TrackEvent("Hamburger_btn");
             splitview.IsSwipeablePaneOpen = !splitview.IsSwipeablePaneOpen;
         }
 
@@ -359,71 +354,7 @@ namespace Time_Sense
                     fr.Navigate(typeof(ReportPage), null);
                     break;
                 case "analytics_btn":
-                    try
-                    {
-                        license = CurrentApp.LicenseInformation;
-                        if (license.ProductLicenses["ts_analytics"].IsActive)
-                        {
-                            fr.Navigate(typeof(AnalyticsPage), null);
-                        }
-                        else
-                        {                            
-                            var result = await new PurchaseDialog().ShowAsync();
-                            if (result == ContentDialogResult.Primary)
-                            {
-                                try
-                                {
-                                    //TRY TO CONTACT THE STORE  
-                                    PurchaseResults p = await CurrentApp.RequestProductPurchaseAsync("ts_analytics");
-                                    if (p.Status == ProductPurchaseStatus.AlreadyPurchased || p.Status == ProductPurchaseStatus.Succeeded)
-                                    {
-                                        fr.Navigate(typeof(AnalyticsPage), null);
-                                    }
-                                    else
-                                    {
-                                        home_btn.IsChecked = true;
-                                        analytics_btn.IsChecked = false;
-                                    }
-                                    if (license.ProductLicenses["ts_analytics"].IsActive)
-                                    {
-                                        fr.Navigate(typeof(AnalyticsPage), null);
-                                    }
-                                    else
-                                    {
-                                        home_btn.IsChecked = true;
-                                        analytics_btn.IsChecked = false;
-                                    }
-                                }
-                                catch
-                                {
-                                    await new MessageDialog(utilities.loader.GetString("error_transaction"), utilities.loader.GetString("error")).ShowAsync();
-                                    home_btn.IsChecked = true;
-                                    analytics_btn.IsChecked = false;
-                                }
-                            }
-                            else
-                            {
-                                if (utilities.STATS.Values[settings.analysis_trial] == null)
-                                {
-                                    utilities.STATS.Values[settings.analysis_trial] = "tried";
-                                    fr.Navigate(typeof(AnalyticsPage), null);
-                                }
-                                else
-                                {
-                                    home_btn.IsChecked = true;
-                                    analytics_btn.IsChecked = false;
-                                }
-                            }
-                        }
-                    }
-                    catch
-                    {
-                        await new MessageDialog(utilities.loader.GetString("error_transaction_internet"), utilities.loader.GetString("error")).ShowAsync();
-                        home_btn.IsChecked = true;
-                        analytics_btn.IsChecked = false;
-                        home_btn.IsChecked = true;
-                        analytics_btn.IsChecked = false;
-                    }
+                    fr.Navigate(typeof(AnalyticsPage));
                     break;
             }
             try

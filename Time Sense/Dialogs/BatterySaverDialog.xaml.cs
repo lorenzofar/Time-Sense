@@ -19,7 +19,6 @@ namespace Time_Sense
 
         private void show_check_Checked(object sender, RoutedEventArgs e)
         {
-            App.t_client.TrackEvent("Battery dialog hidden");
             utilities.STATS.Values[settings.battery_dialog] = show_check.IsChecked == true ? "yes" : null;
         }
     }

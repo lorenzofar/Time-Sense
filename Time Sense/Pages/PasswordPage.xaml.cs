@@ -41,7 +41,6 @@ namespace Time_Sense
             switch (consentResult)
             {
                 case UserConsentVerificationResult.Verified:
-                    App.t_client.TrackEvent("Windows Hello login");
                     Login();
                     break;
             }
@@ -55,7 +54,6 @@ namespace Time_Sense
             }
             else
             {
-                App.t_client.TrackEvent("Wrong password");
                 password_box.Password = password_box.Password.Remove(0);
                 password_box.PlaceholderText = utilities.loader.GetString("password_wrong");
                 error.Begin();

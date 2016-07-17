@@ -121,7 +121,6 @@ namespace Time_Sense.ViewModels
                     _ChangeDate = new RelayCommand<object>((object parameter) =>
                     {
                         int days = int.Parse(parameter.ToString());
-                        App.t_client.TrackEvent(days == 1 ? "Next day" : "Previous day");
                         App.report_date = App.report_date.AddDays(days);
                         Refresh();
                     });
@@ -138,7 +137,6 @@ namespace Time_Sense.ViewModels
                 if (_PickDate == null)
                 {
                     _PickDate = new RelayCommand(async () => {
-                        App.t_client.TrackEvent("Calendar shown");
                         if (await new DateDialog().ShowAsync() == ContentDialogResult.Primary)
                         {
                             Refresh();

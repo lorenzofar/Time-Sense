@@ -142,7 +142,6 @@ namespace Time_Sense.ViewModels
             set
             {
                 Set(ref _pivotIndex, value);
-                App.t_client.TrackEvent("Home pivot swipe");
                 pivotBanner = utilities.loader.GetString(pivot_strings[_pivotIndex]);
             }
         }
@@ -188,7 +187,6 @@ namespace Time_Sense.ViewModels
                     _ChangeDay = new RelayCommand<object>((object parameter) =>
                     {
                         int days = int.Parse(parameter.ToString());
-                        App.t_client.TrackEvent(days == 1 ? "Next day" : "Previous day");
                         App.report_date = App.report_date.AddDays(days);
                         Refresh();
                     });
@@ -205,7 +203,6 @@ namespace Time_Sense.ViewModels
                 if(_PickDate == null)
                 {
                     _PickDate = new RelayCommand(async() => {
-                        App.t_client.TrackEvent("Calendar shown");
                         if (await new DateDialog().ShowAsync() == ContentDialogResult.Primary)
                         {
                             Refresh();
@@ -242,7 +239,6 @@ namespace Time_Sense.ViewModels
                     _EditNote = new RelayCommand(async() =>
                     {
                         editingNote = !editingNote;
-                        App.t_client.TrackEvent(editingNote ? "Edit note" : "Save Note");
                         if (!editingNote)
                         {
                             var day = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == homeData.date).FirstOrDefaultAsync();
@@ -422,7 +418,6 @@ namespace Time_Sense.ViewModels
             }
             catch (Exception ex)
             {
-                App.t_client.TrackException(new ExceptionTelemetry(ex));
                 new MessageDialog("A problem occurred when loading data", utilities.loader.GetString("error")).ShowAsync();
             }
         }
@@ -507,7 +502,6 @@ namespace Time_Sense.ViewModels
                         }
                         catch (Exception e)
                         {
-                            App.t_client.TrackException(new ExceptionTelemetry(e));
                         }
                         finally
                         {
@@ -618,7 +612,6 @@ namespace Time_Sense.ViewModels
                         {
                             App.file_pick = false;
                             await new ProgressDialog(export_file).ShowAsync();
-                            App.t_client.TrackEvent("Excel report created");
                         }
                     }
                     else

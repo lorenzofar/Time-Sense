@@ -8,8 +8,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+using Windows.ApplicationModel.Store;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace Time_Sense
 {    
@@ -34,9 +34,68 @@ namespace Time_Sense
         public List<Timeline> query_l = new List<Timeline>();
         public List<Report> query_d = new List<Report>();
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            App.t_client.TrackPageView("Analytics page");
+            Messenger.Default.Send<MessageHelper.AnalysisMessage>(new MessageHelper.AnalysisMessage());
+            try
+            {
+                var license = CurrentApp.LicenseInformation;
+                if (license.ProductLicenses["ts_analytics"].IsActive)
+                {
+                }
+                else
+                {
+                    var result = await new PurchaseDialog().ShowAsync();
+                    if (result == ContentDialogResult.Primary)
+                    {
+                        try
+                        {
+                            //TRY TO CONTACT THE STORE  
+                            PurchaseResults p = await CurrentApp.RequestProductPurchaseAsync("ts_analytics");
+                            if (p.Status == ProductPurchaseStatus.AlreadyPurchased || p.Status == ProductPurchaseStatus.Succeeded)
+                            {
+                            }
+                            else
+                            {
+                                MainPage.home.IsChecked = true;
+                            }
+                            if (license.ProductLicenses["ts_analytics"].IsActive)
+                            {
+                            }
+                            else
+                            {
+                                MainPage.home.IsChecked = true;
+                            }
+                        }
+                        catch
+                        {
+                            await new MessageDialog(utilities.loader.GetString("error_transaction"), utilities.loader.GetString("error")).ShowAsync();
+                            MainPage.home.IsChecked = true;
+                        }
+                    }
+                    else
+                    {
+                        if (utilities.STATS.Values[settings.analysis_trial] == null)
+                        {
+                            utilities.STATS.Values[settings.analysis_trial] = "tried";
+                        }
+                        else
+                        {
+                            MainPage.home.IsChecked = true;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                await new MessageDialog(utilities.loader.GetString("error_transaction_internet"), utilities.loader.GetString("error")).ShowAsync();
+                MainPage.home.IsChecked = true;
+            }
+        }
+
+        private void SetLayout()
+        {
+
             MainPage.title.Text = utilities.loader.GetString("analytics");
             switch (vs_group.CurrentState.Name)
             {
@@ -59,7 +118,6 @@ namespace Time_Sense
 
         private void days_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            App.t_client.TrackEvent("Analysis item click");
             var item = (Report)days_list.SelectedValue;
             if (item != null)
             {
@@ -90,7 +148,6 @@ namespace Time_Sense
         {
             if (param_pivot.SelectedIndex == 0)
             {
-                App.t_client.TrackEvent("Reset days");
                 query_d.Clear();
                 days_list.ItemsSource = null;
                 days_list.ItemsSource = query_d;
@@ -98,7 +155,6 @@ namespace Time_Sense
             }
             else
             {
-                App.t_client.TrackEvent("Reset unlocks");
                 query_l.Clear();
                 unlocks_list.ItemsSource = null;
                 unlocks_list.ItemsSource = query_l;
@@ -112,7 +168,6 @@ namespace Time_Sense
             reset_btn.IsEnabled = false;
             if (param_pivot.SelectedIndex == 0)
             {
-                App.t_client.TrackEvent("Search days");
                 d_ring_box.Visibility = Visibility.Visible;
                 d_ring.IsActive = true;
                 days_list.Visibility = Visibility.Collapsed;
@@ -212,7 +267,6 @@ namespace Time_Sense
             }
             else
             {
-                App.t_client.TrackEvent("Search unlocks");
                 u_ring_box.Visibility = Visibility.Visible;
                 unlocks_list.Visibility = Visibility.Collapsed;
                 u_ring.IsActive = true;
@@ -410,7 +464,6 @@ namespace Time_Sense
 
         private void param_pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            App.t_client.TrackEvent("Analysis pivot swipe");
             switch (param_pivot.SelectedIndex)
             {
                 case 0:
@@ -459,7 +512,6 @@ namespace Time_Sense
             }
             catch (Exception ex)
             {
-                App.t_client.TrackException(new Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry(ex));
             }
         }
 

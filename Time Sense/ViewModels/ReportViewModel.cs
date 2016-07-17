@@ -110,7 +110,6 @@ namespace Time_Sense.ViewModels
             set
             {
                 Set(ref _pivotIndex, value);
-                App.t_client.TrackEvent("Report pivot swipe");
                 pivotBanner = utilities.loader.GetString(pivot_strings[_pivotIndex]);
             }
         }
@@ -333,7 +332,6 @@ namespace Time_Sense.ViewModels
                         {
                             App.file_pick = false;
                             await new ProgressDialog(export_file).ShowAsync();
-                            App.t_client.TrackEvent("Excel report created");
                         }
                     }
                     else

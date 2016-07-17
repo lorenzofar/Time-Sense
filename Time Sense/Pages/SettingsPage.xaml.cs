@@ -38,7 +38,6 @@ namespace Time_Sense
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            App.t_client.TrackPageView("Settings page");
             MainPage.title.Text = utilities.loader.GetString("settings");
             LoadSettings();
         }
@@ -103,7 +102,6 @@ namespace Time_Sense
 
         private void threshold_box_selectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            App.t_client.TrackEvent("Threshold changed");
             if (threshold_box.SelectedIndex == 5)
             {
                 //DISABLES NOTIFICATIONS AND REMOVES SCHEDULED ONES
@@ -118,7 +116,6 @@ namespace Time_Sense
                 }
                 catch(Exception ex)
                 {
-                    App.t_client.TrackException(new ExceptionTelemetry(ex));
                 }
             }
             else
@@ -138,7 +135,6 @@ namespace Time_Sense
             int span = limit - time;
             if (limit != 0 && span >= 0 && DateTime.Now.AddSeconds(span).Date == DateTime.Now.Date)
             {
-                App.t_client.TrackEvent("Toast scheduled");
                 IReadOnlyList<ScheduledToastNotification> list = ToastNotificationManager.CreateToastNotifier().GetScheduledToastNotifications();
                 foreach (var toast in list)
                 {
@@ -153,7 +149,6 @@ namespace Time_Sense
 
         private void location_switch_toggled(object sender, RoutedEventArgs e)
         {
-            App.t_client.TrackEvent(location_switch.IsOn ? "Location_on" : "Location_off");
             utilities.STATS.Values[settings.location] = location_switch.IsOn ? "on" : "off";
         }
 
@@ -325,7 +320,6 @@ namespace Time_Sense
             IUICommand reset_command = await reset_confirm.ShowAsync();
             if (reset_command.Id.ToString() == "yes")
             {
-                App.t_client.TrackEvent("Reset all");
                 utilities.STATS.Values[settings.date] = DateTime.Now.ToString();
                 await new DeleteDialog(0).ShowAsync();
                 try
@@ -351,7 +345,6 @@ namespace Time_Sense
                 StorageFolder folder = await fold_picker.PickSingleFolderAsync();
                 if (folder != null)
                 {
-                    App.t_client.TrackEvent("Backup saved");
                     App.file_pick = false;
                     StorageFile database = await ApplicationData.Current.LocalFolder.GetFileAsync("timesense_database.db");
                     await database.CopyAsync(folder, "timesense_backup.tsb", NameCollisionOption.GenerateUniqueName);
@@ -373,7 +366,6 @@ namespace Time_Sense
             StorageFile file = await file_picker.PickSingleFileAsync();
             if (file != null)
             {
-                App.t_client.TrackEvent("Backup restored");
                 App.file_pick = false;
                 file = await file.CopyAsync(ApplicationData.Current.TemporaryFolder, "temp", NameCollisionOption.GenerateUniqueName);
                 bool valid = await Helper.CheckIntegrity(file.Path);
@@ -466,7 +458,6 @@ namespace Time_Sense
 
         private async void migrate_btn_Click(object sender, RoutedEventArgs e)
         {
-            App.t_client.TrackEvent("Data migrated");
             await new MigrationDialog().ShowAsync();
         }
 
@@ -483,19 +474,16 @@ namespace Time_Sense
 
         private async void rate_btn_Click(object sender, RoutedEventArgs e)
         {
-            App.t_client.TrackEvent("Rate button");
             await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-windows-store://review/?ProductId=9wzdncrcwwmn"));
         }
 
         private async void guide_settngs_btn_Click(object sender, RoutedEventArgs e)
         {
-            App.t_client.TrackEvent("Help button");
             await new WelcomeDialog().ShowAsync();
         }
 
         private void letters_switch_Toggled(object sender, RoutedEventArgs e)
         {
-            App.t_client.TrackEvent("Letters changed");
             utilities.STATS.Values[settings.letters] = letters_switch.IsOn ? "yes" : null;
         }
 
@@ -537,7 +525,6 @@ namespace Time_Sense
 
         private async void messageWrittenHandler(ProximityDevice sender, long messageId)
         {
-            App.t_client.TrackEvent("NFC tag written");
             nfc_device.StopPublishingMessage(messageId);
             messageId0 = messageId;
             subscriptionId = nfc_device.SubscribeForMessage("NDEF", MessageReceivedHandler);

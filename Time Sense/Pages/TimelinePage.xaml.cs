@@ -33,7 +33,6 @@ namespace Time_Sense
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            App.t_client.TrackPageView("Timeline page");
             Messenger.Default.Send<MessageHelper.TimelineMessage>(new MessageHelper.TimelineMessage());
         }
 
@@ -41,7 +40,6 @@ namespace Time_Sense
         {
             if (unlock.latitude != 0 || unlock.longitude != 0)
             {
-                App.t_client.TrackEvent("Map shown");
                 map_row.Height = new GridLength(1, GridUnitType.Auto);
                 map_open.Begin();
                 BasicGeoposition pos = new BasicGeoposition() { Latitude = double.Parse(unlock.latitude.ToString()), Longitude = double.Parse(unlock.longitude.ToString()) };
