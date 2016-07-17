@@ -56,7 +56,7 @@ namespace Time_Sense.ViewModels
             });
         }
 
-        public async Task OnNavigatedTo()
+        public void OnNavigatedTo()
         {
             Refresh();
             if (App.jump_arguments == "usage")
@@ -288,7 +288,6 @@ namespace Time_Sense.ViewModels
         {
             try
             {
-                await Helper.InitializeDatabase();
                 if (App.report_date.Date == DateTime.Now.Date)
                 {
                     date[1] = DateTime.Now;

@@ -116,7 +116,6 @@ namespace Time_Sense
                 d_ring_box.Visibility = Visibility.Visible;
                 d_ring.IsActive = true;
                 days_list.Visibility = Visibility.Collapsed;
-                await Helper.InitializeDatabase();
                 query_d = new List<Database.Report>();
                 if (!rangeall)
                 {
@@ -217,7 +216,6 @@ namespace Time_Sense
                 u_ring_box.Visibility = Visibility.Visible;
                 unlocks_list.Visibility = Visibility.Collapsed;
                 u_ring.IsActive = true;
-                await Helper.InitializeDatabase();
                 query_l = new List<Timeline>();
                 if (!rangeall)
                 {

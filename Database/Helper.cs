@@ -116,7 +116,6 @@ namespace Database
 
         public static async Task<List<Timeline>> GetTimelineList(DateTime date)
         {
-            await InitializeDatabase();
             string date_str = utilities.shortdate_form.Format(date);
             List<Timeline> list = await ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).ToListAsync();
             return list;
@@ -124,7 +123,6 @@ namespace Database
 
         public static async Task<List<Hour>> GetHourList(DateTime date)
         {
-            await InitializeDatabase();
             List<Hour> list = new List<Hour>();
             string date_str = utilities.shortdate_form.Format(date);
             for(int i = 0; i<24; i++)
@@ -231,7 +229,6 @@ namespace Database
 
         public static async Task<List<Database.Report>> LoadAllData()
         {
-            await InitializeDatabase();
             List<Database.Report> list = await ConnectionDb().Table<Database.Report>().ToListAsync();
             return list;
         }
@@ -252,7 +249,6 @@ namespace Database
             bool success = true;
             try
             {
-                await InitializeDatabase();
                 string date = utilities.shortdate_form.Format(dt);
                 var report_query = await ConnectionDb().Table<Database.Report>().Where(x => x.date == date).FirstOrDefaultAsync();
                 var hour_query = await ConnectionDb().Table<Hour>().Where(x => x.date == date).ToListAsync();
@@ -287,7 +283,6 @@ namespace Database
             bool success = true;
             try
             {
-                await InitializeDatabase();
                 var report_query = await ConnectionDb().Table<Database.Report>().ToListAsync();
                 var hour_query = await ConnectionDb().Table<Hour>().ToListAsync();
                 var timeline_query = await ConnectionDb().Table<Timeline>().ToListAsync();

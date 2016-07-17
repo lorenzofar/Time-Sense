@@ -304,13 +304,13 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Syncfusion.SfChart.UWP">
-      <HintPath>..\..\..\..\..\Syncfusion\13.3.0.7\Assemblies for Universal Windows\10.0\Syncfusion.SfChart.UWP.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\14.2.0.26\Assemblies for Universal Windows\10.0\Syncfusion.SfChart.UWP.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfShared.UWP">
-      <HintPath>..\..\..\..\..\Syncfusion\13.3.0.7\Assemblies for Universal Windows\10.0\Syncfusion.SfShared.UWP.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\14.2.0.26\Assemblies for Universal Windows\10.0\Syncfusion.SfShared.UWP.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.XlsIO.UWP">
-      <HintPath>..\..\..\..\..\Syncfusion\13.3.0.7\Assemblies for Universal Windows\10.0\Syncfusion.XlsIO.UWP.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\14.2.0.26\Assemblies for Universal Windows\10.0\Syncfusion.XlsIO.UWP.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

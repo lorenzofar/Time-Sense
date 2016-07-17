@@ -1,13 +1,13 @@
 ﻿{
   "dependencies": {
-    "Microsoft.ApplicationInsights": "1.2.3",
+    "Microsoft.ApplicationInsights": "2.1.0",
     "Microsoft.ApplicationInsights.PersistenceChannel": "1.2.3",
-    "Microsoft.ApplicationInsights.WindowsApps": "1.1.0",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
-    "MvvmLight": "5.2.0",
+    "Microsoft.ApplicationInsights.WindowsApps": "1.1.1",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+    "MvvmLight": "5.3.0",
     "NdefLibrary": "3.1.1",
-    "Template10": "1.1.8",
-    "UniversalRateReminder": "2.0.0"
+    "Template10": "1.1.11",
+    "UniversalRateReminder": "2.2.0"
   },
   "frameworks": {
     "uap10.0": {}

@@ -23,7 +23,6 @@ namespace Time_Sense
             {
                 try
                 {
-                    await Helper.InitializeDatabase();
                     int step = 0;
                     var report_query = await Helper.ConnectionDb().Table<Report>().ToListAsync();
                     var hour_query = await Helper.ConnectionDb().Table<Hour>().ToListAsync();

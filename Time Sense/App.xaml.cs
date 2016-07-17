@@ -38,9 +38,6 @@ namespace Time_Sense
 
         public App()
         {
-            Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
-                Microsoft.ApplicationInsights.WindowsCollectors.Metadata |
-                Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             this.Resuming += App_Resuming;
@@ -82,6 +79,7 @@ namespace Time_Sense
             }
 
             Frame rootFrame = Window.Current.Content as Frame;
+            Helper.InitializeDatabase();
 
             string password = utilities.STATS.Values[settings.password] == null ? "" : utilities.STATS.Values[settings.password].ToString();
 
@@ -124,7 +122,6 @@ namespace Time_Sense
             {
                 var jump_list = await JumpList.LoadCurrentAsync();
                 jump_list.Items.Clear();
-                await jump_list.SaveAsync();
                 jump_list.SystemGroupKind = JumpListSystemGroupKind.None;
                 JumpListItem j_timeline = JumpListItem.CreateWithArguments("timeline", utilities.loader.GetString("jump_timeline"));
                 JumpListItem j_report = JumpListItem.CreateWithArguments("report", utilities.loader.GetString("jump_report"));
@@ -195,6 +192,7 @@ namespace Time_Sense
         protected override async void OnActivated(IActivatedEventArgs args)
         {
             Frame rootFrame = Window.Current.Content as Frame;
+            Helper.InitializeDatabase();
 
             Object password_obj = utilities.STATS.Values[settings.password];
             string password = password_obj == null ? "" : password_obj.ToString();
