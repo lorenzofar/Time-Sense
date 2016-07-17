@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
-using Windows.Data.Xml.Dom;
 using Windows.Globalization.DateTimeFormatting;
 using Windows.Storage;
 using Windows.UI.Notifications;
@@ -20,7 +16,6 @@ namespace Stuff
         {
             get { return new ResourceLoader(); }
         }
-        //public static ResourceLoader loader = new ResourceLoader();
 
         public static bool CheckDate(string setting)
         {
@@ -35,10 +30,10 @@ namespace Stuff
             builder.Append("<image src='Assets/icon.png' placement='peek'/>");
             builder.Append("<group>");
             builder.Append("<subgroup>");
-            builder.Append(String.Format("<text hint-style='captionSubtle'>{0}</text>", utilities.loader.GetString("usage")));
-            builder.Append(String.Format("<text>{0}</text>", usage));
-            builder.Append(String.Format("<text hint-style='captionSubtle'>{0}</text>", utilities.loader.GetString("unlocks_tile")));
-            builder.Append(String.Format("<text>{0}</text>", String.Format(loader.GetString(unlocks == 1 ? "unlock" : "unlocks"), unlocks)));            
+            builder.Append($"<text hint-style='captionSubtle'>{utilities.loader.GetString("usage")}</text>");
+            builder.Append($"<text>{usage}</text>");
+            builder.Append($"<text hint-style='captionSubtle'>{utilities.loader.GetString("unlocks_tile")}</text>");
+            builder.Append($"<text>{String.Format(loader.GetString(unlocks == 1 ? "unlock" : "unlocks"), unlocks)}</text>");            
             builder.Append("</subgroup>");
             builder.Append("</group>");            
             builder.Append("</binding>");
@@ -48,10 +43,10 @@ namespace Stuff
             builder.Append("<image src='Assets/icon.png'/>");
             builder.Append("</subgroup>");
             builder.Append("<subgroup hint-textStacking='center'>");
-            builder.Append(String.Format("<text hint-style='captionSubtle'>{0}</text>", utilities.loader.GetString("usage")));
-            builder.Append(String.Format("<text>{0}</text>", usage));
-            builder.Append(String.Format("<text hint-style='captionSubtle'>{0}</text>", utilities.loader.GetString("unlocks_tile")));
-            builder.Append(String.Format("<text>{0}</text>", String.Format(loader.GetString(unlocks == 1 ? "unlock" : "unlocks"), unlocks)));
+            builder.Append($"<text hint-style='captionSubtle'>{utilities.loader.GetString("usage")}</text>");
+            builder.Append($"<text>{usage}</text>");
+            builder.Append($"<text hint-style='captionSubtle'>{utilities.loader.GetString("unlocks_tile")}</text>");
+            builder.Append($"<text>{String.Format(loader.GetString(unlocks == 1 ? "unlock" : "unlocks"), unlocks)}</text>");
             builder.Append("</subgroup>");
             builder.Append("</group>");            
             builder.Append("</binding>");
@@ -65,12 +60,12 @@ namespace Stuff
             builder.Append("</group>");
             builder.Append("<group hint-textStacking='center'>");
             builder.Append("<subgroup>");
-            builder.Append(String.Format("<text hint-align='center'>{0}</text>", utilities.loader.GetString("usage")));
-            builder.Append(String.Format("<text hint-style='subtitle' hint-align='center'>{0}</text>", usage));
+            builder.Append($"<text hint-align='center'>{utilities.loader.GetString("usage")}</text>");
+            builder.Append($"<text hint-style='subtitle' hint-align='center'>{usage}</text>");
             builder.Append("</subgroup>");
             builder.Append("<subgroup>");
-            builder.Append(String.Format("<text hint-align='center'>{0}</text>", utilities.loader.GetString("unlocks_tile")));
-            builder.Append(String.Format("<text hint-style='subtitle' hint-align='center'>{0}</text>", unlocks));
+            builder.Append($"<text hint-align='center'>{utilities.loader.GetString("unlocks_tile")}</text>");
+            builder.Append($"<text hint-style='subtitle' hint-align='center'>{unlocks}</text>");
             builder.Append("</subgroup>");
             builder.Append("</group>");
             builder.Append("</binding>");
@@ -88,32 +83,31 @@ namespace Stuff
             StringBuilder builder = new StringBuilder("<toast launch=''>");
             builder.Append("<visual>");
             builder.Append("<binding template='ToastGeneric'>");
-            builder.Append(String.Format("<text>{0}</text>", loader.GetString("limit_toast_title")));
-            builder.Append(String.Format("<text>{0}</text>", String.Format(loader.GetString("limit_toast_content"), limit / 3600, limit / 3600 == 1 ? loader.GetString("hour") : loader.GetString("hours"))));
+            builder.Append($"<text>{loader.GetString("limit_toast_title")}</text>");
+            builder.Append($"<text>{String.Format(loader.GetString("limit_toast_content"), limit / 3600, limit / 3600 == 1 ? loader.GetString("hour") : loader.GetString("hours"))}</text>");
             builder.Append("<image placement='appLogoOverride' src='Assets/alert.png'/>");
             builder.Append("</binding>");
             builder.Append("</visual>");
             builder.Append("<actions>");
-            builder.Append(String.Format("<input defaultInput='{0}' title='{1}' placeholderContent='{1}' id='time' type='selection'>", (limit / 3600).ToString(), loader.GetString("limit_toast_helper")));
+            builder.Append($"<input defaultInput='{(limit / 3600)}' title='{loader.GetString("limit_toast_helper")}' placeholderContent='{loader.GetString("limit_toast_helper")}' id='time' type='selection'>");
             for(int i= 1; i<6; i++)
             {
-                builder.Append(String.Format("<selection id='{0}' content='{1}'/>", i.ToString(), loader.GetString("limit_toast_"+i.ToString())));
+                builder.Append($"<selection id='{i}' content='{loader.GetString("limit_toast_" + i.ToString())}'/>");
             }
             builder.Append("</input>");
-            builder.Append(String.Format("<action activationType='background' arguments='change_threshold' content='{0}'/>", loader.GetString("limit_toast_btn")));
+            builder.Append($"<action activationType='background' arguments='change_threshold' content='{ loader.GetString("limit_toast_btn")}'/>");
             builder.Append("<action activationType='system' arguments='dismiss' content=''/>");
             builder.Append("</actions>");
             builder.Append("</toast>");
             return builder.ToString();
         }
 
-
         public static string FormatData(int usage)
         {
             int hour = usage / 3600;
             int minutes = (usage - (hour * 3600)) / 60;
             int seconds = (usage - (hour * 3600)) - (minutes * 60);
-            return String.Format("{0}:{1}:{2}", hour, minutes, seconds);
+            return $"{hour}:{minutes}:{seconds}";
         }
 
         public static int[] SplitData(int usage)

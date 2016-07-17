@@ -85,7 +85,7 @@ namespace Tasks
         {
             foreach (var task in BackgroundTaskRegistration.AllTasks)
             {
-                if (task.Value.Name == string.Format("timesense_timer_{0}", index))
+                if (task.Value.Name == $"timesense_timer_{index}")
                 {
                     return;
                 }
