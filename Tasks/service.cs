@@ -1,5 +1,6 @@
 ﻿using Stuff;
 using System;
+using System.Linq;
 using Windows.ApplicationModel.AppService;
 using Windows.ApplicationModel.Background;
 using Windows.Foundation.Collections;
