@@ -2,7 +2,6 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
-using Microsoft.ApplicationInsights.DataContracts;
 using Stuff;
 using System;
 using System.Collections.Generic;

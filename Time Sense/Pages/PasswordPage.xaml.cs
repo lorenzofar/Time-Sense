@@ -67,7 +67,7 @@ namespace Time_Sense
             this.lock_panel.Visibility = Visibility.Visible;
             this.keyboard_grid.Visibility = Visibility.Collapsed;
             this.hello_btn.Visibility = Visibility.Collapsed;
-            await Task.Delay(1);
+            await Task.Delay(5);
             Frame.Navigate(typeof(MainPage), App.jump_arguments);
         }
 
