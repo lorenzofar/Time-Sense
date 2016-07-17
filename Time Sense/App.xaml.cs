@@ -1,4 +1,5 @@
 ﻿using Database;
+using Microsoft.HockeyApp;
 using Stuff;
 using System;
 using System.Linq;
@@ -33,11 +34,10 @@ namespace Time_Sense
         public static bool file_pick = false;
 
         public static Type current_page = null;
-
-        public static Microsoft.ApplicationInsights.TelemetryClient t_client = new Microsoft.ApplicationInsights.TelemetryClient();
-
+        
         public App()
         {
+            HockeyClient.Current.Configure("175f59265eec419aa9526ba89f726658 ");
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             this.Resuming += App_Resuming;
@@ -198,7 +198,6 @@ namespace Time_Sense
             string password = password_obj == null ? "" : password_obj.ToString();
             if (args.Kind == ActivationKind.Protocol)
             {
-                App.t_client.TrackEvent("URI activated");
                 ProtocolActivatedEventArgs eventArgs = args as ProtocolActivatedEventArgs;
                 if (eventArgs.Uri != null)
                 {
@@ -287,7 +286,6 @@ namespace Time_Sense
             }
             else if (args.Kind == ActivationKind.VoiceCommand)
             {
-                App.t_client.TrackEvent("URI activated");
                 VoiceCommandActivatedEventArgs eventArgs = args as VoiceCommandActivatedEventArgs;
                 SpeechRecognitionResult result = eventArgs.Result;
                 if (eventArgs != null)
