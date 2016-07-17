@@ -18,7 +18,6 @@ namespace Tasks
         {
             BackgroundTaskDeferral _deferral = taskInstance.GetDeferral();
             utilities.STATS.Values[settings.date] = DateTime.Now.ToString();
-            await Helper.InitializeDatabase();
             string date_str = utilities.shortdate_form.Format(DateTime.Now);
             var item = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
             time = item == null ? 0 : item.usage;

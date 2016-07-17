@@ -36,7 +36,6 @@ namespace Tasks
                     goto error;
                 }
                 // LOAD TIME FROM DATABASE
-                await Database.Helper.InitializeDatabase();
                 for (int i = date[0].Date == date[1].Date ? 1 : 0; i < 2; i++)
                 {
                     string date_str = utilities.shortdate_form.Format(date[i]);

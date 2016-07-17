@@ -140,7 +140,6 @@ namespace Tasks
         {
             string date_str = Stuff.utilities.shortdate_form.Format(DateTime.Now);
             //Database.Report item = new Database.Report();
-            await Database.Helper.InitializeDatabase();
             try {
                 //var list = await Database.Helper.ConnectionDb().Table<Database.Report>().ToListAsync();
                 //var item = await Database.Helper.ConnectionDb().Table<Database.Report>().Where(x => x.date == date_str1).FirstOrDefaultAsync();
