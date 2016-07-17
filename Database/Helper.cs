@@ -27,7 +27,7 @@ namespace Database
             bool db_exist = await CheckDatabase();
             if (!db_exist)
             {
-                await ConnectionDb().CreateTablesAsync<Database.Report, Hour, Timeline, AllowedContact>();
+                await ConnectionDb().CreateTablesAsync<Report, Hour, Timeline, AllowedContact>();
             }
         }
 
@@ -76,8 +76,7 @@ namespace Database
         {
             bool location_settings = utilities.STATS.Values[settings.location] == null || utilities.STATS.Values[settings.location].ToString() == "on" ? true : false;            
             if (location_settings)
-            {
-                Geopoint point;
+            {               
                 try
                 {
                     var accessStatus = await Geolocator.RequestAccessAsync();
@@ -86,15 +85,14 @@ namespace Database
                         Geolocator geolocator = new Geolocator { DesiredAccuracy = PositionAccuracy.High };
                         // Carry out the operation
                         Geoposition pos = await geolocator.GetGeopositionAsync(new TimeSpan(0, 0, 0, 0, 3000), new TimeSpan(0, 0, 0, 0, 3100));
-                        point = pos.Coordinate.Point;
+                        return pos.Coordinate.Point;
                     }
-                    else { point = null; }
+                    else { return null; }
                 }
                 catch
                 {
                     return null;
                 }
-                return point;
             }
             else { return null; }
         }
@@ -185,22 +183,18 @@ namespace Database
         #region LOAD DATA
         public static async Task<int[]> LoadReportItem(DateTime date)
         {
-            int[] data = new int[2];
             string date_str = utilities.shortdate_form.Format(date);
             var item = await ConnectionDb().Table<Database.Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
             if(item != null)
             {
-                data[0] = item.usage;
-                data[1] = item.unlocks;
+                int[] data = { item.usage, item.unlocks };
+                return data;
             }
             else
             {
-                for(int i = 0; i<2; i++)
-                {
-                    data[i] = 0;
-                }
+                int[] data = { 0, 0 };
+                return data;
             }
-            return data;
         }
 
         public static async Task UpdateHourItem(DateTime date, int hour, int time, int unlocks)
