@@ -12,7 +12,7 @@ using Windows.ApplicationModel.Store;
 using GalaSoft.MvvmLight.Messaging;
 
 namespace Time_Sense
-{    
+{
     public sealed partial class AnalyticsPage : Page
     {
         bool rangeall = true;
@@ -34,69 +34,14 @@ namespace Time_Sense
         public List<Timeline> query_l = new List<Timeline>();
         public List<Report> query_d = new List<Report>();
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Messenger.Default.Send<MessageHelper.AnalysisMessage>(new MessageHelper.AnalysisMessage());
-            try
-            {
-                var license = CurrentApp.LicenseInformation;
-                if (license.ProductLicenses["ts_analytics"].IsActive)
-                {
-                }
-                else
-                {
-                    var result = await new PurchaseDialog().ShowAsync();
-                    if (result == ContentDialogResult.Primary)
-                    {
-                        try
-                        {
-                            //TRY TO CONTACT THE STORE  
-                            PurchaseResults p = await CurrentApp.RequestProductPurchaseAsync("ts_analytics");
-                            if (p.Status == ProductPurchaseStatus.AlreadyPurchased || p.Status == ProductPurchaseStatus.Succeeded)
-                            {
-                            }
-                            else
-                            {
-                                MainPage.home.IsChecked = true;
-                            }
-                            if (license.ProductLicenses["ts_analytics"].IsActive)
-                            {
-                            }
-                            else
-                            {
-                                MainPage.home.IsChecked = true;
-                            }
-                        }
-                        catch
-                        {
-                            await new MessageDialog(utilities.loader.GetString("error_transaction"), utilities.loader.GetString("error")).ShowAsync();
-                            MainPage.home.IsChecked = true;
-                        }
-                    }
-                    else
-                    {
-                        if (utilities.STATS.Values[settings.analysis_trial] == null)
-                        {
-                            utilities.STATS.Values[settings.analysis_trial] = "tried";
-                        }
-                        else
-                        {
-                            MainPage.home.IsChecked = true;
-                        }
-                    }
-                }
-            }
-            catch
-            {
-                await new MessageDialog(utilities.loader.GetString("error_transaction_internet"), utilities.loader.GetString("error")).ShowAsync();
-                MainPage.home.IsChecked = true;
-            }
+            SetLayout();
         }
 
         private void SetLayout()
         {
-
-            MainPage.title.Text = utilities.loader.GetString("analytics");
             switch (vs_group.CurrentState.Name)
             {
                 case "narrow":
@@ -255,7 +200,7 @@ namespace Time_Sense
                     query_d = null;
                     days_list.ItemsSource = null;
                 }
-                hidering_d:
+            hidering_d:
                 if (query_d != null)
                 {
                     no_item_days_txt.Visibility = query_d.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
@@ -445,7 +390,7 @@ namespace Time_Sense
                     query_l = null;
                     unlocks_list.ItemsSource = null;
                 }
-                hidering:
+            hidering:
                 if (query_l != null)
                 {
                     no_item_unlocks_txt.Visibility = query_l.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
@@ -462,21 +407,6 @@ namespace Time_Sense
             reset_btn.IsEnabled = true;
         }
 
-        private void param_pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            switch (param_pivot.SelectedIndex)
-            {
-                case 0:
-                    days_grid.Visibility = Visibility.Visible;
-                    unlocks_grid.Visibility = Visibility.Collapsed;
-                    break;
-                case 1:
-                    days_grid.Visibility = Visibility.Collapsed;
-                    unlocks_grid.Visibility = Visibility.Visible;
-                    break;
-            }
-        }
-
         private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
         {
             try
@@ -484,7 +414,7 @@ namespace Time_Sense
                 ScrollViewer sv = sender as ScrollViewer;
                 double count = param_pivot.SelectedIndex == 0 ? days_list.Items.Count : unlocks_list.Items.Count;
                 double height = root.ActualHeight;
-                if ( height/count <= 40)
+                if (height / count <= 40)
                 {
                     Visibility vis = Visibility.Visible;
                     int index = param_pivot.SelectedIndex;

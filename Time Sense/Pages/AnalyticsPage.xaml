@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:db="using:Database"
+    DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=Analysis}"
     mc:Ignorable="d">
 
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" x:Name="root" VerticalAlignment="Stretch">
@@ -66,7 +67,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <Grid RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+        <Grid RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" Visibility="{Binding checkingLicense, Converter={StaticResource BoolVisibilityConverter}, ConverterParameter=false}">
             <Grid.RowDefinitions>
                 <RowDefinition x:Name="param_r" Height="11*"/>
                 <RowDefinition x:Name="list_r" Height="7*"/>
@@ -79,7 +80,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid Background="{ThemeResource SystemControlBackgroundAccentBrush}" Opacity="0.35"/>
-                <Grid RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" x:Name="range_grid">
+                <Grid x:Name="range_grid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition x:Name="range_content_column"/>
@@ -93,7 +94,7 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock FontSize="{ThemeResource TextStyleLargeFontSize}"  Margin="12" x:Uid="an_range_header_1"/>
-                        <Button Margin="0,0,12,0" VerticalAlignment="Stretch" x:Name="expander_range_btn" Click="expander_range_btn_Click" Grid.Column="1" Background="Transparent">
+                        <Button x:Name="expander_range_btn" Margin="0,0,12,0" Grid.Column="1" Background="Transparent" VerticalAlignment="Stretch"  Click="expander_range_btn_Click" >
                             <Button.Content>
                                 <FontIcon x:Name="expand_range" Glyph="&#xE010;"/>
                             </Button.Content>
@@ -134,7 +135,7 @@
                         </Button>
                     </Grid>
 
-                    <Pivot Grid.Row="1" x:Name="param_pivot" SelectionChanged="param_pivot_SelectionChanged">
+                    <Pivot Grid.Row="1" x:Name="param_pivot" SelectedIndex="{Binding paramPivotIndex, Mode=TwoWay}">
                         <PivotItem x:Uid="an_days_pivot" Header="DAYS">
                             <ScrollViewer VerticalScrollBarVisibility="Auto">
                                 <GridView SelectionMode="None" x:Name="d_grid">
@@ -351,7 +352,7 @@
                     </Pivot>
                 </Grid>
             </Grid>
-            <Grid x:Name="days_grid" Grid.Row="1">
+            <Grid x:Name="days_grid" Grid.Row="1" Visibility="{Binding paramPivotIndex, Converter={StaticResource IndexVisibilityConverter}, ConverterParameter=0}">
                 <Grid.RenderTransform>
                     <CompositeTransform x:Name="DaysTransform" />
                 </Grid.RenderTransform>
@@ -421,7 +422,7 @@
 
                 <TextBlock TextWrapping="WrapWholeWords" HorizontalAlignment="Center" Visibility="Collapsed" x:Name="no_item_days_txt" Margin="0,24" Grid.Row="3" x:Uid="no_items_txt" FontSize="{ThemeResource TextStyleLargeFontSize}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"/>
             </Grid>
-            <Grid Visibility="Collapsed" Grid.Row="1" x:Name="unlocks_grid" RelativePanel.Below="conditions_grid" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+            <Grid Grid.Row="1" x:Name="unlocks_grid" RelativePanel.Below="conditions_grid" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" Visibility="{Binding paramPivotIndex, Converter={StaticResource IndexVisibilityConverter}, ConverterParameter=1}">
                 <Grid.RenderTransform>
                     <CompositeTransform x:Name="UnlocksTransform" />
                 </Grid.RenderTransform>
@@ -529,6 +530,13 @@
                 <AppBarButton x:Name="reset_btn" x:Uid="reset_btn" Icon="Delete" Click="reset_btn_Click"/>
             </CommandBar>
         </Grid>
+
+        <StackPanel Visibility="{Binding checkingLicense, Converter={StaticResource BoolVisibilityConverter}}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
+            <Viewbox MaxHeight="50" MaxWidth="50">
+                <ProgressRing IsActive="{Binding checkingLicense}" Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" Width="50" Height="50"/>
+            </Viewbox>
+            <TextBlock Margin="0,12,0,0" x:Uid="license_progress"/>
+        </StackPanel>
 
         <Button x:Name="up_btn" Visibility="Collapsed"  Click="Button_Click" Background="Transparent" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" Margin="12" >
             <Button.Content>

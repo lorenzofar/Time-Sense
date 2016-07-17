@@ -34,6 +34,8 @@ namespace Time_Sense
         public static bool file_pick = false;
 
         public static Type current_page = null;
+
+        public static ViewModels.AnalysisViewModel analysis_page { get; set; }
         
         public App()
         {

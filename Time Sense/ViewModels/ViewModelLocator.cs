@@ -29,5 +29,17 @@
                 return new ReportViewModel();
             }
         }
+
+        public AnalysisViewModel Analysis
+        {
+            get
+            {
+                if(App.analysis_page == null)
+                {
+                    App.analysis_page = new AnalysisViewModel();
+                }
+                return App.analysis_page;
+            }
+        }
     }
 }

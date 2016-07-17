@@ -846,4 +846,7 @@ La versione per PC è ancora in fase di sviluppo e a causa di alcune limitazioni
   <data name="backup_restore_title" xml:space="preserve">
     <value>Ripristina</value>
   </data>
+  <data name="license_progress.Text" xml:space="preserve">
+    <value>Controllo licenza</value>
+  </data>
 </root>

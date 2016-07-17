@@ -20,6 +20,7 @@
     <converters:NoteEditConverter x:Key="NoteEditConverter"/>
     <converters:BoolVisibilityConverter x:Key="BoolVisibilityConverter"/>
     <converters:ListEmptyConverter x:Key="ListEmptyConverter"/>
+    <converters:IndexVisibilityConverter x:Key="IndexVisibilityConverter"/>
     <viewmodels:ViewModelLocator x:Key="ViewModelLocator"/>
 
     <!-- REGION SETTINGS -->

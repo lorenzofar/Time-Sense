@@ -117,6 +117,7 @@
   <ItemGroup>
     <Compile Include="Converters\BoolConverter.cs" />
     <Compile Include="Converters\BoolVisibilityConverter.cs" />
+    <Compile Include="Converters\IndexVisibilityConverter.cs" />
     <Compile Include="Converters\ListEmptyConverter.cs" />
     <Compile Include="Converters\MinutesConverter.cs" />
     <Compile Include="Converters\NoteEditConverter.cs" />
@@ -181,6 +182,7 @@
     <Compile Include="Dialogs\WelcomeDialog.xaml.cs">
       <DependentUpon>WelcomeDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AnalysisViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
     <Compile Include="ViewModels\TimelineViewModel.cs" />

@@ -848,4 +848,7 @@ The PC version is still in development and, due to system limitations, there cou
     <value>Restore</value>
     <comment>TODO</comment>
   </data>
+  <data name="license_progress.Text" xml:space="preserve">
+    <value>Checking license</value>
+  </data>
 </root>
