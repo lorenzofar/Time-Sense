@@ -27,11 +27,12 @@ namespace Time_Sense
         public MainPage()
         {
             this.InitializeComponent();
-            this.NavigationCacheMode = NavigationCacheMode.Required; 
+            this.NavigationCacheMode = NavigationCacheMode.Required;
             try { RegisterTaskLock(); } catch { }
             try { RegisterTaskUnlock(); } catch { }
             try { RegisterTaskAlert(); } catch { }
             try { RegisterTaskBackup(); } catch { }
+            try { RegisterTaskServer(); } catch { }
             if (!Windows.Foundation.Metadata.ApiInformation.IsEventPresent("Windows.Phone.UI.Input.HardwareButtons", "BackPressed"))
             {
                 try { RegisterTaskTimer(1, 15); } catch { }
@@ -53,10 +54,10 @@ namespace Time_Sense
 
         private async void HideBar()
         {
-            await StatusBar.GetForCurrentView().HideAsync(); 
+            await StatusBar.GetForCurrentView().HideAsync();
             Windows.Phone.UI.Input.HardwareButtons.BackPressed += HardwareButtons_BackPressed;
         }
-        
+
 
         private async void CheckDialogs()
         {
@@ -70,7 +71,7 @@ namespace Time_Sense
 
         private async Task CheckDesktop()
         {
-            if(utilities.STATS.Values[settings.desktop_disclaimer] == null)
+            if (utilities.STATS.Values[settings.desktop_disclaimer] == null)
             {
                 await new MessageDialog(utilities.loader.GetString("desktop_disclaimer"), utilities.loader.GetString("limit_toast_title")).ShowAsync();
                 utilities.STATS.Values[settings.desktop_disclaimer] = "shown";
@@ -250,6 +251,31 @@ namespace Time_Sense
                 catch { }
             }
         }
+
+        private async void RegisterTaskServer()
+        {
+            foreach (var task in BackgroundTaskRegistration.AllTasks)
+            {
+                if (task.Value.Name == "timesense_server")
+                {
+                    return;
+                }
+            }
+            var builder = new BackgroundTaskBuilder();
+            builder.Name = "timesense_server";
+            builder.TaskEntryPoint = "Tasks.server_task";
+            builder.SetTrigger(new TimeTrigger(1440, false));
+            builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
+            builder.CancelOnConditionLoss = false;
+            BackgroundExecutionManager.RemoveAccess();
+            BackgroundAccessStatus access_status = await BackgroundExecutionManager.RequestAccessAsync();
+            if (access_status != BackgroundAccessStatus.Denied)
+            {
+                BackgroundTaskRegistration mytask = builder.Register();
+                mytask.Completed += Mytask_Completed;
+            }
+        }
+
         #region TIMER TASKS
         private async void RegisterTaskTimer(int index, int span)
         {
