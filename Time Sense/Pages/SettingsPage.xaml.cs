@@ -466,7 +466,7 @@ namespace Time_Sense
             String recipient = "lorenzo.farinelli@outlook.it";
             EmailMessage feedback = new EmailMessage();
             feedback.Subject = "Time Sense";
-            feedback.Body = "Version 2.2";
+            feedback.Body = "Version 2.5";
             var emailRecipient = new EmailRecipient(recipient);
             feedback.To.Add(emailRecipient);
             await EmailManager.ShowComposeNewEmailAsync(feedback);
