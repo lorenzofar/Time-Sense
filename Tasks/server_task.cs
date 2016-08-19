@@ -9,6 +9,7 @@ using System.IO;
 using Windows.ApplicationModel.Background;
 using Database;
 using System.Diagnostics;
+using Stuff;
 
 namespace Tasks
 {
@@ -32,7 +33,8 @@ namespace Tasks
                 log = "";
                 await ApplicationData.Current.LocalFolder.CreateFileAsync("server_log.txt");
             }
-            var days = await Helper.ConnectionDb().Table<Report>().ToListAsync();
+            string date_str = utilities.shortdate_form.Format(DateTime.Now);
+            var days = await Helper.ConnectionDb().Table<Report>().Where(x => x.date != date_str).ToListAsync();
             var days_uploaded = "";
             foreach (var day in days)
             {
@@ -42,6 +44,7 @@ namespace Tasks
                     Debug.WriteLine($"Usage: {day.usage}, unlocks: {day.unlocks}");
                     try
                     {
+                        
                         var response = await client.GetAsync("http://localhost:3000/api");
                         if(response != null)
                         {
