@@ -81,7 +81,7 @@ namespace Time_Sense
             }
 
             Frame rootFrame = Window.Current.Content as Frame;
-            Helper.InitializeDatabase();
+            await Helper.InitializeDatabase();
 
             string password = utilities.STATS.Values[settings.password] == null ? "" : utilities.STATS.Values[settings.password].ToString();
 
