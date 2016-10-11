@@ -27,7 +27,7 @@ namespace Database
             bool db_exist = await CheckDatabase();
             if (!db_exist)
             {
-                await ConnectionDb().CreateTablesAsync<Report, Hour, Timeline, AllowedContact>();
+                await ConnectionDb().CreateTablesAsync<Database.Report, Hour, Timeline, AllowedContact>();
             }
         }
 
