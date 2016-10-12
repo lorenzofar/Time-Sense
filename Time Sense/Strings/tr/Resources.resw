@@ -250,21 +250,6 @@
   <data name="maximum.Text" xml:space="preserve">
     <value>maksimum</value>
   </data>
-  <data name="migrate_dialog.Title" xml:space="preserve">
-    <value>VERI TAŞINIYOR</value>
-  </data>
-  <data name="migrate_dialog_error" xml:space="preserve">
-    <value>Veri taşınamadı, lütfen tekrar deneyin</value>
-  </data>
-  <data name="migrate_dialog_progress" xml:space="preserve">
-    <value>{0}/{1} veri taşındı</value>
-  </data>
-  <data name="migrate_dialog_success" xml:space="preserve">
-    <value>Veri başarıyla taşındı</value>
-  </data>
-  <data name="migrate_dialog_unpresent" xml:space="preserve">
-    <value>Önceki veri yok</value>
-  </data>
   <data name="minimum.Text" xml:space="preserve">
     <value>minimum</value>
   </data>
@@ -384,15 +369,6 @@
   </data>
   <data name="map_dialog.Title" xml:space="preserve">
     <value>KONUM</value>
-  </data>
-  <data name="migrate_btn.Content" xml:space="preserve">
-    <value>Veri taşıma</value>
-  </data>
-  <data name="migrate_header_1.Text" xml:space="preserve">
-    <value>Taşıma</value>
-  </data>
-  <data name="migrate_header_2.Text" xml:space="preserve">
-    <value>Eğer 8.1 sürümünden geliyorsanız, ayarlar ekranından eski verilerinizi yeni sürüme aktarabilirsiniz.</value>
   </data>
   <data name="nfc_header_2.Text" xml:space="preserve">
     <value>Verinizi dokunarak kontrol etmek için, bir NFC etiketi yazdırın</value>

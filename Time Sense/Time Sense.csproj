@@ -151,9 +151,6 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\MigrationDialog.xaml.cs">
-      <DependentUpon>MigrationDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\PasswordPage.xaml.cs">
       <DependentUpon>PasswordPage.xaml</DependentUpon>
     </Compile>
@@ -236,10 +233,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Dialogs\MigrationDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

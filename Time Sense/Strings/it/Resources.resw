@@ -270,30 +270,6 @@
   <data name="maximum.Text" xml:space="preserve">
     <value>massimo</value>
   </data>
-  <data name="migrate_btn.Content" xml:space="preserve">
-    <value>Importa i dati</value>
-  </data>
-  <data name="migrate_dialog.Title" xml:space="preserve">
-    <value>IMPORTAZIONE DATI</value>
-  </data>
-  <data name="migrate_dialog_error" xml:space="preserve">
-    <value>I dati non possono essere importati, riprova per favore</value>
-  </data>
-  <data name="migrate_dialog_progress" xml:space="preserve">
-    <value>{0}/{1} elementi importati</value>
-  </data>
-  <data name="migrate_dialog_success" xml:space="preserve">
-    <value>I dati sono stati correttamente importati</value>
-  </data>
-  <data name="migrate_dialog_unpresent" xml:space="preserve">
-    <value>Non ci sono dati precedenti</value>
-  </data>
-  <data name="migrate_header_1.Text" xml:space="preserve">
-    <value>Importa</value>
-  </data>
-  <data name="migrate_header_2.Text" xml:space="preserve">
-    <value>Se hai aggiornato l'app da 8.1, puoi importare i dati nella nuova versione</value>
-  </data>
   <data name="minimum.Text" xml:space="preserve">
     <value>minimo</value>
   </data>

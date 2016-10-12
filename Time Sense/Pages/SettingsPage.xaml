@@ -346,25 +346,6 @@
                             HorizontalAlignment="Stretch"
                             Click="resetAll_btn_Click" />
                     </Grid>
-                    <TextBlock
-                        x:Uid="migrate_header_1"
-                        Margin="0,6,0,0" />
-                    <TextBlock
-                        x:Uid="migrate_header_2"
-                        Style="{StaticResource settings_header_subtitle}" />
-                    <Grid
-                        x:Name="migrate_grid"
-                        Margin="0,0,0,6">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Button
-                            x:Name="migrate_btn"
-                            x:Uid="migrate_btn"
-                            Margin="0,6,3,0"
-                            HorizontalAlignment="Stretch"
-                            Click="migrate_btn_Click" />
-                    </Grid>
                 </StackPanel>
                 <StackPanel
                     x:Name="about_grid"
