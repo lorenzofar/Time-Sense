@@ -3,10 +3,10 @@ using Stuff;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using Windows.Storage;
-using System.Linq;
 
 namespace Database
 {
@@ -28,7 +28,7 @@ namespace Database
             bool db_exist = await CheckDatabase();
             if (!db_exist)
             {
-                await ConnectionDb().CreateTablesAsync<Database.Report, Hour, Timeline, AllowedContact>();
+                await ConnectionDb().CreateTablesAsync<Report, Hour, Timeline, AllowedContact>();
             }
         }
 
@@ -56,7 +56,7 @@ namespace Database
         {
             Geopoint pos = await GetLocation();
             double latitude = pos == null ? 0 : pos.Position.Latitude;
-            double longitude = pos == null ? 0 : pos.Position.Longitude;            
+            double longitude = pos == null ? 0 : pos.Position.Longitude;
             Timeline item = new Timeline
             {
                 time = time,
@@ -66,8 +66,8 @@ namespace Database
                 latitude = latitude,
                 longitude = longitude,
                 date = utilities.shortdate_form.Format(DateTime.Now),
-                battery_status = status, 
-                bluetooth_status = bluetooth, 
+                battery_status = status,
+                bluetooth_status = bluetooth,
                 wifi_status = wifi
             };
             await ConnectionDb().InsertAsync(item);
@@ -75,9 +75,9 @@ namespace Database
 
         private static async Task<Geopoint> GetLocation()
         {
-            bool location_settings = utilities.STATS.Values[settings.location] == null || utilities.STATS.Values[settings.location].ToString() == "on" ? true : false;            
+            bool location_settings = utilities.STATS.Values[settings.location] == null || utilities.STATS.Values[settings.location].ToString() == "on" ? true : false;
             if (location_settings)
-            {               
+            {
                 try
                 {
                     var accessStatus = await Geolocator.RequestAccessAsync();
@@ -124,32 +124,30 @@ namespace Database
         {
             List<Hour> list = new List<Hour>();
             string date_str = utilities.shortdate_form.Format(date);
-            for(int i = 0; i<24; i++)
+            for (int i = 0; i < 24; i++)
             {
                 var item = (await ConnectionDb().Table<Hour>().ToListAsync()).FirstOrDefault(x => x.date == date_str && x.hour == i);
-                if(item != null)
+                if (item != null)
                 {
                     list.Add(item);
                 }
                 else
                 {
-                    Hour hour = new Hour
+                    list.Add(new Hour
                     {
                         date = date_str,
                         hour = i,
                         unlocks = 0,
                         usage = 0
-                    };
-                    list.Add(hour);
+                    });
                 }
-            }     
+            }
             return list;
         }
 
         public static async Task DeleteTimelineItem()
         {
-            var query = ConnectionDb().Table<Timeline>();
-            var list = await query.ToListAsync();
+            var list = await ConnectionDb().Table<Timeline>().ToListAsync();
             foreach (var item in list)
             {
                 if (item != null)
@@ -163,14 +161,14 @@ namespace Database
         {
             int[] data = Formatdata(time);
             string date_str = utilities.shortdate_form.Format(date);
-            Database.Report report = new Database.Report
+            Report report = new Report
             {
                 date = utilities.shortdate_form.Format(date),
                 usage = time,
                 unlocks = unlocks
             };
-            var item = (await ConnectionDb().Table<Database.Report>().ToListAsync()).FirstOrDefault(x => x.date == date_str);
-            if(item == null)
+            var item = (await ConnectionDb().Table<Report>().ToListAsync()).FirstOrDefault(x => x.date == date_str);
+            if (item == null)
             {
                 await ConnectionDb().InsertAsync(report);
             }
@@ -185,8 +183,8 @@ namespace Database
         public static async Task<int[]> LoadReportItem(DateTime date)
         {
             string date_str = utilities.shortdate_form.Format(date);
-            var item = (await ConnectionDb().Table<Database.Report>().ToListAsync()).FirstOrDefault(x => x.date == date_str);
-            if(item != null)
+            var item = (await ConnectionDb().Table<Report>().ToListAsync()).FirstOrDefault(x => x.date == date_str);
+            if (item != null)
             {
                 int[] data = { item.usage, item.unlocks };
                 return data;
@@ -202,11 +200,11 @@ namespace Database
         {
             string date_str = utilities.shortdate_form.Format(date);
             var item = (await ConnectionDb().Table<Hour>().ToListAsync()).FirstOrDefault(x => x.date == date_str && x.hour == hour);
-            if(item != null)
+            if (item != null)
             {
                 item.usage += time;
                 item.unlocks += unlocks;
-                await ConnectionDb().UpdateAsync(item); 
+                await ConnectionDb().UpdateAsync(item);
             }
             else
             {
@@ -222,13 +220,13 @@ namespace Database
         }
         #endregion
 
-        public static async Task<List<Database.Report>> LoadAllData()
+        public static async Task<List<Report>> LoadAllData()
         {
-            List<Database.Report> list = await ConnectionDb().Table<Database.Report>().ToListAsync();
+            List<Report> list = await ConnectionDb().Table<Report>().ToListAsync();
             return list;
         }
 
-        
+
         private static int[] Formatdata(int time)
         {
             int[] data = new int[3];
@@ -245,7 +243,7 @@ namespace Database
             try
             {
                 string date = utilities.shortdate_form.Format(dt);
-                var report_query = (await ConnectionDb().Table<Database.Report>().ToListAsync()).FirstOrDefault(x => x.date == date);
+                var report_query = (await ConnectionDb().Table<Report>().ToListAsync()).FirstOrDefault(x => x.date == date);
                 var hour_query = await ConnectionDb().Table<Hour>().Where(x => x.date == date).ToListAsync();
                 var timeline_query = await ConnectionDb().Table<Timeline>().Where(x => x.date == date).ToListAsync();
                 if (report_query != null)
@@ -278,7 +276,7 @@ namespace Database
             bool success = true;
             try
             {
-                var report_query = await ConnectionDb().Table<Database.Report>().ToListAsync();
+                var report_query = await ConnectionDb().Table<Report>().ToListAsync();
                 var hour_query = await ConnectionDb().Table<Hour>().ToListAsync();
                 var timeline_query = await ConnectionDb().Table<Timeline>().ToListAsync();
                 foreach (var item in report_query)
@@ -318,7 +316,7 @@ namespace Database
             int i = 0;
             try
             {
-                i = await conn.InsertAsync(new Database.Report
+                i = await conn.InsertAsync(new Report
                 {
                     usage = 0,
                 });

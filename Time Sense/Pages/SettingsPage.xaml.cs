@@ -1,5 +1,4 @@
 ﻿using Database;
-using Microsoft.ApplicationInsights.DataContracts;
 using NdefLibrary.Ndef;
 using Stuff;
 using System;
@@ -83,8 +82,8 @@ namespace Time_Sense
                 nfc_box.IsEnabled = false;
                 nfc_btn.IsEnabled = false;
             }
-            //await Database.Helper.InitializeDatabase();
-            //contacts_list = await Database.Helper.ConnectionDb().Table<AllowedContact>().ToListAsync();
+            //await Helper.InitializeDatabase();
+            //contacts_list = await Helper.ConnectionDb().Table<AllowedContact>().ToListAsync();
             //sms_list.ItemsSource = null;
             //sms_list.ItemsSource = contacts_list;
 

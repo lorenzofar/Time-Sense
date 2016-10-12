@@ -35,7 +35,7 @@ namespace Tasks
             string command = message["Command"] as string;
             Refresh();
             //string date_str = Stuff.utilities.shortdate_form.Format(DateTime.Now);
-            //var item = await Database.Helper.ConnectionDb().Table<Database.Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
+            //var item = await Database.Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
             double usage = double.Parse(time[1].ToString());
             switch (command)
             {
@@ -67,7 +67,7 @@ namespace Tasks
                 for (int i = date[0].Date == date[1].Date ? 1 : 0; i < 2; i++)
                 {
                     string date_str = utilities.shortdate_form.Format(date[i]);
-                    var item = await Database.Helper.ConnectionDb().Table<Database.Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
+                    var item = await Database.Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
                     time[i] = item == null ? 0 : item.usage;
                     unlocks[i] = (await Database.Helper.ConnectionDb().Table<Database.Timeline>().Where(x => x.date == date_str).ToListAsync()).Count;
                 }

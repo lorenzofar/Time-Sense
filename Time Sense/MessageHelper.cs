@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Database;
 
 namespace Time_Sense
 {
@@ -20,7 +16,7 @@ namespace Time_Sense
 
         public class ShowMapMessage
         {
-            public Database.Timeline unlock { get; set; }
+            public Timeline unlock { get; set; }
         }
 
         public class CloseMapMessage

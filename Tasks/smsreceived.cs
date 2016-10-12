@@ -17,7 +17,7 @@ namespace Tasks
                 message = smsDetails.TextMessage;
                 string sender = message.From;
                 //sender = sender.Remove(0, 3);
-                var query = await Database.Helper.ConnectionDb().Table<Database.AllowedContact>().Where(x => x.number == sender).FirstOrDefaultAsync(); //IF THE CONTACT IS ALLOWED ANALIZE THE MESSAGE, ELSE SEND IT TO THE MESSAGING APP
+                var query = await Helper.ConnectionDb().Table<Database.AllowedContact>().Where(x => x.number == sender).FirstOrDefaultAsync(); //IF THE CONTACT IS ALLOWED ANALIZE THE MESSAGE, ELSE SEND IT TO THE MESSAGING APP
                 if(query != null)
                 {
                     string text = message.Body;
@@ -33,15 +33,15 @@ namespace Tasks
                             device = SmsDevice2.GetDefault();
                         }
                         catch { return; }
-                        await Database.Helper.InitializeDatabase();
+                        await Helper.InitializeDatabase();
                         switch (command)
                         {
                             case "report":
                                 //SENDS DATA ABOUT CURRENT USAGE TIME AND UNLOCKS
-                                var data = await Database.Helper.ConnectionDb().Table<Database.Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
+                                var data = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
                                 if (data != null)
                                 {
-                                    var timeline = await Database.Helper.ConnectionDb().Table<Database.Timeline>().Where(x => x.date == date_str).ToListAsync();
+                                    var timeline = await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).ToListAsync();
                                     int unlocks = timeline.Count;
                                     int usage = data.usage;
                                     string last_time = timeline.Last().time;
@@ -82,7 +82,7 @@ namespace Tasks
                                 break;
                             case "timeline":
                                 // SENDS THE TIMELINE
-                                var timeline2 = await Database.Helper.ConnectionDb().Table<Database.Timeline>().Where(x => x.date == date_str).ToListAsync();
+                                var timeline2 = await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).ToListAsync();
                                 if(timeline2 != null)
                                 {
                                     StringBuilder builder = new StringBuilder();
@@ -108,7 +108,7 @@ namespace Tasks
                                 break;
                             case "map":
                                 // SENDS THE LAST KNOWN POSITION
-                                var timeline_q = await Database.Helper.ConnectionDb().Table<Database.Timeline>().ToListAsync();
+                                var timeline_q = await Helper.ConnectionDb().Table<Timeline>().ToListAsync();
                                 double latitude = 0;
                                 double longitude = 0;
                                 string time = "";

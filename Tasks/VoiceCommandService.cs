@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.VoiceCommands;
 using Stuff;
+using Database;
 
 namespace Tasks
 {
@@ -89,34 +90,34 @@ namespace Tasks
                 switch (i)
                 {
                     case 0:                        
-                        var query_r = await Database.Helper.ConnectionDb().Table<Database.Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
-                        var query_t = await Database.Helper.ConnectionDb().Table<Database.Timeline>().Where(x => x.date == date_str).ToListAsync();
-                        var query_h = await Database.Helper.ConnectionDb().Table<Database.Hour>().Where(x => x.date == date_str).ToListAsync();
-                        await Database.Helper.ConnectionDb().DeleteAsync(query_r);
+                        var query_r = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
+                        var query_t = await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).ToListAsync();
+                        var query_h = await Helper.ConnectionDb().Table<Hour>().Where(x => x.date == date_str).ToListAsync();
+                        await Helper.ConnectionDb().DeleteAsync(query_r);
                         foreach(var item in query_t)
                         {
-                            await Database.Helper.ConnectionDb().DeleteAsync(item);
+                            await Helper.ConnectionDb().DeleteAsync(item);
                         }
                         foreach (var item in query_h)
                         {
-                            await Database.Helper.ConnectionDb().DeleteAsync(item);
+                            await Helper.ConnectionDb().DeleteAsync(item);
                         }
                         break;
                     case 1:
-                        var query_r2 = await Database.Helper.ConnectionDb().Table<Database.Report>().ToListAsync();
-                        var query_t2 = await Database.Helper.ConnectionDb().Table<Database.Timeline>().ToListAsync();
-                        var query_h2 = await Database.Helper.ConnectionDb().Table<Database.Hour>().ToListAsync();
+                        var query_r2 = await Helper.ConnectionDb().Table<Report>().ToListAsync();
+                        var query_t2 = await Helper.ConnectionDb().Table<Timeline>().ToListAsync();
+                        var query_h2 = await Helper.ConnectionDb().Table<Hour>().ToListAsync();
                         foreach (var item in query_r2)
                         {
-                            await Database.Helper.ConnectionDb().DeleteAsync(item);
+                            await Helper.ConnectionDb().DeleteAsync(item);
                         }
                         foreach (var item in query_t2)
                         {
-                            await Database.Helper.ConnectionDb().DeleteAsync(item);
+                            await Helper.ConnectionDb().DeleteAsync(item);
                         }
                         foreach (var item in query_h2)
                         {
-                            await Database.Helper.ConnectionDb().DeleteAsync(item);
+                            await Helper.ConnectionDb().DeleteAsync(item);
                         }
                         break;
                 }
@@ -139,12 +140,12 @@ namespace Tasks
         private async void SendUsageData()
         {
             string date_str = Stuff.utilities.shortdate_form.Format(DateTime.Now);
-            //Database.Report item = new Database.Report();
+            //Report item = new Report();
             try {
-                //var list = await Database.Helper.ConnectionDb().Table<Database.Report>().ToListAsync();
-                //var item = await Database.Helper.ConnectionDb().Table<Database.Report>().Where(x => x.date == date_str1).FirstOrDefaultAsync();
+                //var list = await Helper.ConnectionDb().Table<Report>().ToListAsync();
+                //var item = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str1).FirstOrDefaultAsync();
                 //var item = list.Last();
-                var item = new Database.Report
+                var item = new Report
                 {
                     date = date_str,
                     usage = 45600,

@@ -116,7 +116,7 @@ namespace Time_Sense
                 d_ring_box.Visibility = Visibility.Visible;
                 d_ring.IsActive = true;
                 days_list.Visibility = Visibility.Collapsed;
-                query_d = new List<Database.Report>();
+                query_d = new List<Report>();
                 if (!rangeall)
                 {
                     int days = endPick.Date.Subtract(startPick.Date).Days;
@@ -129,7 +129,7 @@ namespace Time_Sense
                 }
                 else
                 {
-                    query_d = await Database.Helper.ConnectionDb().Table<Database.Report>().Where(x => x.unlocks != 0 && x.usage != 0).ToListAsync();
+                    query_d = await Helper.ConnectionDb().Table<Report>().Where(x => x.unlocks != 0 && x.usage != 0).ToListAsync();
 
                 }
                 if (d_usagemax.IsChecked == true || d_usagemin.IsChecked == true || d_unlocksmax.IsChecked == true || d_unlocksmin.IsChecked == true)
@@ -222,7 +222,7 @@ namespace Time_Sense
                     for (int i = 0; i <= days; i++)
                     {
                         string date_str = Stuff.utilities.shortdate_form.Format(startPick.Date.AddDays(i));
-                        var d_query = await Database.Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str && (x.usage != 0 || x.unlocks != 0)).ToListAsync();
+                        var d_query = await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str && (x.usage != 0 || x.unlocks != 0)).ToListAsync();
                         foreach (var item in d_query)
                         {
                             query_l.Add(item);

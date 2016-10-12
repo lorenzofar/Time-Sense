@@ -1,4 +1,5 @@
-﻿using Stuff;
+﻿using Database;
+using Stuff;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,9 +36,9 @@ namespace Tasks
                 for (int i = date[0].Date == date[1].Date ? 1 : 0; i < 2; i++)
                 {
                     string date_str = utilities.shortdate_form.Format(date[i]);
-                    var item = await Database.Helper.ConnectionDb().Table<Database.Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
+                    var item = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
                     time[i] = item == null ? 0 : item.usage;
-                    unlocks[i] = (await Database.Helper.ConnectionDb().Table<Database.Timeline>().Where(x => x.date == date_str).ToListAsync()).Count;
+                    unlocks[i] = (await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).ToListAsync()).Count;
                 }
                 //END LOADING
                 ConvertSeconds();
@@ -59,19 +60,19 @@ namespace Tasks
                             time[1] += diff;
                             if (date[0].Hour < date[1].Hour)
                             {
-                                await Database.Helper.UpdateHourItem(date[1], date[0].Hour, ((date[0].Hour + 1) * 3600) - total_seconds[0], 0);
+                                await Helper.UpdateHourItem(date[1], date[0].Hour, ((date[0].Hour + 1) * 3600) - total_seconds[0], 0);
                                 for (int i = 1; i < date[1].Hour - date[0].Hour; i++)
                                 {
-                                    await Database.Helper.UpdateHourItem(date[1], date[0].Hour + i, 3600, 0);
+                                    await Helper.UpdateHourItem(date[1], date[0].Hour + i, 3600, 0);
                                 }
-                                await Database.Helper.UpdateHourItem(date[1], date[1].Hour, total_seconds[1] - (date[1].Hour * 3600), 0);
+                                await Helper.UpdateHourItem(date[1], date[1].Hour, total_seconds[1] - (date[1].Hour * 3600), 0);
                             }
                             else if (date[0].Hour == date[1].Hour)
                             {
-                                await Database.Helper.UpdateHourItem(date[1], date[1].Hour, diff, 0);
+                                await Helper.UpdateHourItem(date[1], date[1].Hour, diff, 0);
                             }
-                            await Database.Helper.UpdateUsageItem(time[1], unlocks[1], date[1]);
-                            await Database.Helper.UpdateTimelineItem(unlocks[1], diff, date[1]);
+                            await Helper.UpdateUsageItem(time[1], unlocks[1], date[1]);
+                            await Helper.UpdateTimelineItem(unlocks[1], diff, date[1]);
                         }
                     }
                     else if (date[1].DayOfYear - date[0].DayOfYear == 1)
@@ -107,29 +108,29 @@ namespace Tasks
             {
                 time[0] += (86400 - total_seconds[0]);
                 time[1] += total_seconds[1];
-                await Database.Helper.UpdateHourItem(date[0], date[0].Hour, (((date[0].Hour + 1) * 3600) - total_seconds[0]), 0);
+                await Helper.UpdateHourItem(date[0], date[0].Hour, (((date[0].Hour + 1) * 3600) - total_seconds[0]), 0);
                 for (int i = 1; i < 24 - date[0].Hour; i++)
                 {
-                    await Database.Helper.UpdateHourItem(date[0], date[0].Hour + i, 3600, 0);
+                    await Helper.UpdateHourItem(date[0], date[0].Hour + i, 3600, 0);
                 }
                 for (int i = 0; i < date[1].Hour; i++)
                 {
-                    await Database.Helper.UpdateHourItem(date[1], i, 3600, i == 0 ? 1 : 0);
+                    await Helper.UpdateHourItem(date[1], i, 3600, i == 0 ? 1 : 0);
                 }
-                await Database.Helper.UpdateHourItem(date[1], date[1].Hour, total_seconds[1] - (date[1].Hour * 3600), 0);
+                await Helper.UpdateHourItem(date[1], date[1].Hour, total_seconds[1] - (date[1].Hour * 3600), 0);
                 for (int i = 0; i < 2; i++)
                 {
-                    await Database.Helper.UpdateUsageItem(time[i], unlocks[i], date[i]);
+                    await Helper.UpdateUsageItem(time[i], unlocks[i], date[i]);
                 }
-                await Database.Helper.UpdateTimelineItem(unlocks[0], (86400 - total_seconds[0]), date[0]);
+                await Helper.UpdateTimelineItem(unlocks[0], (86400 - total_seconds[0]), date[0]);
                 var radios = await Windows.Devices.Radios.Radio.GetRadiosAsync();
                 var bluetooth_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.Bluetooth).FirstOrDefault();
                 var wifi_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.WiFi).FirstOrDefault();
                 string bluetooth = bluetooth_device == null ? "off" : bluetooth_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
                 string wifi = wifi_device == null ? "off" : wifi_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
                 string battery = Windows.Devices.Power.Battery.AggregateBattery.GetReport().Status == Windows.System.Power.BatteryStatus.Charging ? "charging" : "null";
-                await Database.Helper.AddTimelineItem(date[1], "00:00:00", 1, Windows.System.Power.PowerManager.RemainingChargePercent, battery, bluetooth, wifi);
-                await Database.Helper.UpdateTimelineItem(1, time[1], date[1]);
+                await Helper.AddTimelineItem(date[1], "00:00:00", 1, Windows.System.Power.PowerManager.RemainingChargePercent, battery, bluetooth, wifi);
+                await Helper.UpdateTimelineItem(1, time[1], date[1]);
             }
         }
         
