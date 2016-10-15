@@ -18,7 +18,7 @@ namespace Tasks
             utilities.STATS.Values[settings.limit] = time * 3600;
             //SCHEDULE A NEW TOAST NOTIFICATION
             string date_str = utilities.shortdate_form.Format(DateTime.Now);
-            var query = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstAsync();
+            var query = (await Helper.ConnectionDb().Table<Report>().ToListAsync()).Find(x => x.date == date_str);
             int timex = query == null ? 0 : query.usage;
             int limit = utilities.STATS.Values[settings.limit] == null ? 7200 : int.Parse(utilities.STATS.Values[settings.limit].ToString());
             int span = limit - timex;

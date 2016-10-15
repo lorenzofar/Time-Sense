@@ -37,9 +37,9 @@ namespace Tasks
                     for (int i = date[0].Date == date[1].Date ? 1 : 0; i < 2; i++)
                     {
                         string date_str = utilities.shortdate_form.Format(date[i]);
-                        var item = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
+                        var item = (await Helper.ConnectionDb().Table<Report>().ToListAsync()).Find(x => x.date == date_str);
                         time[i] = item == null ? 0 : item.usage;
-                        unlocks[i] = (await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).ToListAsync()).Count;
+                        unlocks[i] = await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).CountAsync();
                     }
                     //END LOADING
                     ConvertSeconds();

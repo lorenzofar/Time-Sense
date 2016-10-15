@@ -379,41 +379,41 @@
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
-    <MainPackageIdentityName>12096LorenzoFarinelli.LumiaItalia</MainPackageIdentityName>
+    <MainPackageIdentityName>12096LorenzoFarinelli.BoyGirlAnimal</MainPackageIdentityName>
+    <MainPackageIdentityName>12096LorenzoFarinelli.Cosine</MainPackageIdentityName>
+    <MainPackageIdentityName>12096LorenzoFarinelli.DestinazioneMarche</MainPackageIdentityName>
+    <MainPackageIdentityName>12096LorenzoFarinelli.Sine</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.Anglesconverter</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.Apiron</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.Automatic</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.Bitter</MainPackageIdentityName>
-    <MainPackageIdentityName>12096LorenzoFarinelli.BoyGirlAnimal</MainPackageIdentityName>
+    <MainPackageIdentityName>12096LorenzoFarinelli.MORSE.Beta</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.CMPLX</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.Communic-action</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.Communic-ActionBETA</MainPackageIdentityName>
-    <MainPackageIdentityName>12096LorenzoFarinelli.Cosine</MainPackageIdentityName>
-    <MainPackageIdentityName>12096LorenzoFarinelli.DestinazioneMarche</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.Electriccells</MainPackageIdentityName>
+    <MainPackageIdentityName>12096LorenzoFarinelli.Tangent</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.FakeTalks</MainPackageIdentityName>
-    <MainPackageIdentityName>12096LorenzoFarinelli.FioriFruttaeCitt</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.FioriFruttaeCittBETA</MainPackageIdentityName>
+    <MainPackageIdentityName>12096LorenzoFarinelli.Flavourbot</MainPackageIdentityName>
+    <MainPackageIdentityName>12096LorenzoFarinelli.Heiban</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.Logarithms</MainPackageIdentityName>
+    <MainPackageIdentityName>12096LorenzoFarinelli.LumiaItalia</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.Mathtool</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.Mellotron</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.MemoryPaths</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.318803EB917F1</MainPackageIdentityName>
-    <MainPackageIdentityName>12096LorenzoFarinelli.MORSE.Beta</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.Nucleicacids</MainPackageIdentityName>
+    <MainPackageIdentityName>12096LorenzoFarinelli.Octahedron</MainPackageIdentityName>
+    <MainPackageIdentityName>12096LorenzoFarinelli.OctahedronBETA</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.Postman</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.5843195097ED1</MainPackageIdentityName>
-    <MainPackageIdentityName>12096LorenzoFarinelli.Provaadvertising</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.3039B5A01723</MainPackageIdentityName>
-    <MainPackageIdentityName>12096LorenzoFarinelli.RandOMatic</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.Rootscalc</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.schedulereminder</MainPackageIdentityName>
-    <MainPackageIdentityName>12096LorenzoFarinelli.Sine</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.Switcher</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.TagBoard</MainPackageIdentityName>
-    <MainPackageIdentityName>12096LorenzoFarinelli.Tangent</MainPackageIdentityName>
     <MainPackageIdentityName>12096LorenzoFarinelli.TimeSenseBETA</MainPackageIdentityName>
-    <MainPackageIdentityName>12096LorenzoFarinelli.TimeSenseInsider</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://dev.windows.com/dashboard/Application?appId=9WZDNCRCWWMN" />
+  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9WZDNCRCWWMN" />
 </StoreAssociation>

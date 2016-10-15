@@ -82,10 +82,6 @@ namespace Time_Sense
                 nfc_box.IsEnabled = false;
                 nfc_btn.IsEnabled = false;
             }
-            //await Helper.InitializeDatabase();
-            //contacts_list = await Helper.ConnectionDb().Table<AllowedContact>().ToListAsync();
-            //sms_list.ItemsSource = null;
-            //sms_list.ItemsSource = contacts_list;
 
         }
 

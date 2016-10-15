@@ -123,7 +123,7 @@ namespace Time_Sense
                     for (int i = 0; i <= days; i++)
                     {
                         string date_str = utilities.shortdate_form.Format(startPick.Date.AddDays(i));
-                        Report d_item = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str && (x.unlocks != 0 || x.usage != 0)).FirstOrDefaultAsync();
+                        Report d_item = (await Helper.ConnectionDb().Table<Report>().ToListAsync()).Find(x => x.date == date_str && (x.unlocks != 0 || x.usage != 0));
                         query_d.Add(d_item);
                     }
                 }

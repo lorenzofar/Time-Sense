@@ -240,7 +240,7 @@ namespace Time_Sense.ViewModels
                         editingNote = !editingNote;
                         if (!editingNote)
                         {
-                            var day = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == homeData.date).FirstOrDefaultAsync();
+                            var day = (await Helper.ConnectionDb().Table<Report>().ToListAsync()).Find(x => x.date == homeData.date);
                             if(day != null)
                             {
                                 if (homeData.note != null && !string.IsNullOrWhiteSpace(homeData.note))
@@ -304,10 +304,9 @@ namespace Time_Sense.ViewModels
                         for (int i = date[0].Date == date[1].Date ? 1 : 0; i < 2; i++)
                         {
                             string date_str = utilities.shortdate_form.Format(date[i]);
-                            var item = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
+                            var item = (await Helper.ConnectionDb().Table<Report>().ToListAsync()).Find(x => x.date == date_str);
                             time[i] = item == null ? 0 : item.usage;
-                            var unlocks_list = await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).ToListAsync();
-                            unlocks[i] = unlocks_list.Count;
+                            unlocks[i] = await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).CountAsync();
                         }
                         //END LOADING
                         ConvertSeconds();
@@ -424,7 +423,7 @@ namespace Time_Sense.ViewModels
         private async Task ShowData()
         {
             string date_str = utilities.shortdate_form.Format(App.report_date);
-            var data = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
+            var data = (await Helper.ConnectionDb().Table<Report>().ToListAsync()).Find(x => x.date == date_str);
             if(data != null)
             {
                 homeData = data;

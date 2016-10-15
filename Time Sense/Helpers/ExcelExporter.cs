@@ -68,12 +68,11 @@ namespace Time_Sense
                 string date_str = utilities.shortdate_form.Format(current_date);
                 IWorksheet worksheet = workbook.Worksheets[i + 1];
                 worksheet.Name = String.Format("{0}-{1}-{2}", current_date.Day, current_date.Month, current_date.Year);
-                var item = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
+                var item = (await Helper.ConnectionDb().Table<Report>().ToListAsync()).Find((x => x.date == date_str));
                 if (item != null)
                 {
-                    var item_unlocks = await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).ToListAsync();
+                    total_unlocks+= await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).CountAsync();
                     total_usage += item.usage;
-                    total_unlocks += item_unlocks.Count;
                     for (int a = 0; a < 9; a++)
                     {
                         worksheet.Range[timeline_alphabet[a] + "1"].Text = utilities.loader.GetString(timeline_header[a]);

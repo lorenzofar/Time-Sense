@@ -21,7 +21,7 @@
     <AppxPackageDir>C:\Users\Lorenzo\Desktop\</AppxPackageDir>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|arm</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>9D7A31DB27D4B018B93FA46ED95F9A42D55ABB82</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>3FF47CA13320D3530964FD06F3329E85C50C64EE</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -113,6 +113,7 @@
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="TimeSenseCommands.xml" />
     <None Include="project.json" />
+    <None Include="Time Sense_StoreKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\BoolConverter.cs" />

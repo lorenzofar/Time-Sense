@@ -81,7 +81,7 @@ namespace Time_Sense
                     for (int i = 0; i <= days; i++)
                     {
                         string date_str = utilities.shortdate_form.Format(App.range_start_date.Date.AddDays(i));
-                        Report d_item = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
+                        Report d_item = (await Helper.ConnectionDb().Table<Report>().ToListAsync()).Find(x => x.date == date_str);
                         var t_list = await Helper.ConnectionDb().Table<Timeline>().Where(x => x.date == date_str).ToListAsync();
                         var h_list = await Helper.ConnectionDb().Table<Hour>().Where(x => x.date == date_str).ToListAsync();
                         if (d_item != null)
