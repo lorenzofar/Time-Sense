@@ -106,8 +106,8 @@ namespace Tasks
                 }
                 await Helper.UpdateTimelineItem(unlocks[0], (86400 - total_seconds[0]), date[0]);
                 var radios = await Windows.Devices.Radios.Radio.GetRadiosAsync();
-                var bluetooth_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.Bluetooth).FirstOrDefault();
-                var wifi_device = radios.Where(x => x.Kind == Windows.Devices.Radios.RadioKind.WiFi).FirstOrDefault();
+                var bluetooth_device = radios.FirstOrDefault(x => x.Kind == Windows.Devices.Radios.RadioKind.Bluetooth);
+                var wifi_device = radios.FirstOrDefault(x => x.Kind == Windows.Devices.Radios.RadioKind.WiFi);
                 string bluetooth = bluetooth_device == null ? "off" : bluetooth_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
                 string wifi = wifi_device == null ? "off" : wifi_device.State == Windows.Devices.Radios.RadioState.On ? "on" : "off";
                 string battery = Windows.Devices.Power.Battery.AggregateBattery.GetReport().Status == Windows.System.Power.BatteryStatus.Charging ? "charging" : "null";

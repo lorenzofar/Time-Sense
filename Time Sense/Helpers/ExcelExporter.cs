@@ -24,7 +24,7 @@ namespace Time_Sense
             {
                 DateTime current_date = start_date.AddDays(i);
                 string date_str = utilities.shortdate_form.Format(current_date);
-                var item = await Helper.ConnectionDb().Table<Report>().Where(x => x.date == date_str).FirstOrDefaultAsync();
+                var item = (await Helper.ConnectionDb().Table<Report>().ToListAsync()).Find(x => x.date == date_str);
                 if (item != null)
                 {
                     days_list.Add(current_date);
