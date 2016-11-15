@@ -11,7 +11,7 @@
     <AssemblyName>Time Sense</AssemblyName>
     <DefaultLanguage>en</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -299,17 +299,14 @@
     </SDKReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Syncfusion.SfChart.UWP, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\14.2.0.26\Assemblies for Universal Windows\10.0\Syncfusion.SfChart.UWP.dll</HintPath>
+    <Reference Include="Syncfusion.SfChart.UWP">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\14.3.0.52\Assemblies for Universal Windows\10.0\Syncfusion.SfChart.UWP.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.SfShared.UWP, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\14.2.0.26\Assemblies for Universal Windows\10.0\Syncfusion.SfShared.UWP.dll</HintPath>
+    <Reference Include="Syncfusion.SfShared.UWP">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\14.3.0.52\Assemblies for Universal Windows\10.0\Syncfusion.SfShared.UWP.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.XlsIO.UWP, Version=14.2460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\14.2.0.26\Assemblies for Universal Windows\10.0\Syncfusion.XlsIO.UWP.dll</HintPath>
+    <Reference Include="Syncfusion.XlsIO.UWP">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\14.3.0.52\Assemblies for Universal Windows\10.0\Syncfusion.XlsIO.UWP.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
