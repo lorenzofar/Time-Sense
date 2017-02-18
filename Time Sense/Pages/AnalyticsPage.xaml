@@ -67,7 +67,7 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <Grid RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" Visibility="{Binding checkingLicense, Converter={StaticResource BoolVisibilityConverter}, ConverterParameter=false}">
+        <Grid RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True">
             <Grid.RowDefinitions>
                 <RowDefinition x:Name="param_r" Height="11*"/>
                 <RowDefinition x:Name="list_r" Height="7*"/>
@@ -530,13 +530,6 @@
                 <AppBarButton x:Name="reset_btn" x:Uid="reset_btn" Icon="Delete" Click="reset_btn_Click"/>
             </CommandBar>
         </Grid>
-
-        <StackPanel Visibility="{Binding checkingLicense, Converter={StaticResource BoolVisibilityConverter}}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
-            <Viewbox MaxHeight="50" MaxWidth="50">
-                <ProgressRing IsActive="{Binding checkingLicense}" Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" Width="50" Height="50"/>
-            </Viewbox>
-            <TextBlock Margin="0,12,0,0" x:Uid="license_progress"/>
-        </StackPanel>
 
         <Button x:Name="up_btn" Visibility="Collapsed"  Click="Button_Click" Background="Transparent" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" Margin="12" >
             <Button.Content>

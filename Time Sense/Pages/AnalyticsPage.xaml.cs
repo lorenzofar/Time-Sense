@@ -1,15 +1,13 @@
-﻿using System;
+﻿using Database;
+using Stuff;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Database;
-using Stuff;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Windows.ApplicationModel.Store;
-using GalaSoft.MvvmLight.Messaging;
 
 namespace Time_Sense
 {
@@ -36,7 +34,7 @@ namespace Time_Sense
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            Messenger.Default.Send<MessageHelper.AnalysisMessage>(new MessageHelper.AnalysisMessage());
+            MainPage.title.Text = utilities.loader.GetString("analytics");
             SetLayout();
         }
 
