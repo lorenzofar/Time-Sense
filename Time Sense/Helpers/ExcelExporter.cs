@@ -146,7 +146,7 @@ namespace Time_Sense
 
             front_worksheet.Range["B3"].Text = String.Format("{0} - {1}", utilities.shortdate_form.Format(start_date), utilities.shortdate_form.Format(end_date));
             front_worksheet.Range["B4"].Text = String.Format("{0} - {1}", utilities.shortdate_form.Format(DateTime.Now), utilities.longtime_form.Format(DateTime.Now));
-            front_worksheet.Range["B5"].Text = "2.5.1.0";
+            front_worksheet.Range["B5"].Text = "2.5.2.0";
             front_worksheet.Range["B7"].Text = utilities.FormatData(total_usage);
             front_worksheet.Range["B8"].Text = total_unlocks.ToString();
             front_worksheet.Range["B9"].Text = days.ToString();
